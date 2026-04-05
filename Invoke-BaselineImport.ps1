@@ -448,9 +448,9 @@ if ($allFolders.Count -eq 0) {
 }
 
 Write-Info "Scanning $($allFolders.Count) folder(s)..."
-$allPackages = for ($i = 0; $i -lt $allFolders.Count; $i++) {
+$allPackages = @(for ($i = 0; $i -lt $allFolders.Count; $i++) {
     Get-PackageInfo -Folder $allFolders[$i] -Index ($i + 1)
-}
+})
 
 # =============================================================================
 #  3.  Package selection
@@ -471,12 +471,12 @@ if ($PackageName) {
     Write-Step 'Select packages to import'
 
     $nameWidth = ($allPackages | ForEach-Object { $_.Name.Length } | Measure-Object -Maximum).Maximum
-    $nameWidth = [Math]::Max(30, [Math]::Min($nameWidth, $Script:LineWidth - 26))
+    $nameWidth = [int][Math]::Max(30, [Math]::Min($nameWidth, $Script:LineWidth - 26))
 
     $colFmt = '  {0,3}  {1}  {2,5}  {3,8}'
     Write-Host ''
     Write-Host ($colFmt -f '#', 'Package'.PadRight($nameWidth), 'Files', 'Entities') -ForegroundColor White
-    Write-Host ($colFmt -f '---', '-' * $nameWidth, '-----', '--------') -ForegroundColor DarkGray
+    Write-Host ($colFmt -f '---', ('-' * $nameWidth), '-----', '--------') -ForegroundColor DarkGray
 
     foreach ($pkg in $allPackages) {
         $nameCol = if ($pkg.Name.Length -gt $nameWidth) {
