@@ -7,22 +7,49 @@
 .DESCRIPTION
     1. Scans all subfolders under ResourcesPath, treating each as an importable package.
     2. Presents an interactive selection menu (skipped when -PackageName is supplied).
-    3. Prompts for confirmation before authenticating.
+    3. Prompts for confirmation before authenticating (suppressed with -Force).
     4. Authenticates once via Microsoft Entra device code flow; the token is reused
        across all selected packages.
     5. For each confirmed package:
        a. Discovers .xlsx files on disk and cross-references them against Manifest.xml.
-       b. Rebuilds the manifest with optimised execution-unit / level / sequence ordering
-          so that independent entity chains run in parallel.
-       c. Builds a well-formed .zip package and uploads it to Azure Blob Storage.
-       d. Submits the import via ImportFromPackage and polls until a terminal status
+       b. Resolves entity execution ordering from a per-package ordering.json file (when
+          present), merging it with the built-in default table; package-level entries
+          take precedence for any entity listed in both.
+       c. Rebuilds the manifest with the resolved ordering so independent entity chains
+          can run in parallel within D365 DMF.
+       d. Builds a well-formed .zip package and uploads it to Azure Blob Storage.
+       e. Submits the import via ImportFromPackage and polls until a terminal status
           is reached, showing a live progress bar throughout.
+       f. Deletes the generated .zip after upload (unless -KeepZip is specified).
     6. Prints a colour-coded summary table with per-package elapsed time and
        execution IDs for follow-up in D365 Job history.
+    7. Writes a timestamped transcript to -LogPath (auto-generated when omitted;
+       pass an empty string to suppress logging entirely).
+
+    -WhatIf validates all selected packages and shows what would be imported without
+    making any API calls to D365.
 
     All REST calls include automatic retry with exponential back-off (HTTP 5xx /
     429 / transient network errors).  The token expiry window is tracked and
     surfaced as a warning when approaching expiry.
+
+    Library files (in ./lib/)
+    ─────────────────────────
+    DmfOutput.ps1   -- Write-* helpers, Format-Elapsed, Stop-RunTranscript
+    DmfRequest.ps1  -- Invoke-DmfRequest (REST client with retry)
+    DmfPackage.ps1  -- Get-PackageInfo, Resolve-EntityOrdering, $entityOrdering
+
+    Per-package execution ordering
+    ──────────────────────────────
+    Place an ordering.json file inside any package folder to customise entity
+    execution order for that package.  Entries in the file are merged with the
+    built-in defaults; package-level values take precedence for any named entity.
+
+    ordering.json format:
+    {
+      "Entity Name": { "EU": 1, "LV": 10, "SEQ": 10 },
+      ...
+    }
 
 .PARAMETER EnvironmentUrl
     Base URL of the D365 F&O environment (no trailing slash).
@@ -39,7 +66,7 @@
 .PARAMETER PackageName
     When supplied, imports this one package folder without prompting.
     The value must match a subfolder name exactly.
-    Example: 'Demo data 10.0.9 100 System and Shared'
+    Example: '010 - System Setup'
 
 .PARAMETER ResourcesPath
     Root folder that contains package subfolders.
@@ -47,6 +74,11 @@
 
 .PARAMETER OutputPath
     Directory for generated .zip files.  Defaults to $env:TEMP.
+
+.PARAMETER LogPath
+    Path for the run transcript log.  When omitted, a log is auto-generated in
+    OutputPath as DMFImport_<timestamp>.log.  Pass an empty string ('') to
+    suppress transcript logging entirely.
 
 .PARAMETER PollIntervalSeconds
     How often (in seconds) to check import status.  Range: 5-300.  Default: 30.
@@ -58,20 +90,49 @@
     Maximum number of automatic retries for transient REST failures.
     Range: 0-10.  Default: 3.
 
+.PARAMETER Force
+    Skip the confirmation prompt before importing.
+
+.PARAMETER WhatIf
+    Validate and display what would be imported without calling D365 APIs.
+    No authentication is performed and no data is changed.
+
+.PARAMETER NoOverwrite
+    Preserve existing records in D365.  By default, existing records are
+    overwritten during import.
+
+.PARAMETER KeepZip
+    Retain the generated .zip file after a successful upload.  By default the
+    zip is deleted once the blob upload completes successfully.
+
+.PARAMETER PassThru
+    Return the per-package result objects to the pipeline after completion.
+    Each object has properties: Package, Status, ExecutionId, Elapsed.
+
 .EXAMPLE
-    # Interactive: discover all packages and prompt for each
+    # Interactive: discover all packages and prompt for selection
     .\Invoke-BaselineImport.ps1 `
         -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
         -TenantId       'contoso.onmicrosoft.com' `
         -LegalEntityId  'DAT'
 
 .EXAMPLE
-    # Non-interactive: import one specific package
+    # Non-interactive: import one package, skip confirmation, write log
     .\Invoke-BaselineImport.ps1 `
         -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
         -TenantId       'contoso.onmicrosoft.com' `
         -LegalEntityId  'DAT' `
-        -PackageName    'Demo data 10.0.9 100 System and Shared'
+        -PackageName    '010 - System Setup' `
+        -Force `
+        -LogPath        'C:\Logs\import.log'
+
+.EXAMPLE
+    # Dry-run: validate all packages without making any API calls
+    .\Invoke-BaselineImport.ps1 `
+        -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+        -TenantId       'contoso.onmicrosoft.com' `
+        -LegalEntityId  'DAT' `
+        -WhatIf
 #>
 [CmdletBinding()]
 param(
@@ -95,6 +156,9 @@ param(
     [ValidateNotNullOrEmpty()]
     [string]$OutputPath = $env:TEMP,
 
+    [AllowEmptyString()]
+    [string]$LogPath,
+
     [ValidateRange(5, 300)]
     [int]$PollIntervalSeconds = 30,
 
@@ -102,7 +166,13 @@ param(
     [int]$TimeoutMinutes = 60,
 
     [ValidateRange(0, 10)]
-    [int]$MaxRetries = 3
+    [int]$MaxRetries = 3,
+
+    [switch]$Force,
+    [switch]$WhatIf,
+    [switch]$NoOverwrite,
+    [switch]$KeepZip,
+    [switch]$PassThru
 )
 
 Set-StrictMode -Version Latest
@@ -111,325 +181,16 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # =============================================================================
-#  Script-level constants
+#  Load library modules
 # =============================================================================
-$Script:Version    = '2.0'
-$Script:DmNs       = 'http://schemas.microsoft.com/dynamics/2015/01/DataManagement'
-$Script:LineWidth  = 80
-$Script:MaxRetries = $MaxRetries
-try {
-    $w = $Host.UI.RawUI.BufferSize.Width
-    $Script:LineWidth = [Math]::Min(120, [Math]::Max(80, $w))
-} catch { <# non-interactive host -- keep default #> }
+$libPath = Join-Path $PSScriptRoot 'lib'
+. (Join-Path $libPath 'DmfOutput.ps1')
+. (Join-Path $libPath 'DmfRequest.ps1')
+. (Join-Path $libPath 'DmfPackage.ps1')
 
 # =============================================================================
-#  Output helpers
+#  Pre-flight path validation  (before transcript so errors surface cleanly)
 # =============================================================================
-function Write-Banner {
-    $w    = $Script:LineWidth
-    $line = '=' * $w
-    Write-Host $line                                           -ForegroundColor DarkCyan
-    Write-Host "  D365 F&O Data Import Utility  v$Script:Version" -ForegroundColor Cyan
-    Write-Host $line                                           -ForegroundColor DarkCyan
-}
-
-function Write-Rule {
-    param([string]$Label = '')
-    $w = $Script:LineWidth
-    if ($Label) {
-        $pad = [Math]::Max(1, $w - $Label.Length - 5)
-        Write-Host "--- $Label $('-' * $pad)" -ForegroundColor DarkGray
-    } else {
-        Write-Host ('-' * $w) -ForegroundColor DarkGray
-    }
-}
-
-function Write-Step   { param([string]$m) Write-Host "`n==> $m"   -ForegroundColor Cyan    }
-function Write-Info   { param([string]$m) Write-Host "    $m"     -ForegroundColor Gray    }
-function Write-Detail { param([string]$m) Write-Host "      $m"   -ForegroundColor DarkGray }
-function Write-OK     { param([string]$m) Write-Host "`n[OK]   $m" -ForegroundColor Green   }
-function Write-Warn   { param([string]$m) Write-Host "[WARN] $m"  -ForegroundColor Yellow  }
-function Write-Fail   { param([string]$m) Write-Host "[FAIL] $m"  -ForegroundColor Red     }
-
-function Format-Elapsed {
-    param([TimeSpan]$Elapsed)
-    $h = [int][Math]::Floor($Elapsed.TotalHours)
-    $m = $Elapsed.Minutes
-    $s = $Elapsed.Seconds
-    if ($h -gt 0) { return "${h}h ${m}m ${s}s" }
-    if ($m -gt 0) { return "${m}m ${s}s" }
-    if ($s -gt 0) { return "${s}s" }
-    return '<1s'
-}
-
-# =============================================================================
-#  REST helper  --  automatic retry with exponential back-off
-# =============================================================================
-function Invoke-DmfRequest {
-    [CmdletBinding()]
-    param(
-        [Parameter(Mandatory)] [hashtable]$Params,
-        [string]$Operation = 'API request',
-        [int]$MaxRetries   = $Script:MaxRetries
-    )
-
-    Write-Verbose "[$Operation] $($Params.Method) $($Params.Uri)"
-
-    for ($attempt = 1; $attempt -le ($MaxRetries + 1); $attempt++) {
-        try {
-            return Invoke-RestMethod @Params
-        }
-        catch {
-            # -- Classify error -----------------------------------------------
-            $httpStatus = 0
-            $retryAfter = 0
-            if ($null -ne $_.Exception.Response) {
-                try { $httpStatus = [int]$_.Exception.Response.StatusCode } catch {}
-                try {
-                    $ra = $_.Exception.Response.Headers['Retry-After']
-                    if ($ra) { $retryAfter = [int]$ra }
-                } catch {}
-            }
-
-            # -- Extract OData / D365 error detail ----------------------------
-            $detail = ''
-            try {
-                $errBody = $_.ErrorDetails.Message | ConvertFrom-Json
-                if ($errBody.error.message)                    { $detail = $errBody.error.message }
-                elseif ($errBody.'odata.error'.message.value)  { $detail = $errBody.'odata.error'.message.value }
-            } catch {}
-            if (-not $detail) { $detail = $_.Exception.Message }
-
-            # -- Non-retryable client errors ----------------------------------
-            if ($httpStatus -eq 401) {
-                throw "[$Operation] HTTP 401 Unauthorized. The access token has expired or lacks permission. Re-run to re-authenticate."
-            }
-            if ($httpStatus -ge 400 -and $httpStatus -lt 500 -and $httpStatus -notin @(408, 429)) {
-                throw "[$Operation] HTTP ${httpStatus}: $detail"
-            }
-
-            # -- Exhausted retries --------------------------------------------
-            if ($attempt -gt $MaxRetries) {
-                $label = if ($httpStatus -gt 0) { "HTTP $httpStatus" } else { 'network error' }
-                throw "[$Operation] Failed after $MaxRetries retries ($label): $detail"
-            }
-
-            # -- Retryable: sleep then loop -----------------------------------
-            $delay = if ($retryAfter -gt 0) { $retryAfter } else {
-                [Math]::Min(30, [Math]::Pow(2, $attempt - 1) * 2)
-            }
-            $label = if ($httpStatus -gt 0) { "HTTP $httpStatus" } else { 'network error' }
-            Write-Warn "[$Operation] $label - retrying in ${delay}s (attempt $attempt of $MaxRetries)..."
-            Start-Sleep -Seconds $delay
-        }
-    }
-}
-
-# =============================================================================
-#  Package discovery helper
-# =============================================================================
-function Get-PackageInfo {
-    param(
-        [Parameter(Mandatory)] [System.IO.DirectoryInfo]$Folder,
-        [Parameter(Mandatory)] [int]$Index
-    )
-
-    $xlsxCount   = 0
-    $entityCount = 0
-    $hasManifest = $false
-    $warnings    = [System.Collections.Generic.List[string]]::new()
-
-    try {
-        $xlsxCount = @(Get-ChildItem -Path $Folder.FullName -Filter '*.xlsx' -File -ErrorAction Stop).Count
-    } catch { $warnings.Add('Could not enumerate .xlsx files') }
-
-    $manifestPath = Join-Path $Folder.FullName 'Manifest.xml'
-    if (Test-Path $manifestPath) {
-        $hasManifest = $true
-        try {
-            $doc = New-Object System.Xml.XmlDocument
-            $doc.Load($manifestPath)
-            $entityCount = $doc.SelectNodes('//*[local-name()="DataManagementPackageEntityData"]').Count
-        } catch { $warnings.Add('Manifest.xml could not be parsed') }
-    } else {
-        $warnings.Add('No Manifest.xml found')
-    }
-
-    return [pscustomobject]@{
-        Index       = $Index
-        Folder      = $Folder
-        Name        = $Folder.Name
-        XlsxCount   = $xlsxCount
-        EntityCount = $entityCount
-        HasManifest = $hasManifest
-        IsValid     = ($hasManifest -and $xlsxCount -gt 0)
-        Warnings    = $warnings
-    }
-}
-
-# =============================================================================
-#  Entity execution ordering
-#
-#  Entities sharing the same EU + LV + SEQ are processed in parallel.
-#  Within an EU, levels run sequentially (ascending).
-#  Within a level, sequences run sequentially (ascending).
-#
-#  EU=1  LV=10  Foundation + geographic + org data (prerequisite for all below)
-#  EU=1  LV=20  Finance (GL) and Workflow merged into one level so their
-#               independent chains advance in parallel at each matching SEQ step.
-#
-#  Entities absent from this table fall back silently to source Manifest.xml values.
-# =============================================================================
-$entityOrdering = [ordered]@{
-    # -- EU=1  LV=10  SEQ=10 : Independent reference tables ------------------
-    'Global address book parameters'                  = @{ EU=1; LV=10; SEQ=10 }
-    'Language codes'                                  = @{ EU=1; LV=10; SEQ=10 }
-    'Name affixes'                                    = @{ EU=1; LV=10; SEQ=10 }
-    'Currencies'                                      = @{ EU=1; LV=10; SEQ=10 }
-    'Ethnic origins'                                  = @{ EU=1; LV=10; SEQ=10 }
-    'Veteran status'                                  = @{ EU=1; LV=10; SEQ=10 }
-    'Name sequences'                                  = @{ EU=1; LV=10; SEQ=10 }
-    'Relationship types'                              = @{ EU=1; LV=10; SEQ=10 }
-    'Skill types'                                     = @{ EU=1; LV=10; SEQ=10 }
-    'Titles'                                          = @{ EU=1; LV=10; SEQ=10 }
-    'User groups'                                     = @{ EU=1; LV=10; SEQ=10 }
-    'Rating models'                                   = @{ EU=1; LV=10; SEQ=10 }
-    'Regulatory establishments'                       = @{ EU=1; LV=10; SEQ=10 }
-    'Address format'                                  = @{ EU=1; LV=10; SEQ=10 }
-    'Address books'                                   = @{ EU=1; LV=10; SEQ=10 }
-    'Address and contact information purpose'         = @{ EU=1; LV=10; SEQ=10 }
-    'Address parameters'                              = @{ EU=1; LV=10; SEQ=10 }
-    'Organization hierarchy type'                     = @{ EU=1; LV=10; SEQ=10 }
-    'Country/regions'                                 = @{ EU=1; LV=10; SEQ=10 }
-    'Team types'                                      = @{ EU=1; LV=10; SEQ=10 }
-    'System parameters'                               = @{ EU=1; LV=10; SEQ=10 }
-
-    # -- EU=1  LV=10  SEQ=20 : Depends on SEQ=10 ----------------------------
-    'Exchange rates'                                  = @{ EU=1; LV=10; SEQ=20 }
-    'Rating level'                                    = @{ EU=1; LV=10; SEQ=20 }
-    'Organization hierarchy purposes'                 = @{ EU=1; LV=10; SEQ=20 }
-    'Address format lines'                            = @{ EU=1; LV=10; SEQ=20 }
-    'Skills'                                          = @{ EU=1; LV=10; SEQ=20 }
-    'States'                                          = @{ EU=1; LV=10; SEQ=20 }
-    'Units'                                           = @{ EU=1; LV=10; SEQ=20 }
-    'Legal entities'                                  = @{ EU=1; LV=10; SEQ=20 }
-
-    # -- EU=1  LV=10  SEQ=30 : Depends on SEQ=20 ----------------------------
-    'Counties'                                        = @{ EU=1; LV=10; SEQ=30 }
-    'Unit translations'                               = @{ EU=1; LV=10; SEQ=30 }
-    'Unit conversions'                                = @{ EU=1; LV=10; SEQ=30 }
-    'Cities'                                          = @{ EU=1; LV=10; SEQ=30 }
-    'Operating unit'                                  = @{ EU=1; LV=10; SEQ=30 }
-
-    # -- EU=1  LV=10  SEQ=40 : Depends on SEQ=30 ----------------------------
-    'Districts V2'                                    = @{ EU=1; LV=10; SEQ=40 }
-
-    # -- EU=1  LV=10  SEQ=50 : Depends on SEQ=40 ----------------------------
-    'Postal codes V3'                                 = @{ EU=1; LV=10; SEQ=50 }
-    'Global address book V2'                          = @{ EU=1; LV=10; SEQ=50 }
-
-    # -- EU=1  LV=10  SEQ=60 : Depends on SEQ=50 ----------------------------
-    'Organization hierarchy V2 - published and draft' = @{ EU=1; LV=10; SEQ=60 }
-    'User information'                                = @{ EU=1; LV=10; SEQ=60 }
-
-    # -- EU=1  LV=10  SEQ=70 : Depends on SEQ=60 ----------------------------
-    'User to person relationship'                     = @{ EU=1; LV=10; SEQ=70 }
-    'Teams V2'                                        = @{ EU=1; LV=10; SEQ=70 }
-
-    # -- EU=1  LV=10  SEQ=80 : Depends on SEQ=70 ----------------------------
-    'Security user role association'                  = @{ EU=1; LV=10; SEQ=80 }
-
-    # -- EU=1  LV=10  SEQ=90 : Depends on SEQ=80 ----------------------------
-    'Party relationships'                             = @{ EU=1; LV=10; SEQ=90 }
-
-    # -- EU=1  LV=10  SEQ=100 : Depends on SEQ=90 ---------------------------
-    'Party contacts'                                  = @{ EU=1; LV=10; SEQ=100 }
-
-    # -- EU=1  LV=10  SEQ=110 : Depends on SEQ=100 --------------------------
-    'Party postal address V2'                         = @{ EU=1; LV=10; SEQ=110 }
-
-    # -- EU=1  LV=20  SEQ=10 : Finance foundation + Workflow foundation ------
-    'Chart of accounts'                               = @{ EU=1; LV=20; SEQ=10 }
-    'Fiscal calendar'                                 = @{ EU=1; LV=20; SEQ=10 }
-    'Financial dimensions'                            = @{ EU=1; LV=20; SEQ=10 }
-    'Main account categories'                         = @{ EU=1; LV=20; SEQ=10 }
-    'Expression'                                      = @{ EU=1; LV=20; SEQ=10 }
-    'System email template'                           = @{ EU=1; LV=20; SEQ=10 }
-
-    # -- EU=1  LV=20  SEQ=20 ------------------------------------------------
-    'Main account'                                    = @{ EU=1; LV=20; SEQ=20 }
-    'Fiscal calendar period'                          = @{ EU=1; LV=20; SEQ=20 }
-    'Dimension attribute activation'                  = @{ EU=1; LV=20; SEQ=20 }
-    'Financial dimension format'                      = @{ EU=1; LV=20; SEQ=20 }
-    'Financial dimension translations'                = @{ EU=1; LV=20; SEQ=20 }
-    'Workflow version'                                = @{ EU=1; LV=20; SEQ=20 }
-    'Workflow parallel branch'                        = @{ EU=1; LV=20; SEQ=20 }
-    'System email template message'                   = @{ EU=1; LV=20; SEQ=20 }
-
-    # -- EU=1  LV=20  SEQ=30 ------------------------------------------------
-    'Advanced rule structures'                        = @{ EU=1; LV=20; SEQ=30 }
-    'Consolidation groups and accounts'               = @{ EU=1; LV=20; SEQ=30 }
-    'Financial dimension values'                      = @{ EU=1; LV=20; SEQ=30 }
-    'Financial dimension value translations'          = @{ EU=1; LV=20; SEQ=30 }
-    'Financial dimension sets'                        = @{ EU=1; LV=20; SEQ=30 }
-    'Workflow version notes'                          = @{ EU=1; LV=20; SEQ=30 }
-    'Workflow subworkflow'                            = @{ EU=1; LV=20; SEQ=30 }
-    'Workflow system parameters'                      = @{ EU=1; LV=20; SEQ=30 }
-    'Workflow element'                                = @{ EU=1; LV=20; SEQ=30 }
-
-    # -- EU=1  LV=20  SEQ=32 ------------------------------------------------
-    'Advanced rule structure allowed values'          = @{ EU=1; LV=20; SEQ=32 }
-
-    # -- EU=1  LV=20  SEQ=34 ------------------------------------------------
-    'Advanced rule structure activation'              = @{ EU=1; LV=20; SEQ=34 }
-
-    # -- EU=1  LV=20  SEQ=36 : Account structures + Workflow element details -
-    'Account structures'                              = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow element action'                         = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow step'                                   = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow element notification'                   = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow element link'                           = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow element outcome message'                = @{ EU=1; LV=20; SEQ=36 }
-    'Workflow version notification'                   = @{ EU=1; LV=20; SEQ=36 }
-
-    # -- EU=1  LV=20  SEQ=38 ------------------------------------------------
-    'Account structure allowed values'                = @{ EU=1; LV=20; SEQ=38 }
-
-    # -- EU=1  LV=20  SEQ=40 : Advanced rules + Workflow notifications -------
-    'Advanced rules'                                  = @{ EU=1; LV=20; SEQ=40 }
-    'Number sequence code'                            = @{ EU=1; LV=20; SEQ=40 }
-    'Workflow version notification message'           = @{ EU=1; LV=20; SEQ=40 }
-    'Workflow escalation path'                        = @{ EU=1; LV=20; SEQ=40 }
-    'Workflow element notification message'           = @{ EU=1; LV=20; SEQ=40 }
-    'Workflow step message'                           = @{ EU=1; LV=20; SEQ=40 }
-    'Workflow line item'                              = @{ EU=1; LV=20; SEQ=40 }
-
-    # -- EU=1  LV=20  SEQ=42 ------------------------------------------------
-    'Advanced rule criteria'                          = @{ EU=1; LV=20; SEQ=42 }
-
-    # -- EU=1  LV=20  SEQ=44 : Account structure activation + Workflow queue -
-    'Account structure activation'                    = @{ EU=1; LV=20; SEQ=44 }
-    'Workflow work item queue'                        = @{ EU=1; LV=20; SEQ=44 }
-
-    # -- EU=1  LV=20  SEQ=50 : Number sequences + Workflow queue assignee ----
-    'Number sequence references'                      = @{ EU=1; LV=20; SEQ=50 }
-    'Number sequence group'                           = @{ EU=1; LV=20; SEQ=50 }
-    'Workflow work item queue assignee'               = @{ EU=1; LV=20; SEQ=50 }
-
-    # -- EU=1  LV=20  SEQ=55 ------------------------------------------------
-    'Workflow work item queue assignment'             = @{ EU=1; LV=20; SEQ=55 }
-}
-
-# =============================================================================
-#  1.  Banner + pre-flight validation
-# =============================================================================
-Write-Banner
-Write-Host ''
-Write-Info "Environment  : $EnvironmentUrl"
-Write-Info "Legal entity : $LegalEntityId"
-Write-Info "Resources    : $ResourcesPath"
-Write-Info "Output       : $OutputPath"
-
 if (-not (Test-Path $ResourcesPath -PathType Container)) {
     throw "Resources path not found: '$ResourcesPath'"
 }
@@ -438,7 +199,51 @@ if (-not (Test-Path $OutputPath -PathType Container)) {
 }
 
 # =============================================================================
-#  2.  Discover packages
+#  Script-level constants  (consumed by lib functions via $Script: scope)
+# =============================================================================
+$Script:Version          = '3.0'
+$Script:DmNs             = 'http://schemas.microsoft.com/dynamics/2015/01/DataManagement'
+$Script:LineWidth        = 80
+$Script:MaxRetries       = $MaxRetries
+$Script:TranscriptActive = $false
+
+try {
+    $w = $Host.UI.RawUI.BufferSize.Width
+    $Script:LineWidth = [Math]::Min(120, [Math]::Max(80, $w))
+} catch { <# non-interactive host -- keep default #> }
+
+# =============================================================================
+#  1.  Transcript startup  (OutputPath validated above)
+# =============================================================================
+if (-not $PSBoundParameters.ContainsKey('LogPath')) {
+    $ts      = Get-Date -Format 'yyyyMMdd_HHmmss'
+    $LogPath = Join-Path $OutputPath "DMFImport_${ts}.log"
+}
+if ($LogPath -ne '') {
+    try {
+        Start-Transcript -Path $LogPath -Force | Out-Null
+        $Script:TranscriptActive = $true
+    } catch { <# transcript not supported in this host -- continue silently #> }
+}
+
+# =============================================================================
+#  2.  Banner + session info
+# =============================================================================
+Write-Banner -DryRun:$WhatIf
+Write-Host ''
+Write-Info "Environment  : $EnvironmentUrl"
+Write-Info "Tenant       : $TenantId"
+Write-Info "Legal entity : $LegalEntityId"
+Write-Info "Resources    : $ResourcesPath"
+Write-Info "Output       : $OutputPath"
+if ($Script:TranscriptActive) { Write-Info "Log          : $LogPath" }
+if ($WhatIf)      { Write-Warn 'WhatIf active -- no API calls will be made.' }
+if ($Force)       { Write-Info 'Force        : confirmation prompt suppressed' }
+if ($NoOverwrite) { Write-Info 'NoOverwrite  : existing records will not be overwritten' }
+if ($KeepZip)     { Write-Info 'KeepZip      : generated zip files will be retained' }
+
+# =============================================================================
+#  3.  Discover packages
 # =============================================================================
 Write-Step 'Discovering packages'
 
@@ -453,7 +258,7 @@ $allPackages = @(for ($i = 0; $i -lt $allFolders.Count; $i++) {
 })
 
 # =============================================================================
-#  3.  Package selection
+#  4.  Package selection
 # =============================================================================
 $selectedPackages = [System.Collections.Generic.List[pscustomobject]]::new()
 
@@ -471,21 +276,22 @@ if ($PackageName) {
     Write-Step 'Select packages to import'
 
     $nameWidth = ($allPackages | ForEach-Object { $_.Name.Length } | Measure-Object -Maximum).Maximum
-    $nameWidth = [int][Math]::Max(30, [Math]::Min($nameWidth, $Script:LineWidth - 26))
+    $nameWidth = [int][Math]::Max(30, [Math]::Min($nameWidth, $Script:LineWidth - 36))
 
-    $colFmt = '  {0,3}  {1}  {2,5}  {3,8}'
+    $colFmt = '  {0,3}  {1}  {2,5}  {3,8}  {4,8}'
     Write-Host ''
-    Write-Host ($colFmt -f '#', 'Package'.PadRight($nameWidth), 'Files', 'Entities') -ForegroundColor White
-    Write-Host ($colFmt -f '---', ('-' * $nameWidth), '-----', '--------') -ForegroundColor DarkGray
+    Write-Host ($colFmt -f '#', 'Package'.PadRight($nameWidth), 'Files', 'Size(MB)', 'Entities') -ForegroundColor White
+    Write-Host ($colFmt -f '---', ('-' * $nameWidth), '-----', '--------', '--------') -ForegroundColor DarkGray
 
     foreach ($pkg in $allPackages) {
-        $nameCol = if ($pkg.Name.Length -gt $nameWidth) {
-                       $pkg.Name.Substring(0, $nameWidth - 3) + '...'
-                   } else { $pkg.Name.PadRight($nameWidth) }
+        $nameCol     = if ($pkg.Name.Length -gt $nameWidth) {
+                           $pkg.Name.Substring(0, $nameWidth - 3) + '...'
+                       } else { $pkg.Name.PadRight($nameWidth) }
         $filesCol    = $pkg.XlsxCount.ToString().PadLeft(5)
+        $sizeCol     = if ($pkg.XlsxCount -gt 0) { $pkg.XlsxSizeMB.ToString('F2').PadLeft(8) } else { '       -' }
         $entitiesCol = if ($pkg.HasManifest) { $pkg.EntityCount.ToString().PadLeft(8) } else { '       !' }
         $color       = if ($pkg.IsValid) { 'White' } else { 'DarkYellow' }
-        Write-Host ($colFmt -f $pkg.Index, $nameCol, $filesCol, $entitiesCol) -ForegroundColor $color
+        Write-Host ($colFmt -f $pkg.Index, $nameCol, $filesCol, $sizeCol, $entitiesCol) -ForegroundColor $color
     }
 
     $invalidPkgs = @($allPackages | Where-Object { -not $_.IsValid })
@@ -544,6 +350,7 @@ if ($PackageName) {
     if (-not $selectedIndices -or $selectedIndices.Count -eq 0) {
         Write-Host ''
         Write-Warn 'No packages selected.  Exiting.'
+        Stop-RunTranscript
         exit 0
     }
 
@@ -553,30 +360,62 @@ if ($PackageName) {
 }
 
 # =============================================================================
-#  4.  Confirmation
+#  5.  WhatIf exit  (validate and display -- no API calls made)
+# =============================================================================
+if ($WhatIf) {
+    Write-Host ''
+    Write-Rule 'WhatIf -- validation complete, no import will occur'
+    Write-Host ''
+    Write-Info "Environment  : $EnvironmentUrl"
+    Write-Info "Legal entity : $LegalEntityId"
+    Write-Info "Packages     : $($selectedPackages.Count)"
+    foreach ($pkg in $selectedPackages) {
+        $meta = "$($pkg.XlsxCount) file(s), $($pkg.XlsxSizeMB) MB, $($pkg.EntityCount) entities"
+        if ($pkg.HasOrdering) { $meta += ', custom ordering.json' }
+        if (-not $pkg.IsValid) { $meta += "  [!] $($pkg.Warnings -join '; ')" }
+        Write-Detail "[$($pkg.Index)] $($pkg.Name)  ($meta)"
+    }
+    Write-Host ''
+    Write-Info 'No API calls made.  Remove -WhatIf to perform the import.'
+    if ($PassThru) {
+        $selectedPackages | ForEach-Object {
+            [pscustomobject]@{ Package = $_.Name; Status = 'WhatIf'; ExecutionId = '-'; Elapsed = '-' }
+        }
+    }
+    Stop-RunTranscript
+    exit 0
+}
+
+# =============================================================================
+#  6.  Confirmation  (skipped with -Force)
 # =============================================================================
 Write-Host ''
 Write-Rule 'Ready to import'
 Write-Host ''
 Write-Info "Environment  : $EnvironmentUrl"
 Write-Info "Legal entity : $LegalEntityId"
+Write-Info "Overwrite    : $(if ($NoOverwrite) { 'No -- existing records will be preserved' } else { 'Yes -- existing records will be replaced' })"
 Write-Info "Packages     : $($selectedPackages.Count)"
 
 foreach ($pkg in $selectedPackages) {
-    $meta = "$($pkg.XlsxCount) file(s), $($pkg.EntityCount) entities"
+    $meta = "$($pkg.XlsxCount) file(s), $($pkg.XlsxSizeMB) MB, $($pkg.EntityCount) entities"
+    if ($pkg.HasOrdering) { $meta += ', custom ordering.json' }
     if (-not $pkg.IsValid) { $meta += "  [!] $($pkg.Warnings -join '; ')" }
     Write-Detail "[$($pkg.Index)] $($pkg.Name)  ($meta)"
 }
 
-Write-Host ''
-$confirm = (Read-Host '  Proceed? [Y]es / [N]o  (default: Y)').Trim().ToUpper()
-if ($confirm -eq 'N') {
-    Write-Info 'Cancelled.'
-    exit 0
+if (-not $Force) {
+    Write-Host ''
+    $confirm = (Read-Host '  Proceed? [Y]es / [N]o  (default: Y)').Trim().ToUpper()
+    if ($confirm -in 'N', 'NO') {
+        Write-Info 'Cancelled.'
+        Stop-RunTranscript
+        exit 0
+    }
 }
 
 # =============================================================================
-#  5.  Authenticate  (once -- token reused across all packages)
+#  7.  Authenticate  (once -- token reused across all packages)
 # =============================================================================
 Write-Step 'Authenticating with Microsoft Entra (device code flow)'
 
@@ -630,7 +469,7 @@ $authHeaders = @{ Authorization = "Bearer $accessToken" }
 $dmfBase     = "$baseUrl/data/DataManagementDefinitionGroups/Microsoft.Dynamics.DataEntities"
 
 # =============================================================================
-#  6.  Process packages
+#  8.  Process packages
 # =============================================================================
 $results     = [System.Collections.Generic.List[pscustomobject]]::new()
 $scriptStart = Get-Date
@@ -645,6 +484,7 @@ foreach ($pkg in $selectedPackages) {
         ExecutionId = '-'
         Elapsed     = '-'
     }
+    $zipPath = $null
 
     $divider = '=' * $Script:LineWidth
     Write-Host ''
@@ -702,6 +542,9 @@ foreach ($pkg in $selectedPackages) {
         $definitionGroupId = "$pkgSafeName-$guidSuffix"
         Write-Info "Definition group : $definitionGroupId"
 
+        # Resolve ordering: built-in defaults merged with any per-package ordering.json
+        $effectiveOrdering = Resolve-EntityOrdering -PackageFolderPath $pkg.Folder.FullName
+
         $newDoc = New-Object System.Xml.XmlDocument
         [void]$newDoc.AppendChild($newDoc.CreateXmlDeclaration('1.0', 'utf-16', $null))
         $root = $newDoc.CreateElement('DataManagementPackageManifest', $Script:DmNs)
@@ -726,8 +569,8 @@ foreach ($pkg in $selectedPackages) {
         foreach ($node in $matchedNodes) {
             $imported = $newDoc.ImportNode($node, $true)
             $nameNode = $imported.SelectSingleNode('dm:EntityName', $newNsMgr)
-            if ($nameNode -and $entityOrdering.Contains($nameNode.InnerText)) {
-                $order = $entityOrdering[$nameNode.InnerText]
+            if ($nameNode -and $effectiveOrdering.Contains($nameNode.InnerText)) {
+                $order = $effectiveOrdering[$nameNode.InnerText]
                 $imported.SelectSingleNode('dm:ExecutionUnit',        $newNsMgr).InnerText = [string]$order.EU
                 $imported.SelectSingleNode('dm:LevelInExecutionUnit', $newNsMgr).InnerText = [string]$order.LV
                 $imported.SelectSingleNode('dm:SequenceInLevel',      $newNsMgr).InnerText = [string]$order.SEQ
@@ -754,8 +597,8 @@ foreach ($pkg in $selectedPackages) {
             finally { $xmlWriter.Dispose() }
 
             # PackageHeader.xml -- UTF-16 LE with BOM
-            $pkgNameXml  = [System.Security.SecurityElement]::Escape($pkgName)
-            $headerXml   = (@(
+            $pkgNameXml = [System.Security.SecurityElement]::Escape($pkgName)
+            $headerXml  = (@(
                 '<?xml version="1.0" encoding="utf-16"?>',
                 '<DataManagementPackageHeader xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/dynamics/2015/01/DataManagement">',
                 "  <Description>$pkgNameXml</Description>",
@@ -815,6 +658,15 @@ foreach ($pkg in $selectedPackages) {
         }
         Write-Info 'Upload complete.'
 
+        # -- Clean up zip once upload succeeds (unless -KeepZip) --------------
+        if (-not $KeepZip) {
+            Remove-Item -Path $zipPath -Force -ErrorAction SilentlyContinue
+            Write-Detail 'Zip deleted.'
+            $zipPath = $null
+        } else {
+            Write-Detail "Zip retained : $zipPath"
+        }
+
         # ── g. Submit import job ──────────────────────────────────────────────
         Write-Step "Submitting import job  (legal entity: $LegalEntityId)"
         $importResp = Invoke-DmfRequest -Operation 'ImportFromPackage' -Params @{
@@ -827,7 +679,7 @@ foreach ($pkg in $selectedPackages) {
                 definitionGroupId = $definitionGroupId
                 executionId       = ''
                 execute           = $true
-                overwrite         = $true
+                overwrite         = (-not $NoOverwrite.IsPresent)
                 legalEntityId     = $LegalEntityId
             } | ConvertTo-Json)
         }
@@ -876,7 +728,7 @@ foreach ($pkg in $selectedPackages) {
                     -PercentComplete $pct
 
                 if ($currentStatus -ne $lastStatus) {
-                    Write-Info "  [$( Get-Date -Format 'HH:mm:ss')]  Status: $currentStatus"
+                    Write-Info "  [$(Get-Date -Format 'HH:mm:ss')]  Status: $currentStatus"
                     $lastStatus = $currentStatus
                 }
 
@@ -923,12 +775,19 @@ foreach ($pkg in $selectedPackages) {
         Write-Fail "  $_"
         Write-Verbose $_.ScriptStackTrace
     }
+    finally {
+        # Ensure zip is removed on the error path when cleanup wasn't reached above
+        if ($zipPath -and (Test-Path $zipPath) -and -not $KeepZip) {
+            Remove-Item -Path $zipPath -Force -ErrorAction SilentlyContinue
+        }
+    }
 
     $results.Add($pkgResult)
+    if ($PassThru) { Write-Output $pkgResult }
 }
 
 # =============================================================================
-#  7.  Summary
+#  9.  Summary
 # =============================================================================
 $totalElapsed = Format-Elapsed ((Get-Date) - $scriptStart)
 $divider      = '=' * $Script:LineWidth
@@ -982,5 +841,7 @@ $resultMsg   = if ($failCount -eq 0) {
 Write-Host $resultMsg -ForegroundColor $resultColor
 Write-Host $divider   -ForegroundColor DarkCyan
 Write-Host ''
+
+Stop-RunTranscript
 
 if ($failCount -gt 0) { exit 1 }
