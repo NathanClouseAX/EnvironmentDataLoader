@@ -18,12 +18,15 @@
 #>
 
 function Write-Banner {
-    param([switch]$DryRun)
+    param(
+        [switch]$DryRun,
+        [string]$Title = 'D365 F&O Data Import Utility'
+    )
     $w   = $Script:LineWidth
     $tag = if ($DryRun) { '  [WhatIf]' } else { '' }
-    Write-Host ('=' * $w)                                              -ForegroundColor DarkCyan
-    Write-Host "  D365 F&O Data Import Utility  v$Script:Version$tag" -ForegroundColor Cyan
-    Write-Host ('=' * $w)                                             -ForegroundColor DarkCyan
+    Write-Host ('=' * $w)                                 -ForegroundColor DarkCyan
+    Write-Host "  $Title  v$Script:Version$tag"           -ForegroundColor Cyan
+    Write-Host ('=' * $w)                                 -ForegroundColor DarkCyan
 }
 
 function Write-Rule {

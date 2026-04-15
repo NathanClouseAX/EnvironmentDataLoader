@@ -54,7 +54,10 @@ function Invoke-DmfRequest {
         [int]$MaxRetries   = $Script:MaxRetries
     )
 
-    Write-Verbose "[$Operation] $($Params.Method) $($Params.Uri)"
+    Write-Detail "[$Operation] $($Params.Method) $($Params.Uri)"
+    if ($Params['ContentType'] -eq 'application/json' -and $Params['Body']) {
+        Write-Detail "[$Operation] Body: $($Params['Body'])"
+    }
 
     for ($attempt = 1; $attempt -le ($MaxRetries + 1); $attempt++) {
         try {
@@ -72,11 +75,22 @@ function Invoke-DmfRequest {
                 } catch {}
             }
 
+            # -- Log raw response body ----------------------------------------
+            if ($null -ne $_.ErrorDetails -and $_.ErrorDetails.Message) {
+                Write-Detail "[$Operation] Response body: $($_.ErrorDetails.Message)"
+            }
+
             # -- Extract OData / D365 error detail ----------------------------
             $detail = ''
             try {
                 $errBody = $_.ErrorDetails.Message | ConvertFrom-Json
-                if ($errBody.error.message)                   { $detail = $errBody.error.message }
+                if ($errBody.error.message) {
+                    $detail = $errBody.error.message
+                    try {
+                        $inner = $errBody.error.innererror.message
+                        if ($inner) { $detail += " -- $inner" }
+                    } catch {}
+                }
                 elseif ($errBody.'odata.error'.message.value) { $detail = $errBody.'odata.error'.message.value }
             } catch {}
             if (-not $detail) { $detail = $_.Exception.Message }
