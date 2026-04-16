@@ -15,6 +15,7 @@ PowerShell toolset for importing and migrating data in **Dynamics 365 Finance & 
   - [Invoke-ProjectExport.ps1](#invoke-projectexportps1)
   - [Expand-ExportedPackages.ps1](#expand-exportedpackagesps1)
   - [Invoke-PackageUpload.ps1](#invoke-packageuploadps1)
+  - [Get-ExecutionJobReport.ps1](#get-executionjobreportps1)
 - [Full migration pipeline](#full-migration-pipeline)
 - [Entity execution ordering](#entity-execution-ordering)
 - [Library modules](#library-modules)
@@ -39,6 +40,7 @@ EnvironmentDataLoader/
 ├── Invoke-ProjectExport.ps1      Build a DMF project from template lines, then export
 ├── Expand-ExportedPackages.ps1   Extract downloaded .zip files into review folders
 ├── Invoke-PackageUpload.ps1      Upload pre-built .zip files into D365
+├── Get-ExecutionJobReport.ps1    Report on execution job results; surface errors for correction
 ├── resources/
 │   └── 010 - System Setup/       Example baseline data package
 │       ├── Manifest.xml
@@ -407,9 +409,78 @@ The definition group ID used in the `ImportFromPackage` call is read from `Manif
 
 ---
 
+### Get-ExecutionJobReport.ps1
+
+Queries the D365 OData API for all `DataManagementExecutionJobs` whose `Description` begins with `Copy legal entity` and produces a professional, self-contained HTML report of every per-entity `DataManagementExecutionJobDetails` record, as well as a colour-coded console summary.
+
+The HTML report includes summary cards (jobs, entities, clean/warning/error counts, failed records), source and target legal entity parsed from each job description, and a single table with all entity rows grouped by job.  Designed to be run after an import — share the HTML file with the team, correct source data for flagged entities, and re-run as many times as needed.
+
+**Row colour coding:**
+
+| Colour | Meaning |
+|---|---|
+| Green | Both staging and target finished with no failed records — no action needed |
+| Yellow | Non-error anomaly or failed-record count > 0 — review recommended |
+| Red | Staging or target error / aborted — manual data correction required |
+
+For any job that contains a red entity, the script additionally calls `GetExecutionSummaryStatus` from the D365 Data Management API to retrieve and display the platform-level execution result alongside the Execution ID for drill-down in **D365 > Data management > Job history**.
+
+#### Parameters
+
+| Parameter | Required | Default | Description |
+|---|---|---|---|
+| `-EnvironmentUrl` | Yes | — | D365 base URL, e.g. `https://contoso.operations.dynamics.com` |
+| `-TenantId` | Yes | — | Entra tenant ID or domain, e.g. `contoso.onmicrosoft.com` |
+| `-LogPath` | No | auto | Transcript log path; pass `''` to suppress |
+| `-HtmlPath` | No | auto | HTML report path; pass `''` to suppress HTML output |
+| `-MaxRetries` | No | `3` | Retry limit for transient REST failures (0–10) |
+| `-IssuesOnly` | No | off | Show only rows that need attention in both the console table and the HTML report; clean rows are still counted in the summary cards |
+| `-PassThru` | No | off | Emit enriched detail objects to the pipeline (see below) |
+
+`-PassThru` objects include: `JobId`, `JobDescription`, `DefinitionGroupId`, `EntityName`, `StagingStatus`, `TargetStatus`, `StagingRecordsToBeProcessedCount`, `TargetRecordsCreatedCount`, `TargetRecordsUpdatedCount`, `FailedRecords`, `NeedsAttention`.
+
+#### Examples
+
+```powershell
+# Full report for all three-digit-prefix jobs
+.\Get-ExecutionJobReport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com'
+```
+
+```powershell
+# Issues only -- save HTML to a specific path for sharing with the team
+.\Get-ExecutionJobReport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -IssuesOnly `
+    -HtmlPath       'C:\Reports\job_report.html'
+```
+
+```powershell
+# Full report; explicit paths for both the HTML and the log
+.\Get-ExecutionJobReport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -HtmlPath       'C:\Reports\job_report.html' `
+    -LogPath        'C:\Reports\job_report.log'
+```
+
+```powershell
+# Export all detail records to CSV for external tracking; suppress HTML
+.\Get-ExecutionJobReport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -HtmlPath       '' `
+    -PassThru |
+    Export-Csv -Path 'C:\Reports\job_report.csv' -NoTypeInformation
+```
+
+---
+
 ## Full migration pipeline
 
-Use this four-step workflow to copy data from one D365 environment (or legal entity) to another, with a local review stage in the middle.
+Use this workflow to copy data from one D365 environment (or legal entity) to another, with a local review stage in the middle and a post-import verification step.
 
 ```
 Source environment / legal entity
@@ -429,6 +500,10 @@ C:\DMF\Packages\   (reviewed)
         │  Step 4 — Import
         ▼
 Target environment / legal entity
+        │
+        │  Step 5 — Verify results
+        ▼
+Get-ExecutionJobReport  (correct errors, repeat Step 4 as needed)
 ```
 
 ### Step 1 — Export from source
@@ -483,6 +558,19 @@ Open the xlsx files in any spreadsheet application and make changes as needed �
 ```
 
 The script scans `C:\DMF\Packages`, presents a selection menu, builds upload zips with optimised entity ordering, and imports each one into the target legal entity.
+
+### Step 5 — Verify results and correct errors
+
+After importing, run `Get-ExecutionJobReport.ps1` against the target environment to see a colour-coded summary of every entity's staging and target status:
+
+```powershell
+.\Get-ExecutionJobReport.ps1 `
+    -EnvironmentUrl 'https://target.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -IssuesOnly
+```
+
+Red rows indicate entities with staging or target errors that require manual data correction.  Correct the source xlsx files for those entities, then re-run `Invoke-BaselineImport.ps1` for the affected packages.  Repeat Steps 4–5 until the report shows no issues.
 
 ---
 
