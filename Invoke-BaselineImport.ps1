@@ -29,9 +29,12 @@
     -WhatIf validates all selected packages and shows what would be imported without
     making any API calls to D365.
 
-    All REST calls include automatic retry with exponential back-off (HTTP 5xx /
-    429 / transient network errors).  The token expiry window is tracked and
-    surfaced as a warning when approaching expiry.
+    All REST calls include automatic retry with exponential back-off and jitter
+    (HTTP 5xx / 408 / transient network errors).  HTTP 429 throttling is handled
+    separately: the server's Retry-After hint is honoured exactly and draws on
+    its own retry budget, so being throttled does not consume the allowance
+    reserved for genuine transient faults.  The token expiry window is tracked
+    and surfaced as a warning when approaching expiry.
 
     Library files (in ./lib/)
     ─────────────────────────
@@ -87,7 +90,9 @@
     Per-package polling timeout in minutes.  Range: 1-480.  Default: 60.
 
 .PARAMETER MaxRetries
-    Maximum number of automatic retries for transient REST failures.
+    Maximum number of automatic retries for transient REST failures (HTTP 5xx,
+    408, network errors).  HTTP 429 throttling draws on a separate budget --
+    see $Script:ThrottleMaxRetries in lib/DmfRequest.ps1.
     Range: 0-10.  Default: 3.
 
 .PARAMETER Force
@@ -437,10 +442,11 @@ Write-Host ''
 Write-Host $deviceCode.message -ForegroundColor Yellow
 Write-Host ''
 
-$pollUntil = (Get-Date).AddSeconds($deviceCode.expires_in)
+$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
+$pollInterval = [int]$deviceCode.interval
 
 while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $deviceCode.interval
+    Start-Sleep -Seconds $pollInterval
     try {
         $tokenResp   = Invoke-RestMethod -Method Post `
             -Uri         "$authBase/token" `
@@ -454,11 +460,29 @@ while ((Get-Date) -lt $pollUntil) {
     catch {
         $errCode = $null
         try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-        switch ($errCode) {
-            'authorization_pending'  { continue }
-            'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-            'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-            default                  { throw }
+
+        $status = 0
+        if ($null -ne $_.Exception.Response) {
+            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
+        }
+
+        # Throttled polling is routine, not a failure.  RFC 8628 requires the
+        # client to lengthen its interval by 5 s on slow_down; a 429 on the
+        # token endpoint is treated the same way, honouring Retry-After when
+        # one is supplied.  Handled outside the switch below because
+        # 'continue' inside a switch continues the switch, not the loop.
+        if ($status -eq 429 -or $errCode -eq 'slow_down') {
+            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
+            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
+            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
+        }
+        else {
+            switch ($errCode) {
+                'authorization_pending'  { continue }
+                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
+                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
+                default                  { throw }
+            }
         }
     }
 }

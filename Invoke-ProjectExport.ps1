@@ -6,7 +6,8 @@
 .DESCRIPTION
     1. Authenticates once via Microsoft Entra device code flow.
     2. Retrieves the list of validated DMF definition-group templates.
-    3. Presents an interactive selection menu (skipped when -TemplateName is supplied).
+    3. Presents an interactive selection menu (skipped when -TemplateName or -All
+       is supplied).
     4. Prompts for the source legal entity (skipped when -LegalEntityId is supplied).
     5. For each selected template:
        a. Fetches all template lines (DefinitionGroupTemplateLines).
@@ -23,12 +24,15 @@
 
     -WhatIf note:
       When -TemplateName is also supplied, no API calls are made at all.
-      Without -TemplateName, the template list is fetched (read-only) so the
-      interactive menu can be displayed; no projects are created or exported.
+      Otherwise the template list is fetched (read-only) to populate the menu
+      (or to resolve -All); no projects are created or exported.
 
-    All REST calls include automatic retry with exponential back-off (HTTP 5xx /
-    429 / transient network errors).  The token expiry window is tracked and
-    surfaced as a warning when approaching expiry.
+    All REST calls include automatic retry with exponential back-off and jitter
+    (HTTP 5xx / 408 / transient network errors).  HTTP 429 throttling is handled
+    separately: the server's Retry-After hint is honoured exactly and draws on
+    its own retry budget, so being throttled does not consume the allowance
+    reserved for genuine transient faults.  The token expiry window is tracked
+    and surfaced as a warning when approaching expiry.
 
     Library files (in ./lib/)
     ─────────────────────────
@@ -53,6 +57,15 @@
     The value must match a TemplateId exactly.
     Example: '010 - System Setup'
 
+.PARAMETER All
+    Process every validated template in the environment without showing the
+    selection menu.  Cannot be combined with -TemplateName.
+
+    Combine with -Force and -LegalEntityId for a fully unattended sweep; when
+    -LegalEntityId is omitted the script still prompts for it, so -All -Force
+    without -LegalEntityId is rejected up front rather than left to block on a
+    prompt that nobody is there to answer.
+
 .PARAMETER DownloadPath
     Directory to save the downloaded export .zip files.
     Defaults to $env:TEMP.  Pass an empty string ('') to skip downloading.
@@ -69,7 +82,9 @@
     Per-template polling timeout in minutes.  Range: 1-480.  Default: 60.
 
 .PARAMETER MaxRetries
-    Maximum number of automatic retries for transient REST failures.
+    Maximum number of automatic retries for transient REST failures (HTTP 5xx,
+    408, network errors).  HTTP 429 throttling draws on a separate budget --
+    see $Script:ThrottleMaxRetries in lib/DmfRequest.ps1.
     Range: 0-10.  Default: 3.
 
 .PARAMETER Force
@@ -116,6 +131,25 @@
         -LegalEntityId  'USMF' `
         -TemplateName   '010 - System Setup' `
         -WhatIf
+
+.EXAMPLE
+    # Unattended: export every validated template in the environment
+    .\Invoke-ProjectExport.ps1 `
+        -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+        -TenantId       'contoso.onmicrosoft.com' `
+        -LegalEntityId  'USMF' `
+        -DownloadPath   'C:\DMF\Downloads' `
+        -All `
+        -Force
+
+.EXAMPLE
+    # Preview an all-templates sweep -- read-only, nothing created or exported
+    .\Invoke-ProjectExport.ps1 `
+        -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+        -TenantId       'contoso.onmicrosoft.com' `
+        -LegalEntityId  'USMF' `
+        -All `
+        -WhatIf
 #>
 [CmdletBinding()]
 param(
@@ -146,6 +180,7 @@ param(
     [ValidateRange(0, 10)]
     [int]$MaxRetries = 3,
 
+    [switch]$All,
     [switch]$Force,
     [switch]$WhatIf,
     [switch]$PassThru
@@ -164,10 +199,20 @@ $libPath = Join-Path $PSScriptRoot 'lib'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # =============================================================================
-#  Pre-flight path validation  (before transcript so errors surface cleanly)
+#  Pre-flight validation  (before transcript so errors surface cleanly)
 # =============================================================================
 if ($DownloadPath -ne '' -and -not (Test-Path $DownloadPath -PathType Container)) {
     throw "Download path not found: '$DownloadPath'"
+}
+
+if ($All -and $TemplateName) {
+    throw "-All and -TemplateName are mutually exclusive.  Use -All to process every template, or -TemplateName to process exactly one."
+}
+
+# -All -Force signals an unattended run, but the legal entity is prompted for
+# when it is not supplied -- which would block forever with nobody watching.
+if ($All -and $Force -and -not $LegalEntityId) {
+    throw "-All -Force requires -LegalEntityId; without it the script would stop at the legal entity prompt."
 }
 
 # =============================================================================
@@ -268,10 +313,11 @@ Write-Host ''
 Write-Host $deviceCode.message -ForegroundColor Yellow
 Write-Host ''
 
-$pollUntil = (Get-Date).AddSeconds($deviceCode.expires_in)
+$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
+$pollInterval = [int]$deviceCode.interval
 
 while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $deviceCode.interval
+    Start-Sleep -Seconds $pollInterval
     try {
         $tokenResp   = Invoke-RestMethod -Method Post `
             -Uri         "$authBase/token" `
@@ -285,11 +331,29 @@ while ((Get-Date) -lt $pollUntil) {
     catch {
         $errCode = $null
         try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-        switch ($errCode) {
-            'authorization_pending'  { continue }
-            'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-            'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-            default                  { throw }
+
+        $status = 0
+        if ($null -ne $_.Exception.Response) {
+            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
+        }
+
+        # Throttled polling is routine, not a failure.  RFC 8628 requires the
+        # client to lengthen its interval by 5 s on slow_down; a 429 on the
+        # token endpoint is treated the same way, honouring Retry-After when
+        # one is supplied.  Handled outside the switch below because
+        # 'continue' inside a switch continues the switch, not the loop.
+        if ($status -eq 429 -or $errCode -eq 'slow_down') {
+            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
+            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
+            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
+        }
+        else {
+            switch ($errCode) {
+                'authorization_pending'  { continue }
+                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
+                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
+                default                  { throw }
+            }
         }
     }
 }
@@ -352,6 +416,10 @@ if ($TemplateName) {
     }
     $selectedTemplates.Add($match)
     Write-Info "Template : $TemplateName"
+} elseif ($All) {
+    # ── All-templates mode (non-interactive) ────────────────────────────────
+    foreach ($tmpl in $allTemplates) { $selectedTemplates.Add($tmpl) }
+    Write-Info "All $($allTemplates.Count) validated template(s) selected (-All)."
 } else {
     # ── Interactive numbered selection ─────────────────────────────────────
     Write-Step 'Select templates to export'
@@ -815,15 +883,10 @@ foreach ($tmpl in $selectedTemplates) {
                     $zipFile     = Join-Path $DownloadPath "${tmplSafe}_${timestamp}.zip"
                     $extractPath = Join-Path $DownloadPath $packageName
                     try {
-                        # Download zip.  Suppress progress bar -- Invoke-WebRequest renders
-                        # progress on every packet by default, making large downloads very slow in PS5.1.
-                        $prevPref = $ProgressPreference
-                        $ProgressPreference = 'SilentlyContinue'
-                        try {
-                            Invoke-WebRequest -Uri $downloadUrl -OutFile $zipFile -UseBasicParsing
-                        } finally {
-                            $ProgressPreference = $prevPref
-                        }
+                        # Routed through Invoke-DmfDownload so a throttled or
+                        # flaky blob endpoint backs off and resumes instead of
+                        # failing the whole export.
+                        Invoke-DmfDownload -Uri $downloadUrl -OutFile $zipFile -Operation 'download package'
                         $fileSizeMB = [Math]::Round((Get-Item $zipFile).Length / 1MB, 2)
                         Write-Info "Downloaded  : $zipFile  ($fileSizeMB MB)"
 

@@ -149,6 +149,15 @@ The manifest is rebuilt before upload with optimised `ExecutionUnit / LevelInExe
 
 Reads the list of DMF definition-group templates from a D365 environment, lets you select which ones to export, submits `ExportToPackage` jobs, polls for completion, and downloads the resulting zip files.
 
+> **Prerequisite — a data project must already exist for each template.**
+> `ExportToPackage` resolves `definitionGroupId` against **data projects** (`DataManagementDefinitionGroups`), not templates (`DefinitionGroupTemplateHeaders`).  This script passes the template ID straight through, so it only succeeds for templates that have an identically-named data project in the environment.  Templates without one fail with:
+>
+> ```
+> HTTP 400: Data project <TemplateId> does not exist.
+> ```
+>
+> The failure is per-template — the run continues and reports the rest — but on a stock environment most templates will fail this way.  **To export templates that have no matching data project, use [`Invoke-ProjectExport.ps1`](#invoke-projectexportps1)**, which builds the project from the template lines first.  List the names this script can accept with `GET /data/DataManagementDefinitionGroups`.
+
 #### Parameters
 
 | Parameter | Required | Default | Description |
@@ -188,7 +197,10 @@ Reads the list of DMF definition-group templates from a D365 environment, lets y
 ```
 
 ```powershell
-# Export all templates, download every zip, capture results for further processing
+# Export several templates and capture results for further processing.
+# Note: -Force skips only the "Proceed?" confirmation -- the selection menu is
+# still shown.  Enter A at the prompt to pick every template.
+# For an unattended all-templates sweep use Invoke-ProjectExport.ps1 -All -Force.
 $exports = .\Invoke-TemplateExport.ps1 `
     -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
     -TenantId       'contoso.onmicrosoft.com' `
@@ -216,7 +228,9 @@ $exports | Where-Object Status -eq 'Succeeded' | Select-Object TemplateId, Downl
 
 Builds a dedicated DMF export project from a template's entity lines, then exports and downloads it.  Unlike `Invoke-TemplateExport.ps1` — which runs `ExportToPackage` directly against the template — this script first creates a named DMF project (`DataManagementDefinitionGroups`) populated with one entity record per template line, then exports that project.
 
-Use this script when you need a persistent, inspectable DMF project in D365 that matches the template structure, or when `Invoke-TemplateExport.ps1` is not available for the template you want.
+Because it creates the data project itself, this script works for **every** template — including the ones `Invoke-TemplateExport.ps1` cannot export because no matching data project exists.  It is the right choice for exporting a whole environment; use it when you need a persistent, inspectable DMF project in D365 that matches the template structure, or when `Invoke-TemplateExport.ps1` fails with *"Data project ... does not exist."*
+
+Note that it **writes to the source environment**: one data project is created per template, and any existing project with the same name is deleted first.  Templates that have no lines are reported as `Skipped` rather than exported.
 
 **Per-template flow:**
 1. Fetch all lines from `DefinitionGroupTemplateLines` for the selected template.
@@ -233,6 +247,7 @@ Use this script when you need a persistent, inspectable DMF project in D365 that
 | `-TenantId` | Yes | — | Entra tenant ID or domain |
 | `-LegalEntityId` | No | prompted | D365 company to export from; prompted interactively if omitted |
 | `-TemplateName` | No | — | Process exactly this template (TemplateId) without showing the menu |
+| `-All` | No | off | Process every validated template without showing the menu; cannot be combined with `-TemplateName`. With `-Force` it also requires `-LegalEntityId` |
 | `-DownloadPath` | No | `$env:TEMP` | Directory to save downloaded zip files; pass `''` to get the URL only |
 | `-LogPath` | No | auto | Transcript log path; pass `''` to suppress |
 | `-PollIntervalSeconds` | No | `30` | Status check interval (5–300) |
@@ -291,6 +306,33 @@ $results = .\Invoke-ProjectExport.ps1 `
     -PassThru
 
 $results | Select-Object ProjectName, LinesAdded, Status, DownloadedTo
+```
+
+```powershell
+# Every template in the environment, fully unattended (no selection menu)
+$results = .\Invoke-ProjectExport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -LegalEntityId  'USMF' `
+    -DownloadPath   'C:\DMF\Downloads' `
+    -PollIntervalSeconds 10 `
+    -All `
+    -Force `
+    -PassThru
+
+# Anything that did not succeed can be re-run individually with -TemplateName
+$results | Where-Object Status -notin 'Succeeded', 'Skipped' |
+    Format-Table TemplateId, Status, ExecutionId
+```
+
+```powershell
+# Preview an all-templates sweep -- read-only, nothing created or exported
+.\Invoke-ProjectExport.ps1 `
+    -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -LegalEntityId  'USMF' `
+    -All `
+    -WhatIf
 ```
 
 ---
@@ -508,7 +550,19 @@ Get-ExecutionJobReport  (correct errors, repeat Step 4 as needed)
 
 ### Step 1 — Export from source
 
-**Option A — export directly from a template** (simpler; uses the template as the `definitionGroupId`):
+**Option A — build a project from template lines, then export** (recommended; works for every template because it creates the data project it needs):
+
+```powershell
+.\Invoke-ProjectExport.ps1 `
+    -EnvironmentUrl 'https://source.operations.dynamics.com' `
+    -TenantId       'contoso.onmicrosoft.com' `
+    -LegalEntityId  'DAT' `
+    -DownloadPath   'C:\DMF\Downloads' `
+    -All `
+    -Force
+```
+
+**Option B — export directly from a template** (fewer API calls, but only works for templates that already have an identically-named data project — see the note under [`Invoke-TemplateExport.ps1`](#invoke-templateexportps1)):
 
 ```powershell
 .\Invoke-TemplateExport.ps1 `
@@ -519,18 +573,9 @@ Get-ExecutionJobReport  (correct errors, repeat Step 4 as needed)
     -Force
 ```
 
-**Option B — build a project from template lines, then export** (creates a named DMF project in D365 before exporting):
+Without `-All` or `-TemplateName`, all templates are listed in an interactive menu.  Select the ones you want (individual numbers, ranges like `1-5`, comma-separated list, or `A` for all).  Each selected template is exported and downloaded as a zip.
 
-```powershell
-.\Invoke-ProjectExport.ps1 `
-    -EnvironmentUrl 'https://source.operations.dynamics.com' `
-    -TenantId       'contoso.onmicrosoft.com' `
-    -LegalEntityId  'DAT' `
-    -DownloadPath   'C:\DMF\Downloads' `
-    -Force
-```
-
-All templates are listed in an interactive menu.  Select the ones you want (individual numbers, ranges like `1-5`, comma-separated list, or `A` for all).  Each selected template is exported and downloaded as a zip.
+For a whole-environment sweep, note that authentication happens once and the token lasts roughly an hour, while templates are processed sequentially.  Lower `-PollIntervalSeconds` (e.g. `10`) so completed jobs are detected promptly, and expect to re-authenticate for very large environments — the script warns as expiry approaches and reports affected templates in the summary so they can be re-run with `-TemplateName`.
 
 ### Step 2 — Extract for review
 
@@ -651,10 +696,34 @@ Console output and transcript helpers.
 ### DmfRequest.ps1
 
 `Invoke-DmfRequest` — wraps `Invoke-RestMethod` with:
-- Automatic retry with exponential back-off for HTTP 5xx, 408, 429, and network errors
-- `Retry-After` header support
+- Automatic retry with exponential back-off **plus jitter** for HTTP 5xx, 408, and network errors
+- Dedicated HTTP 429 (throttling) handling — see below
 - OData / D365 error detail extraction from response bodies
 - Non-retryable treatment of HTTP 401 and other 4xx responses
+
+`Invoke-DmfDownload` — wraps `Invoke-WebRequest -OutFile` with the same retry policy, for package downloads from Azure blob storage (which throttles independently of the D365 API). Suppresses the PS progress bar and clears any partially written file before a retry, so a truncated download is never mistaken for a good one.
+
+#### HTTP 429 handling
+
+Throttling is treated as its own error class rather than as just another transient fault:
+
+| Behaviour | Detail |
+|---|---|
+| Server hint honoured exactly | `Retry-After` in either spec form — delta-seconds (`120`) or HTTP-date (`Wed, 21 Oct 2015 07:28:00 GMT`) — plus `x-ms-retry-after-ms` (Dataverse / Power Platform), which takes precedence when present |
+| Separate retry budget | A throttling storm no longer consumes the allowance reserved for genuine 5xx/network faults, and vice versa |
+| Bounded waiting | Any single wait is capped, and a total throttle-wait budget stops a run hanging indefinitely behind an unhealthy endpoint |
+| Jittered fallback | When the server sends no hint, back-off uses equal jitter so parallel exports don't resynchronise and re-throttle the endpoint together |
+
+Device-code sign-in also handles throttling: the RFC 8628 `slow_down` signal (and a 429 on the token endpoint) now lengthens the polling interval instead of aborting sign-in.
+
+Retry policy is overridable by setting these before the first request:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `$Script:MaxRetries` | 3 | Transient (5xx / 408 / network) retries |
+| `$Script:ThrottleMaxRetries` | 6 | HTTP 429 retries |
+| `$Script:MaxRetryAfterSeconds` | 300 | Ceiling on any single wait |
+| `$Script:MaxThrottleWaitSeconds` | 900 | Total time spent waiting out throttling |
 
 ### DmfPackage.ps1
 
