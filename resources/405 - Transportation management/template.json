@@ -1,0 +1,562 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "405 - Transportation management",
+    "description":  "Transportation management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Transportation modes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation rate break masters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Rates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation route plans",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation mileage engines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation equipments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation generic engines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation methods",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation status masters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation load building strategies",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rating metadata",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product harmonized tariff codes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Standard transportation commodity codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Foreign trade\r\n",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transit time engines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation zone engines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Less than truckload classes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Hub types",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fuel index regions",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales delivery charge codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reasons for late shipping",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Accessorial charge masters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Dock door appointment change reasons",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Carrier fuel indexes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Freight reconciliation reason codes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Freight",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Freight bill types",
+                      "sysModule":  "Transportation",
+                      "tags":  "Freight",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation billing groups",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation appointment change reason codes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Inventory charge codes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "US national motor freight classification codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Inventory setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation zone masters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation generic engine parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Load templates",
+                      "sysModule":  "WMS",
+                      "tags":  "Load",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Freight bill type details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Freight",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rating metadata assignment fields",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Carrier fuel index lines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shipping carrier number sequences",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate break values",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transit time engine details metadata",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rating metadata rate base fields",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate masters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Rates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fuel indexes",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate engines",
+                      "sysModule":  "Transportation",
+                      "tags":  "Rates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation mileage engine details metadata",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation mileage engine details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation zone engine parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation mileage engine parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transit time engine parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation management parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Transportation zone details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate bases",
+                      "sysModule":  "Transportation",
+                      "tags":  "Rates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation rate engine parameters",
+                      "sysModule":  "Transportation",
+                      "tags":  "Rates",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation zone detail metadata",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate base details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation hubs",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation appointment rules",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shipping carrier",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation sales load building templates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation purchase load building templates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transfer load building templates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation shipment load building templates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shipping carrier service",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shipping carrier rating profile",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation hub accessorial charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Freight bill type assignments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Freight",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Freight bill matching audit tolerance levels",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation shipment load building template sequences",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transfer load building template sequences",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation purchase load building template sequences",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shipping carrier accessorial charge",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation sales load building template sequences",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Inventory freight charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation vendor charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation shipment constraints",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Procurement freight charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation rate assignments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales freight charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales delivery freight charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation route plan segments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation accessorial charge assignments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shipping carrier service group",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Freight bill matching audit tolerance level exceptions",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation item constraints",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation customer charges",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation discounts",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation templates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shipping carrier service group assignment",
+                      "sysModule":  "Transportation",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation route schedules",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation route guides",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation customer charge manual override rates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation vendor charge manual override rates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation transit time engine details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation route plan hub configurations",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation template customer charge manual override rates",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

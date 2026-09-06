@@ -1,0 +1,1636 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Supply chain management",
+    "description":  "Supply chain management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Vendor charges group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shipment form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor reasons",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Salutations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchies",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade agreement recalculation policies for sales documents",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase agreement classification",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation document introductions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation document conclusions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect statuses",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit sequence groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Unit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transaction logging policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Prospect relation types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute value types",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement charge codes",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price vendor groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working time templates",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement return actions",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Storage dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity maintenance policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Multiline discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity probability rates",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Personal character types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing slip form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor rebate group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebate setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price customer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse zone groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute enumeration types V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location formats",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Quotation document titles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order origin codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order line update parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales package appearances",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order pools",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supplementary item - vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity plans",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Telemarketing cancellation reasons",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Telemarketing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales agreement classification",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales role responsibilities",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Responsibility",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales rebate program types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sizes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales summary update parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales districts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supplementary item - customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supplementary item - item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Supplementary item",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Styles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding versions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity phases",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase pools",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade agreement recalculation policies for purchase documents",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Trade agreement journal name",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reduction key",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Rebate module parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Quotation template groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation prognosis",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reason of delivery",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation type",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Return reason code groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Total discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reservation hierarchy",
+                      "sysModule":  "WMS",
+                      "tags":  "Reservation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation reply statuses",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Tracking dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation scoring methods",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment job functions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Email categories",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External item description customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expedite codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Disposition code",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Decision making roles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer classification groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Customer Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Direct mailing categories",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Destination code",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commodity pricing templates",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Batch dispositions",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Batch",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Complimentary closings",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Company chains",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Batch attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Batch attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Interest types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External item description vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Barcode setup",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Attribute group",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attribute groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign email templates",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign cancellation reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign media types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calculation groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business classifications",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity source types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Responsibility",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Buyer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business segments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commodity cost basis",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Counting groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission sales group",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Commissions Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign targets",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Colors",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cause of blocking",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Less than truckload classes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Item price tolerance groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Line discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead processing policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Lead priorities",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead ratings",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory dimensions parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Lead types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Activate purchase prices and discounts",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory status",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Configuration groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configurations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Configurations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configurations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line of business",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item rebate groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty levels",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contact person titles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Purchase requisition form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales agreement form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase order form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales invoice form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor facing form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales order confirmation form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Receipt list form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Product receipt form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales quotation form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase agreement form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase inquiry form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Picking list form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Product attribute group translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Confirming PO",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order confirmation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy roles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material codes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Modes of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost flow assumption policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse zones",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Multiline discount item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Multiline discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material fees",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criteria",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "US national motor freight classification codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Inventory setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit sequence group lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Unit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion group translations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location format segments",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Tracking number groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales units",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item arrival journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Marketing mail policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory transfer journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory adjustment journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Color assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item model group inventory policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document entry policies",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory tag counting journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Direct mailing category items",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Email groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business subsegments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business classification of parties",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External sales agreement classification",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory counting journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory movement journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Activate sales prices and discounts",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Production input journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reduction key period",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation scoring method criteria",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Size Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Style Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect statistics default values",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Request for quotation solicitation types",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding version currencies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding version rules",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External purchase agreement classification",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reservation hierarchy levels",
+                      "sysModule":  "WMS",
+                      "tags":  "Reservation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Return reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales order hold codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales type document entry policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales type document default values",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Style Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Size Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Color assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion translations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "product categories",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute enumeration type translations V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category commodity codes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute group attribute assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category product attribute group assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material allocations V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing material allocation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory transaction combinations",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Packing material allocation lines V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing material allocation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sites V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouses",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage groups",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory aisle",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse current postal addresses V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Site current postal addresses V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location profiles",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse locations",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Bill of materials parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Order entry deadline parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Order setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Constraint-based product configuration model parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configuration",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Product compliance parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Site dimension link policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory accounting KPI goals",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Commodity pricing parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master configurations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master styles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master sizes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master colors",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master configuration translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master color translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master style translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master size translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product variants V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute values V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attribute values",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product specific unit conversions",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product UOM Conversions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Released products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Released Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Released product variants V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Released Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage V2",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product specific item batch attributes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Item serial numbers",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product default order settings V3",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item batches",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Batch",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item - barcodes V3",
+                      "sysModule":  "Retail",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for standard cost variance",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for inventory",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for sales",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for production",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for procurement",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase agreement classification translation",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document default values",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor rebate parameters",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebate setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "External item descriptions for vendors V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document processing policies",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase line update parameters",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Approved vendor list by products",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Approved vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Invoice totals tolerance setup",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Price tolerance setup",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Price tolerance setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales charge codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales activity creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales agreement classification translation",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales type document processing policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Campaign creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "External item descriptions for customers V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leads",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

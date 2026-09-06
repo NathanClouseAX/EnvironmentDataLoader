@@ -1,0 +1,154 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "150 - Fixed assets",
+    "description":  "Fixed assets",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Fixed asset provision types",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset property groups",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset properties",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset special depreciation allowance setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset consumption units",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset consumption factors",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset major type",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset condition",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset acquisition method",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset activity codes",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset locations",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset inventory to fixed asset transfer journal names",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset groups",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Fixed assets",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset depreciation profiles",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset depreciation profile manual schedules",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset book setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset book setup derived book",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset posting profile",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset group book setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset group/book special depreciation allowance",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset posting profile disposal",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed assets",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Fixed assets",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset parameters",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Fixed asset proposal journal names",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

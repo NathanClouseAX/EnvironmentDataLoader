@@ -1,0 +1,118 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "020 - GL Shared",
+    "description":  "General ledger shared",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Fiscal calendar",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Fiscal calendar shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account categories",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Chart of accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimensions",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fiscal calendar period",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Fiscal calendar shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimension translations",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Dimension attribute activation",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Financial dimension format",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimension value translations",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Financial dimension values",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimension sets",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Advanced rule structures active group",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Account structures shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Consolidation groups and accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Number sequence code",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Account structures active group",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Account structures shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Number sequence references",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Number sequence group",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

@@ -1,0 +1,34 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Workers",
+    "description":  "Workers",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Worker",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Employment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leads",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer details V2",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

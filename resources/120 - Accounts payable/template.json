@@ -1,0 +1,298 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "120 - Accounts payable",
+    "description":  "Accounts payable",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor charges group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement charge codes",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchies",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase pools",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor price tolerance groups",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor reasons",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor, form parameters",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor payment format",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor exception groups",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor invoice policy rule types",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Invoice",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor payment fee",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Price vendor groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Destination code",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Delivery charges groups",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expedite codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cash discount",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Aging period definitions",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "1099 fields",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "1099",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Buyer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business segments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment day lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment schedule",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Line of business",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment calendar",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business subsegments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor invoice form printing configurations",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Invoice",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Payment schedule lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Multiline discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Modes of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy roles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of payment",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product categories",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor payment method",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor payment method specification",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment calendar rule",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendors V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor bank accounts",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor posting profile",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor ledger accounts",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor parameters",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

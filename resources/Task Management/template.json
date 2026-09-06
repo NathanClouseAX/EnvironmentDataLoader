@@ -1,0 +1,88 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Task Management",
+    "description":  "Task Management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Business calendar",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business calendar days",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Group assignment",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Group assignment member",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process library task",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business process library task group",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process library task grouping",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process template",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process template task",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process task",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business process task assignment",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Onboarding worker checklist header",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

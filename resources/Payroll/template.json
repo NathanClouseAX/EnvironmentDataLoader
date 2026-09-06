@@ -1,0 +1,346 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Payroll",
+    "description":  "Payroll",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Benefit accrual plan",
+                      "sysModule":  "Payroll",
+                      "tags":  "Accruals Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Earning code group",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll tax group",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit accounting rule",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit calculation rate header",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit external reporting",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit plan default dimension",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Pay cycle",
+                      "sysModule":  "HRM",
+                      "tags":  "Payroll",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Pay period",
+                      "sysModule":  "HRM",
+                      "tags":  "Payroll",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Pay statement header",
+                      "sysModule":  "Payroll",
+                      "tags":  "Statements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Disposable income definition",
+                      "sysModule":  "Payroll",
+                      "tags":  "Disposable Income Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employer tax region",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Form W2 Box reporting adjustment",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payroll parameter",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Tax region",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker tax region",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker resident tax region",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker position default tax region",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll premium earning policy rule type",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retirement Benefit Plan Detail US",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Work cycle",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contribution and deduction limit of enrolled benefits",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "State holiday",
+                      "sysModule":  "Payroll",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Earning code",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit accrual rate",
+                      "sysModule":  "Payroll",
+                      "tags":  "Accruals Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit calculation rate detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll benefit detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit Tax Rule US",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker arrears",
+                      "sysModule":  "Payroll",
+                      "tags":  "Deductions",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Deduction arrears recovery",
+                      "sysModule":  "Payroll",
+                      "tags":  "Deductions",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Disposable income definition - Benefit",
+                      "sysModule":  "Payroll",
+                      "tags":  "Disposable Income Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment benefit accrual balance",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Pay statement benefit lines",
+                      "sysModule":  "Payroll",
+                      "tags":  "Statements",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payroll tax accounting rule",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll tax code default dimension",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll tax code details",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll tax external reporting",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll tax group code",
+                      "sysModule":  "Payroll",
+                      "tags":  "Tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker tax code V2",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Tax code parameter value",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Work period",
+                      "sysModule":  "Payroll",
+                      "tags":  "References",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Earning code detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit accrual earning code",
+                      "sysModule":  "Payroll",
+                      "tags":  "Accruals Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit earning basis",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Disposable income definition - Earning",
+                      "sysModule":  "Payroll",
+                      "tags":  "Disposable Income Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Earning code default dimension",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Earning code group earning code",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Earning external reporting",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Premium code",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payroll details for positions",
+                      "sysModule":  "Payroll",
+                      "tags":  "Position Associations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Earning code related to worker and position for V2 Entity",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Premium code active interval",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Accrual basis earnings",
+                      "sysModule":  "Payroll",
+                      "tags":  "Accruals Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Earning code accounting rule",
+                      "sysModule":  "Payroll",
+                      "tags":  "Earnings setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Calculation frequency",
+                      "sysModule":  "",
+                      "tags":  "Payroll",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Calculation frequency pay period",
+                      "sysModule":  "",
+                      "tags":  "Payroll",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

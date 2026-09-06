@@ -1,0 +1,478 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Employee Development",
+    "description":  "Employee Development",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Certificate type",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Classroom groups",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course groups",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course locations",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Education disciplines",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Discussion types",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goal headings",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Institution",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Rating models",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Skill types",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Performance period",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Performance journal source type",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Performance journal",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Education degree",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Education discipline categories",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Test",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goal groups",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Performance feedback",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Professional experience competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Skill mapping",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Position of trust competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Skill-mapping - main",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Hotel",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Course instructors",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Course types",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Classrooms",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Education and discipline category associations",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Performance journal comment entity",
+                      "sysModule":  "HRM",
+                      "tags":  "Performance",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Performance journal entry links",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Certificate competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Education competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person exam",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Educational requirements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Skill-mapping - certificates",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Skill-mapping - education",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Skill-mapping - lines",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Skill-mapping - criteria",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course Location Picture",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Courses V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course type - certificates",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course type default dimensions",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course type - education",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course type descriptions",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Rating level",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Skills",
+                      "sysModule":  "",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course participants",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Hotel for course",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Course competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Performance reviews",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review sign off",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Review settings - reviews",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Skill competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Review template",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goals",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review goals",
+                      "sysModule":  "HRM",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review competencies",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Measurements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review settings - review templates",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Goal template",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review template performance journals",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Goal settings - goal templates",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Goal settings - goals",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Goal group templates",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goal template performance journals",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Goal activities",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Goal notes",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goal related journal entries",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project experience competency",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project resourcing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Course type - skills",
+                      "sysModule":  "",
+                      "tags":  "Courses",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review goal comments",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Goal template measurements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Review overall comments",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Performance review related journal entries",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Review topic comments",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Skill-mapping - skills",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Goal measurements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Discussion template measurements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Discussion measurements",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

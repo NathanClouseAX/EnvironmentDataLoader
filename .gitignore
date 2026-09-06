@@ -4,3 +4,12 @@
 
 /.claude
 /.vs
+
+# Pulled OData snapshots (Invoke-ProjectExport.ps1 -Mode OData): real business data, never commit by accident.
+# Un-ignore deliberately if you want git-tracked before/after history for a specific environment.
+/data/
+
+# Transcripts and probe output written to the repo root by default
+/*.log
+/docs/fdd/probes
+/docs/fdd

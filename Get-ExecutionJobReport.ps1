@@ -34,6 +34,8 @@
     ─────────────────────────
     DmfOutput.ps1   -- Write-* helpers, Format-Elapsed, Stop-RunTranscript
     DmfRequest.ps1  -- Invoke-DmfRequest (REST client with retry)
+    DmfAuth.ps1     -- Connect-DmfEnvironment, Get-DmfAuthHeaders, Test-DmfTokenExpiry
+    DmfOData.ps1    -- Get-DmfODataAll (paged OData reads)
 
 .PARAMETER EnvironmentUrl
     Base URL of the D365 F&O environment (no trailing slash).
@@ -42,6 +44,12 @@
 .PARAMETER TenantId
     Microsoft Entra tenant ID (GUID) or verified domain name.
     Example: contoso.onmicrosoft.com
+
+.PARAMETER AuthMode
+    How to sign in.  Auto (default): open the default browser when the
+    session is interactive, falling back to the device code flow if that
+    fails; Browser: browser only; DeviceCode: print a code to enter in
+    any browser (for SSH sessions and servers without a browser).
 
 .PARAMETER LogPath
     Path for the run transcript log.  When omitted, a log is auto-generated in
@@ -104,6 +112,9 @@ param(
     [ValidateNotNullOrEmpty()]
     [string]$TenantId,
 
+    [ValidateSet('Auto', 'Browser', 'DeviceCode')]
+    [string]$AuthMode = 'Auto',
+
     [AllowEmptyString()]
     [string]$LogPath,
 
@@ -121,12 +132,19 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# An uncaught error anywhere below must not leave the transcript running in
+# the caller's console (it would silently swallow every later command's
+# output into this log).  Stop it, then let the error propagate.
+trap { if (Get-Command -Name Stop-RunTranscript -ErrorAction SilentlyContinue) { Stop-RunTranscript }; break }
+
 # =============================================================================
 #  Load library modules
 # =============================================================================
 $libPath = Join-Path $PSScriptRoot 'lib'
 . (Join-Path $libPath 'DmfOutput.ps1')
 . (Join-Path $libPath 'DmfRequest.ps1')
+. (Join-Path $libPath 'DmfAuth.ps1')
+. (Join-Path $libPath 'DmfOData.ps1')
 
 # =============================================================================
 #  Script-level constants  (consumed by lib functions via $Script: scope)
@@ -175,29 +193,6 @@ function Get-LegalEntities {
 # =============================================================================
 #  OData pagination helper
 # =============================================================================
-function Get-ODataAll {
-    <#
-    .SYNOPSIS  Fetches every page of an OData endpoint and emits each item.
-    .NOTES     Caller collects via @(Get-ODataAll ...) to get a typed array.
-    #>
-    param(
-        [Parameter(Mandatory)][string]$Uri,
-        [Parameter(Mandatory)][string]$Operation,
-        [Parameter(Mandatory)][hashtable]$Headers
-    )
-    $page    = 0
-    $nextUri = $Uri
-    do {
-        $page++
-        $resp = Invoke-DmfRequest -Operation "$Operation (page $page)" -Params @{
-            Method  = 'Get'
-            Uri     = $nextUri
-            Headers = $Headers
-        }
-        if ($resp.value) { $resp.value | Write-Output }
-        $nextUri = if ($resp.PSObject.Properties['@odata.nextLink']) { $resp.'@odata.nextLink' } else { $null }
-    } while ($nextUri)
-}
 
 # =============================================================================
 #  1.  Transcript startup  (timestamp shared by log and HTML default paths)
@@ -234,72 +229,13 @@ if ($IssuesOnly) { Write-Info 'IssuesOnly   : only records needing attention wil
 # =============================================================================
 Write-Step 'Authenticating with Microsoft Entra (device code flow)'
 
-$clientId    = '1950a258-227b-4e31-a9cf-717495945fc2'
-$baseUrl     = $EnvironmentUrl.TrimEnd('/')
-$authBase    = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0"
-$scope       = "$baseUrl/.default"
-$accessToken = $null
-$tokenExpiry = [DateTime]::MaxValue
+$baseUrl = $EnvironmentUrl.TrimEnd('/')
+$session = Connect-DmfEnvironment -EnvironmentUrl $baseUrl -TenantId $TenantId -AuthMode $AuthMode
 
-$deviceCode = Invoke-DmfRequest -Operation 'device code request' -Params @{
-    Method      = 'Post'
-    Uri         = "$authBase/devicecode"
-    ContentType = 'application/x-www-form-urlencoded'
-    Body        = "client_id=$clientId&scope=$([System.Uri]::EscapeDataString($scope))"
-}
-
-Write-Host ''
-Write-Host $deviceCode.message -ForegroundColor Yellow
-Write-Host ''
-
-$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
-$pollInterval = [int]$deviceCode.interval
-
-while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $pollInterval
-    try {
-        $tokenResp   = Invoke-RestMethod -Method Post `
-            -Uri         "$authBase/token" `
-            -ContentType 'application/x-www-form-urlencoded' `
-            -Body        "grant_type=urn:ietf:params:oauth:grant-type:device_code&client_id=$clientId&device_code=$($deviceCode.device_code)"
-        $accessToken = $tokenResp.access_token
-        $tokenExpiry = (Get-Date).AddSeconds($tokenResp.expires_in - 60)   # 60 s safety buffer
-        Write-Info "Sign-in successful.  Token valid until $($tokenExpiry.ToString('HH:mm:ss'))."
-        break
-    }
-    catch {
-        $errCode = $null
-        try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-
-        $status = 0
-        if ($null -ne $_.Exception.Response) {
-            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
-        }
-
-        # Throttled polling is routine, not a failure.  RFC 8628 requires the
-        # client to lengthen its interval by 5 s on slow_down; a 429 on the
-        # token endpoint is treated the same way, honouring Retry-After when
-        # one is supplied.  Handled outside the switch below because
-        # 'continue' inside a switch continues the switch, not the loop.
-        if ($status -eq 429 -or $errCode -eq 'slow_down') {
-            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
-            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
-            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
-        }
-        else {
-            switch ($errCode) {
-                'authorization_pending'  { continue }
-                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-                default                  { throw }
-            }
-        }
-    }
-}
-
-if (-not $accessToken) { throw 'Authentication timed out before sign-in completed.' }
-
-$authHeaders = @{ Authorization = "Bearer $accessToken" }
+# Every Invoke-DmfRequest call to this environment reads the session and
+# renews the token silently when it is close to expiry (lib/DmfAuth.ps1).
+$Script:DmfSession = $session
+$authHeaders       = Get-DmfAuthHeaders -Session $session
 $dmfBase     = "$baseUrl/data/DataManagementDefinitionGroups/Microsoft.Dynamics.DataEntities"
 $odataBase   = "$baseUrl/data"
 
@@ -309,7 +245,7 @@ $odataBase   = "$baseUrl/data"
 Write-Step 'Fetching DataManagementExecutionJobs'
 
 $jobsUri     = "$odataBase/DataManagementExecutionJobs?`$select=JobId,Description"
-$allJobs     = @(Get-ODataAll -Uri $jobsUri -Operation 'GetExecutionJobs' -Headers $authHeaders)
+$allJobs     = @(Get-DmfODataAll -Uri $jobsUri -Operation 'GetExecutionJobs' -Headers $authHeaders)
 
 Write-Info "Total execution jobs returned : $($allJobs.Count)"
 
@@ -339,8 +275,8 @@ $allDetails   = [System.Collections.Generic.List[pscustomobject]]::new()
 $jobSummaries = [System.Collections.Generic.List[pscustomobject]]::new()
 
 foreach ($job in ($matchedJobs | Sort-Object Description)) {
-    if ((Get-Date) -ge $tokenExpiry) {
-        Write-Warn 'Access token has expired.  Re-run the script to re-authenticate.'
+    if (-not (Test-DmfTokenExpiry -Session $session -Activity 'report')) {
+        Write-Warn 'Re-run the script to re-authenticate.'
         break
     }
 
@@ -350,7 +286,7 @@ foreach ($job in ($matchedJobs | Sort-Object Description)) {
     $encodedFilter = [System.Uri]::EscapeDataString("JobId eq '$jobIdLiteral'")
     $detailsUri    = "$odataBase/DataManagementExecutionJobDetails?`$filter=$encodedFilter"
 
-    $rawDetails = @(Get-ODataAll -Uri $detailsUri -Operation "GetJobDetails:$($job.Description)" -Headers $authHeaders)
+    $rawDetails = @(Get-DmfODataAll -Uri $detailsUri -Operation "GetJobDetails:$($job.Description)" -Headers $authHeaders)
 
     if ($rawDetails.Count -eq 0) {
         Write-Detail '    No entity detail records found.'

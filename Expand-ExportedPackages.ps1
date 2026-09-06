@@ -116,8 +116,10 @@ if (-not $PSBoundParameters.ContainsKey('DestinationPath') -or $DestinationPath 
     $DestinationPath = $SourcePath
 }
 
+# The destination is output: create it rather than demanding it exists.
 if (-not (Test-Path $DestinationPath -PathType Container)) {
-    throw "Destination path not found: '$DestinationPath'"
+    if ($WhatIf) { Write-Host "Destination path '$DestinationPath' does not exist; it would be created." -ForegroundColor Yellow }
+    else         { New-Item -ItemType Directory -Path $DestinationPath -Force | Out-Null }
 }
 
 # =============================================================================

@@ -1,0 +1,262 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "010 - System Setup",
+    "description":  "System setup",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Name sequences",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Name affixes",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Organization hierarchy type",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User groups",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Relationship types",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Global address book parameters",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Address books",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address and contact information purpose",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address format",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Currencies",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Currencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Address parameters",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Address format lines",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Exchange rates",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Currencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Organization hierarchy purposes",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "System parameters",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Country/regions",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "States",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Units",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Units",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Counties",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Unit conversions",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Units",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cities",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Districts V2",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Postal codes V3",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Legal entities",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Operating unit",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Team types",
+                      "sysModule":  "GAB",
+                      "tags":  "Teams",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Global address book V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization hierarchy V2 - published and draft",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User information",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Teams V2",
+                      "sysModule":  "GAB",
+                      "tags":  "Teams",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "User to person relationship",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Security user role association",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party relationships",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party contacts",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party postal address V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization name",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party location and role relationships",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party location private roles",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contact information and role relationships",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User defined link base URI",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "User defined links",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

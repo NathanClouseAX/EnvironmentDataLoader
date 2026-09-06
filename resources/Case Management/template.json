@@ -1,0 +1,112 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Case Management",
+    "description":  "Case Management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Service level agreement",
+                      "sysModule":  "ServiceManagement",
+                      "tags":  "Service agreement",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Case category security by role",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury and illness body parts",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury and illness cost types",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Injury and illness types",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury and illness outcome types",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury and illness severity levels",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury and illness treatment types",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Case hierarchy",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Case categories",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Injury or illness incidents",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead priorities",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Case detail",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Case",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "FMLA hours",
+                      "sysModule":  "",
+                      "tags":  "FMLA",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Injury or illness costs",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Injury or illness filings",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Injury or illness treatments",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

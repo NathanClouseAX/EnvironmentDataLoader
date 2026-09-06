@@ -1,0 +1,100 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "100 - Bank",
+    "description":  "Bank",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Bank transaction type",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank facility groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Reconciliation matching rules",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Reconciliation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment purpose codes",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reconciliation matching rule sets",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Reconciliation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank transaction groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank facility types",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank posting profiles",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank parameters",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Bank accounts",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transaction code mapping",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Check layout",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank statement import methods for general journal",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

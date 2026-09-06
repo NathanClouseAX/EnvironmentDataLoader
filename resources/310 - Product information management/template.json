@@ -1,0 +1,400 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "310 - Product information management",
+    "description":  "Product information management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Product lifecycle states",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product PLM",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reservation hierarchy",
+                      "sysModule":  "WMS",
+                      "tags":  "Reservation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catch weight item handling policy V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sizes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reduction key",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Barcode setup",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Less than truckload classes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Unit sequence groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Unit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Storage dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Styles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Tracking dimension groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Dimension groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute enumeration types V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calculation groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Attribute group",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attribute groups",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Colors",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Configuration groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configurations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Configurations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configurations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute value types",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Batch attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Batch attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute group translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Color assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit sequence group lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Unit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Style Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "US national motor freight classification codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Inventory setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reservation hierarchy levels",
+                      "sysModule":  "WMS",
+                      "tags":  "Reservation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size group lines",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Size Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reduction key period",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product size group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Size Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product style group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Style Assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product color group line translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Color assignments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute enumeration type translations V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Attribute types",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute group attribute assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category commodity codes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category product attribute group assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage groups",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master styles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master sizes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master colors",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master configurations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master color translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master configuration translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master style translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product master size translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product variants V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product variants",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product category attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product attribute values V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product attribute values",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product specific unit conversions",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product UOM Conversions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Released products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Released Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Released product variants V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Released Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product default order settings V3",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item batches",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Batch",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item serial numbers",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage V2",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product specific item batch attributes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Item - barcodes V3",
+                      "sysModule":  "Retail",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1, "entity": "Units", "targetEntity": "UnitOfMeasureEntity", "collection": "UnitsOfMeasure",
+  "environment": "env-a", "environmentUrl": "https://env-a.operations.dynamics.com", "legalEntity": "USMF",
+  "companySpecific": false, "keyFields": [ "UnitSymbol" ], "pulledAt": "2026-09-01T10:03:00Z", "elapsedSeconds": 0.5,
+  "recordCount": 1, "truncated": false, "fields": [ "UnitSymbol", "Description" ],
+  "records": [ { "UnitSymbol": "ea", "Description": "Each" } ]
+}

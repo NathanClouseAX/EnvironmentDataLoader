@@ -1,0 +1,130 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "130 - Tax",
+    "description":  "Tax",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Sales tax parameters preset entity",
+                      "sysModule":  "Tax",
+                      "tags":  "Setup\r\n",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Transaction codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Foreign trade",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Withholding tax codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax exempt code",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax reporting codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax exempt numbers",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Withholding tax code values",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax ledger posting groups V2",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Withholding tax limits",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Withholding tax groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Withholding tax group details",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales tax authorities",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax period setup",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax code limits",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax code values V2",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax item groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax group details",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax parameters",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax parameters",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

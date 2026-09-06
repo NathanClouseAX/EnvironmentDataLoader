@@ -35,6 +35,7 @@
     ─────────────────────────
     DmfOutput.ps1   -- Write-* helpers, Format-Elapsed, Stop-RunTranscript
     DmfRequest.ps1  -- Invoke-DmfRequest (REST client with retry)
+    DmfAuth.ps1     -- Connect-DmfEnvironment, Get-DmfAuthHeaders, Test-DmfTokenExpiry
 
 .PARAMETER EnvironmentUrl
     Base URL of the D365 F&O environment (no trailing slash).
@@ -56,6 +57,12 @@
 .PARAMETER DownloadPath
     Directory to save the downloaded export .zip files.
     Defaults to $env:TEMP.  Pass an empty string ('') to skip downloading.
+
+.PARAMETER AuthMode
+    How to sign in.  Auto (default): open the default browser when the
+    session is interactive, falling back to the device code flow if that
+    fails; Browser: browser only; DeviceCode: print a code to enter in
+    any browser (for SSH sessions and servers without a browser).
 
 .PARAMETER LogPath
     Path for the run transcript log.  When omitted, a log is auto-generated in
@@ -132,6 +139,9 @@ param(
     [AllowEmptyString()]
     [string]$DownloadPath = $env:TEMP,
 
+    [ValidateSet('Auto', 'Browser', 'DeviceCode')]
+    [string]$AuthMode = 'Auto',
+
     [AllowEmptyString()]
     [string]$LogPath,
 
@@ -152,18 +162,26 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# An uncaught error anywhere below must not leave the transcript running in
+# the caller's console (it would silently swallow every later command's
+# output into this log).  Stop it, then let the error propagate.
+trap { if (Get-Command -Name Stop-RunTranscript -ErrorAction SilentlyContinue) { Stop-RunTranscript }; break }
+
 # =============================================================================
 #  Load library modules
 # =============================================================================
 $libPath = Join-Path $PSScriptRoot 'lib'
 . (Join-Path $libPath 'DmfOutput.ps1')
 . (Join-Path $libPath 'DmfRequest.ps1')
+. (Join-Path $libPath 'DmfAuth.ps1')
 
 # =============================================================================
 #  Pre-flight path validation  (before transcript so errors surface cleanly)
 # =============================================================================
+# The download folder is output: create it rather than demanding it exists.
 if ($DownloadPath -ne '' -and -not (Test-Path $DownloadPath -PathType Container)) {
-    throw "Download path not found: '$DownloadPath'"
+    if ($WhatIf) { Write-Host "Download path '$DownloadPath' does not exist; it would be created." -ForegroundColor Yellow }
+    else         { New-Item -ItemType Directory -Path $DownloadPath -Force | Out-Null }
 }
 
 # =============================================================================
@@ -240,72 +258,13 @@ if ($WhatIf -and $TemplateName) {
 # =============================================================================
 Write-Step 'Authenticating with Microsoft Entra (device code flow)'
 
-$clientId    = '1950a258-227b-4e31-a9cf-717495945fc2'
-$baseUrl     = $EnvironmentUrl.TrimEnd('/')
-$authBase    = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0"
-$scope       = "$baseUrl/.default"
-$accessToken = $null
-$tokenExpiry = [DateTime]::MaxValue
+$baseUrl = $EnvironmentUrl.TrimEnd('/')
+$session = Connect-DmfEnvironment -EnvironmentUrl $baseUrl -TenantId $TenantId -AuthMode $AuthMode
 
-$deviceCode = Invoke-DmfRequest -Operation 'device code request' -Params @{
-    Method      = 'Post'
-    Uri         = "$authBase/devicecode"
-    ContentType = 'application/x-www-form-urlencoded'
-    Body        = "client_id=$clientId&scope=$([System.Uri]::EscapeDataString($scope))"
-}
-
-Write-Host ''
-Write-Host $deviceCode.message -ForegroundColor Yellow
-Write-Host ''
-
-$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
-$pollInterval = [int]$deviceCode.interval
-
-while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $pollInterval
-    try {
-        $tokenResp   = Invoke-RestMethod -Method Post `
-            -Uri         "$authBase/token" `
-            -ContentType 'application/x-www-form-urlencoded' `
-            -Body        "grant_type=urn:ietf:params:oauth:grant-type:device_code&client_id=$clientId&device_code=$($deviceCode.device_code)"
-        $accessToken = $tokenResp.access_token
-        $tokenExpiry = (Get-Date).AddSeconds($tokenResp.expires_in - 60)   # 60 s safety buffer
-        Write-Info "Sign-in successful.  Token valid until $($tokenExpiry.ToString('HH:mm:ss'))."
-        break
-    }
-    catch {
-        $errCode = $null
-        try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-
-        $status = 0
-        if ($null -ne $_.Exception.Response) {
-            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
-        }
-
-        # Throttled polling is routine, not a failure.  RFC 8628 requires the
-        # client to lengthen its interval by 5 s on slow_down; a 429 on the
-        # token endpoint is treated the same way, honouring Retry-After when
-        # one is supplied.  Handled outside the switch below because
-        # 'continue' inside a switch continues the switch, not the loop.
-        if ($status -eq 429 -or $errCode -eq 'slow_down') {
-            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
-            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
-            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
-        }
-        else {
-            switch ($errCode) {
-                'authorization_pending'  { continue }
-                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-                default                  { throw }
-            }
-        }
-    }
-}
-
-if (-not $accessToken) { throw 'Authentication timed out before sign-in completed.' }
-
-$authHeaders = @{ Authorization = "Bearer $accessToken" }
+# Every Invoke-DmfRequest call to this environment reads the session and
+# renews the token silently when it is close to expiry (lib/DmfAuth.ps1).
+$Script:DmfSession = $session
+$authHeaders       = Get-DmfAuthHeaders -Session $session
 $dmfBase     = "$baseUrl/data/DataManagementDefinitionGroups/Microsoft.Dynamics.DataEntities"
 
 # =============================================================================
@@ -356,8 +315,29 @@ if ($TemplateName) {
     # ── Single-template mode (non-interactive) ──────────────────────────────
     $match = $allTemplates | Where-Object { $_.TemplateId -eq $TemplateName }
     if (-not $match) {
+        # ExportToPackage resolves definitionGroupId against data projects, not
+        # templates, so a project name (for example the "<template> <company>"
+        # project that Invoke-ProjectExport.ps1 creates) is just as valid here.
+        $encodedName = [System.Uri]::EscapeDataString($TemplateName)
+        $project = $null
+        try {
+            $project = Invoke-DmfRequest -Operation 'CheckProject' -Params @{
+                Method  = 'Get'
+                Uri     = "$baseUrl/data/DataManagementDefinitionGroups('$encodedName')"
+                Headers = $authHeaders
+            }
+        } catch {
+            if ($_ -notmatch 'HTTP 404' -and $_ -notmatch 'HTTP 400') { throw }
+        }
+        if ($null -ne $project) {
+            $desc  = if ($project.PSObject.Properties['Description'] -and $project.Description) { [string]$project.Description } else { '' }
+            $match = [pscustomobject]@{ Index = 0; TemplateId = $TemplateName; Description = $desc; ValidatedOn = 'data project' }
+            Write-Info "'$TemplateName' is a data project (not a template); exporting it directly."
+        }
+    }
+    if (-not $match) {
         $available = ($allTemplates | ForEach-Object { "    '$($_.TemplateId)'" }) -join [System.Environment]::NewLine
-        throw "Template '$TemplateName' not found in environment '$EnvironmentUrl'.`nAvailable templates:`n$available"
+        throw "'$TemplateName' is neither a validated template nor a data project in '$EnvironmentUrl'.`nAvailable templates:`n$available"
     }
     $selectedTemplates.Add($match)
     Write-Info "Template : $TemplateName"
@@ -536,12 +516,9 @@ foreach ($tmpl in $selectedTemplates) {
     }
     Write-Host $divider -ForegroundColor DarkCyan
 
-    # Token expiry warnings
-    if ((Get-Date) -ge $tokenExpiry) {
-        Write-Warn 'Access token has expired.  API calls will likely fail with HTTP 401.  Re-run the script.'
-    } elseif ((Get-Date).AddMinutes(5) -ge $tokenExpiry) {
-        Write-Warn "Token expires at $($tokenExpiry.ToString('HH:mm:ss')) -- it may expire mid-export."
-    }
+    # Token expiry: renewed silently when a refresh token is available,
+    # otherwise warned about as before.
+    [void](Test-DmfTokenExpiry -Session $session -Activity 'export')
 
     try {
         # ── a. Submit export job ──────────────────────────────────────────────

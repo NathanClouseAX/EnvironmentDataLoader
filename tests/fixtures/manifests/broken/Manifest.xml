@@ -1,0 +1,20 @@
+<DataManagementPackageManifest xmlns="http://schemas.microsoft.com/dynamics/2015/01/DataManagement">
+  <DefinitionGroupName>Broken</DefinitionGroupName>
+  <PackageEntityList>
+    <DataManagementPackageEntityData>
+      <EntityName>Currencies</EntityName>
+      <ExecutionUnit>abc</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Currencies</EntityName>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <Disable>maybe</Disable>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <ExecutionUnit>1</ExecutionUnit>
+    </DataManagementPackageEntityData>
+  </PackageEntityList>
+</DataManagementPackageManifest>

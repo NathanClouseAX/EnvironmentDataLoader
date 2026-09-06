@@ -40,6 +40,7 @@
     ─────────────────────────
     DmfOutput.ps1   -- Write-* helpers, Format-Elapsed, Stop-RunTranscript
     DmfRequest.ps1  -- Invoke-DmfRequest (REST client with retry)
+    DmfAuth.ps1     -- Connect-DmfEnvironment, Get-DmfAuthHeaders, Test-DmfTokenExpiry
     DmfPackage.ps1  -- Get-PackageInfo, Resolve-EntityOrdering, $entityOrdering
 
     Per-package execution ordering
@@ -77,6 +78,12 @@
 
 .PARAMETER OutputPath
     Directory for generated .zip files.  Defaults to $env:TEMP.
+
+.PARAMETER AuthMode
+    How to sign in.  Auto (default): open the default browser when the
+    session is interactive, falling back to the device code flow if that
+    fails; Browser: browser only; DeviceCode: print a code to enter in
+    any browser (for SSH sessions and servers without a browser).
 
 .PARAMETER LogPath
     Path for the run transcript log.  When omitted, a log is auto-generated in
@@ -156,10 +163,13 @@ param(
     [string]$PackageName,
 
     [ValidateNotNullOrEmpty()]
-    [string]$ResourcesPath = (Join-Path $PSScriptRoot 'resources'),
+    [string]$ResourcesPath,
 
     [ValidateNotNullOrEmpty()]
     [string]$OutputPath = $env:TEMP,
+
+    [ValidateSet('Auto', 'Browser', 'DeviceCode')]
+    [string]$AuthMode = 'Auto',
 
     [AllowEmptyString()]
     [string]$LogPath,
@@ -183,6 +193,11 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# An uncaught error anywhere below must not leave the transcript running in
+# the caller's console (it would silently swallow every later command's
+# output into this log).  Stop it, then let the error propagate.
+trap { if (Get-Command -Name Stop-RunTranscript -ErrorAction SilentlyContinue) { Stop-RunTranscript }; break }
+
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # =============================================================================
@@ -191,16 +206,24 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $libPath = Join-Path $PSScriptRoot 'lib'
 . (Join-Path $libPath 'DmfOutput.ps1')
 . (Join-Path $libPath 'DmfRequest.ps1')
+. (Join-Path $libPath 'DmfAuth.ps1')
+. (Join-Path $libPath 'DmfTemplate.ps1')
 . (Join-Path $libPath 'DmfPackage.ps1')
 
 # =============================================================================
 #  Pre-flight path validation  (before transcript so errors surface cleanly)
 # =============================================================================
+# Resolved here rather than in the param block: on Windows PowerShell 5.1
+# $PSScriptRoot is empty while parameter defaults are evaluated when the
+# script is started with a relative path (.\Invoke-BaselineImport.ps1).
+if (-not $ResourcesPath) { $ResourcesPath = Join-Path $PSScriptRoot 'resources' }
 if (-not (Test-Path $ResourcesPath -PathType Container)) {
     throw "Resources path not found: '$ResourcesPath'"
 }
+# The zip output folder is output: create it rather than demanding it exists.
 if (-not (Test-Path $OutputPath -PathType Container)) {
-    throw "Output path not found: '$OutputPath'"
+    if ($WhatIf) { Write-Host "Output path '$OutputPath' does not exist; it would be created." -ForegroundColor Yellow }
+    else         { New-Item -ItemType Directory -Path $OutputPath -Force | Out-Null }
 }
 
 # =============================================================================
@@ -280,7 +303,8 @@ if ($PackageName) {
     # ── Interactive numbered selection ─────────────────────────────────────
     Write-Step 'Select packages to import'
 
-    $nameWidth = ($allPackages | ForEach-Object { $_.Name.Length } | Measure-Object -Maximum).Maximum
+    # Custom templates (template.json origin = custom) are tagged in the name column.
+    $nameWidth = ($allPackages | ForEach-Object { $_.Name.Length + $(if ($_.IsCustom) { 10 } else { 0 }) } | Measure-Object -Maximum).Maximum
     $nameWidth = [int][Math]::Max(30, [Math]::Min($nameWidth, $Script:LineWidth - 36))
 
     $colFmt = '  {0,3}  {1}  {2,5}  {3,8}  {4,8}'
@@ -289,9 +313,10 @@ if ($PackageName) {
     Write-Host ($colFmt -f '---', ('-' * $nameWidth), '-----', '--------', '--------') -ForegroundColor DarkGray
 
     foreach ($pkg in $allPackages) {
-        $nameCol     = if ($pkg.Name.Length -gt $nameWidth) {
-                           $pkg.Name.Substring(0, $nameWidth - 3) + '...'
-                       } else { $pkg.Name.PadRight($nameWidth) }
+        $label       = if ($pkg.IsCustom) { "$($pkg.Name)  [custom]" } else { $pkg.Name }
+        $nameCol     = if ($label.Length -gt $nameWidth) {
+                           $label.Substring(0, $nameWidth - 3) + '...'
+                       } else { $label.PadRight($nameWidth) }
         $filesCol    = $pkg.XlsxCount.ToString().PadLeft(5)
         $sizeCol     = if ($pkg.XlsxCount -gt 0) { $pkg.XlsxSizeMB.ToString('F2').PadLeft(8) } else { '       -' }
         $entitiesCol = if ($pkg.HasManifest) { $pkg.EntityCount.ToString().PadLeft(8) } else { '       !' }
@@ -376,6 +401,7 @@ if ($WhatIf) {
     Write-Info "Packages     : $($selectedPackages.Count)"
     foreach ($pkg in $selectedPackages) {
         $meta = "$($pkg.XlsxCount) file(s), $($pkg.XlsxSizeMB) MB, $($pkg.EntityCount) entities"
+        if ($pkg.IsCustom)    { $meta += ', custom template' }
         if ($pkg.HasOrdering) { $meta += ', custom ordering.json' }
         if (-not $pkg.IsValid) { $meta += "  [!] $($pkg.Warnings -join '; ')" }
         Write-Detail "[$($pkg.Index)] $($pkg.Name)  ($meta)"
@@ -424,72 +450,13 @@ if (-not $Force) {
 # =============================================================================
 Write-Step 'Authenticating with Microsoft Entra (device code flow)'
 
-$clientId    = '1950a258-227b-4e31-a9cf-717495945fc2'
-$baseUrl     = $EnvironmentUrl.TrimEnd('/')
-$authBase    = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0"
-$scope       = "$baseUrl/.default"
-$accessToken = $null
-$tokenExpiry = [DateTime]::MaxValue
+$baseUrl = $EnvironmentUrl.TrimEnd('/')
+$session = Connect-DmfEnvironment -EnvironmentUrl $baseUrl -TenantId $TenantId -AuthMode $AuthMode
 
-$deviceCode = Invoke-DmfRequest -Operation 'device code request' -Params @{
-    Method      = 'Post'
-    Uri         = "$authBase/devicecode"
-    ContentType = 'application/x-www-form-urlencoded'
-    Body        = "client_id=$clientId&scope=$([System.Uri]::EscapeDataString($scope))"
-}
-
-Write-Host ''
-Write-Host $deviceCode.message -ForegroundColor Yellow
-Write-Host ''
-
-$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
-$pollInterval = [int]$deviceCode.interval
-
-while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $pollInterval
-    try {
-        $tokenResp   = Invoke-RestMethod -Method Post `
-            -Uri         "$authBase/token" `
-            -ContentType 'application/x-www-form-urlencoded' `
-            -Body        "grant_type=urn:ietf:params:oauth:grant-type:device_code&client_id=$clientId&device_code=$($deviceCode.device_code)"
-        $accessToken = $tokenResp.access_token
-        $tokenExpiry = (Get-Date).AddSeconds($tokenResp.expires_in - 60)   # 60 s safety buffer
-        Write-Info "Sign-in successful.  Token valid until $($tokenExpiry.ToString('HH:mm:ss'))."
-        break
-    }
-    catch {
-        $errCode = $null
-        try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-
-        $status = 0
-        if ($null -ne $_.Exception.Response) {
-            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
-        }
-
-        # Throttled polling is routine, not a failure.  RFC 8628 requires the
-        # client to lengthen its interval by 5 s on slow_down; a 429 on the
-        # token endpoint is treated the same way, honouring Retry-After when
-        # one is supplied.  Handled outside the switch below because
-        # 'continue' inside a switch continues the switch, not the loop.
-        if ($status -eq 429 -or $errCode -eq 'slow_down') {
-            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
-            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
-            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
-        }
-        else {
-            switch ($errCode) {
-                'authorization_pending'  { continue }
-                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-                default                  { throw }
-            }
-        }
-    }
-}
-
-if (-not $accessToken) { throw 'Authentication timed out before sign-in completed.' }
-
-$authHeaders = @{ Authorization = "Bearer $accessToken" }
+# Every Invoke-DmfRequest call to this environment reads the session and
+# renews the token silently when it is close to expiry (lib/DmfAuth.ps1).
+$Script:DmfSession = $session
+$authHeaders       = Get-DmfAuthHeaders -Session $session
 $dmfBase     = "$baseUrl/data/DataManagementDefinitionGroups/Microsoft.Dynamics.DataEntities"
 
 # =============================================================================
@@ -516,12 +483,9 @@ foreach ($pkg in $selectedPackages) {
     Write-Host "  [$($results.Count + 1)/$($selectedPackages.Count)]  $pkgName" -ForegroundColor Cyan
     Write-Host $divider -ForegroundColor DarkCyan
 
-    # Token expiry warnings
-    if ((Get-Date) -ge $tokenExpiry) {
-        Write-Warn 'Access token has expired.  API calls will likely fail with HTTP 401.  Re-run the script.'
-    } elseif ((Get-Date).AddMinutes(5) -ge $tokenExpiry) {
-        Write-Warn "Token expires at $($tokenExpiry.ToString('HH:mm:ss')) -- it may expire mid-import."
-    }
+    # Token expiry: renewed silently when a refresh token is available,
+    # otherwise warned about as before.
+    [void](Test-DmfTokenExpiry -Session $session -Activity 'import')
 
     try {
         # ── a. Discover xlsx files ────────────────────────────────────────────
@@ -536,19 +500,14 @@ foreach ($pkg in $selectedPackages) {
         $manifestPath = Join-Path $pkg.Folder.FullName 'Manifest.xml'
         if (-not (Test-Path $manifestPath)) { throw "Manifest.xml not found in '$($pkg.Folder.FullName)'." }
 
-        $existingDoc = New-Object System.Xml.XmlDocument
-        $existingDoc.Load($manifestPath)
-        $nsMgr = New-Object System.Xml.XmlNamespaceManager($existingDoc.NameTable)
-        $nsMgr.AddNamespace('dm', $Script:DmNs)
-
-        $matchedNodes = [System.Collections.Generic.List[System.Xml.XmlNode]]::new()
+        $manifest     = Read-DmfManifest -Path $manifestPath
+        $matchedLines = [System.Collections.Generic.List[pscustomobject]]::new()
         $matchedFiles = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
 
-        foreach ($node in $existingDoc.SelectNodes('//dm:DataManagementPackageEntityData', $nsMgr)) {
-            $ifpNode = $node.SelectSingleNode('dm:InputFilePath', $nsMgr)
-            if ($ifpNode -and ($xlsxNames -contains $ifpNode.InnerText)) {
-                $matchedNodes.Add($node)
-                [void]$matchedFiles.Add($ifpNode.InnerText)
+        foreach ($line in $manifest.Lines) {
+            if ($xlsxNames -contains $line.InputFilePath) {
+                $matchedLines.Add($line)
+                [void]$matchedFiles.Add($line.InputFilePath)
             }
         }
 
@@ -556,8 +515,8 @@ foreach ($pkg in $selectedPackages) {
         if ($unmanifestedFiles.Count -gt 0) {
             Write-Warn "No manifest entry for: $($unmanifestedFiles -join ', ') -- these files will not be imported."
         }
-        if ($matchedNodes.Count -eq 0) { throw 'No manifest entries matched the .xlsx files on disk.' }
-        Write-Info "$($matchedNodes.Count) entity definition(s) matched."
+        if ($matchedLines.Count -eq 0) { throw 'No manifest entries matched the .xlsx files on disk.' }
+        Write-Info "$($matchedLines.Count) entity definition(s) matched."
 
         # ── c. Build optimised Manifest.xml ───────────────────────────────────
         Write-Step 'Building manifest'
@@ -569,42 +528,24 @@ foreach ($pkg in $selectedPackages) {
         # Resolve ordering: built-in defaults merged with any per-package ordering.json
         $effectiveOrdering = Resolve-EntityOrdering -PackageFolderPath $pkg.Folder.FullName
 
-        $newDoc = New-Object System.Xml.XmlDocument
-        [void]$newDoc.AppendChild($newDoc.CreateXmlDeclaration('1.0', 'utf-16', $null))
-        $root = $newDoc.CreateElement('DataManagementPackageManifest', $Script:DmNs)
-        $root.SetAttribute('xmlns:i', 'http://www.w3.org/2001/XMLSchema-instance')
-        [void]$newDoc.AppendChild($root)
-
-        foreach ($pair in @(
-            [pscustomobject]@{ Name = 'DefinitionGroupName'; Value = $definitionGroupId },
-            [pscustomobject]@{ Name = 'Description';          Value = $pkgName }
-        )) {
-            $el = $newDoc.CreateElement($pair.Name, $Script:DmNs)
-            $el.InnerText = $pair.Value
-            [void]$root.AppendChild($el)
-        }
-
-        $entityListEl = $newDoc.CreateElement('PackageEntityList', $Script:DmNs)
-        [void]$root.AppendChild($entityListEl)
-        $newNsMgr = New-Object System.Xml.XmlNamespaceManager($newDoc.NameTable)
-        $newNsMgr.AddNamespace('dm', $Script:DmNs)
-
         $orderedCount = 0
-        foreach ($node in $matchedNodes) {
-            $imported = $newDoc.ImportNode($node, $true)
-            $nameNode = $imported.SelectSingleNode('dm:EntityName', $newNsMgr)
-            if ($nameNode -and $effectiveOrdering.Contains($nameNode.InnerText)) {
-                $order = $effectiveOrdering[$nameNode.InnerText]
-                $imported.SelectSingleNode('dm:ExecutionUnit',        $newNsMgr).InnerText = [string]$order.EU
-                $imported.SelectSingleNode('dm:LevelInExecutionUnit', $newNsMgr).InnerText = [string]$order.LV
-                $imported.SelectSingleNode('dm:SequenceInLevel',      $newNsMgr).InnerText = [string]$order.SEQ
+        foreach ($line in $matchedLines) {
+            if ($effectiveOrdering.Contains($line.EntityName)) {
+                $order = $effectiveOrdering[$line.EntityName]
+                $line.ExecutionUnit        = [int]$order.EU
+                $line.LevelInExecutionUnit = [int]$order.LV
+                $line.SequenceInLevel      = [int]$order.SEQ
                 $orderedCount++
             }
-            [void]$entityListEl.AppendChild($imported)
         }
         if ($orderedCount -gt 0) {
-            Write-Info "Execution ordering applied to $orderedCount / $($matchedNodes.Count) entities."
+            Write-Info "Execution ordering applied to $orderedCount / $($matchedLines.Count) entities."
         }
+
+        # Each line still carries its original XML element, so field maps and
+        # query data are re-emitted verbatim; only the ordering values above
+        # (and a missing TargetEntity, if any) are rewritten.  See lib/DmfTemplate.ps1.
+        $newDoc = New-DmfManifestDocument -DefinitionGroupName $definitionGroupId -Description $pkgName -Lines $matchedLines.ToArray()
 
         # ── d. Build .zip package ─────────────────────────────────────────────
         Write-Step 'Building package zip'
@@ -612,30 +553,9 @@ foreach ($pkg in $selectedPackages) {
         New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
 
         try {
-            # Manifest.xml -- UTF-16 LE with BOM (required by D365 DMF)
-            $writerSettings          = New-Object System.Xml.XmlWriterSettings
-            $writerSettings.Encoding = [System.Text.Encoding]::Unicode
-            $writerSettings.Indent   = $true
-            $xmlWriter = [System.Xml.XmlWriter]::Create((Join-Path $tempDir 'Manifest.xml'), $writerSettings)
-            try   { $newDoc.Save($xmlWriter) }
-            finally { $xmlWriter.Dispose() }
-
-            # PackageHeader.xml -- UTF-16 LE with BOM
-            $pkgNameXml = [System.Security.SecurityElement]::Escape($pkgName)
-            $headerXml  = (@(
-                '<?xml version="1.0" encoding="utf-16"?>',
-                '<DataManagementPackageHeader xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/dynamics/2015/01/DataManagement">',
-                "  <Description>$pkgNameXml</Description>",
-                '  <ManifestType>Microsoft.Dynamics.AX.Framework.Tools.DataManagement.Serialization.DataManagementPackageManifest</ManifestType>',
-                '  <PackageType>DefinitionGroup</PackageType>',
-                '  <PackageVersion>2</PackageVersion>',
-                '</DataManagementPackageHeader>'
-            ) -join [System.Environment]::NewLine)
-            [System.IO.File]::WriteAllText(
-                (Join-Path $tempDir 'PackageHeader.xml'),
-                $headerXml,
-                [System.Text.Encoding]::Unicode
-            )
+            # Manifest.xml and PackageHeader.xml -- UTF-16 LE with BOM (required by D365 DMF)
+            Write-DmfManifest      -Document $newDoc -Path (Join-Path $tempDir 'Manifest.xml')
+            Write-DmfPackageHeader -Path (Join-Path $tempDir 'PackageHeader.xml') -Description $pkgName
 
             foreach ($xlsx in $xlsxFiles) {
                 Copy-Item -Path $xlsx.FullName -Destination (Join-Path $tempDir $xlsx.Name)

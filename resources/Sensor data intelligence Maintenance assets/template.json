@@ -1,0 +1,34 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Sensor data intelligence Maintenance assets",
+    "description":  "Sensor data intelligence Maintenance assets setup",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Sensors",
+                      "sysModule":  "IoTIntelligence",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sensor maintenance asset counter mappings",
+                      "sysModule":  "IoTIntelligence",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sensor maintenance asset mappings",
+                      "sysModule":  "IoTIntelligence",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sensor scenario mappings",
+                      "sysModule":  "IoTIntelligence",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

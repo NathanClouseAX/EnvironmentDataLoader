@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "templateId": "900 - Open transactions",
+  "origin": "custom",
+  "description": "Open sales orders, open purchase orders and transfer orders not yet shipped",
+  "notes": "Hand-authored. Headers run at level 10, lines at level 20. The order-status filters must be set on the export data project; see docs/use-cases/02-open-transactions-prod-to-uat.md and docs/custom-packages.md."
+}

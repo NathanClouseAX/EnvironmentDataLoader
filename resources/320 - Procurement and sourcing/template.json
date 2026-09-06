@@ -1,0 +1,316 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "320 - Procurement and sourcing",
+    "description":  "Procurement and sourcing",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Request for quotation scoring methods",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supplementary item - vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation reply statuses",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase agreement classification",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase pools",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor reasons",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor rebate group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebate setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working time templates",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade agreement journal name",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor charges group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line of business",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Activate purchase prices and discounts",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "External item description vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item rebate groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement charge codes",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement return actions",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Destination code",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase requisition form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase order form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor facing form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Receipt list form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Product receipt form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase agreement form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase inquiry form printing configurations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Form setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Multiline discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Multiline discount item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Modes of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Confirming PO",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order confirmation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External purchase agreement classification",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document entry policies",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criteria",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion group translations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation scoring method criteria",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation solicitation types",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor evaluation criterion translations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document default values",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Procurement type document processing policies",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase agreement classification translation",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreement setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External item descriptions for vendors V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor rebate parameters",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebate setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Purchase line update parameters",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Policies setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Invoice totals tolerance setup",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Approved vendor list by products",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Approved vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price tolerance setup",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Price tolerance setup",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

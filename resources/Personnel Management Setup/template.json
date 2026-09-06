@@ -1,0 +1,136 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Personnel Management Setup",
+    "description":  "Personnel management setup",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Accommodation type",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Terms of employment",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Ethnic origins",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Issuing agency",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Language codes",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Reason codes",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Titles",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Veteran status",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Levels",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation regions",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Identification type",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Screening type",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Regulatory establishments",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Regulatory establishment details",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Headquarters establishment for company",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Loan types",
+                      "sysModule":  "",
+                      "tags":  "Loaned items",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Loan items",
+                      "sysModule":  "",
+                      "tags":  "Loaned items",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External links groups",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External links",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Media types",
+                      "sysModule":  "",
+                      "tags":  "Recruitment",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Media",
+                      "sysModule":  "",
+                      "tags":  "Recruitment",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

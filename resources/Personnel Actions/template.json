@@ -1,0 +1,130 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Personnel Actions",
+    "description":  "Personnel Actions",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Personnel action types",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Personnel action type roles",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Action state history",
+                      "sysModule":  "HRM",
+                      "tags":  "Personnel actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Action state related action history",
+                      "sysModule":  "HRM",
+                      "tags":  "Personnel actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action detail history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action default dimension history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action hierarchy history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action line history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Position action union agreement history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position action duration history",
+                      "sysModule":  "HRM",
+                      "tags":  "Position actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Personnel action type restrict information access.",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Worker action history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action employment history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action fixed compensation history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Worker action fixed compensation change history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action position assignment",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action terminate history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action hiring history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker action comment history",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker actions",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1, "entity": "Currencies", "targetEntity": "CurrencyEntity", "collection": "Currencies",
+  "environment": "env-a", "environmentUrl": "https://env-a.operations.dynamics.com", "legalEntity": "USMF",
+  "companySpecific": false, "keyFields": [ "CurrencyCode" ], "pulledAt": "2026-09-01T10:01:00Z", "elapsedSeconds": 1.0,
+  "recordCount": 3, "truncated": false,
+  "fields": [ "@odata.etag", "CurrencyCode", "Name", "RoundingPrecision", "ModifiedDateTime", "IsActive" ],
+  "records": [
+    { "@odata.etag": "W/\"a1\"", "CurrencyCode": "AED", "Name": "UAE Dirham",  "RoundingPrecision": 0.01, "ModifiedDateTime": "2026-01-01T00:00:00Z", "IsActive": "Yes" },
+    { "@odata.etag": "W/\"a2\"", "CurrencyCode": "EUR", "Name": "Euro",        "RoundingPrecision": 0.01, "ModifiedDateTime": "2026-01-02T00:00:00Z", "IsActive": "Yes" },
+    { "@odata.etag": "W/\"a3\"", "CurrencyCode": "OLD", "Name": "Retired",     "RoundingPrecision": 1,    "ModifiedDateTime": "2026-01-03T00:00:00Z", "IsActive": "No"  }
+  ]
+}

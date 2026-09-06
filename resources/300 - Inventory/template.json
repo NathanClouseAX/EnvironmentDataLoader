@@ -1,0 +1,418 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "300 - Inventory",
+    "description":  "Inventory",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Batch dispositions",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Batch",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item price tolerance groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Line discount item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse zone groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supplementary item - item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Supplementary item",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location formats",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor charges group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchies",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade agreement recalculation policies for sales documents",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Price vendor groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price customer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cause of blocking",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calculation groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commodity pricing templates",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commodity cost basis",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade agreement recalculation policies for purchase documents",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Counting groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory status",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory dimensions parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Buyer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy roles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material codes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse zones",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost flow assumption policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material fees",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location format segments",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Tracking number groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory transfer journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item arrival journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory counting journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory tag counting journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory movement journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item model group inventory policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Production input journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory adjustment journal names",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "product categories",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing material allocations V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing material allocation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory transaction combinations",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Packing material allocation lines V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Packing material allocation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sites V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouses",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse current postal addresses V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location profiles",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory aisle",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Site current postal addresses V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Site setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse locations",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product compliance parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Order entry deadline parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Order setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Site dimension link policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Product parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Product setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Commodity pricing parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Bill of materials parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Inventory accounting KPI goals",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Constraint-based product configuration model parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configuration",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for sales",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for standard cost variance",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for production",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for inventory",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger posting definition for procurement",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Posting definitions",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

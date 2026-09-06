@@ -1,0 +1,952 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Person search",
+    "description":  "Person search",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Global address book V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User information",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Team members V2",
+                      "sysModule":  "GAB",
+                      "tags":  "Teams",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party contacts",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party postal address history",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party postal address V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cash receipts",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Cash management",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendors V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor bank accounts",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer collections history",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Collections",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer payment journal line",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Journal",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Customer bank accounts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer credit cards",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Creditcard",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer specific item batch attributes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Released products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Released Products",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage V2",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Royalty agreement headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Royalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase order confirmation lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Request for quotation reply scoring criteria",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Vendor catalogs",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase order confirmation headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Request for quotation reply questionnaires",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Purchase agreements V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Vendor collaboration user requests",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Purchase order response headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Broker contract headers",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Broker contract",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Purchase order response lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Royalty agreement line amounts",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Royalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Royalty agreement header products V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Royalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Royalty agreement line products V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Royalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Royalty agreement lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Royalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospective vendor registration vendor postal addresses",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase agreement confirmation lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Purchase agreement confirmation headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Vendor rebate agreement product selections V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Prospective vendor registration contact person postal addresses",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation journal headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Prospective vendor registrations",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospective vendor registration procurement categories",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Request for quotation journal lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Prospective vendor registration request",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Request for quotation reply headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Request for quotation reply lines V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "RFQ",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Vendor rebate agreement headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Consignment replenishment order headers",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Consignment replenishment order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Consignment replenishment order lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Consignment replenishment order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Vendor rebate agreement lines",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Broker contract lines",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Broker contract",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Purchase agreement lines V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales quotation lines V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales quote",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales quotation headers V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales quote",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Return order lines V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Return order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales orders composite V4",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Prospects",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects main",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Trade allowance agreements",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Trade allowance agreement",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Dynamic kits",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Kit versions",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External item descriptions for customers V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contacts V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contact person main",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Voided sales order headers",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Voided sales order lines",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales product sets",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales item lists setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order confirmation headers",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales agreement lines",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales agreement headers",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales agreement confirmation lines",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales order confirmation lines",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Sales product set details V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales item lists setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales Carrier",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Carrier",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales agreement confirmation headers",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales agreements",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Customer rebates",
+                      "sysModule":  "",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Return order headers V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Return order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device users",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transportation appointment driver logs",
+                      "sysModule":  "Transportation",
+                      "tags":  "Transportation",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Transportation tender histories",
+                      "sysModule":  "Transportation",
+                      "tags":  "Transportation tender",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Transportation appointment histories",
+                      "sysModule":  "Transportation",
+                      "tags":  "",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Transportation appointments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Transportation",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Freight bill details",
+                      "sysModule":  "Transportation",
+                      "tags":  "Freight",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Transportation tenders",
+                      "sysModule":  "Transportation",
+                      "tags":  "Transportation tender",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Transportation route plan segments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation shipment constraints",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation accessorial charge assignments",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transportation route plan hub configurations",
+                      "sysModule":  "Transportation",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Supply forecast entries",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Supply forecast",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Customers V3",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer Affiliations",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Customer",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Instance value of a customer.",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty transaction v2",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Loyalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cash advances",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Cash advance; Expense cash advances",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Travel requisitions",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Travel requisitions",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Expenses",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Expense lines; Expenses",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Delegate",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Expense delegate",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employee credit cards",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Credit card; Employee",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Timesheet Headers",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project grants",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Grants master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Projects",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Projects master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits period employee life event transaction",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits credit period employee",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits plan employee",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits plan employee designee",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits employee future life event transaction",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Transferred time and attendance activity registrations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Worker payroll information",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Personal country/region specific information V3",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Worker leave and absence request detail export",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Service order lines",
+                      "sysModule":  "ServiceManagement",
+                      "tags":  "Service order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Service order headers",
+                      "sysModule":  "ServiceManagement",
+                      "tags":  "Service order",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Identification",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker Details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Injury or illness incidents",
+                      "sysModule":  "",
+                      "tags":  "Injury",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Goals",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "FMLA case details",
+                      "sysModule":  "",
+                      "tags":  "FMLA",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "FMLA hours",
+                      "sysModule":  "",
+                      "tags":  "FMLA",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Operations resource",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person details",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Planned time and attendance absence registrations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Performance reviews",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Operations resource capability assignment",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Performance journal",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment detail",
+                      "sysModule":  "HRM",
+                      "tags":  "Employment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Applications",
+                      "sysModule":  "",
+                      "tags":  "Recruitment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank account disbursements",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Application basket",
+                      "sysModule":  "",
+                      "tags":  "Recruitment",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Applicant interview",
+                      "sysModule":  "",
+                      "tags":  "Applicant",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Applicants",
+                      "sysModule":  "",
+                      "tags":  "Applicant",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Case detail",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Case",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Electronic timecard headers",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Employee leave",
+                      "sysModule":  "",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Education competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Certificate competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Course competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person answers to questionnaire",
+                      "sysModule":  "HRM",
+                      "tags":  "Questionnaire",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person accommodation",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person image",
+                      "sysModule":  "",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Service agreement lines",
+                      "sysModule":  "ServiceManagement",
+                      "tags":  "Service agreement",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Performance feedback",
+                      "sysModule":  "",
+                      "tags":  "Performance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Covered beneficiary relationship",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance activity registrations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Person name history",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Service agreement headers",
+                      "sysModule":  "ServiceManagement",
+                      "tags":  "Service agreement",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Person screening",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Electronic timecard lines",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Time and attendance activity registration calculations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Worker bank accounts",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Professional experience competency",
+                      "sysModule":  "HRM",
+                      "tags":  "Competencies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance registration workers",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project experience competency",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project resourcing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance premium registrations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time registration",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Worker personal contact person",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker enrolled benefit accrual",
+                      "sysModule":  "Payroll",
+                      "tags":  "Worker associations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker enrolled benefit",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Worker contacts",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker benefit enrolled detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Print management destination emails V2",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Open purchase price journal lines V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Journals",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer free text invoice",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Invoice",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Open sales price journal lines V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Journals",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataManagementPackageManifest xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/dynamics/2015/01/DataManagement">
+  <DefinitionGroupName>900 - Open transactions</DefinitionGroupName>
+  <Description>Open sales orders, open purchase orders and transfer orders not yet shipped. Headers run before lines. Hand-authored template: the export project needs status filters, see docs/use-cases/02-open-transactions-prod-to-uat.md.</Description>
+  <PackageEntityList>
+    <DataManagementPackageEntityData>
+      <EntityName>Sales order headers V2</EntityName>
+      <TargetEntity>SalesOrderHeaderV2Entity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Purchase order headers V2</EntityName>
+      <TargetEntity>PurchPurchaseOrderHeaderV2Entity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Transfer order headers</EntityName>
+      <TargetEntity>InventTransferOrderHeaderEntity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Sales order lines V2</EntityName>
+      <TargetEntity>SalesOrderLineV2Entity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>20</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Purchase order lines V2</EntityName>
+      <TargetEntity>PurchPurchaseOrderLineV2Entity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>20</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Transfer order lines</EntityName>
+      <TargetEntity>InventTransferOrderLineEntity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>20</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+  </PackageEntityList>
+</DataManagementPackageManifest>

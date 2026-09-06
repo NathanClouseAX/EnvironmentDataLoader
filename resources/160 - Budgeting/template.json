@@ -1,0 +1,268 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "160 - Budgeting",
+    "description":  "Budgeting",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Financial reasons",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Period allocation categories",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget submodels",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget cost elements",
+                      "sysModule":  "HRM",
+                      "tags":  "Forecast position",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget dimensions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget cycle time span",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "User groups",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget models",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan stages",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan scenarios",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan priorities",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan proposed project",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan proposed asset",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget codes",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget allocation term",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget parameters",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget plan parameter",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget plan process",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan columns",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control configuration",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control dimension attribute",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control documents and journals",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan workflow stage",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control configuration activation",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control message level",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control group",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget transfer rules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan process administration",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget planning process milestone",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan priority constraint",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control rule",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control cycle model",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan column rules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan allocation schedules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan stage allocations",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan layout elements",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan stage rule",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control rule criteria",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control rule over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control group criteria",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control group over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Ledger budgets and forecasts workspace parameters",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

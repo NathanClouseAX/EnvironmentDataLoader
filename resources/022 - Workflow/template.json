@@ -1,0 +1,166 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "022 - Workflow",
+    "description":  "Workflow",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "System email template",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Expression",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "System email template message",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow parallel branch",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notes",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow system parameters",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow subworkflow",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notification",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element action",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element notification",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element link",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element outcome message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow step",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow escalation path",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow line item",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow step message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element notification message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notification message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignee",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignment",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignment rule",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue group",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue relation table",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

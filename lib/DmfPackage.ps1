@@ -200,7 +200,12 @@ function Get-PackageInfo {
     .OUTPUTS
         [pscustomobject] with properties:
             Index, Folder, Name, XlsxCount, XlsxSizeMB, EntityCount,
-            HasManifest, HasOrdering, IsValid, Warnings
+            HasManifest, HasOrdering, HasData, IsTemplate, Origin, IsCustom,
+            IsValid, Warnings
+
+        Origin is 'custom' | 'captured' | 'unknown' from template.json
+        (Get-TemplateOrigin in DmfTemplate.ps1 when it is loaded, otherwise
+        'unknown').
     #>
     param(
         [Parameter(Mandatory)] [System.IO.DirectoryInfo]$Folder,
@@ -237,6 +242,19 @@ function Get-PackageInfo {
 
     $hasOrdering = Test-Path (Join-Path $Folder.FullName 'ordering.json') -PathType Leaf
 
+    $origin = 'unknown'
+    if (Get-Command -Name 'Get-TemplateOrigin' -ErrorAction SilentlyContinue) {
+        $origin = Get-TemplateOrigin -Folder $Folder.FullName
+    }
+
+    # A folder with a manifest but no data is a template (see lib/DmfTemplate.ps1),
+    # not a broken package -- callers show it as such instead of warning.
+    $isTemplate = ($hasManifest -and $entityCount -gt 0)
+    $hasData    = ($xlsxCount -gt 0)
+    if ($isTemplate -and -not $hasData) {
+        $warnings.Add('Template only (no .xlsx data files)')
+    }
+
     return [pscustomobject]@{
         Index       = $Index
         Folder      = $Folder
@@ -246,6 +264,10 @@ function Get-PackageInfo {
         EntityCount = $entityCount
         HasManifest = $hasManifest
         HasOrdering = $hasOrdering
+        HasData     = $hasData
+        IsTemplate  = $isTemplate
+        Origin      = $origin
+        IsCustom    = ($origin -eq 'custom')
         IsValid     = ($hasManifest -and $xlsxCount -gt 0)
         Warnings    = $warnings
     }

@@ -1,0 +1,304 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "650 - Project accounting",
+    "description":  "Project accounting",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Project work breakdown structure templates",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Work breakdown structure templates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project vendor retention term",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Retention setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project/category validation group",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Validation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project grantor type",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Grants setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project journal approval",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Journals setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project line property",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Line property",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project form setup",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Forms setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project resource/project validation group",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Validation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project resource/category validation group",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Validation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project stage rule settings",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Project stage",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project stage",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project resource role",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project resourcing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Forecast Models",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shared category",
+                      "sysModule":  "EMPAShared",
+                      "tags":  "Shared - Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project cost template",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Cost estimate template",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation template groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project grant matching",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Grants setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project periods",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Timesheet periods",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project vendor retention term schedule",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Retention setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Category table",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project period lines",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Timesheet periods",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project journal names",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Journals setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project inventory consumption journal names",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Journal setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project journal approval details",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Journals setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project category group",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Forecast sub models",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project cost template lines",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Cost estimate template",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project timesheet weekly periods",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Timesheet periods",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project journal description",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Journals setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project category",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project groups",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Posting setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Indirect cost component",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Indirects costs setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project work breakdown structure template tasks",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Work breakdown structure templates",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project expense policy worker groups",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project Expense policies",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project intercompany parameters",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project parameters",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Project contract",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project contracts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project grant type",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Grants setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Projects",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Projects master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project line properties",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Line property",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project experience competency",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project resourcing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project work breakdown structure - Draft",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Work breakdown structure",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project work breakdown structure - Draft estimates",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Work breakdown structure",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project cost template line categories",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Cost estimate template",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project ledger posting definition",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Posting setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project customer retention term",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Retention setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project customer retention term schedule",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Retention setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project funding source",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project contracts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Project funding rule",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Project contracts",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

@@ -1,0 +1,172 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "025 - General ledger",
+    "description":  "General ledger",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Ledger",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Journal descriptions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization email template",
+                      "sysModule":  "OrganizationAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Document types",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Documents",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial reasons",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Date intervals",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calendar",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Dimension parameters",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Default descriptions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger parameters",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Subledger journal transfer rule",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger account alias",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Balance control accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Working times",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization email template message",
+                      "sysModule":  "OrganizationAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger fiscal calendar year",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Journal names",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger fiscal calendar period",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Workflow organization parameters",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Financial dimension value legal entity overrides",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account legal entity overrides",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Accounts for automatic transactions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Posting setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation basis",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation basis source",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule destination",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule source",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

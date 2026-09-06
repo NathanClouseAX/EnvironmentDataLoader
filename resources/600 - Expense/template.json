@@ -1,0 +1,154 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "600 - Expense",
+    "description":  "Expense",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Display fields",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Display fields",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expense purposes",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Optional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Travel locations",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Optional setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Per diem locations",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Per diem",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Statistics groups",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Optional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expense anticorruption translations",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expense cover page translations",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shared category",
+                      "sysModule":  "EMPAShared",
+                      "tags":  "Shared - Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expense purpose for transactions",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Optional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Merchant",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Merchant",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expense credit card type",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Credit card",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Per diems",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Per diem",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Shared expense subcategory",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cash advance accounts",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Cash advance setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Category table",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Allowance rate",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Per diem",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expense management parameters",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Expense payment method",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Required setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expense tax recovery configuration",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Tax recovery setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expense category",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Mileage rate tiers",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Mileage rate tiers",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expense subcategory",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expense valid payment methods",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Credit card category codes",
+                      "sysModule":  "TravelAndExpense",
+                      "tags":  "Credit card; Mapping",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

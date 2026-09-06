@@ -1,0 +1,28 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "418 - Product configuration models",
+    "description":  "Product configuration models",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Product configuration models V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product configuration model",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product configuration model versions",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Product Configuration Model Version",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Constraint-based product configuration model parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Configuration",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

@@ -5,12 +5,14 @@
 
 .DESCRIPTION
     1. Authenticates once via Microsoft Entra device code flow.
-    2. Retrieves the list of validated DMF definition-group templates.
+    2. Lists templates: local folders under -ResourcesPath that hold a
+       Manifest.xml (-TemplateSource Local, the default) or the environment's
+       validated DMF templates (-TemplateSource Environment).
     3. Presents an interactive selection menu (skipped when -TemplateName or -All
        is supplied).
     4. Prompts for the source legal entity (skipped when -LegalEntityId is supplied).
-    5. For each selected template:
-       a. Fetches all template lines (DefinitionGroupTemplateLines).
+    5. -Mode Dmf (the default) -- for each selected template:
+       a. Reads the entity lines (local Manifest.xml, or DefinitionGroupTemplateLines).
        b. Deletes any existing DMF project named "<TemplateId> <LegalEntityId>".
        c. Creates a fresh export project (DataManagementDefinitionGroups).
        d. Adds one entity record per template line (DataManagementDefinitionGroupDetails).
@@ -21,6 +23,17 @@
        execution IDs for follow-up in D365 Job history.
     7. Writes a timestamped transcript to -LogPath (auto-generated when omitted;
        pass an empty string to suppress transcript logging entirely).
+
+    -Mode OData reads the same template entities straight from the OData
+    endpoints instead of running a DMF export job.  Nothing is created in
+    D365.  The entities of every selected template are combined (each entity
+    once), resolved to their OData collections through resources/entity-map.json
+    and the F&O Metadata service, and written as JSON under
+    -DataPath/<environment>/<legal entity>/<Entity label>.json together with a
+    _pull.json run index.  Company-specific entities are read with
+    cross-company=true and a dataAreaId filter.  Entities that are not
+    OData-enabled or cannot be resolved are reported and skipped.  The output
+    folder is the input to Compare-EnvironmentData.ps1.
 
     -WhatIf note:
       When -TemplateName is also supplied, no API calls are made at all.
@@ -38,6 +51,11 @@
     ─────────────────────────
     DmfOutput.ps1   -- Write-* helpers, Format-Elapsed, Stop-RunTranscript
     DmfRequest.ps1  -- Invoke-DmfRequest (REST client with retry)
+    DmfAuth.ps1     -- Connect-DmfEnvironment, Get-DmfAuthHeaders, Test-DmfTokenExpiry
+    DmfOData.ps1    -- Get-DmfODataAll, New-DmfODataUri
+    DmfTemplate.ps1 -- Get-TemplateFolders, Get-TemplateInfo, ConvertTo-DmfTemplateLine
+    DmfMetadata.ps1 -- Resolve-DmfEntity, entity-map.json  (OData mode)
+    DmfPull.ps1     -- Invoke-DmfEntityPull, Write-DmfEntitySnapshot, _pull.json  (OData mode)
 
 .PARAMETER EnvironmentUrl
     Base URL of the D365 F&O environment (no trailing slash).
@@ -70,6 +88,12 @@
     Directory to save the downloaded export .zip files.
     Defaults to $env:TEMP.  Pass an empty string ('') to skip downloading.
 
+.PARAMETER AuthMode
+    How to sign in.  Auto (default): open the default browser when the
+    session is interactive, falling back to the device code flow if that
+    fails; Browser: browser only; DeviceCode: print a code to enter in
+    any browser (for SSH sessions and servers without a browser).
+
 .PARAMETER LogPath
     Path for the run transcript log.  When omitted, a log is auto-generated in
     DownloadPath (or $env:TEMP) as DMFProjectExport_<timestamp>.log.
@@ -95,10 +119,68 @@
     When -TemplateName is also provided, no API calls are made at all.
     Otherwise the template list is fetched (read-only) to populate the menu.
 
+.PARAMETER TemplateSource
+    Local (default) lists template folders under -ResourcesPath; Environment
+    lists the D365 environment's validated templates as before.
+
+.PARAMETER ResourcesPath
+    Root scanned for template folders and home of entity-map.json.
+    Default: ./resources
+
+.PARAMETER Mode
+    Dmf (default): create a DMF project and export a package.
+    OData: read the template entities from the OData endpoints into JSON.
+
+.PARAMETER DataPath
+    OData mode: root under which <environment>/<legal entity>/ is created.
+    Default: ./data  (git-ignored)
+
+.PARAMETER MaxRecordsPerEntity
+    OData mode: safety cap per entity (0 = unlimited).  An entity that hits
+    the cap is written truncated and reported as Truncated.
+
+.PARAMETER RefreshEntityMap
+    OData mode: ignore cached resolutions and re-query the Metadata service
+    (manual entries in entity-map.json are still honoured).
+
+.PARAMETER IncludeDisabled
+    Include manifest lines marked Disable=true (local templates only).
+
 .PARAMETER PassThru
-    Return per-template result objects to the pipeline after completion.
-    Each object has properties: Template, TemplateId, ProjectName, LegalEntityId,
+    Return result objects to the pipeline after completion.
+    Dmf mode, one per template: Template, TemplateId, ProjectName, LegalEntityId,
     Status, LinesAdded, ExecutionId, DownloadUrl, DownloadedTo, Elapsed.
+    OData mode, one per entity: Templates, Entity, TargetEntity, Collection,
+    LegalEntityId, Status, Reason, RecordCount, File, Elapsed.
+
+.EXAMPLE
+    # Local template, DMF export (creates the project in D365 from the manifest)
+    .\Invoke-ProjectExport.ps1 `
+        -EnvironmentUrl 'https://contoso.operations.dynamics.com' `
+        -TenantId       'contoso.onmicrosoft.com' `
+        -LegalEntityId  'USMF' `
+        -TemplateName   '010 - System Setup' `
+        -DownloadPath   'C:\DMF\Downloads'
+
+.EXAMPLE
+    # Local template, OData pull into .\data\<env>\USMF\
+    .\Invoke-ProjectExport.ps1 `
+        -EnvironmentUrl 'https://contoso-uat.sandbox.operations.dynamics.com' `
+        -TenantId       'contoso.onmicrosoft.com' `
+        -LegalEntityId  'USMF' `
+        -TemplateName   '010 - System Setup' `
+        -Mode           OData
+
+.EXAMPLE
+    # Whole environment via OData: every local template, unattended
+    .\Invoke-ProjectExport.ps1 -EnvironmentUrl 'https://contoso.operations.dynamics.com' -TenantId 'contoso.onmicrosoft.com' `
+        -LegalEntityId 'USMF' -All -Mode OData -Force -PassThru |
+        Where-Object Status -ne 'Pulled' | Format-Table Entity, Status, Reason
+
+.EXAMPLE
+    # Preview an OData pull: resolution status per entity from the cache, no sign-in
+    .\Invoke-ProjectExport.ps1 -EnvironmentUrl 'https://contoso.operations.dynamics.com' -TenantId 'contoso.onmicrosoft.com' `
+        -LegalEntityId 'USMF' -TemplateName '010 - System Setup' -Mode OData -WhatIf
 
 .EXAMPLE
     # Interactive: list templates, prompt for selection and legal entity
@@ -168,6 +250,9 @@ param(
     [AllowEmptyString()]
     [string]$DownloadPath = $PWD.Path,
 
+    [ValidateSet('Auto', 'Browser', 'DeviceCode')]
+    [string]$AuthMode = 'Auto',
+
     [AllowEmptyString()]
     [string]$LogPath,
 
@@ -181,6 +266,23 @@ param(
     [int]$MaxRetries = 3,
 
     [switch]$All,
+
+    [ValidateSet('Local', 'Environment')]
+    [string]$TemplateSource = 'Local',
+
+    [string]$ResourcesPath,
+
+    [ValidateSet('Dmf', 'OData')]
+    [string]$Mode = 'Dmf',
+
+    [string]$DataPath,
+
+    [ValidateRange(0, 100000000)]
+    [int]$MaxRecordsPerEntity = 0,
+
+    [switch]$RefreshEntityMap,
+    [switch]$IncludeDisabled,
+
     [switch]$Force,
     [switch]$WhatIf,
     [switch]$PassThru
@@ -189,25 +291,52 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# An uncaught error anywhere below must not leave the transcript running in
+# the caller's console (it would silently swallow every later command's
+# output into this log).  Stop it, then let the error propagate.
+trap { if (Get-Command -Name Stop-RunTranscript -ErrorAction SilentlyContinue) { Stop-RunTranscript }; break }
+
 # =============================================================================
 #  Load library modules
 # =============================================================================
 $libPath = Join-Path $PSScriptRoot 'lib'
 . (Join-Path $libPath 'DmfOutput.ps1')
 . (Join-Path $libPath 'DmfRequest.ps1')
+. (Join-Path $libPath 'DmfAuth.ps1')
+. (Join-Path $libPath 'DmfOData.ps1')
+. (Join-Path $libPath 'DmfTemplate.ps1')
+. (Join-Path $libPath 'DmfMetadata.ps1')
+. (Join-Path $libPath 'DmfPull.ps1')
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 
 # =============================================================================
 #  Pre-flight validation  (before transcript so errors surface cleanly)
 # =============================================================================
-if ($DownloadPath -ne '' -and -not (Test-Path $DownloadPath -PathType Container)) {
-    throw "Download path not found: '$DownloadPath'"
+# The download folder is output: create it rather than demanding it exists.
+if ($Mode -eq 'Dmf' -and $DownloadPath -ne '' -and -not (Test-Path $DownloadPath -PathType Container)) {
+    if ($WhatIf) { Write-Host "Download path '$DownloadPath' does not exist; it would be created." -ForegroundColor Yellow }
+    else         { New-Item -ItemType Directory -Path $DownloadPath -Force | Out-Null }
 }
 
 if ($All -and $TemplateName) {
     throw "-All and -TemplateName are mutually exclusive.  Use -All to process every template, or -TemplateName to process exactly one."
 }
+
+# Resolved here, not in the param block: on PS 5.1 $PSScriptRoot is empty
+# while defaults are evaluated for a script started with a relative path.
+if (-not $ResourcesPath) { $ResourcesPath = Join-Path $PSScriptRoot 'resources' }
+if (-not $DataPath)      { $DataPath      = Join-Path $PSScriptRoot 'data' }
+
+if ($TemplateSource -eq 'Local' -and -not (Test-Path -LiteralPath $ResourcesPath -PathType Container)) {
+    throw "Resources path not found: '$ResourcesPath'.  Capture templates with Export-TemplateDefinition.ps1 or use -TemplateSource Environment."
+}
+if ($Mode -eq 'OData') {
+    foreach ($ignored in 'DownloadPath', 'PollIntervalSeconds', 'TimeoutMinutes') {
+        if ($PSBoundParameters.ContainsKey($ignored)) { Write-Host "[WARN] -$ignored is ignored in OData mode." -ForegroundColor Yellow }
+    }
+}
+$entityMapPath = Join-Path $ResourcesPath 'entity-map.json'
 
 # -All -Force signals an unattended run, but the legal entity is prompted for
 # when it is not supplied -- which would block forever with nobody watching.
@@ -251,16 +380,22 @@ Write-Host ''
 Write-Info "Environment  : $EnvironmentUrl"
 Write-Info "Tenant       : $TenantId"
 if ($LegalEntityId) { Write-Info "Legal entity : $LegalEntityId" }
-if ($DownloadPath -ne '') { Write-Info "Download to  : $DownloadPath" }
-else                      { Write-Info 'Download     : disabled' }
+Write-Info "Templates    : $TemplateSource$(if ($TemplateSource -eq 'Local') { "  ($ResourcesPath)" })"
+Write-Info "Mode         : $Mode$(if ($Mode -eq 'OData') { '  (read entities via OData; no DMF project is created)' })"
+if ($Mode -eq 'OData') {
+    Write-Info "Data path    : $DataPath"
+} elseif ($DownloadPath -ne '') { Write-Info "Download to  : $DownloadPath" }
+else                            { Write-Info 'Download     : disabled' }
 if ($Script:TranscriptActive) { Write-Info "Log          : $LogPath" }
-if ($WhatIf) { Write-Warn 'WhatIf active -- no projects will be created or exported.' }
+if ($WhatIf) { Write-Warn "WhatIf active -- $(if ($Mode -eq 'OData') { 'nothing will be pulled or written' } else { 'no projects will be created or exported' })." }
 if ($Force)  { Write-Info 'Force        : confirmation prompt suppressed' }
 
 # =============================================================================
 #  3.  WhatIf early exit for named template  (zero API calls)
+#      Only needed for the Environment source; a local template list needs no
+#      sign-in, so the normal flow already makes zero API calls under -WhatIf.
 # =============================================================================
-if ($WhatIf -and $TemplateName) {
+if ($WhatIf -and $TemplateName -and $TemplateSource -eq 'Environment' -and $Mode -eq 'Dmf') {
     $previewLe      = if ($LegalEntityId) { $LegalEntityId } else { '<legal-entity>' }
     $previewProject = "$TemplateName $previewLe"
     Write-Host ''
@@ -293,114 +428,122 @@ if ($WhatIf -and $TemplateName) {
 # =============================================================================
 #  4.  Authenticate  (once -- token reused across all templates)
 # =============================================================================
-Write-Step 'Authenticating with Microsoft Entra (device code flow)'
-
-$clientId    = '1950a258-227b-4e31-a9cf-717495945fc2'
 $baseUrl     = $EnvironmentUrl.TrimEnd('/')
-$authBase    = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0"
-$scope       = "$baseUrl/.default"
-$accessToken = $null
-$tokenExpiry = [DateTime]::MaxValue
-
-$deviceCode = Invoke-DmfRequest -Operation 'device code request' -Params @{
-    Method      = 'Post'
-    Uri         = "$authBase/devicecode"
-    ContentType = 'application/x-www-form-urlencoded'
-    Body        = "client_id=$clientId&scope=$([System.Uri]::EscapeDataString($scope))"
-}
-
-Write-Host ''
-Write-Host $deviceCode.message -ForegroundColor Yellow
-Write-Host ''
-
-$pollUntil    = (Get-Date).AddSeconds($deviceCode.expires_in)
-$pollInterval = [int]$deviceCode.interval
-
-while ((Get-Date) -lt $pollUntil) {
-    Start-Sleep -Seconds $pollInterval
-    try {
-        $tokenResp   = Invoke-RestMethod -Method Post `
-            -Uri         "$authBase/token" `
-            -ContentType 'application/x-www-form-urlencoded' `
-            -Body        "grant_type=urn:ietf:params:oauth:grant-type:device_code&client_id=$clientId&device_code=$($deviceCode.device_code)"
-        $accessToken = $tokenResp.access_token
-        $tokenExpiry = (Get-Date).AddSeconds($tokenResp.expires_in - 60)
-        Write-Info "Sign-in successful.  Token valid until $($tokenExpiry.ToString('HH:mm:ss'))."
-        break
-    }
-    catch {
-        $errCode = $null
-        try { $errCode = ($_.ErrorDetails.Message | ConvertFrom-Json).error } catch {}
-
-        $status = 0
-        if ($null -ne $_.Exception.Response) {
-            try { $status = [int]$_.Exception.Response.StatusCode } catch {}
-        }
-
-        # Throttled polling is routine, not a failure.  RFC 8628 requires the
-        # client to lengthen its interval by 5 s on slow_down; a 429 on the
-        # token endpoint is treated the same way, honouring Retry-After when
-        # one is supplied.  Handled outside the switch below because
-        # 'continue' inside a switch continues the switch, not the loop.
-        if ($status -eq 429 -or $errCode -eq 'slow_down') {
-            $wait         = Get-DmfRetryAfterSeconds -Response $_.Exception.Response
-            $pollInterval = if ($wait -gt 0) { $wait } else { $pollInterval + 5 }
-            Write-Warn "Sign-in polling throttled - slowing to ${pollInterval}s between checks..."
-        }
-        else {
-            switch ($errCode) {
-                'authorization_pending'  { continue }
-                'authorization_declined' { throw 'Sign-in declined.  Re-run and approve the prompt.' }
-                'expired_token'          { throw 'Device code expired.  Re-run the script.' }
-                default                  { throw }
-            }
-        }
-    }
-}
-
-if (-not $accessToken) { throw 'Authentication timed out before sign-in completed.' }
-
-$authHeaders = @{ Authorization = "Bearer $accessToken" }
 $dmfBase     = "$baseUrl/data/DataManagementDefinitionGroups/Microsoft.Dynamics.DataEntities"
+$session     = $null
+$authHeaders = $null
+
+function Connect-IfNeeded {
+    # Sign in once, lazily: a local template list needs no session, so with
+    # -WhatIf and -TemplateSource Local the script never authenticates.
+    if ($null -ne $script:session) { return }
+    Write-Step 'Authenticating with Microsoft Entra (device code flow)'
+    $script:session = Connect-DmfEnvironment -EnvironmentUrl $baseUrl -TenantId $TenantId -AuthMode $AuthMode
+    # Every Invoke-DmfRequest call to this environment reads the session and
+    # renews the token silently when it is close to expiry (lib/DmfAuth.ps1).
+    $Script:DmfSession  = $script:session
+    $script:authHeaders = Get-DmfAuthHeaders -Session $script:session
+}
+
+function Get-SelectedEntityLines {
+    <#
+    .SYNOPSIS  Union of the entity lines of the selected templates (each entity once, first-seen ordering).
+    .OUTPUTS   Objects: EntityName, TargetEntity, ExecutionUnit, LevelInExecutionUnit, SequenceInLevel, Templates (List[string])
+    #>
+    param([Parameter(Mandatory)][AllowEmptyCollection()][object[]]$Templates)
+
+    $union = New-Object System.Collections.Specialized.OrderedDictionary([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($tmpl in $Templates) {
+        $lines = @()
+        if ($TemplateSource -eq 'Local') {
+            $lines = @(ConvertTo-DmfTemplateLine -Lines $tmpl.Lines -IncludeDisabled:$IncludeDisabled)
+        } else {
+            Connect-IfNeeded
+            $uri   = New-DmfODataUri -BaseUrl $baseUrl -Collection 'DefinitionGroupTemplateLines' -Filter "TemplateId eq '$(ConvertTo-DmfODataLiteral $tmpl.TemplateId)'"
+            $lines = @(Get-DmfODataAll -Uri $uri -Operation "lines $($tmpl.TemplateId)" -Headers $script:authHeaders)
+        }
+        foreach ($l in $lines) {
+            $name = [string](Get-DmfProp $l 'Entity' '')
+            if (-not $name) { continue }
+            if ($union.Contains($name)) { $union[$name].Templates.Add([string]$tmpl.TemplateId); continue }
+            $entry = [pscustomobject]@{
+                EntityName           = $name
+                TargetEntity         = Get-DmfProp $l 'TargetEntity'
+                ExecutionUnit        = [int](Get-DmfProp $l 'ExecutionUnit' 1)
+                LevelInExecutionUnit = [int](Get-DmfProp $l 'LevelInExecutionUnit' 1)
+                SequenceInLevel      = [int](Get-DmfProp $l 'Sequence' 1)
+                Templates            = [System.Collections.Generic.List[string]]::new()
+            }
+            $entry.Templates.Add([string]$tmpl.TemplateId)
+            $union[$name] = $entry
+        }
+    }
+    return @($union.Values | Sort-Object -Property ExecutionUnit, LevelInExecutionUnit, SequenceInLevel, EntityName)
+}
+
+if ($TemplateSource -eq 'Environment') { Connect-IfNeeded }
 
 # =============================================================================
 #  5.  Fetch available templates  (OData with pagination)
 # =============================================================================
-Write-Step 'Fetching available templates'
+$entityMap = Get-DmfEntityMap -Path $entityMapPath
 
-$fetchUrl     = "$baseUrl/data/DefinitionGroupTemplateHeaders"
-$rawTemplates = [System.Collections.Generic.List[psobject]]::new()
+if ($TemplateSource -eq 'Environment') {
+    Write-Step 'Fetching available templates'
 
-do {
-    $page = Invoke-DmfRequest -Operation 'list templates' -Params @{
-        Method  = 'Get'
-        Uri     = $fetchUrl
-        Headers = $authHeaders
+    $rawTemplates = @(Get-DmfODataAll -Uri "$baseUrl/data/DefinitionGroupTemplateHeaders" -Operation 'list templates' -Headers $authHeaders)
+
+    # Only surface Validated templates; sort by TemplateId client-side.
+    $allTemplates = @($rawTemplates |
+        Where-Object { (Get-DmfProp $_ 'Status' '') -eq 'Validated' } |
+        Sort-Object  -Property TemplateId |
+        ForEach-Object -Begin { $i = 1 } -Process {
+        [pscustomobject]@{
+            Index       = $i++
+            TemplateId  = [string]$_.TemplateId
+            Description = [string](Get-DmfProp $_ 'Description' '')
+            ValidatedOn = $(try { $v = Get-DmfProp $_ 'ValidatedDateTime'; if ($v) { ([datetime]$v).ToString('yyyy-MM-dd') } else { '' } } catch { '' })
+            Lines       = $null      # fetched per template when needed
+            Folder      = $null
+            HasData     = $false
+        }
+    })
+
+    if ($allTemplates.Count -eq 0) {
+        throw 'No validated templates found in this environment.  Ensure DMF definition group templates exist and have Status = Validated.'
     }
-    foreach ($t in $page.value) { $rawTemplates.Add($t) }
-    $fetchUrl = if ($page.PSObject.Properties['@odata.nextLink']) { $page.'@odata.nextLink' } else { $null }
-} while ($fetchUrl)
-
-# Only surface Validated templates; sort by TemplateId client-side.
-$allTemplates = @($rawTemplates |
-    Where-Object { $_.Status -eq 'Validated' } |
-    Sort-Object  -Property TemplateId |
-    ForEach-Object -Begin { $i = 1 } -Process {
-    [pscustomobject]@{
-        Index       = $i++
-        TemplateId  = $_.TemplateId
-        Description = if ($_.PSObject.Properties['Description'] -and $_.Description) { $_.Description } else { '' }
-        ValidatedOn = if ($_.PSObject.Properties['ValidatedDateTime'] -and $_.ValidatedDateTime) {
-                          try { ([datetime]$_.ValidatedDateTime).ToString('yyyy-MM-dd') } catch { '' }
-                      } else { '' }
-    }
-})
-
-if ($allTemplates.Count -eq 0) {
-    throw 'No validated templates found in this environment.  Ensure DMF definition group templates exist and have Status = Validated.'
+    Write-Info "$($allTemplates.Count) validated template(s) found."
 }
+else {
+    Write-Step "Scanning local templates  ($ResourcesPath)"
 
-Write-Info "$($allTemplates.Count) validated template(s) found."
+    $folders      = @(Get-TemplateFolders -ResourcesPath $ResourcesPath)
+    $allTemplates = @($(for ($i = 0; $i -lt $folders.Count; $i++) {
+        $info = Get-TemplateInfo -Folder $folders[$i] -Index ($i + 1) -EntityMap $entityMap
+        foreach ($w in $info.Warnings) { Write-Warn "$($info.Name): $w" }
+        $kind = if ($info.HasData) { "$($info.EntityCount) lines, +data" } else { "$($info.EntityCount) lines" }
+        if ($Mode -eq 'OData' -and $null -ne $info.ResolvedCount) { $kind += ", $($info.ResolvedCount) resolved" }
+        if ($info.IsCustom) { $kind = "custom, $kind" }
+        [pscustomobject]@{
+            Index       = $info.Index
+            TemplateId  = $info.Name
+            Description = $info.Description
+            ValidatedOn = $kind
+            Lines       = $info.Lines
+            Folder      = $info.Folder.FullName
+            HasData     = $info.HasData
+            Origin      = $info.Origin
+            IsValid     = $info.IsValid
+        }
+    }) | Where-Object { $_.IsValid })
+
+    if ($allTemplates.Count -eq 0) {
+        throw "No valid template folders (Manifest.xml) found under '$ResourcesPath'.  Capture some with Export-TemplateDefinition.ps1, or use -TemplateSource Environment."
+    }
+    # Re-index after dropping invalid folders so menu numbers are contiguous.
+    $n = 1; foreach ($t in $allTemplates) { $t.Index = $n++ }
+    Write-Info "$($allTemplates.Count) local template(s) found."
+}
 
 # =============================================================================
 #  6.  Template selection
@@ -412,7 +555,8 @@ if ($TemplateName) {
     $match = $allTemplates | Where-Object { $_.TemplateId -eq $TemplateName }
     if (-not $match) {
         $available = ($allTemplates | ForEach-Object { "    '$($_.TemplateId)'" }) -join [System.Environment]::NewLine
-        throw "Template '$TemplateName' not found in environment '$EnvironmentUrl'.`nAvailable templates:`n$available"
+        $where     = if ($TemplateSource -eq 'Local') { "under '$ResourcesPath'" } else { "in environment '$EnvironmentUrl'" }
+        throw "Template '$TemplateName' not found $where.`nAvailable templates:`n$available"
     }
     $selectedTemplates.Add($match)
     Write-Info "Template : $TemplateName"
@@ -431,9 +575,10 @@ if ($TemplateName) {
         $Script:LineWidth - $idWidth - 22
     ))
 
-    $colFmt = '  {0,3}  {1}  {2}  {3}'
+    $colFmt  = '  {0,3}  {1}  {2}  {3}'
+    $lastHdr = if ($TemplateSource -eq 'Local') { 'Contents' } else { 'Validated' }
     Write-Host ''
-    Write-Host ($colFmt -f '#', 'Template ID'.PadRight($idWidth), 'Description'.PadRight($descWidth), 'Validated') -ForegroundColor White
+    Write-Host ($colFmt -f '#', 'Template ID'.PadRight($idWidth), 'Description'.PadRight($descWidth), $lastHdr) -ForegroundColor White
     Write-Host ($colFmt -f '---', ('-' * $idWidth), ('-' * $descWidth), '----------') -ForegroundColor DarkGray
 
     foreach ($tmpl in $allTemplates) {
@@ -516,6 +661,54 @@ if (-not $LegalEntityId) {
 # =============================================================================
 #  8.  WhatIf exit  (interactive path -- template list was already fetched)
 # =============================================================================
+if ($WhatIf -and $Mode -eq 'OData') {
+    $envName = Get-DmfEnvironmentName -EnvironmentUrl $baseUrl
+    $folder  = Get-DmfPullFolder -DataPath $DataPath -EnvironmentName $envName -LegalEntityId $LegalEntityId
+    $lines   = @(Get-SelectedEntityLines -Templates $selectedTemplates)
+    $preview = @(Resolve-DmfEntity -Lines $lines -Map $entityMap -Offline)
+
+    Write-Host ''
+    Write-Rule 'WhatIf -- nothing will be pulled or written'
+    Write-Host ''
+    Write-Info "Environment  : $EnvironmentUrl  ($envName)"
+    Write-Info "Legal entity : $LegalEntityId"
+    Write-Info "Templates    : $(($selectedTemplates | ForEach-Object { $_.TemplateId }) -join ', ')"
+    Write-Info "Data folder  : $folder"
+    Write-Info "Entities     : $($lines.Count)  (resolution shown from entity-map.json only)"
+    Write-Host ''
+    foreach ($p in $preview) {
+        $file   = Join-Path $folder (Get-DmfSnapshotFileName -EntityName $p.EntityName)
+        $exists = if (Test-Path -LiteralPath $file -PathType Leaf) { 'would overwrite' } else { 'new file' }
+        $how    = switch ($p.Status) {
+            'Resolved'  { "-> $($p.Collection)$(if ($p.CompanySpecific) { ' (per company)' })" }
+            'NotPublic' { 'not OData-enabled -- would be skipped' }
+            default     { 'would resolve via the Metadata service' }
+        }
+        Write-Detail ("{0,-45} {1,-48} {2}" -f $p.EntityName, $how, $exists)
+    }
+    Write-Host ''
+    $apiNote = if ($TemplateSource -eq 'Environment') { 'Only the template list and lines were read.' } else { 'No API calls made.' }
+    Write-Info "$apiNote  Remove -WhatIf to pull."
+    if ($PassThru) {
+        foreach ($p in $preview) {
+            [pscustomobject]@{
+                Templates     = ''
+                Entity        = $p.EntityName
+                TargetEntity  = $p.TargetEntity
+                Collection    = $p.Collection
+                LegalEntityId = $LegalEntityId
+                Status        = 'WhatIf'
+                Reason        = $p.Status
+                RecordCount   = 0
+                File          = Join-Path $folder (Get-DmfSnapshotFileName -EntityName $p.EntityName)
+                Elapsed       = '-'
+            }
+        }
+    }
+    Stop-RunTranscript
+    exit 0
+}
+
 if ($WhatIf) {
     Write-Host ''
     Write-Rule 'WhatIf -- no changes will be made'
@@ -527,7 +720,7 @@ if ($WhatIf) {
         $projectName = "$($tmpl.TemplateId) $LegalEntityId"
         $meta = "project: $projectName"
         if ($tmpl.Description) { $meta += "  -- $($tmpl.Description)" }
-        if ($tmpl.ValidatedOn)  { $meta += "  [validated: $($tmpl.ValidatedOn)]" }
+        if ($tmpl.ValidatedOn)  { $meta += $(if ($TemplateSource -eq 'Local') { "  [$($tmpl.ValidatedOn)]" } else { "  [validated: $($tmpl.ValidatedOn)]" }) }
         Write-Detail "[$($tmpl.Index)] $meta"
     }
     Write-Host ''
@@ -556,16 +749,19 @@ if ($WhatIf) {
 #  9.  Confirmation  (skipped with -Force)
 # =============================================================================
 Write-Host ''
-Write-Rule 'Ready to export'
+Write-Rule $(if ($Mode -eq 'OData') { 'Ready to pull (OData)' } else { 'Ready to export' })
 Write-Host ''
 Write-Info "Environment  : $EnvironmentUrl"
 Write-Info "Legal entity : $LegalEntityId"
 Write-Info "Templates    : $($selectedTemplates.Count)"
+if ($Mode -eq 'OData') {
+    Write-Info "Data folder  : $(Get-DmfPullFolder -DataPath $DataPath -EnvironmentName (Get-DmfEnvironmentName -EnvironmentUrl $baseUrl) -LegalEntityId $LegalEntityId)"
+}
 
 foreach ($tmpl in $selectedTemplates) {
-    $meta = "$($tmpl.TemplateId) $LegalEntityId"
+    $meta = if ($Mode -eq 'OData') { $tmpl.TemplateId } else { "$($tmpl.TemplateId) $LegalEntityId" }
     if ($tmpl.Description) { $meta += "  -- $($tmpl.Description)" }
-    if ($tmpl.ValidatedOn) { $meta += "  [validated: $($tmpl.ValidatedOn)]" }
+    if ($tmpl.ValidatedOn) { $meta += $(if ($TemplateSource -eq 'Local') { "  [$($tmpl.ValidatedOn)]" } else { "  [validated: $($tmpl.ValidatedOn)]" }) }
     Write-Detail "[$($tmpl.Index)] $meta"
 }
 
@@ -579,8 +775,144 @@ if (-not $Force) {
     }
 }
 
+Connect-IfNeeded
+
 # =============================================================================
-#  10.  Process templates
+#  10a.  OData pull  (-Mode OData)  -- then exit
+# =============================================================================
+if ($Mode -eq 'OData') {
+    $scriptStart   = Get-Date
+    $envName       = $session.EnvironmentName
+    $legalEntity   = $LegalEntityId.ToUpperInvariant()
+    $folder        = Get-DmfPullFolder -DataPath $DataPath -EnvironmentName $envName -LegalEntityId $legalEntity -Create
+    $templateNames = @($selectedTemplates | ForEach-Object { [string]$_.TemplateId })
+
+    $lines = @(Get-SelectedEntityLines -Templates $selectedTemplates)
+    $lineByName = [hashtable]::new([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($l in $lines) { $lineByName[$l.EntityName] = $l }
+
+    # ── Resolve every entity once, up front ─────────────────────────────────
+    Write-Step "Resolving $($lines.Count) entities  (entity map, then Metadata service)"
+    $resolutions = @(Resolve-DmfEntity -Lines $lines -Session $session -Map $entityMap -Refresh:$RefreshEntityMap)
+    [void](Save-DmfEntityMap -Map $entityMap)
+
+    $nResolved  = @($resolutions | Where-Object { $_.Status -eq 'Resolved' }).Count
+    $nNotPublic = @($resolutions | Where-Object { $_.Status -eq 'NotPublic' }).Count
+    $unresolved = @($resolutions | Where-Object { $_.Status -like 'Unresolved*' })
+    Write-Info "$nResolved resolved  |  $nNotPublic not OData-enabled  |  $($unresolved.Count) unresolved"
+    Write-Detail "Entity map saved: $entityMapPath  ($($entityMap.Entities.Count) entries)"
+    foreach ($u in $unresolved) { Write-Warn "  unresolved: $($u.EntityName) -- $($u.Reason)" }
+    if ($nResolved -eq 0) {
+        throw 'No entity could be resolved to an OData collection; nothing to pull.  Check entity-map.json and the Metadata service (Invoke-EnvironmentProbe.ps1).'
+    }
+    if (-not $Force -and ($unresolved.Count -gt 0 -or $nNotPublic -gt 0)) {
+        Write-Host ''
+        $confirm = (Read-Host "  Pull the $nResolved resolved entities and skip the rest? [Y]es / [N]o  (default: Y)").Trim().ToUpper()
+        if ($confirm -in 'N', 'NO') { Write-Info 'Cancelled.'; Stop-RunTranscript; exit 0 }
+    }
+
+    # ── Pull ────────────────────────────────────────────────────────────────
+    $index = Read-DmfPullIndex -Folder $folder
+    $index.environment    = $envName
+    $index.environmentUrl = $baseUrl
+    $index.legalEntity    = $legalEntity
+    $runStartedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+
+    $pullResults = [System.Collections.Generic.List[pscustomobject]]::new()
+    $i = 0
+    foreach ($r in $resolutions) {
+        $i++
+        $tpls = @($lineByName[$r.EntityName].Templates)
+        $pr = [pscustomobject]@{
+            Templates     = ($tpls -join '; ')
+            Entity        = $r.EntityName
+            TargetEntity  = $r.TargetEntity
+            Collection    = $r.Collection
+            LegalEntityId = $legalEntity
+            Status        = 'Skipped'
+            Reason        = $r.Reason
+            RecordCount   = 0
+            File          = '-'
+            Elapsed       = '-'
+        }
+
+        if ($r.Status -ne 'Resolved') {
+            $pr.Status = if ($r.Status -eq 'NotPublic') { 'NotPublic' } else { 'Unresolved' }
+            Set-DmfPullIndexEntry -Index $index -EntityName $r.EntityName -Status $pr.Status -Reason $r.Reason -Templates $tpls
+            Write-Host ("  [{0}/{1}]  {2,-45} {3}" -f $i, $resolutions.Count, $r.EntityName, "$($pr.Status) -- $($r.Reason)") -ForegroundColor DarkGray
+            $pullResults.Add($pr)
+            if ($PassThru) { Write-Output $pr }
+            continue
+        }
+
+        Write-Step ("[{0}/{1}]  {2}  ({3})" -f $i, $resolutions.Count, $r.EntityName, $r.Collection)
+        $sw = [System.Diagnostics.Stopwatch]::StartNew()
+        try {
+            $pull = Invoke-DmfEntityPull -Session $session -Resolution $r -LegalEntityId $legalEntity -MaxRecords $MaxRecordsPerEntity
+            $file = Write-DmfEntitySnapshot -Folder $folder -Resolution $r -Session $session -LegalEntityId $legalEntity -Records $pull.Records -ElapsedSeconds $sw.Elapsed.TotalSeconds -Truncated $pull.Truncated
+            $sw.Stop()
+            $pr.Status      = if ($pull.Truncated) { 'Truncated' } else { 'Pulled' }
+            $pr.Reason      = if ($pull.Truncated) { "capped at $MaxRecordsPerEntity records" } else { '' }
+            $pr.RecordCount = $pull.Records.Count
+            $pr.File        = $file
+            Set-DmfPullIndexEntry -Index $index -EntityName $r.EntityName -Status $pr.Status -Reason $pr.Reason -File (Split-Path -Leaf $file) -RecordCount $pr.RecordCount -Templates $tpls
+            $msg = "{0:N0} record(s) in {1}  ->  {2}" -f $pr.RecordCount, (Format-Elapsed $sw.Elapsed), (Split-Path -Leaf $file)
+            if ($pull.Truncated) { Write-Warn "$msg  (TRUNCATED)" } else { Write-Info $msg }
+        }
+        catch {
+            $sw.Stop()
+            $pr.Status = 'Failed'
+            $pr.Reason = $_.Exception.Message
+            Set-DmfPullIndexEntry -Index $index -EntityName $r.EntityName -Status 'Failed' -Reason $pr.Reason -Templates $tpls
+            Write-Fail "  $($r.EntityName): $($_.Exception.Message)"
+            Write-Verbose $_.ScriptStackTrace
+        }
+        $pr.Elapsed = Format-Elapsed $sw.Elapsed
+        $pullResults.Add($pr)
+        if ($PassThru) { Write-Output $pr }
+    }
+
+    $index.lastRun = [ordered]@{
+        startedAt  = $runStartedAt
+        finishedAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+        templates  = $templateNames
+        tool       = "Invoke-ProjectExport.ps1 $($Script:Version)"
+    }
+    Write-DmfPullIndex -Folder $folder -Index $index
+
+    # ── Summary ─────────────────────────────────────────────────────────────
+    $totalElapsed = Format-Elapsed ((Get-Date) - $scriptStart)
+    $divider      = '=' * $Script:LineWidth
+    Write-Host ''
+    Write-Host $divider -ForegroundColor DarkCyan
+    Write-Host "  Summary  --  $($pullResults.Count) entity/entities  |  $folder  |  total time: $totalElapsed" -ForegroundColor Cyan
+    Write-Host $divider -ForegroundColor DarkCyan
+    Write-Host ''
+    Write-Host ('  {0,-12} {1,10}  {2,-8}  {3}' -f 'Status', 'Records', 'Elapsed', 'Entity') -ForegroundColor White
+    Write-Host ('  {0,-12} {1,10}  {2,-8}  {3}' -f ('-' * 12), ('-' * 10), ('-' * 8), ('-' * 40)) -ForegroundColor DarkGray
+    $nFailed = 0
+    foreach ($pr in $pullResults) {
+        $colour = switch ($pr.Status) { 'Pulled' { 'Green' } 'Truncated' { 'Yellow' } 'Failed' { 'Red' } default { 'DarkGray' } }
+        if ($pr.Status -eq 'Failed') { $nFailed++ }
+        $recs = if ($pr.Status -in 'Pulled', 'Truncated') { '{0:N0}' -f $pr.RecordCount } else { '-' }
+        $note = if ($pr.Reason -and $pr.Status -notin 'Pulled') { "  -- $($pr.Reason)" } else { '' }
+        Write-Host ('  {0,-12} {1,10}  {2,-8}  {3}{4}' -f $pr.Status, $recs, $pr.Elapsed, $pr.Entity, $note) -ForegroundColor $colour
+    }
+    $nPulled = @($pullResults | Where-Object { $_.Status -in 'Pulled', 'Truncated' }).Count
+    Write-Host ''
+    Write-Host $divider -ForegroundColor DarkCyan
+    Write-Host "  $nPulled pulled  |  $nNotPublic not OData-enabled  |  $($unresolved.Count) unresolved  |  $nFailed failed" -ForegroundColor $(if ($nFailed -eq 0) { 'Green' } else { 'Red' })
+    Write-Host "  Run index: $(Join-Path $folder '_pull.json')" -ForegroundColor Gray
+    Write-Host $divider -ForegroundColor DarkCyan
+    Write-Host ''
+
+    Stop-RunTranscript
+    if ($nFailed -gt 0) { exit 1 }
+    exit 0
+}
+
+# =============================================================================
+#  10.  Process templates  (-Mode Dmf)
 # =============================================================================
 $results     = [System.Collections.Generic.List[pscustomobject]]::new()
 $scriptStart = Get-Date
@@ -614,32 +946,25 @@ foreach ($tmpl in $selectedTemplates) {
     Write-Host "  Project: $projectName" -ForegroundColor DarkGray
     Write-Host $divider -ForegroundColor DarkCyan
 
-    # Token expiry warnings
-    if ((Get-Date) -ge $tokenExpiry) {
-        Write-Warn 'Access token has expired.  API calls will likely fail with HTTP 401.  Re-run the script.'
-    } elseif ((Get-Date).AddMinutes(5) -ge $tokenExpiry) {
-        Write-Warn "Token expires at $($tokenExpiry.ToString('HH:mm:ss')) -- it may expire mid-export."
-    }
+    # Token expiry: renewed silently when a refresh token is available,
+    # otherwise warned about as before.
+    [void](Test-DmfTokenExpiry -Session $session -Activity 'export')
 
     try {
-        # ── a. Fetch template lines ───────────────────────────────────────────
-        Write-Step "Fetching template lines  ($tmplId)"
-
-        # OData single-quote escape (double any single quotes in the value)
-        $oDataSafeId    = $tmplId.Replace("'", "''")
-        $encodedFilter  = [System.Uri]::EscapeDataString("TemplateId eq '$oDataSafeId'")
-        $linesUrl       = "$baseUrl/data/DefinitionGroupTemplateLines?`$filter=$encodedFilter"
-        $rawLines       = [System.Collections.Generic.List[psobject]]::new()
-
-        do {
-            $linesPage = Invoke-DmfRequest -Operation 'list template lines' -Params @{
-                Method  = 'Get'
-                Uri     = $linesUrl
-                Headers = $authHeaders
+        # ── a. Read template lines  (local Manifest.xml or DefinitionGroupTemplateLines) ──
+        $rawLines = [System.Collections.Generic.List[psobject]]::new()
+        if ($TemplateSource -eq 'Local') {
+            Write-Step "Reading manifest  ($tmplId)"
+            foreach ($ln in (ConvertTo-DmfTemplateLine -Lines $tmpl.Lines -IncludeDisabled:$IncludeDisabled)) { $rawLines.Add($ln) }
+            $disabledCount = @($tmpl.Lines | Where-Object { $_.Disable }).Count
+            if ($disabledCount -gt 0 -and -not $IncludeDisabled) {
+                Write-Info "$disabledCount disabled line(s) skipped (use -IncludeDisabled to keep them)."
             }
-            foreach ($ln in $linesPage.value) { $rawLines.Add($ln) }
-            $linesUrl = if ($linesPage.PSObject.Properties['@odata.nextLink']) { $linesPage.'@odata.nextLink' } else { $null }
-        } while ($linesUrl)
+        } else {
+            Write-Step "Fetching template lines  ($tmplId)"
+            $linesUrl = New-DmfODataUri -BaseUrl $baseUrl -Collection 'DefinitionGroupTemplateLines' -Filter "TemplateId eq '$(ConvertTo-DmfODataLiteral $tmplId)'"
+            foreach ($ln in (Get-DmfODataAll -Uri $linesUrl -Operation 'list template lines' -Headers $authHeaders)) { $rawLines.Add($ln) }
+        }
 
         if ($rawLines.Count -eq 0) {
             Write-Warn "No template lines found for '$tmplId' -- skipping."
@@ -674,11 +999,13 @@ foreach ($tmpl in $selectedTemplates) {
         }
 
         if ($projectExists) {
+            # Piped to Out-Null: a DELETE returns an empty body, and without this
+            # that empty string would be the first object on the -PassThru pipeline.
             Invoke-DmfRequest -Operation 'DeleteProject' -Params @{
                 Method  = 'Delete'
                 Uri     = "$baseUrl/data/DataManagementDefinitionGroups('$encodedName')"
                 Headers = $authHeaders
-            }
+            } | Out-Null
             Write-Info "Deleted existing project."
         }
 

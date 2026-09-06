@@ -1,0 +1,238 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Jobs and Positions",
+    "description":  "Jobs and Positions",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Compensation job type",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation job function",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job family",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job tasks",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Base job",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job detail",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job compensation",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Areas of responsibility",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - areas of responsibility",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - certificates",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - education",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - tests",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - screening",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - skills",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - work tasks",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job - ADA requirements",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job templates",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - skills",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - work tasks",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - ADA requirements",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - areas of responsibility",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - certificates",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - education",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template - screening",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job template test",
+                      "sysModule":  "",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Position hierarchy types",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Position type",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Base position",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position details",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position hierarchies",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position default dimensions",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Labor unions",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Labor union agreement",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Position union agreement",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget cost elements",
+                      "sysModule":  "HRM",
+                      "tags":  "Forecast position",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Forecast position budget purpose account details",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position durations",
+                      "sysModule":  "HRM",
+                      "tags":  "Positions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Union agreement duration",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

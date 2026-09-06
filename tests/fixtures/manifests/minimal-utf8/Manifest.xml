@@ -1,0 +1,26 @@
+<DataManagementPackageManifest xmlns="http://schemas.microsoft.com/dynamics/2015/01/DataManagement">
+  <DefinitionGroupName>Customer - Retail baseline</DefinitionGroupName>
+  <Description>Retail setup needed before store go-live</Description>
+  <PackageEntityList>
+    <DataManagementPackageEntityData>
+      <EntityName>Currencies</EntityName>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Exchange rates</EntityName>
+      <TargetEntity>ExchangeRateEntity</TargetEntity>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>20</SequenceInLevel>
+      <Disable>true</Disable>
+    </DataManagementPackageEntityData>
+    <DataManagementPackageEntityData>
+      <EntityName>Country/regions</EntityName>
+      <ExecutionUnit>1</ExecutionUnit>
+      <LevelInExecutionUnit>10</LevelInExecutionUnit>
+      <SequenceInLevel>10</SequenceInLevel>
+    </DataManagementPackageEntityData>
+  </PackageEntityList>
+</DataManagementPackageManifest>

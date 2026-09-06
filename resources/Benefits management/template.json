@@ -1,0 +1,322 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Benefits management",
+    "description":  "Benefits management setup",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Employment category",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment type",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits bundle",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits deduction",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits personal contacts eligibility option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits period",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits rounding rule",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits tier code",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan type",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits life event type",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits life event option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits coverage option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan type coverage option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits coverage option personal contacts eligbility option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits waiting day",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits waiting period",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits pay frequency",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits parameters V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Benefits eligibility rule",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits credit",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits credit period",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits rate",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits rate tiers",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits rate double tiers",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits program",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits program eligibility rule",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits eligibility rule additional criteria",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan coverage option",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan eligibility rule",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan period",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits eligibility rule override",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits credit plan period",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employee benefit period",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits credit period employee",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits future life event",
+                      "sysModule":  "",
+                      "tags":  "Worker life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits employee future life event transaction (data merge)",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Employment benefit",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits employee life event",
+                      "sysModule":  "",
+                      "tags":  "Worker life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits period employee life event transaction (data merge)",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Custom field eligibility",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit eligibility process result",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reason codes",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Eligibility condition",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan employee life event transaction (data merge)",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefit Email Templates",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefits plan employee V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Employee self-service benefit tile setup",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefit setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Pay periods",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Employee Self-Service Benefit Flex Credit Tile Setup",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefit setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Benefits period group life event",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker life events",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Benefits period group life event transaction (data merge)",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker benefits life events",
+                      "entityCategory":  "Transaction"
+                  }
+              ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "environment": "env-a",
+  "environmentUrl": "https://env-a.operations.dynamics.com",
+  "legalEntity": "USMF",
+  "lastRun": { "startedAt": "2026-09-01T10:00:00Z", "finishedAt": "2026-09-01T10:05:00Z", "templates": [ "010 - System Setup", "020 - GL Shared" ], "tool": "fixture" },
+  "entities": {
+    "Currencies":      { "status": "Pulled", "file": "Currencies.json", "recordCount": 3, "pulledAt": "2026-09-01T10:01:00Z", "templates": [ "010 - System Setup", "020 - GL Shared" ] },
+    "Customer groups": { "status": "Pulled", "file": "Customer groups.json", "recordCount": 2, "pulledAt": "2026-09-01T10:02:00Z", "templates": [ "010 - System Setup" ] },
+    "Units":           { "status": "Pulled", "file": "Units.json", "recordCount": 1, "pulledAt": "2026-09-01T10:03:00Z", "templates": [ "020 - GL Shared" ] },
+    "Sites":           { "status": "NotPublic", "reason": "DataServiceEnabled=false", "pulledAt": "2026-09-01T10:03:00Z", "templates": [ "300 - Inventory" ] }
+  }
+}

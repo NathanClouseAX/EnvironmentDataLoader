@@ -1,0 +1,586 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "330 - Sales and marketing",
+    "description":  "Sales and marketing",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Supplementary item - customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Shipment form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Rebate module parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Telemarketing cancellation reasons",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Telemarketing",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity phases",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales agreement classification",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Salutations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity plans",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales activity types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Activities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation document conclusions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation document introductions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect statuses",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation document titles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation type",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reason of delivery",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation prognosis",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quotation template groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order origin codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order pools",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales summary update parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales order line update parameters",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales package appearances",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding versions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales districts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales role responsibilities",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Responsibility",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales rebate program types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Rebates",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Multiline discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity maintenance policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Line discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty levels",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity probability rates",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Packing slip form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Personal character types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Opportunities",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Opportunity source types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Responsibility",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect relation types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Company chains",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Complimentary closings",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission sales group",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Commissions Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer classification groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Customer Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Decision making roles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contact person titles",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business segments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign cancellation reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Return reason code groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business classifications",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prospects",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign media types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign targets",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign email templates",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Campaigns",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Destination code",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Interest types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead priorities",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transaction logging policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Trade agreement journal name",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead types",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Lead processing policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Lead ratings",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External item description customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Email categories",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Direct mailing categories",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Disposition code",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expedite codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment job functions",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Contacts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales agreement form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales invoice form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales order confirmation form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales quotation form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Picking list form printing configurations",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales units",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Quotations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Direct mailing category items",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Return reason codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business subsegments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "External sales agreement classification",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Email groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Mailings",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect statistics default values",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Marketing mail policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding version currencies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales price smart rounding version rules",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Activate sales prices and discounts",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales order hold codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business classification of parties",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales type document entry policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales type document default values",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Campaign creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales activity creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales agreement classification translation",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales Agreement Classification",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales type document processing policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Policies Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "External item descriptions for customers V2",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "External item setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Prospect creation policies",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales charge codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leads",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Leads",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

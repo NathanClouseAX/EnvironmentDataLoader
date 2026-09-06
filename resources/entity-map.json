@@ -1,0 +1,1455 @@
+{
+    "schemaVersion":  1,
+    "entities":  {
+                     "Account structure activation":  {
+                                                          "targetEntity":  "LedgerAccountStructureActivationEntity",
+                                                          "publicEntityName":  "AccountStructureActivation",
+                                                          "publicCollectionName":  "AccountStructureActivations",
+                                                          "dataServiceEnabled":  true,
+                                                          "dataManagementEnabled":  true,
+                                                          "entityCategory":  "Reference",
+                                                          "companySpecific":  false,
+                                                          "keyFields":  [
+                                                                            "AccountStructure"
+                                                                        ],
+                                                          "source":  "metadata",
+                                                          "resolvedFrom":  "nclouse-prod",
+                                                          "resolvedAt":  "2026-09-05T18:05:05Z"
+                                                      },
+                     "Account structure allowed values":  {
+                                                              "targetEntity":  "LedgerAccountStructureConstraintEntity",
+                                                              "publicEntityName":  "AccountStructureConstraint",
+                                                              "publicCollectionName":  "AccountStructureConstraints",
+                                                              "dataServiceEnabled":  true,
+                                                              "dataManagementEnabled":  true,
+                                                              "entityCategory":  "Reference",
+                                                              "companySpecific":  false,
+                                                              "keyFields":  [
+                                                                                "AccountStructure",
+                                                                                "Status",
+                                                                                "Position"
+                                                                            ],
+                                                              "source":  "metadata",
+                                                              "resolvedFrom":  "nclouse-prod",
+                                                              "resolvedAt":  "2026-09-05T18:05:01Z"
+                                                          },
+                     "Account structures":  {
+                                                "targetEntity":  "LedgerAccountStructureEntity",
+                                                "publicEntityName":  "AccountStructure",
+                                                "publicCollectionName":  "AccountStructures",
+                                                "dataServiceEnabled":  true,
+                                                "dataManagementEnabled":  true,
+                                                "entityCategory":  "Reference",
+                                                "companySpecific":  false,
+                                                "keyFields":  [
+                                                                  "AccountStructureName",
+                                                                  "Status"
+                                                              ],
+                                                "source":  "metadata",
+                                                "resolvedFrom":  "nclouse-prod",
+                                                "resolvedAt":  "2026-09-05T18:04:59Z"
+                                            },
+                     "Address and contact information purpose":  {
+                                                                     "targetEntity":  "LogisticsLocationRoleEntity",
+                                                                     "publicEntityName":  "LocationRole",
+                                                                     "publicCollectionName":  "LocationRoles",
+                                                                     "dataServiceEnabled":  true,
+                                                                     "dataManagementEnabled":  true,
+                                                                     "entityCategory":  "Master",
+                                                                     "companySpecific":  false,
+                                                                     "keyFields":  [
+                                                                                       "Purpose",
+                                                                                       "Language"
+                                                                                   ],
+                                                                     "source":  "metadata",
+                                                                     "resolvedFrom":  "nclouse-prod",
+                                                                     "resolvedAt":  "2026-09-05T13:11:44Z"
+                                                                 },
+                     "Address books":  {
+                                           "targetEntity":  "DirAddressBooksEntity",
+                                           "publicEntityName":  "AddressBooks",
+                                           "publicCollectionName":  "AddressBooks",
+                                           "dataServiceEnabled":  true,
+                                           "dataManagementEnabled":  true,
+                                           "entityCategory":  "Master",
+                                           "companySpecific":  false,
+                                           "keyFields":  [
+                                                             "Name"
+                                                         ],
+                                           "source":  "metadata",
+                                           "resolvedFrom":  "nclouse-prod",
+                                           "resolvedAt":  "2026-09-05T13:11:46Z"
+                                       },
+                     "Address format":  {
+                                            "targetEntity":  "LogisticsAddressFormatEntity",
+                                            "publicEntityName":  "AddressFormat",
+                                            "publicCollectionName":  "AddressFormats",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Master",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "AddressFormat"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:11:47Z"
+                                        },
+                     "Address format lines":  {
+                                                  "targetEntity":  "LogisticsAddressFormatLinesEntity",
+                                                  "publicEntityName":  "AddressFormatLines",
+                                                  "publicCollectionName":  "AddressFormatLines",
+                                                  "dataServiceEnabled":  true,
+                                                  "dataManagementEnabled":  true,
+                                                  "entityCategory":  "Master",
+                                                  "companySpecific":  false,
+                                                  "keyFields":  [
+                                                                    "AddressFormat",
+                                                                    "LineNumber"
+                                                                ],
+                                                  "source":  "metadata",
+                                                  "resolvedFrom":  "nclouse-prod",
+                                                  "resolvedAt":  "2026-09-05T13:11:59Z"
+                                              },
+                     "Address parameters":  {
+                                                "targetEntity":  "LogisticsAddressParametersEntity",
+                                                "publicEntityName":  "AddressParameters",
+                                                "publicCollectionName":  "AddressParameters",
+                                                "dataServiceEnabled":  true,
+                                                "dataManagementEnabled":  true,
+                                                "entityCategory":  "Parameters",
+                                                "companySpecific":  false,
+                                                "keyFields":  [
+                                                                  "Key"
+                                                              ],
+                                                "source":  "metadata",
+                                                "resolvedFrom":  "nclouse-prod",
+                                                "resolvedAt":  "2026-09-05T13:11:48Z"
+                                            },
+                     "Advanced rule criteria":  {
+                                                    "targetEntity":  "LedgerAdvancedRuleCriterionEntity",
+                                                    "publicEntityName":  "AdvancedRuleCriterion",
+                                                    "publicCollectionName":  "AdvancedRuleCriteria",
+                                                    "dataServiceEnabled":  true,
+                                                    "dataManagementEnabled":  true,
+                                                    "entityCategory":  "Reference",
+                                                    "companySpecific":  false,
+                                                    "keyFields":  [
+                                                                      "AccountStructure",
+                                                                      "AdvancedRule",
+                                                                      "Status",
+                                                                      "SegmentName"
+                                                                  ],
+                                                    "source":  "metadata",
+                                                    "resolvedFrom":  "nclouse-prod",
+                                                    "resolvedAt":  "2026-09-05T18:05:03Z"
+                                                },
+                     "Advanced rule structure activation":  {
+                                                                "targetEntity":  "LedgerAdvancedRuleStructureActivationEntity",
+                                                                "publicEntityName":  "AdvancedRuleStructureActivation",
+                                                                "publicCollectionName":  "AdvancedRuleStructureActivations",
+                                                                "dataServiceEnabled":  true,
+                                                                "dataManagementEnabled":  true,
+                                                                "entityCategory":  "Reference",
+                                                                "companySpecific":  false,
+                                                                "keyFields":  [
+                                                                                  "AdvancedRuleStructure"
+                                                                              ],
+                                                                "source":  "metadata",
+                                                                "resolvedFrom":  "nclouse-prod",
+                                                                "resolvedAt":  "2026-09-05T18:04:58Z"
+                                                            },
+                     "Advanced rule structure allowed values":  {
+                                                                    "targetEntity":  "LedgerAdvancedRuleStructureConstraintEntity",
+                                                                    "publicEntityName":  "LedgerAdvancedRuleStructureConstraint",
+                                                                    "publicCollectionName":  "LedgerAdvancedRuleStructureConstraints",
+                                                                    "dataServiceEnabled":  true,
+                                                                    "dataManagementEnabled":  true,
+                                                                    "entityCategory":  "Reference",
+                                                                    "companySpecific":  false,
+                                                                    "keyFields":  [
+                                                                                      "AdvancedRuleStructure",
+                                                                                      "Status",
+                                                                                      "Position"
+                                                                                  ],
+                                                                    "source":  "metadata",
+                                                                    "resolvedFrom":  "nclouse-prod",
+                                                                    "resolvedAt":  "2026-09-05T18:04:57Z"
+                                                                },
+                     "Advanced rule structures":  {
+                                                      "targetEntity":  "LedgerAdvancedRuleStructureEntity",
+                                                      "publicEntityName":  "LedgerAdvancedRuleStructure",
+                                                      "publicCollectionName":  "LedgerAdvancedRuleStructures",
+                                                      "dataServiceEnabled":  true,
+                                                      "dataManagementEnabled":  true,
+                                                      "entityCategory":  "Reference",
+                                                      "companySpecific":  false,
+                                                      "keyFields":  [
+                                                                        "AccountRuleStructureName",
+                                                                        "Status"
+                                                                    ],
+                                                      "source":  "metadata",
+                                                      "resolvedFrom":  "nclouse-prod",
+                                                      "resolvedAt":  "2026-09-05T18:04:55Z"
+                                                  },
+                     "Advanced rules":  {
+                                            "targetEntity":  "LedgerAdvancedRuleEntity",
+                                            "publicEntityName":  "AdvancedRule",
+                                            "publicCollectionName":  "AdvancedRules",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "AccountStructure",
+                                                              "AdvancedRuleName",
+                                                              "Status"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T18:05:02Z"
+                                        },
+                     "Chart of accounts":  {
+                                               "targetEntity":  "LedgerChartOfAccountsEntity",
+                                               "publicEntityName":  "ChartOfAccounts",
+                                               "publicCollectionName":  "ChartOfAccounts",
+                                               "dataServiceEnabled":  true,
+                                               "dataManagementEnabled":  true,
+                                               "entityCategory":  "Master",
+                                               "companySpecific":  false,
+                                               "keyFields":  [
+                                                                 "ChartOfAccounts"
+                                                             ],
+                                               "source":  "metadata",
+                                               "resolvedFrom":  "nclouse-prod",
+                                               "resolvedAt":  "2026-09-05T13:19:10Z"
+                                           },
+                     "Cities":  {
+                                    "targetEntity":  "LogisticsAddressCityEntity",
+                                    "publicEntityName":  "AddressCity",
+                                    "publicCollectionName":  "AddressCities",
+                                    "dataServiceEnabled":  true,
+                                    "dataManagementEnabled":  true,
+                                    "entityCategory":  "Master",
+                                    "companySpecific":  false,
+                                    "keyFields":  [
+                                                      "CityKey"
+                                                  ],
+                                    "source":  "metadata",
+                                    "resolvedFrom":  "nclouse-prod",
+                                    "resolvedAt":  "2026-09-05T13:12:06Z"
+                                },
+                     "Consolidation groups and accounts":  {
+                                                               "targetEntity":  "LedgerConsolidateAccountGroupEntity",
+                                                               "publicEntityName":  "ConsolidateAccountGroup",
+                                                               "publicCollectionName":  "ConsolidateAccountGroups",
+                                                               "dataServiceEnabled":  true,
+                                                               "dataManagementEnabled":  true,
+                                                               "entityCategory":  "Master",
+                                                               "companySpecific":  false,
+                                                               "keyFields":  [
+                                                                                 "ConsolidationAccountGroup",
+                                                                                 "ChartOfAccounts",
+                                                                                 "MainAccount"
+                                                                             ],
+                                                               "source":  "metadata",
+                                                               "resolvedFrom":  "nclouse-prod",
+                                                               "resolvedAt":  "2026-09-05T13:19:20Z"
+                                                           },
+                     "Counties":  {
+                                      "targetEntity":  "LogisticsAddressCountyEntity",
+                                      "publicEntityName":  "AddressCounty",
+                                      "publicCollectionName":  "AddressCounties",
+                                      "dataServiceEnabled":  true,
+                                      "dataManagementEnabled":  true,
+                                      "entityCategory":  "Master",
+                                      "companySpecific":  false,
+                                      "keyFields":  [
+                                                        "CountryRegionId",
+                                                        "StateId",
+                                                        "CountyId"
+                                                    ],
+                                      "source":  "metadata",
+                                      "resolvedFrom":  "nclouse-prod",
+                                      "resolvedAt":  "2026-09-05T13:12:05Z"
+                                  },
+                     "Country/regions":  {
+                                             "targetEntity":  "LogisticsAddressCountryRegionEntity",
+                                             "publicEntityName":  "AddressCountryRegion",
+                                             "publicCollectionName":  "AddressCountryRegions",
+                                             "dataServiceEnabled":  true,
+                                             "dataManagementEnabled":  true,
+                                             "entityCategory":  "Master",
+                                             "companySpecific":  false,
+                                             "keyFields":  [
+                                                               "CountryRegion"
+                                                           ],
+                                             "source":  "metadata",
+                                             "resolvedFrom":  "nclouse-prod",
+                                             "resolvedAt":  "2026-09-05T13:12:00Z"
+                                         },
+                     "Currencies":  {
+                                        "targetEntity":  "CurrencyEntity",
+                                        "publicEntityName":  "Currency",
+                                        "publicCollectionName":  "Currencies",
+                                        "dataServiceEnabled":  true,
+                                        "dataManagementEnabled":  true,
+                                        "entityCategory":  "Reference",
+                                        "companySpecific":  false,
+                                        "keyFields":  [
+                                                          "CurrencyCode"
+                                                      ],
+                                        "source":  "metadata",
+                                        "resolvedFrom":  "nclouse-prod",
+                                        "resolvedAt":  "2026-09-05T13:11:49Z"
+                                    },
+                     "Dimension attribute activation":  {
+                                                            "targetEntity":  "DimensionAttributeActivationEntity",
+                                                            "publicEntityName":  "DimensionAttributeActivation",
+                                                            "publicCollectionName":  "DimensionAttributeActivations",
+                                                            "dataServiceEnabled":  true,
+                                                            "dataManagementEnabled":  true,
+                                                            "entityCategory":  "Reference",
+                                                            "companySpecific":  false,
+                                                            "keyFields":  [
+                                                                              "DoActivate"
+                                                                          ],
+                                                            "source":  "metadata",
+                                                            "resolvedFrom":  "nclouse-prod",
+                                                            "resolvedAt":  "2026-09-05T13:19:14Z"
+                                                        },
+                     "Districts V2":  {
+                                          "targetEntity":  "LogisticsAddressDistrictV2Entity",
+                                          "publicEntityName":  "AddressDistrictV2",
+                                          "publicCollectionName":  "AddressDistrictsV2",
+                                          "dataServiceEnabled":  true,
+                                          "dataManagementEnabled":  true,
+                                          "entityCategory":  "Master",
+                                          "companySpecific":  false,
+                                          "keyFields":  [
+                                                            "District",
+                                                            "CityKey",
+                                                            "CountryRegionId",
+                                                            "StateId",
+                                                            "CountyId"
+                                                        ],
+                                          "source":  "metadata",
+                                          "resolvedFrom":  "nclouse-prod",
+                                          "resolvedAt":  "2026-09-05T13:12:09Z"
+                                      },
+                     "Ethnic origins":  {
+                                            "targetEntity":  "HcmEthnicOriginEntity",
+                                            "publicEntityName":  "EthnicOrigin",
+                                            "publicCollectionName":  "EthnicOrigins",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "EthnicOriginId"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:20:21Z"
+                                        },
+                     "Exchange rates":  {
+                                            "targetEntity":  "ExchangeRateEntity",
+                                            "publicEntityName":  "ExchangeRate",
+                                            "publicCollectionName":  "ExchangeRates",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "RateTypeName",
+                                                              "FromCurrency",
+                                                              "ToCurrency",
+                                                              "StartDate"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:11:58Z"
+                                        },
+                     "Expression":  {
+                                        "targetEntity":  "ExpressionEntity",
+                                        "publicEntityName":  null,
+                                        "publicCollectionName":  null,
+                                        "dataServiceEnabled":  false,
+                                        "dataManagementEnabled":  true,
+                                        "entityCategory":  "Master",
+                                        "companySpecific":  false,
+                                        "keyFields":  [
+
+                                                      ],
+                                        "source":  "metadata",
+                                        "resolvedFrom":  "nclouse-prod",
+                                        "resolvedAt":  "2026-09-05T13:20:25Z"
+                                    },
+                     "Financial dimension format":  {
+                                                        "targetEntity":  "DimensionIntegrationFormatEntity",
+                                                        "publicEntityName":  "DimensionIntegrationFormat",
+                                                        "publicCollectionName":  "DimensionIntegrationFormats",
+                                                        "dataServiceEnabled":  true,
+                                                        "dataManagementEnabled":  true,
+                                                        "entityCategory":  "Master",
+                                                        "companySpecific":  false,
+                                                        "keyFields":  [
+                                                                          "DimensionFormatName",
+                                                                          "DimensionFormatType"
+                                                                      ],
+                                                        "source":  "metadata",
+                                                        "resolvedFrom":  "nclouse-prod",
+                                                        "resolvedAt":  "2026-09-05T13:19:15Z"
+                                                    },
+                     "Financial dimension sets":  {
+                                                      "targetEntity":  "FinancialDimensionSetEntity",
+                                                      "publicEntityName":  "FinancialDimensionSet",
+                                                      "publicCollectionName":  "FinancialDimensionSets",
+                                                      "dataServiceEnabled":  true,
+                                                      "dataManagementEnabled":  true,
+                                                      "entityCategory":  "Reference",
+                                                      "companySpecific":  false,
+                                                      "keyFields":  [
+                                                                        "Name"
+                                                                    ],
+                                                      "source":  "metadata",
+                                                      "resolvedFrom":  "nclouse-prod",
+                                                      "resolvedAt":  "2026-09-05T13:19:22Z"
+                                                  },
+                     "Financial dimension translations":  {
+                                                              "targetEntity":  "DimensionAttributeTranslationEntity",
+                                                              "publicEntityName":  "DimensionAttributeTranslation",
+                                                              "publicCollectionName":  "DimensionAttributeTranslations",
+                                                              "dataServiceEnabled":  true,
+                                                              "dataManagementEnabled":  true,
+                                                              "entityCategory":  "Reference",
+                                                              "companySpecific":  false,
+                                                              "keyFields":  [
+                                                                                "FinancialDimension",
+                                                                                "LanguageCode"
+                                                                            ],
+                                                              "source":  "metadata",
+                                                              "resolvedFrom":  "nclouse-prod",
+                                                              "resolvedAt":  "2026-09-05T13:19:16Z"
+                                                          },
+                     "Financial dimension value translations":  {
+                                                                    "targetEntity":  "FinancialDimensionValueTranslationEntity",
+                                                                    "publicEntityName":  "FinancialDimensionValueTranslation",
+                                                                    "publicCollectionName":  "FinancialDimensionValueTranslations",
+                                                                    "dataServiceEnabled":  true,
+                                                                    "dataManagementEnabled":  true,
+                                                                    "entityCategory":  "Reference",
+                                                                    "companySpecific":  false,
+                                                                    "keyFields":  [
+                                                                                      "FinancialDimension",
+                                                                                      "LanguageCode",
+                                                                                      "FinancialDimensionValue"
+                                                                                  ],
+                                                                    "source":  "metadata",
+                                                                    "resolvedFrom":  "nclouse-prod",
+                                                                    "resolvedAt":  "2026-09-05T13:19:23Z"
+                                                                },
+                     "Financial dimension values":  {
+                                                        "targetEntity":  "FinancialDimensionValueEntity",
+                                                        "publicEntityName":  "FinancialDimensionValue",
+                                                        "publicCollectionName":  "FinancialDimensionValues",
+                                                        "dataServiceEnabled":  true,
+                                                        "dataManagementEnabled":  true,
+                                                        "entityCategory":  "Master",
+                                                        "companySpecific":  false,
+                                                        "keyFields":  [
+                                                                          "FinancialDimension",
+                                                                          "LegalEntityId",
+                                                                          "DimensionValue"
+                                                                      ],
+                                                        "source":  "metadata",
+                                                        "resolvedFrom":  "nclouse-prod",
+                                                        "resolvedAt":  "2026-09-05T13:19:24Z"
+                                                    },
+                     "Financial dimensions":  {
+                                                  "targetEntity":  "DimensionAttributeEntity",
+                                                  "publicEntityName":  "DimensionAttribute",
+                                                  "publicCollectionName":  "DimensionAttributes",
+                                                  "dataServiceEnabled":  true,
+                                                  "dataManagementEnabled":  true,
+                                                  "entityCategory":  "Reference",
+                                                  "companySpecific":  false,
+                                                  "keyFields":  [
+                                                                    "DimensionName"
+                                                                ],
+                                                  "source":  "metadata",
+                                                  "resolvedFrom":  "nclouse-prod",
+                                                  "resolvedAt":  "2026-09-05T13:19:11Z"
+                                              },
+                     "Fiscal calendar":  {
+                                             "targetEntity":  "FiscalYearEntity",
+                                             "publicEntityName":  "FiscalCalendarYear",
+                                             "publicCollectionName":  "FiscalCalendarYears",
+                                             "dataServiceEnabled":  true,
+                                             "dataManagementEnabled":  true,
+                                             "entityCategory":  "Master",
+                                             "companySpecific":  false,
+                                             "keyFields":  [
+                                                               "Calendar",
+                                                               "FiscalYear"
+                                                           ],
+                                             "source":  "metadata",
+                                             "resolvedFrom":  "nclouse-prod",
+                                             "resolvedAt":  "2026-09-05T13:19:12Z"
+                                         },
+                     "Fiscal calendar period":  {
+                                                    "targetEntity":  "FiscalPeriodEntity",
+                                                    "publicEntityName":  "FiscalPeriod",
+                                                    "publicCollectionName":  "FiscalPeriods",
+                                                    "dataServiceEnabled":  true,
+                                                    "dataManagementEnabled":  true,
+                                                    "entityCategory":  "Master",
+                                                    "companySpecific":  false,
+                                                    "keyFields":  [
+                                                                      "Calendar",
+                                                                      "FiscalYear",
+                                                                      "StartDate",
+                                                                      "EndDate",
+                                                                      "PeriodName"
+                                                                  ],
+                                                    "source":  "metadata",
+                                                    "resolvedFrom":  "nclouse-prod",
+                                                    "resolvedAt":  "2026-09-05T13:19:17Z"
+                                                },
+                     "Global address book parameters":  {
+                                                            "targetEntity":  "DirParametersEntity",
+                                                            "publicEntityName":  "DirParameters",
+                                                            "publicCollectionName":  "DirParameters",
+                                                            "dataServiceEnabled":  true,
+                                                            "dataManagementEnabled":  true,
+                                                            "entityCategory":  "Parameters",
+                                                            "companySpecific":  false,
+                                                            "keyFields":  [
+                                                                              "Key"
+                                                                          ],
+                                                            "source":  "metadata",
+                                                            "resolvedFrom":  "nclouse-prod",
+                                                            "resolvedAt":  "2026-09-05T13:11:50Z"
+                                                        },
+                     "Global address book V2":  {
+                                                    "targetEntity":  "DirPartyV2Entity",
+                                                    "publicEntityName":  "PartyV2",
+                                                    "publicCollectionName":  "PartiesV2",
+                                                    "dataServiceEnabled":  false,
+                                                    "dataManagementEnabled":  true,
+                                                    "entityCategory":  "Master",
+                                                    "companySpecific":  false,
+                                                    "keyFields":  [
+
+                                                                  ],
+                                                    "source":  "metadata",
+                                                    "resolvedFrom":  "nclouse-prod",
+                                                    "resolvedAt":  "2026-09-05T13:12:13Z"
+                                                },
+                     "Language codes":  {
+                                            "targetEntity":  "HcmLanguageCodeEntity",
+                                            "publicEntityName":  "LanguageCode",
+                                            "publicCollectionName":  "LanguageCodes",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "LanguageCodeId"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:20:23Z"
+                                        },
+                     "Legal entities":  {
+                                            "targetEntity":  "OMLegalEntity",
+                                            "publicEntityName":  "LegalEntity",
+                                            "publicCollectionName":  "LegalEntities",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Master",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "LegalEntityId"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:12:11Z"
+                                        },
+                     "Main account":  {
+                                          "targetEntity":  "MainAccountEntity",
+                                          "publicEntityName":  "MainAccount",
+                                          "publicCollectionName":  "MainAccounts",
+                                          "dataServiceEnabled":  true,
+                                          "dataManagementEnabled":  true,
+                                          "entityCategory":  "Master",
+                                          "companySpecific":  false,
+                                          "keyFields":  [
+                                                            "ChartOfAccounts",
+                                                            "MainAccountId"
+                                                        ],
+                                          "source":  "metadata",
+                                          "resolvedFrom":  "nclouse-prod",
+                                          "resolvedAt":  "2026-09-05T13:19:19Z"
+                                      },
+                     "Main account categories":  {
+                                                     "targetEntity":  "MainAccountCategoryEntity",
+                                                     "publicEntityName":  "MainAccountCategory",
+                                                     "publicCollectionName":  "MainAccountCategories",
+                                                     "dataServiceEnabled":  true,
+                                                     "dataManagementEnabled":  true,
+                                                     "entityCategory":  "Master",
+                                                     "companySpecific":  false,
+                                                     "keyFields":  [
+                                                                       "ReferenceId"
+                                                                   ],
+                                                     "source":  "metadata",
+                                                     "resolvedFrom":  "nclouse-prod",
+                                                     "resolvedAt":  "2026-09-05T13:19:13Z"
+                                                 },
+                     "Name affixes":  {
+                                          "targetEntity":  "DirNameAffixEntity",
+                                          "publicEntityName":  "NameAffix",
+                                          "publicCollectionName":  "NameAffixes",
+                                          "dataServiceEnabled":  true,
+                                          "dataManagementEnabled":  true,
+                                          "entityCategory":  "Reference",
+                                          "companySpecific":  false,
+                                          "keyFields":  [
+                                                            "Type",
+                                                            "Affix"
+                                                        ],
+                                          "source":  "metadata",
+                                          "resolvedFrom":  "nclouse-prod",
+                                          "resolvedAt":  "2026-09-05T13:11:51Z"
+                                      },
+                     "Name sequences":  {
+                                            "targetEntity":  "DirNameSequenceEntity",
+                                            "publicEntityName":  "NameSequence",
+                                            "publicCollectionName":  "NameSequences",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "NameSequence",
+                                                              "LanguageId"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:11:52Z"
+                                        },
+                     "Number sequence code":  {
+                                                  "targetEntity":  "NumberSequenceTableEntity",
+                                                  "publicEntityName":  "SequenceTable",
+                                                  "publicCollectionName":  "SequenceTables",
+                                                  "dataServiceEnabled":  true,
+                                                  "dataManagementEnabled":  true,
+                                                  "entityCategory":  "Reference",
+                                                  "companySpecific":  false,
+                                                  "keyFields":  [
+                                                                    "NumberSequenceCode",
+                                                                    "ScopeType",
+                                                                    "ScopeValue"
+                                                                ],
+                                                  "source":  "metadata",
+                                                  "resolvedFrom":  "nclouse-prod",
+                                                  "resolvedAt":  "2026-09-05T13:19:26Z"
+                                              },
+                     "Number sequence group":  {
+                                                   "targetEntity":  "NumberSequenceGroupEntity",
+                                                   "publicEntityName":  "SequenceGroup",
+                                                   "publicCollectionName":  "SequenceGroups",
+                                                   "dataServiceEnabled":  true,
+                                                   "dataManagementEnabled":  true,
+                                                   "entityCategory":  "Reference",
+                                                   "companySpecific":  false,
+                                                   "keyFields":  [
+                                                                     "NumberSequenceGroup"
+                                                                 ],
+                                                   "source":  "metadata",
+                                                   "resolvedFrom":  "nclouse-prod",
+                                                   "resolvedAt":  "2026-09-05T13:19:27Z"
+                                               },
+                     "Number sequence references":  {
+                                                        "targetEntity":  "NumberSequencesReferenceEntity",
+                                                        "publicEntityName":  "NumberSequencesReference",
+                                                        "publicCollectionName":  "NumberSequencesReferences",
+                                                        "dataServiceEnabled":  true,
+                                                        "dataManagementEnabled":  true,
+                                                        "entityCategory":  "Master",
+                                                        "companySpecific":  false,
+                                                        "keyFields":  [
+                                                                          "ScopeType",
+                                                                          "ScopeValue",
+                                                                          "DataTypeName"
+                                                                      ],
+                                                        "source":  "metadata",
+                                                        "resolvedFrom":  "nclouse-prod",
+                                                        "resolvedAt":  "2026-09-05T13:19:28Z"
+                                                    },
+                     "Operating unit":  {
+                                            "targetEntity":  "OMOperatingUnitEntity",
+                                            "publicEntityName":  "OperatingUnit",
+                                            "publicCollectionName":  "OperatingUnits",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Master",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "OperatingUnitNumber"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:12:12Z"
+                                        },
+                     "Organization hierarchy purposes":  {
+                                                             "targetEntity":  "OMOrganizationHierarchyPurposeEntity",
+                                                             "publicEntityName":  "OrganizationHierarchyPurpose",
+                                                             "publicCollectionName":  "OrganizationHierarchyPurposes",
+                                                             "dataServiceEnabled":  true,
+                                                             "dataManagementEnabled":  true,
+                                                             "entityCategory":  "Master",
+                                                             "companySpecific":  false,
+                                                             "keyFields":  [
+                                                                               "HierarchyPurpose",
+                                                                               "HierarchyType"
+                                                                           ],
+                                                             "source":  "metadata",
+                                                             "resolvedFrom":  "nclouse-prod",
+                                                             "resolvedAt":  "2026-09-05T13:11:57Z"
+                                                         },
+                     "Organization hierarchy type":  {
+                                                         "targetEntity":  "OMOrganizationHierarchyTypeEntity",
+                                                         "publicEntityName":  "OrganizationHierarchyType",
+                                                         "publicCollectionName":  "OrganizationHierarchyTypes",
+                                                         "dataServiceEnabled":  true,
+                                                         "dataManagementEnabled":  true,
+                                                         "entityCategory":  "Master",
+                                                         "companySpecific":  false,
+                                                         "keyFields":  [
+                                                                           "Name"
+                                                                       ],
+                                                         "source":  "metadata",
+                                                         "resolvedFrom":  "nclouse-prod",
+                                                         "resolvedAt":  "2026-09-05T13:11:54Z"
+                                                     },
+                     "Organization hierarchy V2 - published and draft":  {
+                                                                             "targetEntity":  "OMOrganizationHierarchyPublishedAndDraftV2Entity",
+                                                                             "publicEntityName":  null,
+                                                                             "publicCollectionName":  null,
+                                                                             "dataServiceEnabled":  false,
+                                                                             "dataManagementEnabled":  true,
+                                                                             "entityCategory":  "Master",
+                                                                             "companySpecific":  false,
+                                                                             "keyFields":  [
+
+                                                                                           ],
+                                                                             "source":  "metadata",
+                                                                             "resolvedFrom":  "nclouse-prod",
+                                                                             "resolvedAt":  "2026-09-05T13:12:13Z"
+                                                                         },
+                     "Party contacts":  {
+                                            "targetEntity":  "DirPartyContactEntity",
+                                            "publicEntityName":  "PartyContact",
+                                            "publicCollectionName":  "PartyContacts",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Master",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "PartyNumber",
+                                                              "Type",
+                                                              "Description",
+                                                              "Locator"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:12:20Z"
+                                        },
+                     "Party postal address V2":  {
+                                                     "targetEntity":  "DirPartyLocationPostalAddressV2Entity",
+                                                     "publicEntityName":  "PartyLocationPostalAddressV2",
+                                                     "publicCollectionName":  "PartyLocationPostalAddressesV2",
+                                                     "dataServiceEnabled":  true,
+                                                     "dataManagementEnabled":  true,
+                                                     "entityCategory":  "Master",
+                                                     "companySpecific":  false,
+                                                     "keyFields":  [
+                                                                       "PartyNumber",
+                                                                       "LocationId",
+                                                                       "ValidFrom"
+                                                                   ],
+                                                     "source":  "metadata",
+                                                     "resolvedFrom":  "nclouse-prod",
+                                                     "resolvedAt":  "2026-09-05T13:12:22Z"
+                                                 },
+                     "Party relationships":  {
+                                                 "targetEntity":  "DirPartyRelationshipEntity",
+                                                 "publicEntityName":  "PartyRelationship",
+                                                 "publicCollectionName":  "PartyRelationships",
+                                                 "dataServiceEnabled":  true,
+                                                 "dataManagementEnabled":  true,
+                                                 "entityCategory":  "Master",
+                                                 "companySpecific":  false,
+                                                 "keyFields":  [
+                                                                   "RelationshipType",
+                                                                   "ParentPartyId",
+                                                                   "ChildPartyId",
+                                                                   "LegalEntityDataArea",
+                                                                   "ValidTo",
+                                                                   "ValidFrom"
+                                                               ],
+                                                 "source":  "metadata",
+                                                 "resolvedFrom":  "nclouse-prod",
+                                                 "resolvedAt":  "2026-09-05T13:12:19Z"
+                                             },
+                     "Postal codes V3":  {
+                                             "targetEntity":  "LogisticsAddressPostalCodeV3Entity",
+                                             "publicEntityName":  "AddressPostalCodeV3",
+                                             "publicCollectionName":  "AddressPostalCodesV3",
+                                             "dataServiceEnabled":  true,
+                                             "dataManagementEnabled":  true,
+                                             "entityCategory":  "Master",
+                                             "companySpecific":  false,
+                                             "keyFields":  [
+                                                               "ZipCode",
+                                                               "CountryRegionId",
+                                                               "StateId",
+                                                               "CountyId",
+                                                               "CityId",
+                                                               "DistrictId",
+                                                               "StreetNumberMinimum",
+                                                               "StreetNumberMaximum",
+                                                               "StreetNumberValidity",
+                                                               "Street",
+                                                               "TimeZone"
+                                                           ],
+                                             "source":  "metadata",
+                                             "resolvedFrom":  "nclouse-prod",
+                                             "resolvedAt":  "2026-09-05T13:12:10Z"
+                                         },
+                     "Rating level":  {
+                                          "targetEntity":  "HcmRatingLevelEntity",
+                                          "publicEntityName":  "RatingLevel",
+                                          "publicCollectionName":  "RatingLevels",
+                                          "dataServiceEnabled":  true,
+                                          "dataManagementEnabled":  true,
+                                          "entityCategory":  "Reference",
+                                          "companySpecific":  false,
+                                          "keyFields":  [
+                                                            "RatingLevelId",
+                                                            "RatingModelId"
+                                                        ],
+                                          "source":  "metadata",
+                                          "resolvedFrom":  "nclouse-prod",
+                                          "resolvedAt":  "2026-09-05T13:18:50Z"
+                                      },
+                     "Rating models":  {
+                                           "targetEntity":  "HcmRatingModelEntity",
+                                           "publicEntityName":  "RatingModel",
+                                           "publicCollectionName":  "RatingModels",
+                                           "dataServiceEnabled":  true,
+                                           "dataManagementEnabled":  true,
+                                           "entityCategory":  "Reference",
+                                           "companySpecific":  false,
+                                           "keyFields":  [
+                                                             "RatingModelId"
+                                                         ],
+                                           "source":  "metadata",
+                                           "resolvedFrom":  "nclouse-prod",
+                                           "resolvedAt":  "2026-09-05T13:18:29Z"
+                                       },
+                     "Regulatory establishments":  {
+                                                       "targetEntity":  "HcmRegulatoryEstablishmentEntity",
+                                                       "publicEntityName":  "RegulatoryEstablishment",
+                                                       "publicCollectionName":  "RegulatoryEstablishments",
+                                                       "dataServiceEnabled":  true,
+                                                       "dataManagementEnabled":  true,
+                                                       "entityCategory":  "Master",
+                                                       "companySpecific":  false,
+                                                       "keyFields":  [
+                                                                         "RegulatoryEstablishmentId"
+                                                                     ],
+                                                       "source":  "metadata",
+                                                       "resolvedFrom":  "nclouse-prod",
+                                                       "resolvedAt":  "2026-09-05T13:20:16Z"
+                                                   },
+                     "Relationship types":  {
+                                                "targetEntity":  "DirRelationshipTypeEntity",
+                                                "publicEntityName":  "RelationshipType",
+                                                "publicCollectionName":  "RelationshipTypes",
+                                                "dataServiceEnabled":  true,
+                                                "dataManagementEnabled":  true,
+                                                "entityCategory":  "Master",
+                                                "companySpecific":  false,
+                                                "keyFields":  [
+                                                                  "ID"
+                                                              ],
+                                                "source":  "metadata",
+                                                "resolvedFrom":  "nclouse-prod",
+                                                "resolvedAt":  "2026-09-05T13:11:55Z"
+                                            },
+                     "Security user role association":  {
+                                                            "targetEntity":  "SystemSecurityUserRoleAssociationEntity",
+                                                            "publicEntityName":  "SecurityUserRoleAssociation",
+                                                            "publicCollectionName":  "SecurityUserRoleAssociations",
+                                                            "dataServiceEnabled":  true,
+                                                            "dataManagementEnabled":  true,
+                                                            "entityCategory":  "Master",
+                                                            "companySpecific":  false,
+                                                            "keyFields":  [
+                                                                              "UserId",
+                                                                              "SecurityRoleIdentifier"
+                                                                          ],
+                                                            "source":  "metadata",
+                                                            "resolvedFrom":  "nclouse-prod",
+                                                            "resolvedAt":  "2026-09-05T13:12:18Z"
+                                                        },
+                     "Skill types":  {
+                                         "targetEntity":  "HcmSkillTypeEntity",
+                                         "publicEntityName":  "SkillType",
+                                         "publicCollectionName":  "SkillTypes",
+                                         "dataServiceEnabled":  true,
+                                         "dataManagementEnabled":  true,
+                                         "entityCategory":  "Reference",
+                                         "companySpecific":  false,
+                                         "keyFields":  [
+                                                           "SkillType"
+                                                       ],
+                                         "source":  "metadata",
+                                         "resolvedFrom":  "nclouse-prod",
+                                         "resolvedAt":  "2026-09-05T13:18:30Z"
+                                     },
+                     "Skills":  {
+                                    "targetEntity":  "HcmSkillEntity",
+                                    "publicEntityName":  "Skill",
+                                    "publicCollectionName":  "Skills",
+                                    "dataServiceEnabled":  true,
+                                    "dataManagementEnabled":  true,
+                                    "entityCategory":  "Reference",
+                                    "companySpecific":  false,
+                                    "keyFields":  [
+                                                      "Skill"
+                                                  ],
+                                    "source":  "metadata",
+                                    "resolvedFrom":  "nclouse-prod",
+                                    "resolvedAt":  "2026-09-05T13:18:51Z"
+                                },
+                     "States":  {
+                                    "targetEntity":  "LogisticsAddressStateEntity",
+                                    "publicEntityName":  "AddressState",
+                                    "publicCollectionName":  "AddressStates",
+                                    "dataServiceEnabled":  true,
+                                    "dataManagementEnabled":  true,
+                                    "entityCategory":  "Master",
+                                    "companySpecific":  false,
+                                    "keyFields":  [
+                                                      "CountryRegionId",
+                                                      "State"
+                                                  ],
+                                    "source":  "metadata",
+                                    "resolvedFrom":  "nclouse-prod",
+                                    "resolvedAt":  "2026-09-05T13:12:04Z"
+                                },
+                     "System email template":  {
+                                                   "targetEntity":  "EmailTemplateSystemEntity",
+                                                   "publicEntityName":  null,
+                                                   "publicCollectionName":  null,
+                                                   "dataServiceEnabled":  false,
+                                                   "dataManagementEnabled":  true,
+                                                   "entityCategory":  "Parameters",
+                                                   "companySpecific":  false,
+                                                   "keyFields":  [
+
+                                                                 ],
+                                                   "source":  "metadata",
+                                                   "resolvedFrom":  "nclouse-prod",
+                                                   "resolvedAt":  "2026-09-05T13:20:25Z"
+                                               },
+                     "System email template message":  {
+                                                           "targetEntity":  "EmailTemplateMessageSystemEntity",
+                                                           "publicEntityName":  null,
+                                                           "publicCollectionName":  null,
+                                                           "dataServiceEnabled":  false,
+                                                           "dataManagementEnabled":  true,
+                                                           "entityCategory":  "Parameters",
+                                                           "companySpecific":  false,
+                                                           "keyFields":  [
+
+                                                                         ],
+                                                           "source":  "metadata",
+                                                           "resolvedFrom":  "nclouse-prod",
+                                                           "resolvedAt":  "2026-09-05T13:20:26Z"
+                                                       },
+                     "System parameters":  {
+                                               "targetEntity":  "SystemParametersEntity",
+                                               "publicEntityName":  "SystemParameters",
+                                               "publicCollectionName":  "SystemParameters",
+                                               "dataServiceEnabled":  true,
+                                               "dataManagementEnabled":  true,
+                                               "entityCategory":  "Master",
+                                               "companySpecific":  false,
+                                               "keyFields":  [
+                                                                 "ID"
+                                                             ],
+                                               "source":  "metadata",
+                                               "resolvedFrom":  "nclouse-prod",
+                                               "resolvedAt":  "2026-09-05T13:12:01Z"
+                                           },
+                     "Team types":  {
+                                        "targetEntity":  "OMTeamTypeEntity",
+                                        "publicEntityName":  "TeamMembershipCriterion",
+                                        "publicCollectionName":  "TeamMembershipCriterions",
+                                        "dataServiceEnabled":  true,
+                                        "dataManagementEnabled":  true,
+                                        "entityCategory":  "Reference",
+                                        "companySpecific":  false,
+                                        "keyFields":  [
+                                                          "Name"
+                                                      ],
+                                        "source":  "metadata",
+                                        "resolvedFrom":  "nclouse-prod",
+                                        "resolvedAt":  "2026-09-05T13:12:13Z"
+                                    },
+                     "Teams V2":  {
+                                      "targetEntity":  "OMTeamV2Entity",
+                                      "publicEntityName":  "TeamV2",
+                                      "publicCollectionName":  "TeamsV2",
+                                      "dataServiceEnabled":  true,
+                                      "dataManagementEnabled":  true,
+                                      "entityCategory":  "Reference",
+                                      "companySpecific":  false,
+                                      "keyFields":  [
+                                                        "Name"
+                                                    ],
+                                      "source":  "metadata",
+                                      "resolvedFrom":  "nclouse-prod",
+                                      "resolvedAt":  "2026-09-05T13:12:17Z"
+                                  },
+                     "Titles":  {
+                                    "targetEntity":  "HcmTitleEntity",
+                                    "publicEntityName":  "Title",
+                                    "publicCollectionName":  "Titles",
+                                    "dataServiceEnabled":  true,
+                                    "dataManagementEnabled":  true,
+                                    "entityCategory":  "Master",
+                                    "companySpecific":  false,
+                                    "keyFields":  [
+                                                      "TitleId"
+                                                  ],
+                                    "source":  "metadata",
+                                    "resolvedFrom":  "nclouse-prod",
+                                    "resolvedAt":  "2026-09-05T13:16:15Z"
+                                },
+                     "Unit conversions":  {
+                                              "targetEntity":  "UnitOfMeasureConversionEntity",
+                                              "publicEntityName":  "UnitOfMeasureConversion",
+                                              "publicCollectionName":  "UnitOfMeasureConversions",
+                                              "dataServiceEnabled":  true,
+                                              "dataManagementEnabled":  true,
+                                              "entityCategory":  "Reference",
+                                              "companySpecific":  false,
+                                              "keyFields":  [
+                                                                "FromUnitSymbol",
+                                                                "ToUnitSymbol"
+                                                            ],
+                                              "source":  "metadata",
+                                              "resolvedFrom":  "nclouse-prod",
+                                              "resolvedAt":  "2026-09-05T13:12:07Z"
+                                          },
+                     "Unit translations":  {
+                                               "targetEntity":  "UnitOfMeasureTranslationEntity",
+                                               "publicEntityName":  "UnitOfMeasureTranslation",
+                                               "publicCollectionName":  "UnitOfMeasureTranslations",
+                                               "dataServiceEnabled":  true,
+                                               "dataManagementEnabled":  true,
+                                               "entityCategory":  "Reference",
+                                               "companySpecific":  false,
+                                               "keyFields":  [
+                                                                 "UnitSymbol",
+                                                                 "LanguageId"
+                                                             ],
+                                               "source":  "metadata",
+                                               "resolvedFrom":  "nclouse-prod",
+                                               "resolvedAt":  "2026-09-05T13:12:08Z"
+                                           },
+                     "Units":  {
+                                   "targetEntity":  "UnitOfMeasureEntity",
+                                   "publicEntityName":  "UnitOfMeasure",
+                                   "publicCollectionName":  "UnitsOfMeasure",
+                                   "dataServiceEnabled":  true,
+                                   "dataManagementEnabled":  true,
+                                   "entityCategory":  "Reference",
+                                   "companySpecific":  false,
+                                   "keyFields":  [
+                                                     "UnitSymbol"
+                                                 ],
+                                   "source":  "metadata",
+                                   "resolvedFrom":  "nclouse-prod",
+                                   "resolvedAt":  "2026-09-05T13:12:03Z"
+                               },
+                     "User groups":  {
+                                         "targetEntity":  "SystemUserGroupEntity",
+                                         "publicEntityName":  "UserGroup",
+                                         "publicCollectionName":  "UserGroups",
+                                         "dataServiceEnabled":  true,
+                                         "dataManagementEnabled":  true,
+                                         "entityCategory":  "Master",
+                                         "companySpecific":  false,
+                                         "keyFields":  [
+                                                           "GroupId"
+                                                       ],
+                                         "source":  "metadata",
+                                         "resolvedFrom":  "nclouse-prod",
+                                         "resolvedAt":  "2026-09-05T13:11:56Z"
+                                     },
+                     "User information":  {
+                                              "targetEntity":  "SystemUserEntity",
+                                              "publicEntityName":  "SystemUser",
+                                              "publicCollectionName":  "SystemUsers",
+                                              "dataServiceEnabled":  true,
+                                              "dataManagementEnabled":  true,
+                                              "entityCategory":  "Master",
+                                              "companySpecific":  false,
+                                              "keyFields":  [
+                                                                "UserID"
+                                                            ],
+                                              "source":  "metadata",
+                                              "resolvedFrom":  "nclouse-prod",
+                                              "resolvedAt":  "2026-09-05T13:12:15Z"
+                                          },
+                     "User to person relationship":  {
+                                                         "targetEntity":  "DirPersonUserEntity",
+                                                         "publicEntityName":  "PersonUser",
+                                                         "publicCollectionName":  "PersonUsers",
+                                                         "dataServiceEnabled":  true,
+                                                         "dataManagementEnabled":  true,
+                                                         "entityCategory":  "Master",
+                                                         "companySpecific":  false,
+                                                         "keyFields":  [
+                                                                           "UserId",
+                                                                           "PartyNumber",
+                                                                           "ValidFrom"
+                                                                       ],
+                                                         "source":  "metadata",
+                                                         "resolvedFrom":  "nclouse-prod",
+                                                         "resolvedAt":  "2026-09-05T13:12:16Z"
+                                                     },
+                     "Veteran status":  {
+                                            "targetEntity":  "HcmVeteranStatusEntity",
+                                            "publicEntityName":  "VeteranStatus",
+                                            "publicCollectionName":  "VeteranStatuses",
+                                            "dataServiceEnabled":  true,
+                                            "dataManagementEnabled":  true,
+                                            "entityCategory":  "Reference",
+                                            "companySpecific":  false,
+                                            "keyFields":  [
+                                                              "VeteranStatusId"
+                                                          ],
+                                            "source":  "metadata",
+                                            "resolvedFrom":  "nclouse-prod",
+                                            "resolvedAt":  "2026-09-05T13:20:24Z"
+                                        },
+                     "Workflow element":  {
+                                              "targetEntity":  "WorkflowElementEntity",
+                                              "publicEntityName":  null,
+                                              "publicCollectionName":  null,
+                                              "dataServiceEnabled":  false,
+                                              "dataManagementEnabled":  true,
+                                              "entityCategory":  "Parameters",
+                                              "companySpecific":  false,
+                                              "keyFields":  [
+
+                                                            ],
+                                              "source":  "metadata",
+                                              "resolvedFrom":  "nclouse-prod",
+                                              "resolvedAt":  "2026-09-05T13:20:26Z"
+                                          },
+                     "Workflow element action":  {
+                                                     "targetEntity":  "WorkflowElementActionEntity",
+                                                     "publicEntityName":  null,
+                                                     "publicCollectionName":  null,
+                                                     "dataServiceEnabled":  false,
+                                                     "dataManagementEnabled":  true,
+                                                     "entityCategory":  "Parameters",
+                                                     "companySpecific":  false,
+                                                     "keyFields":  [
+
+                                                                   ],
+                                                     "source":  "metadata",
+                                                     "resolvedFrom":  "nclouse-prod",
+                                                     "resolvedAt":  "2026-09-05T13:20:27Z"
+                                                 },
+                     "Workflow element link":  {
+                                                   "targetEntity":  "WorkflowElementLinkEntity",
+                                                   "publicEntityName":  null,
+                                                   "publicCollectionName":  null,
+                                                   "dataServiceEnabled":  false,
+                                                   "dataManagementEnabled":  true,
+                                                   "entityCategory":  "Parameters",
+                                                   "companySpecific":  false,
+                                                   "keyFields":  [
+
+                                                                 ],
+                                                   "source":  "metadata",
+                                                   "resolvedFrom":  "nclouse-prod",
+                                                   "resolvedAt":  "2026-09-05T13:20:27Z"
+                                               },
+                     "Workflow element notification":  {
+                                                           "targetEntity":  "WorkflowElementNotificationEntity",
+                                                           "publicEntityName":  null,
+                                                           "publicCollectionName":  null,
+                                                           "dataServiceEnabled":  false,
+                                                           "dataManagementEnabled":  true,
+                                                           "entityCategory":  "Parameters",
+                                                           "companySpecific":  false,
+                                                           "keyFields":  [
+
+                                                                         ],
+                                                           "source":  "metadata",
+                                                           "resolvedFrom":  "nclouse-prod",
+                                                           "resolvedAt":  "2026-09-05T13:20:27Z"
+                                                       },
+                     "Workflow element notification message":  {
+                                                                   "targetEntity":  "WorkflowElementNotificationMessageEntity",
+                                                                   "publicEntityName":  null,
+                                                                   "publicCollectionName":  null,
+                                                                   "dataServiceEnabled":  false,
+                                                                   "dataManagementEnabled":  true,
+                                                                   "entityCategory":  "Parameters",
+                                                                   "companySpecific":  false,
+                                                                   "keyFields":  [
+
+                                                                                 ],
+                                                                   "source":  "metadata",
+                                                                   "resolvedFrom":  "nclouse-prod",
+                                                                   "resolvedAt":  "2026-09-05T13:20:28Z"
+                                                               },
+                     "Workflow element outcome message":  {
+                                                              "targetEntity":  "WorkflowElementOutcomeMessageEntity",
+                                                              "publicEntityName":  null,
+                                                              "publicCollectionName":  null,
+                                                              "dataServiceEnabled":  false,
+                                                              "dataManagementEnabled":  true,
+                                                              "entityCategory":  "Parameters",
+                                                              "companySpecific":  false,
+                                                              "keyFields":  [
+
+                                                                            ],
+                                                              "source":  "metadata",
+                                                              "resolvedFrom":  "nclouse-prod",
+                                                              "resolvedAt":  "2026-09-05T13:20:27Z"
+                                                          },
+                     "Workflow escalation path":  {
+                                                      "targetEntity":  "WorkflowEscalationPathEntity",
+                                                      "publicEntityName":  null,
+                                                      "publicCollectionName":  null,
+                                                      "dataServiceEnabled":  false,
+                                                      "dataManagementEnabled":  true,
+                                                      "entityCategory":  "Parameters",
+                                                      "companySpecific":  false,
+                                                      "keyFields":  [
+
+                                                                    ],
+                                                      "source":  "metadata",
+                                                      "resolvedFrom":  "nclouse-prod",
+                                                      "resolvedAt":  "2026-09-05T13:20:28Z"
+                                                  },
+                     "Workflow line item":  {
+                                                "targetEntity":  "WorkflowLineItemEntity",
+                                                "publicEntityName":  null,
+                                                "publicCollectionName":  null,
+                                                "dataServiceEnabled":  false,
+                                                "dataManagementEnabled":  true,
+                                                "entityCategory":  "Parameters",
+                                                "companySpecific":  false,
+                                                "keyFields":  [
+
+                                                              ],
+                                                "source":  "metadata",
+                                                "resolvedFrom":  "nclouse-prod",
+                                                "resolvedAt":  "2026-09-05T13:20:28Z"
+                                            },
+                     "Workflow parallel branch":  {
+                                                      "targetEntity":  "WorkflowParallelBranchEntity",
+                                                      "publicEntityName":  null,
+                                                      "publicCollectionName":  null,
+                                                      "dataServiceEnabled":  false,
+                                                      "dataManagementEnabled":  true,
+                                                      "entityCategory":  "Parameters",
+                                                      "companySpecific":  false,
+                                                      "keyFields":  [
+
+                                                                    ],
+                                                      "source":  "metadata",
+                                                      "resolvedFrom":  "nclouse-prod",
+                                                      "resolvedAt":  "2026-09-05T13:20:26Z"
+                                                  },
+                     "Workflow step":  {
+                                           "targetEntity":  "WorkflowStepEntity",
+                                           "publicEntityName":  null,
+                                           "publicCollectionName":  null,
+                                           "dataServiceEnabled":  false,
+                                           "dataManagementEnabled":  true,
+                                           "entityCategory":  "Parameters",
+                                           "companySpecific":  false,
+                                           "keyFields":  [
+
+                                                         ],
+                                           "source":  "metadata",
+                                           "resolvedFrom":  "nclouse-prod",
+                                           "resolvedAt":  "2026-09-05T13:20:27Z"
+                                       },
+                     "Workflow step message":  {
+                                                   "targetEntity":  "WorkflowStepMessageEntity",
+                                                   "publicEntityName":  null,
+                                                   "publicCollectionName":  null,
+                                                   "dataServiceEnabled":  false,
+                                                   "dataManagementEnabled":  true,
+                                                   "entityCategory":  "Parameters",
+                                                   "companySpecific":  false,
+                                                   "keyFields":  [
+
+                                                                 ],
+                                                   "source":  "metadata",
+                                                   "resolvedFrom":  "nclouse-prod",
+                                                   "resolvedAt":  "2026-09-05T13:20:28Z"
+                                               },
+                     "Workflow subworkflow":  {
+                                                  "targetEntity":  "WorkflowSubworkflowEntity",
+                                                  "publicEntityName":  null,
+                                                  "publicCollectionName":  null,
+                                                  "dataServiceEnabled":  false,
+                                                  "dataManagementEnabled":  true,
+                                                  "entityCategory":  "Parameters",
+                                                  "companySpecific":  false,
+                                                  "keyFields":  [
+
+                                                                ],
+                                                  "source":  "metadata",
+                                                  "resolvedFrom":  "nclouse-prod",
+                                                  "resolvedAt":  "2026-09-05T13:20:26Z"
+                                              },
+                     "Workflow system parameters":  {
+                                                        "targetEntity":  "WorkflowParametersSystemEntity",
+                                                        "publicEntityName":  null,
+                                                        "publicCollectionName":  null,
+                                                        "dataServiceEnabled":  false,
+                                                        "dataManagementEnabled":  true,
+                                                        "entityCategory":  "Parameters",
+                                                        "companySpecific":  false,
+                                                        "keyFields":  [
+
+                                                                      ],
+                                                        "source":  "metadata",
+                                                        "resolvedFrom":  "nclouse-prod",
+                                                        "resolvedAt":  "2026-09-05T13:20:26Z"
+                                                    },
+                     "Workflow version":  {
+                                              "targetEntity":  "WorkflowVersionEntity",
+                                              "publicEntityName":  null,
+                                              "publicCollectionName":  null,
+                                              "dataServiceEnabled":  false,
+                                              "dataManagementEnabled":  true,
+                                              "entityCategory":  "Parameters",
+                                              "companySpecific":  false,
+                                              "keyFields":  [
+
+                                                            ],
+                                              "source":  "metadata",
+                                              "resolvedFrom":  "nclouse-prod",
+                                              "resolvedAt":  "2026-09-05T13:20:26Z"
+                                          },
+                     "Workflow version notes":  {
+                                                    "targetEntity":  "WorkflowVersionNotesEntity",
+                                                    "publicEntityName":  null,
+                                                    "publicCollectionName":  null,
+                                                    "dataServiceEnabled":  false,
+                                                    "dataManagementEnabled":  true,
+                                                    "entityCategory":  "Parameters",
+                                                    "companySpecific":  false,
+                                                    "keyFields":  [
+
+                                                                  ],
+                                                    "source":  "metadata",
+                                                    "resolvedFrom":  "nclouse-prod",
+                                                    "resolvedAt":  "2026-09-05T13:20:26Z"
+                                                },
+                     "Workflow version notification":  {
+                                                           "targetEntity":  "WorkflowVersionNotificationEntity",
+                                                           "publicEntityName":  null,
+                                                           "publicCollectionName":  null,
+                                                           "dataServiceEnabled":  false,
+                                                           "dataManagementEnabled":  true,
+                                                           "entityCategory":  "Parameters",
+                                                           "companySpecific":  false,
+                                                           "keyFields":  [
+
+                                                                         ],
+                                                           "source":  "metadata",
+                                                           "resolvedFrom":  "nclouse-prod",
+                                                           "resolvedAt":  "2026-09-05T13:20:27Z"
+                                                       },
+                     "Workflow version notification message":  {
+                                                                   "targetEntity":  "WorkflowVersionNotificationMessageEntity",
+                                                                   "publicEntityName":  null,
+                                                                   "publicCollectionName":  null,
+                                                                   "dataServiceEnabled":  false,
+                                                                   "dataManagementEnabled":  true,
+                                                                   "entityCategory":  "Parameters",
+                                                                   "companySpecific":  false,
+                                                                   "keyFields":  [
+
+                                                                                 ],
+                                                                   "source":  "metadata",
+                                                                   "resolvedFrom":  "nclouse-prod",
+                                                                   "resolvedAt":  "2026-09-05T13:20:28Z"
+                                                               },
+                     "Workflow work item queue":  {
+                                                      "targetEntity":  "WorkflowWorkItemQueueEntity",
+                                                      "publicEntityName":  null,
+                                                      "publicCollectionName":  null,
+                                                      "dataServiceEnabled":  false,
+                                                      "dataManagementEnabled":  true,
+                                                      "entityCategory":  "Parameters",
+                                                      "companySpecific":  false,
+                                                      "keyFields":  [
+
+                                                                    ],
+                                                      "source":  "metadata",
+                                                      "resolvedFrom":  "nclouse-prod",
+                                                      "resolvedAt":  "2026-09-05T13:20:28Z"
+                                                  },
+                     "Workflow work item queue assignee":  {
+                                                               "targetEntity":  "WorkflowWorkItemQueueAssigneeEntity",
+                                                               "publicEntityName":  null,
+                                                               "publicCollectionName":  null,
+                                                               "dataServiceEnabled":  false,
+                                                               "dataManagementEnabled":  true,
+                                                               "entityCategory":  "Parameters",
+                                                               "companySpecific":  false,
+                                                               "keyFields":  [
+
+                                                                             ],
+                                                               "source":  "metadata",
+                                                               "resolvedFrom":  "nclouse-prod",
+                                                               "resolvedAt":  "2026-09-05T13:20:29Z"
+                                                           },
+                     "Workflow work item queue assignment":  {
+                                                                 "targetEntity":  "WorkflowWorkItemQueueAssignmentEntity",
+                                                                 "publicEntityName":  null,
+                                                                 "publicCollectionName":  null,
+                                                                 "dataServiceEnabled":  false,
+                                                                 "dataManagementEnabled":  true,
+                                                                 "entityCategory":  "Parameters",
+                                                                 "companySpecific":  false,
+                                                                 "keyFields":  [
+
+                                                                               ],
+                                                                 "source":  "metadata",
+                                                                 "resolvedFrom":  "nclouse-prod",
+                                                                 "resolvedAt":  "2026-09-05T13:20:29Z"
+                                                             }
+                 }
+}

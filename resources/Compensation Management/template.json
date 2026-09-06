@@ -1,0 +1,244 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Compensation Management",
+    "description":  "Compensation Management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Compensation fixed action table",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation survey companies",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Reference point setups",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Reference points",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation grids",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Compensation structure",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation pay frequency",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation variable type",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation fixed plan",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed compensation plan security roles",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation variable plan V2",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation plan eligibility rules",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation eligibility levels",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation vesting rules",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Variable compensation level V2",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employee fixed compensation",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Employee variable compensation",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employee variable compensation enrollment V2",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation merit increase target",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employee variable compensation enrollment overrides",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Process results",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation process table",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Employee results",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation process lines",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation process lines actions",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation recommend event composite lines",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation recommend event fixed lines",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation recommend event point in time lines",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation recommend event table",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation fixed plan range utilization matrix",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation performance per organization unit",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation performance plan",
+                      "sysModule":  "HRM",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation performance allocation",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Compensation performance rating",
+                      "sysModule":  "HRM",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation performance allocation lines",
+                      "sysModule":  "HRM",
+                      "tags":  "",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Total compensation statement sections header",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "The tax codes in tax groups of the Total compensation statement section",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "The benefit codes in benefit group of the Total compensation statement section",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "The earning codes of the Total compensation statement section",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

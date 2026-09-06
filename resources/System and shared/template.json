@@ -1,0 +1,490 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "System and shared",
+    "description":  "System and Shared",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Organization hierarchy type",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Relationship types",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Global address book parameters",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Name affixes",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Name sequences",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Currencies",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Currencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Address format",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address books",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address and contact information purpose",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address parameters",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "User groups",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Exchange rates",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Currencies",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Organization hierarchy purposes",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Address format lines",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Country/regions",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "System parameters",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "States",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Units",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Units",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Counties",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit conversions",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Units",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cities",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Unit translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Districts V2",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Postal codes V3",
+                      "sysModule":  "GAB",
+                      "tags":  "Address setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Legal entities",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Operating unit",
+                      "sysModule":  "GAB",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Team types",
+                      "sysModule":  "GAB",
+                      "tags":  "Teams",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Global address book V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization hierarchy V2 - published and draft",
+                      "sysModule":  "GAB",
+                      "tags":  "Organization hierarchy",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User information",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Teams V2",
+                      "sysModule":  "GAB",
+                      "tags":  "Teams",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "User to person relationship",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Security user role association",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party relationships",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party contacts",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Party postal address V2",
+                      "sysModule":  "GAB",
+                      "tags":  "GAB",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimensions",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Chart of accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fiscal calendar",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Fiscal calendar shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account categories",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimension translations",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Financial dimension format",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Dimension attribute activation",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fiscal calendar period",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Fiscal calendar shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Consolidation groups and accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Financial dimension value translations",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Financial dimension sets",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Financial dimension values",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Advanced rule structures active group",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Account structures shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Account structures active group",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Account structures shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Number sequence code",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Number sequence group",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Number sequence references",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Number sequences",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expression",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "System email template",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "System email template message",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow parallel branch",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notes",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow subworkflow",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow system parameters",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notification",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element notification",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element action",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element outcome message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow step",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element link",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow line item",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow element notification message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow step message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow version notification message",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow escalation path",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignee",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignment",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue assignment rule",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue group",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Workflow work item queue relation table",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}

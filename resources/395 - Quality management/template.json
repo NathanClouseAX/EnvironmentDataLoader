@@ -1,0 +1,112 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "395 - Quality management",
+    "description":  "Quality management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Quality problem types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality test instruments",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quarantine zones",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality test variables",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product safety data sheet validity",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item sampling",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Diagnostic types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Nonconformance operation categories",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Nonconformance charge types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Workers responsible for quality",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Test groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality test variable outcomes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality tests",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Test group test assignments",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item quality groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Quality order creation policies V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Quality",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

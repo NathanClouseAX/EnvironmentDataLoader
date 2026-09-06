@@ -67,7 +67,11 @@ function Stop-RunTranscript {
     .SYNOPSIS  Stops the PowerShell transcript if one was started by the caller.
     .NOTES     Reads and clears $Script:TranscriptActive in the calling script scope.
     #>
-    if ($Script:TranscriptActive) {
+    # Read through Get-Variable so this is safe to call from a trap that fires
+    # before the calling script has assigned $Script:TranscriptActive (StrictMode
+    # would otherwise throw inside the cleanup itself).
+    $active = Get-Variable -Name 'TranscriptActive' -Scope Script -ValueOnly -ErrorAction SilentlyContinue
+    if ($active) {
         try { Stop-Transcript | Out-Null } catch {}
         $Script:TranscriptActive = $false
     }

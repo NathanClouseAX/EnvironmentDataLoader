@@ -1,0 +1,136 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Worker Data Migration",
+    "description":  "Worker Data Migration",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Base worker",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Employment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Employment detail",
+                      "sysModule":  "HRM",
+                      "tags":  "Employment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person details",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Identification",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker Details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "I-9 document",
+                      "sysModule":  "HRM",
+                      "tags":  "Compliance",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "I-9 document type",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "I-9 list type - A, B, or C",
+                      "sysModule":  "HRM",
+                      "tags":  "Compliance",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Loan",
+                      "sysModule":  "",
+                      "tags":  "Loaned items",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker personal contact organization",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker personal contact person",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person labor union",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person screening",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Position worker assignments V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker Details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker bank accounts",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Worker default locations",
+                      "sysModule":  "",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker primary position",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker titles",
+                      "sysModule":  "HRM",
+                      "tags":  "Worker details",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker tasks",
+                      "sysModule":  "",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Worker task assignments",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Person accommodations (data merge)",
+                      "sysModule":  "HRM",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

@@ -1,0 +1,76 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "430 - Master planning",
+    "description":  "Master planning",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Working time templates",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Forecast models",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Period templates",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time transactions",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Forecast sub models",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Demand forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calendar",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Period template lines",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Master plans",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Master plan",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Forecast plans",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Forecast",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Master planning parameters",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Master plan",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item coverage groups",
+                      "sysModule":  "MasterPlanning",
+                      "tags":  "Item Coverage",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

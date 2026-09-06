@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1, "entity": "Sites", "targetEntity": "InventSiteEntity", "collection": "Sites",
+  "environment": "env-b", "environmentUrl": "https://env-b.operations.dynamics.com", "legalEntity": "USMF",
+  "companySpecific": true, "keyFields": [ "dataAreaId", "SiteId" ], "pulledAt": "2026-09-02T10:04:00Z", "elapsedSeconds": 0.5,
+  "recordCount": 1, "truncated": false, "fields": [ "dataAreaId", "SiteId", "SiteName" ],
+  "records": [ { "dataAreaId": "usmf", "SiteId": "1", "SiteName": "Main" } ]
+}

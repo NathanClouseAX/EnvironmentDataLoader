@@ -1,0 +1,76 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Recruiting",
+    "description":  "Recruiting",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Titles",
+                      "sysModule":  "HRM",
+                      "tags":  "Foundation Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Compensation survey companies",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation job type",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Compensation job function",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Levels",
+                      "sysModule":  "",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job family",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Jobs",
+                      "sysModule":  "HRM",
+                      "tags":  "Jobs",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Recruiting request location",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Recruiting request",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Recruiting request position",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Recruiting request skills",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

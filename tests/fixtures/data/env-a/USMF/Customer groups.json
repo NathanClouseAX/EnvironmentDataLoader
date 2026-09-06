@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1, "entity": "Customer groups", "targetEntity": "CustCustomerGroupEntity", "collection": "CustomerGroups",
+  "environment": "env-a", "environmentUrl": "https://env-a.operations.dynamics.com", "legalEntity": "USMF",
+  "companySpecific": true, "keyFields": [ "dataAreaId", "CustomerGroupId" ], "pulledAt": "2026-09-01T10:02:00Z", "elapsedSeconds": 1.0,
+  "recordCount": 2, "truncated": false,
+  "fields": [ "@odata.etag", "dataAreaId", "CustomerGroupId", "Description" ],
+  "records": [
+    { "@odata.etag": "W/\"b1\"", "dataAreaId": "usmf", "CustomerGroupId": "10", "Description": "Wholesale" },
+    { "@odata.etag": "W/\"b2\"", "dataAreaId": "usmf", "CustomerGroupId": "20", "Description": "Retail" }
+  ]
+}

@@ -1,0 +1,304 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "140 - Accounts receivable",
+    "description":  "Accounts receivable",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Price customer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line of business",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales charge codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Printed form notes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Interest codes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Expedite codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment calendar",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment schedule",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment day lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales order pools",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales districts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Statistics group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Delivery charges groups",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission item group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission sales group",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Commissions Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission customer group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Aging period definitions",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business segments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cash discount",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Collection letter setup",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer write-off reason codes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer payment fee",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer reasons",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Interest codes with ranges",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment schedule lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Commission calculation",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Business subsegments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Modes of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Interest codes with fees",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer facing form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Statement",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Free text invoice form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Customer account statement form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Interest note form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Collection letter form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Terms of payment",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer groups",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer definitions",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer payment method",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer bank accounts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer payment method specification",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer posting profiles",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer ledger accounts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer parameters",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Customer details V2",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

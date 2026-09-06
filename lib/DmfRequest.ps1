@@ -40,6 +40,39 @@ $Script:DmfDefaultThrottleRetries    = 6
 $Script:DmfDefaultMaxRetryAfterSecs  = 300
 $Script:DmfDefaultMaxThrottleWaitSec = 900
 
+# Windows PowerShell 5.1 does not load System.Net.Http by default, and the
+# Retry-After parser below uses RetryConditionHeaderValue from it.  Without
+# this, a throttled request on 5.1 died with "Unable to find type" instead of
+# waiting.  A no-op on PowerShell 7, where the assembly is always present.
+try { Add-Type -AssemblyName System.Net.Http -ErrorAction Stop } catch { <# fall back to the lenient parsers below #> }
+
+
+function Get-DmfScriptSetting {
+    <#
+    .SYNOPSIS
+        Reads an optional $Script: override, falling back to a default.
+
+    .DESCRIPTION
+        Callers may set $Script:MaxRetries, $Script:ThrottleMaxRetries, etc.
+        to tune the retry policy, but most do not.  Under
+        Set-StrictMode -Version Latest a direct read of an unassigned
+        $Script: variable throws "cannot be retrieved because it has not
+        been set", so the lookup goes through Get-Variable, which reports
+        absence without raising.
+
+    .OUTPUTS
+        The script-scope value when set and non-null; otherwise $Default.
+    #>
+    param(
+        [Parameter(Mandatory)][string]$Name,
+        [Parameter(Mandatory)][AllowNull()]$Default
+    )
+
+    $value = Get-Variable -Name $Name -Scope Script -ValueOnly -ErrorAction SilentlyContinue
+    if ($null -ne $value) { return $value }
+    return $Default
+}
+
 
 function Get-DmfHeaderValue {
     <#
@@ -69,6 +102,19 @@ function Get-DmfHeaderValue {
             $v = $Headers[$Name]
             if (-not [string]::IsNullOrWhiteSpace($v)) { return $v }
         } catch {}
+        return $null
+    }
+
+    # -- Plain dictionaries (hashtables, ordered dictionaries) ----------------
+    # foreach over a hashtable yields the table itself, not its entries, so
+    # this needs its own branch rather than the pair loop at the end.
+    if ($Headers -is [System.Collections.IDictionary]) {
+        foreach ($key in $Headers.Keys) {
+            if ([string]$key -ieq $Name) {
+                $first = @($Headers[$key]) | Where-Object { -not [string]::IsNullOrWhiteSpace([string]$_) } | Select-Object -First 1
+                if ($null -ne $first) { return [string]$first }
+            }
+        }
         return $null
     }
 
@@ -141,18 +187,30 @@ function Get-DmfRetryAfterSeconds {
     $raw = Get-DmfHeaderValue -Headers $headers -Name 'Retry-After'
     if (-not $raw) { return 0 }
 
-    $parsed = $null
-    if ([System.Net.Http.Headers.RetryConditionHeaderValue]::TryParse($raw, [ref]$parsed)) {
-        if ($null -ne $parsed.Delta) {
-            $secs = $parsed.Delta.TotalSeconds
-            if ($secs -gt 0) { return [int][Math]::Ceiling($secs) }
-            return 0
+    # Spec parser (delta-seconds or HTTP-date).  Guarded so a host without
+    # System.Net.Http still falls through to the lenient parsers below.
+    try {
+        $parsed = $null
+        if ([System.Net.Http.Headers.RetryConditionHeaderValue]::TryParse($raw, [ref]$parsed)) {
+            if ($null -ne $parsed.Delta) {
+                $secs = $parsed.Delta.TotalSeconds
+                if ($secs -gt 0) { return [int][Math]::Ceiling($secs) }
+                return 0
+            }
+            if ($null -ne $parsed.Date) {
+                $secs = ($parsed.Date - [DateTimeOffset]::UtcNow).TotalSeconds
+                if ($secs -gt 0) { return [int][Math]::Ceiling($secs) }
+                return 0
+            }
         }
-        if ($null -ne $parsed.Date) {
-            $secs = ($parsed.Date - [DateTimeOffset]::UtcNow).TotalSeconds
-            if ($secs -gt 0) { return [int][Math]::Ceiling($secs) }
-            return 0
-        }
+    } catch {}
+
+    # HTTP-date without the spec parser
+    $when = [DateTimeOffset]::MinValue
+    if ([DateTimeOffset]::TryParse($raw, [System.Globalization.CultureInfo]::InvariantCulture, [System.Globalization.DateTimeStyles]::AssumeUniversal, [ref]$when)) {
+        $secs = ($when - [DateTimeOffset]::UtcNow).TotalSeconds
+        if ($secs -gt 0) { return [int][Math]::Ceiling($secs) }
+        return 0
     }
 
     # -- Lenient fallback for servers that send a bare non-conforming number -
@@ -194,6 +252,43 @@ function Get-DmfBackoffSeconds {
 }
 
 
+function Test-DmfSessionRequest {
+    <#
+    .SYNOPSIS
+        True when a request should carry the session's bearer token: it already
+        has an Authorization header and targets the session's environment.
+        Blob-storage SAS uploads and token-endpoint calls therefore never match.
+    #>
+    param([Parameter(Mandatory)][hashtable]$Params, [Parameter(Mandatory)][AllowNull()]$Session)
+    if ($null -eq $Session) { return $false }
+    if (-not $Params.ContainsKey('Headers') -or $null -eq $Params['Headers']) { return $false }
+    if (-not $Params['Headers'].ContainsKey('Authorization')) { return $false }
+    return ([string]$Params['Uri'] -like "$($Session.BaseUrl)/*")
+}
+
+
+function Update-DmfRequestAuthorization {
+    <#
+    .SYNOPSIS
+        Stamps the session's current bearer token onto a request, renewing the
+        token first when it is close to expiry (Get-DmfAuthHeaders).
+    .DESCRIPTION
+        Called from inside the retry action, so every attempt -- including one
+        made after a long throttling wait -- carries a token that is valid at
+        the moment it is sent.
+    .OUTPUTS
+        [bool]  $true when a token was stamped.
+    #>
+    param([Parameter(Mandatory)][hashtable]$Params)
+    $session = Get-DmfScriptSetting -Name 'DmfSession' -Default $null
+    if (-not (Test-DmfSessionRequest -Params $Params -Session $session)) { return $false }
+    if (-not (Get-Command -Name 'Get-DmfAuthHeaders' -ErrorAction SilentlyContinue)) { return $false }
+    $fresh = Get-DmfAuthHeaders -Session $session
+    $Params['Headers']['Authorization'] = $fresh['Authorization']
+    return $true
+}
+
+
 function Invoke-DmfWithRetry {
     <#
     .SYNOPSIS
@@ -213,42 +308,63 @@ function Invoke-DmfWithRetry {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][scriptblock]$Action,
+        [object[]]$ArgumentList = @(),
         [string]$Operation = 'API request',
         [int]$MaxRetries,
         [int]$ThrottleMaxRetries,
         [int]$MaxRetryAfterSeconds,
         [int]$MaxThrottleWaitSeconds,
-        [scriptblock]$BeforeRetry
+        [scriptblock]$BeforeRetry,
+        [switch]$AllowTokenRecovery
     )
+    # -AllowTokenRecovery: on HTTP 401, renew the session token once via its
+    # refresh token and retry.  Set by Invoke-DmfRequest for requests to the
+    # session's environment only, so the token endpoint itself can never loop.
+    #
+    # $ArgumentList is passed to $Action positionally.  Callers hand their
+    # request parameters in this way rather than closing over them with
+    # GetNewClosure(): a closure is bound to a private dynamic module, which
+    # cannot see functions defined in the calling script -- including the
+    # Pester mocks the test suite relies on -- whereas a plain scriptblock
+    # resolves commands through the normal scope chain.
 
     # -- Resolve policy ------------------------------------------------------
+    # Get-DmfScriptSetting is StrictMode-safe: the $Script: overrides are
+    # optional and most callers only ever set $Script:MaxRetries.
     if (-not $PSBoundParameters.ContainsKey('MaxRetries')) {
-        $MaxRetries = if ($null -ne $Script:MaxRetries) { $Script:MaxRetries } else { $Script:DmfDefaultMaxRetries }
+        $MaxRetries = Get-DmfScriptSetting -Name 'MaxRetries' -Default $Script:DmfDefaultMaxRetries
     }
     if (-not $PSBoundParameters.ContainsKey('ThrottleMaxRetries')) {
-        $ThrottleMaxRetries = if ($null -ne $Script:ThrottleMaxRetries) { $Script:ThrottleMaxRetries } else { $Script:DmfDefaultThrottleRetries }
+        $ThrottleMaxRetries = Get-DmfScriptSetting -Name 'ThrottleMaxRetries' -Default $Script:DmfDefaultThrottleRetries
     }
     if (-not $PSBoundParameters.ContainsKey('MaxRetryAfterSeconds')) {
-        $MaxRetryAfterSeconds = if ($null -ne $Script:MaxRetryAfterSeconds) { $Script:MaxRetryAfterSeconds } else { $Script:DmfDefaultMaxRetryAfterSecs }
+        $MaxRetryAfterSeconds = Get-DmfScriptSetting -Name 'MaxRetryAfterSeconds' -Default $Script:DmfDefaultMaxRetryAfterSecs
     }
     if (-not $PSBoundParameters.ContainsKey('MaxThrottleWaitSeconds')) {
-        $MaxThrottleWaitSeconds = if ($null -ne $Script:MaxThrottleWaitSeconds) { $Script:MaxThrottleWaitSeconds } else { $Script:DmfDefaultMaxThrottleWaitSec }
+        $MaxThrottleWaitSeconds = Get-DmfScriptSetting -Name 'MaxThrottleWaitSeconds' -Default $Script:DmfDefaultMaxThrottleWaitSec
     }
 
     $transientUsed = 0   # 5xx / 408 / network retries consumed
     $throttleUsed  = 0   # HTTP 429 retries consumed
     $throttleWaited = 0  # cumulative seconds spent waiting out throttling
+    $tokenRecovered = $false
 
     while ($true) {
         try {
-            return (& $Action)
+            return (& $Action @ArgumentList)
         }
         catch {
             # -- Classify error -----------------------------------------------
             $httpStatus = 0
             $response   = $null
-            if ($null -ne $_.Exception.Response) {
-                $response = $_.Exception.Response
+            # Only WebException / HttpResponseException carry a Response
+            # property.  A DNS failure, socket error, or a plain throw from
+            # the action does not, and under Set-StrictMode a direct
+            # $_.Exception.Response read on those would throw its own error
+            # and mask the real one -- so probe the property first.
+            $responseProp = $_.Exception.PSObject.Properties['Response']
+            if ($null -ne $responseProp -and $null -ne $responseProp.Value) {
+                $response = $responseProp.Value
                 try { $httpStatus = [int]$response.StatusCode } catch {}
             }
 
@@ -258,9 +374,11 @@ function Invoke-DmfWithRetry {
             }
 
             # -- Extract OData / D365 error detail ----------------------------
-            $detail = ''
+            $detail  = ''
+            $rawBody = if ($null -ne $_.ErrorDetails) { $_.ErrorDetails.Message } else { $null }
             try {
-                $errBody = $_.ErrorDetails.Message | ConvertFrom-Json
+                if ([string]::IsNullOrWhiteSpace($rawBody)) { throw 'no body' }
+                $errBody = $rawBody | ConvertFrom-Json -ErrorAction Stop
                 if ($errBody.error.message) {
                     $detail = $errBody.error.message
                     try {
@@ -272,11 +390,30 @@ function Invoke-DmfWithRetry {
             } catch {}
             if (-not $detail) { $detail = $_.Exception.Message }
 
-            # -- Non-retryable client errors ----------------------------------
+            # -- HTTP 401: one silent recovery, then give up -------------------
             if ($httpStatus -eq 401) {
+                if ($AllowTokenRecovery -and -not $tokenRecovered) {
+                    $tokenRecovered = $true
+                    $session = Get-DmfScriptSetting -Name 'DmfSession' -Default $null
+                    if ($null -ne $session -and -not [string]::IsNullOrEmpty($session.RefreshToken) -and
+                        (Get-Command -Name 'Update-DmfSessionToken' -ErrorAction SilentlyContinue)) {
+                        Write-Warn "[$Operation] HTTP 401 - renewing the access token and retrying once..."
+                        $renewed = $false
+                        try { $renewed = Update-DmfSessionToken -Session $session }
+                        catch { Write-Warn "[$Operation] Token renewal failed: $($_.Exception.Message)" }
+                        if ($renewed) {
+                            if ($BeforeRetry) { & $BeforeRetry }
+                            continue
+                        }
+                    }
+                }
                 throw "[$Operation] HTTP 401 Unauthorized. The access token has expired or lacks permission. Re-run to re-authenticate."
             }
-            if ($httpStatus -ge 400 -and $httpStatus -lt 500 -and $httpStatus -notin @(408, 429)) {
+            # 4xx (other than 408/429) is the caller's fault and will not change on
+            # retry.  501 Not Implemented and 505 are the server declining the
+            # request shape itself (e.g. the Metadata service rejecting $filter on
+            # Labels), which is just as permanent.
+            if (($httpStatus -ge 400 -and $httpStatus -lt 500 -and $httpStatus -notin @(408, 429)) -or $httpStatus -in @(501, 505)) {
                 throw "[$Operation] HTTP ${httpStatus}: $detail"
             }
 
@@ -390,9 +527,25 @@ function Invoke-DmfRequest {
         Write-Detail "[$Operation] Body: $($Params['Body'])"
     }
 
+    # -- Session-aware authorisation ------------------------------------------
+    # When the calling script has set $Script:DmfSession (see DmfAuth.ps1),
+    # every attempt stamps the current bearer token onto the request -- renewing
+    # it first when it is close to expiry -- so a retry made after a long
+    # throttling wait never goes out with a token that expired meanwhile.
+    # Only requests that already carry an Authorization header and target the
+    # session's environment are touched; those same requests may also recover
+    # from an unexpected 401 by renewing the token once.
+    $sessionBound = Test-DmfSessionRequest -Params $Params -Session (Get-DmfScriptSetting -Name 'DmfSession' -Default $null)
+
     $forward = @{
-        Action    = { Invoke-RestMethod @Params }.GetNewClosure()
-        Operation = $Operation
+        Action       = {
+            param($requestParams)
+            [void](Update-DmfRequestAuthorization -Params $requestParams)
+            Invoke-RestMethod @requestParams
+        }
+        ArgumentList       = @(, $Params)
+        Operation          = $Operation
+        AllowTokenRecovery = $sessionBound
     }
     if ($PSBoundParameters.ContainsKey('MaxRetries'))         { $forward.MaxRetries         = $MaxRetries }
     if ($PSBoundParameters.ContainsKey('ThrottleMaxRetries')) { $forward.ThrottleMaxRetries = $ThrottleMaxRetries }
@@ -440,14 +593,15 @@ function Invoke-DmfDownload {
     Write-Detail "[$Operation] GET $Uri"
 
     $action = {
+        param($sourceUri, $targetFile)
         $prevPref = $ProgressPreference
         $ProgressPreference = 'SilentlyContinue'
         try {
-            Invoke-WebRequest -Uri $Uri -OutFile $OutFile -UseBasicParsing
+            Invoke-WebRequest -Uri $sourceUri -OutFile $targetFile -UseBasicParsing
         } finally {
             $ProgressPreference = $prevPref
         }
-    }.GetNewClosure()
+    }
 
     # A failed attempt can leave a truncated file behind; clear it so the
     # retry starts clean and a partial download is never mistaken for success.
@@ -458,9 +612,10 @@ function Invoke-DmfDownload {
     }.GetNewClosure()
 
     $forward = @{
-        Action      = $action
-        BeforeRetry = $cleanup
-        Operation   = $Operation
+        Action       = $action
+        ArgumentList = @($Uri, $OutFile)
+        BeforeRetry  = $cleanup
+        Operation    = $Operation
     }
     if ($PSBoundParameters.ContainsKey('MaxRetries'))         { $forward.MaxRetries         = $MaxRetries }
     if ($PSBoundParameters.ContainsKey('ThrottleMaxRetries')) { $forward.ThrottleMaxRetries = $ThrottleMaxRetries }

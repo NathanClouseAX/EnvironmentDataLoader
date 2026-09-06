@@ -1,0 +1,76 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Leave and absence (Multiple leave types per plan - On)",
+    "description":  "Multiple leave types per plan - On",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Leave and absence parameters",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence;Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leave and absence type",
+                      "sysModule":  "",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leave and absence plan V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leave and absence suspension relationship",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Leave and absence type reason code",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Leave and absence plan tier V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leave and absence enrollment V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Leave of absence request",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Leave time off request V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Leave and absence bank transaction V2",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Transaction"
+                  },
+                  {
+                      "entity":  "Leave and absence accrual suspension",
+                      "sysModule":  "HRM",
+                      "tags":  "Leave and absence",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

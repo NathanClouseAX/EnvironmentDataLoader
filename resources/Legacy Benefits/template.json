@@ -1,0 +1,178 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Legacy Benefits",
+    "description":  "Legacy Benefits",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Affordable Care coverage groups",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Affordable Care coverage group exceptions",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "ACA coverage group assignment",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Affordable Care coverage group version",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit option",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit type",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit eligibility",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit eligibility policy",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit eligibility policy rule types",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit calculation rate header",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit plan",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit eligibility rules",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit eligibility workers",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Benefit calculation rate detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Retirement Benefit Plan Detail US",
+                      "sysModule":  "Payroll",
+                      "tags":  "Payroll benefit setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Benefit details",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit eligibility benefits",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Benefit eligibility overrides",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit eligibility status",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Benefit expiration group",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Benefit expiration status",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "Benefit expiration result",
+                      "sysModule":  "HRM",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Document"
+                  },
+                  {
+                      "entity":  "The benefit codes in benefit group of the Total compensation statement section",
+                      "sysModule":  "HRM",
+                      "tags":  "Compensation",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker enrolled benefit",
+                      "sysModule":  "",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payroll benefit detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Worker benefit enrolled detail",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Contribution and deduction limit of enrolled benefits",
+                      "sysModule":  "Payroll",
+                      "tags":  "Benefits",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

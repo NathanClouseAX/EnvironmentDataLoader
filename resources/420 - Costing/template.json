@@ -1,0 +1,58 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "420 - Costing",
+    "description":  "Costing",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Reconciliation parameters",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Calculation groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost flow assumption policies",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cost group profit percentages",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Costing versions",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Costing sheet nodes and absorption basis",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Costing sheet node calculation factors V2",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Costing setup",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

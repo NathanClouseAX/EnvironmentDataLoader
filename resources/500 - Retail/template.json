@@ -1,0 +1,496 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "500 - Retail",
+    "description":  "Retail",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Trade agreement journal name",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Prices discounts setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price Points",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Receipt Format",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Receipt Profile",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Permissions",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Permissions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Button Grid",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Supported country regions",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Base setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Offline profile",
+                      "sysModule":  "ChannelManagement",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail locator groups",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel locator",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Layout sizes",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "POS",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Date intervals",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail affiliations",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail Device Types",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Base setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail event notification profile",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Reward Points",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commerce Data Exchange: Real-time Service profile",
+                      "sysModule":  "ChannelManagement",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Keyboard mapping groups",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Info codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Infocodes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bar code mask characters",
+                      "sysModule":  "CommerceMiscellaneous",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Discount validation period",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Discounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Program",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Loyalty",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment Card Types",
+                      "sysModule":  "Payments",
+                      "tags":  "Payments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment methods",
+                      "sysModule":  "Payments",
+                      "tags":  "Payments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Disposition code",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Returns Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Mix and match line group setup",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales Tax Overrides",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Sales tax override group",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Subcode",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Infocodes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales Tax Override Group",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Sales tax override group",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Info code groups",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Infocodes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Schemes",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Tier",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment Card Numbers",
+                      "sysModule":  "Payments",
+                      "tags":  "Payments",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Screen layouts",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Receipt Profile",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Receipt Profile",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "POS Screen layout zones",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail affiliation price groups",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail affiliation translations",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Skins",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Base setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price Point Group",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Layout Images",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "POS Operations",
+                      "sysModule":  "ChannelManagement",
+                      "tags":  "Channel - POS Permissions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Bar code mask",
+                      "sysModule":  "CommerceMiscellaneous",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Permission Group",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Permissions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Button Grid Buttons",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Info Code Table Assignments",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Infocodes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bar code mask segment",
+                      "sysModule":  "CommerceMiscellaneous",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS visual profiles",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Tier Price Groups",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Barcode setup",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Screen layout button grid zones",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales Tax Override Group Members",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Sales tax override group",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Screen layout Report zones",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Screen layout image zones",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel - POS Screen",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Hardware profiles",
+                      "sysModule":  "Payments",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Functionality Profile",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail Loyalty Tier Rules",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Receipt Profile Line",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Receipt Profile",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Reference between info code group and info codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Infocodes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catalog",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item - barcodes V3",
+                      "sysModule":  "Retail",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail Channel",
+                      "sysModule":  "ChannelManagement",
+                      "tags":  "Channel Master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Periodic Discount",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Assortment",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catalog Price Groups",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "POS Registers",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel Master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Threshold discount tiers",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Mix and match line groups",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loyalty Scheme Channels",
+                      "sysModule":  "CommerceCustomers",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catalog channels",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Periodic Discount Line",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail locator group owner",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel locator",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail locator group member",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel locator",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail discount price groups",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Assortment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail store address book",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel Master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Store Payment Methods",
+                      "sysModule":  "Payments",
+                      "tags":  "Channel master additional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Store Section",
+                      "sysModule":  "InventoryAndAdvancedWarehouse",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Assortment Product Lines",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Channel profile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Retail Devices",
+                      "sysModule":  "BrickAndMortarStore",
+                      "tags":  "Channel Master",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catalog Products",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Store Payment card setup",
+                      "sysModule":  "Payments",
+                      "tags":  "Channel master additional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Store Shelves",
+                      "sysModule":  "InventoryAndAdvancedWarehouse",
+                      "tags":  "Channel master additional setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Catalog Product Categories",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

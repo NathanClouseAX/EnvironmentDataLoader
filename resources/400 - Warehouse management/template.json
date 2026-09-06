@@ -1,0 +1,682 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "400 - Warehouse management",
+    "description":  "Warehouse management",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Warehouse location formats",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work pools",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "First product filter codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fourth container attributes",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location directive codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work policies",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Custom warehouse work types",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fourth product filter codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Labor standards",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work audit templates",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location types",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse replenishment templates",
+                      "sysModule":  "WMS",
+                      "tags":  "Replenishment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cross-docking opportunity policies",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Loading dock management profiles",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Container groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse app fields",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Allowed container type groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse pack size categories",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Second container attributes",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Third container attributes",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location directive failures",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse fulfillment policies",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Physical dimension groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave process methods",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "First container attributes",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Document routing printer layouts",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product filter groups V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Wave attributes 1",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse zone groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave attributes 2",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave attributes 4",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave attributes 3",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Work classes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave filters V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse replenishment request types",
+                      "sysModule":  "WMS",
+                      "tags":  "Replenishment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Second product filter codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Third product filter codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Azure active directory applications",
+                      "sysModule":  "",
+                      "tags":  "",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse cluster profiles V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Work processing policy",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse app field groups",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse package classes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse zones",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Barcode setup",
+                      "sysModule":  "Merchandising",
+                      "tags":  "Merchandising - Catalog",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Inventory movement types",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Valid warehouse work class put location types",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse cluster profile sorting",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work audit template lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse app field lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Labor standard lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work creation rules V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Container types V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cross-docking opportunity policy demand source selection criteria",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work template V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Cycle counting thresholds",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Physical dimension details by group",
+                      "sysModule":  "WMS",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Container build templates V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location format segments",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work template line",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location parameters",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Generally available products",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Allowed container types",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cycle counting plans",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse replenishment template lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Replenishment",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Container mixing constraints",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Container group details",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse disposition codes",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Inventory adjustment types",
+                      "sysModule":  "WMS",
+                      "tags":  "Inventory setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse work template work break",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product filter group details V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cycle counting plan product selections",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse work exceptions",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item V3",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse work template work line breaks",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item work confirmation",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu structure",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item cycle counting",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item system-directed sorting order",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor group product filters",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item work class",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer group product filters",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer product filters V3",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location profiles",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse locations",
+                      "sysModule":  "WMS",
+                      "tags":  "Locations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Physical dimension details by product",
+                      "sysModule":  "WMS",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed product locations V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Fixed Product Locations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Work operation processing rule",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location container type limits",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Default inventory status configuration",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor product filters",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device menu item default data",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse work policy locations",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse work policy products",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse work",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location directives V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Location directive",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse wave templates V3",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse management parameters V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Warehouse stocking limits",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Container packing policies",
+                      "sysModule":  "WMS",
+                      "tags":  "Container",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location directive lines",
+                      "sysModule":  "WMS",
+                      "tags":  "Location directive",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Wave Template Steps",
+                      "sysModule":  "WMS",
+                      "tags":  "Wave",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse packing profiles",
+                      "sysModule":  "WMS",
+                      "tags":  "Warehouse setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse location directive line unit of measure restrictions",
+                      "sysModule":  "WMS",
+                      "tags":  "Location directive",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse location directive line actions V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Location directive",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse workers",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Warehouse",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device users",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Return order document routings V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse mobile device user assigned warehouse",
+                      "sysModule":  "WMS",
+                      "tags":  "Mobile",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase order document routings V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Warehouse document routings V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales order document routings V2",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Document routing printers",
+                      "sysModule":  "WMS",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  }
+              ]
+}

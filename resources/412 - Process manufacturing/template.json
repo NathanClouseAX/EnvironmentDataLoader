@@ -1,0 +1,82 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "412 - Process manufacturing",
+    "description":  "Process manufacturing",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Formula substitution groups",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item batch attribute groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Batch",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bulk item conversions",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Batch attributes",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Batch attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item batch attribute group attribute assignments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Batch attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product specific item batch attributes",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Formula headers and versions V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Formula lines V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Formula co-products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Formula by-products V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Formula line consumption intervals V2",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Formula version document attachments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Formula",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

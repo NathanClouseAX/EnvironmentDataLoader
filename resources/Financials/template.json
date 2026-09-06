@@ -1,0 +1,1240 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "Financials",
+    "description":  "Financials",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Calendar",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Date intervals",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Journal descriptions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Financial reasons",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Dimension parameters",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Dimensions",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Default descriptions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization email template",
+                      "sysModule":  "OrganizationAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Document types",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "Documents",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger parameters",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Subledger journal transfer rule",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Journal names",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Balance control accounts",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Working times",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Organization email template message",
+                      "sysModule":  "OrganizationAdministration",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger fiscal calendar year",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger account alias",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Ledger fiscal calendar period",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Ledger setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Workflow organization parameters",
+                      "sysModule":  "Workflow",
+                      "tags":  "Workflow setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Financial dimension value legal entity overrides",
+                      "sysModule":  "FinancialDimensions",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Main account legal entity overrides",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Chart of accounts shared",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Accounts for automatic transactions",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Posting setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation basis",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation basis source",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule destination",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Ledger allocation rule source",
+                      "sysModule":  "GeneralLedger",
+                      "tags":  "Allocations",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Printed form notes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Period allocation categories",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Procurement charge codes",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Price vendor groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment schedule",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Payment purpose codes",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Price customer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Price discount setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment day lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset special depreciation allowance setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Interest codes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset provision types",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset properties",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset property groups",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Line of business",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment calendar",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Item charge groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Line discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "User groups",
+                      "sysModule":  "SystemAdministration",
+                      "tags":  "System users",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor charges group",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Charges setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor exception groups",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Total discount customer groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Total discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Transaction codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Foreign trade",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor invoice policy rule types",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Invoice",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Vendor reasons",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor, form parameters",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Withholding tax codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor payment fee",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor payment format",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor price tolerance groups",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales charge codes",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales districts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales order pools",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Sales order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchies",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Purchase pools",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Purchase order setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Reconciliation matching rules",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Reconciliation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Sales tax exempt code",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax reporting codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Statistics group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax exempt numbers",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax parameters preset entity",
+                      "sysModule":  "Tax",
+                      "tags":  "Setup\r\n",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Fixed asset major type",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Cash discount",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Collection letter setup",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank transaction type",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business segments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Buyer groups",
+                      "sysModule":  "InventoryAndWarehouseManagement",
+                      "tags":  "Group setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer charge groups",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Charges Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission sales group",
+                      "sysModule":  "SalesAndMarketing",
+                      "tags":  "Commissions Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission customer group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Commission item group",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget submodels",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget allocation term",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan parameter",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget dimensions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget cost elements",
+                      "sysModule":  "HRM",
+                      "tags":  "Forecast position",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget cycle time span",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan scenarios",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan stages",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan proposed project",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan priorities",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan proposed asset",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Expedite codes",
+                      "sysModule":  "TransactionsAndOrders",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset acquisition method",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Delivery charges groups",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset consumption units",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset activity codes",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "1099 fields",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "1099",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset condition",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Aging period definitions",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset consumption factors",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset locations",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Attributes",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset inventory to fixed asset transfer journal names",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Destination code",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Distribution setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget models",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget codes",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank facility groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer write-off reason codes",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer payment fee",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Commission calculation",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer attributes",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control configuration",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget parameters",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Ledger budget setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget plan process",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan columns",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Interest codes with fees",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Reconciliation matching rule sets",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Reconciliation",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product category hierarchy roles",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax ledger posting groups V2",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor invoice form printing configurations",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Invoice",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Withholding tax code values",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Payment schedule lines",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Interest codes with ranges",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Withholding tax limits",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Modes of delivery",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Multiline discount vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Discount groups setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Withholding tax groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Business subsegments",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer facing form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Statement",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Free text invoice form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Customer account statement form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Interest note form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Interest",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Collection letter form printing configurations",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget control dimension attribute",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control documents and journals",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Withholding tax group details",
+                      "sysModule":  "Tax",
+                      "tags":  "Withholding",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan workflow stage",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control cycle model",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control group",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget transfer rules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget planning process milestone",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Product category hierarchy translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control configuration activation",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset groups",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Fixed assets",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset depreciation profiles",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank transaction groups",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Bank facility types",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control message level",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget plan column rules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan priority constraint",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan process administration",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan allocation schedules",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget control rule",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Terms of payment",
+                      "sysModule":  "APARShared",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset depreciation profile manual schedules",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor groups",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendor setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan stage allocations",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Budget plan layout elements",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank parameters",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Budget plan stage rule",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget planning setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank posting profiles",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control rule over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control group over budget permissions",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Control",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control rule criteria",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Budget control group criteria",
+                      "sysModule":  "Budgeting",
+                      "tags":  "Budget control setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer groups",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset book setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product categories",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset book setup derived book",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset group book setup",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset posting profile",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Product category translations",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Category",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset posting profile disposal",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Fixed asset group/book special depreciation allowance",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer definitions",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank accounts",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Check layout",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bank statement import methods for general journal",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Accounts",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Transaction code mapping",
+                      "sysModule":  "CashAndBankManagement",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor payment method",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendor payment method specification",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Vendors V2",
+                      "sysModule":  "ProcurementAndSourcing",
+                      "tags":  "Vendors",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor bank accounts",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Vendor payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor posting profile",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor ledger accounts",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Vendor parameters",
+                      "sysModule":  "AccountsPayable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Sales tax authorities",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax period setup",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax codes",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax group details",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax item groups",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax code values V2",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax code limits",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Sales tax parameters",
+                      "sysModule":  "Tax",
+                      "tags":  "Sales tax parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Customer payment method",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer bank accounts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Customer payment method specification",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customer payment setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer posting profiles",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer ledger accounts",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Customer parameters",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Fixed assets",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Fixed assets",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Fixed asset parameters",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Fixed asset proposal journal names",
+                      "sysModule":  "FixedAssets",
+                      "tags":  "Setup",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Customer details V2",
+                      "sysModule":  "AccountsReceivable",
+                      "tags":  "Customers",
+                      "entityCategory":  "Master"
+                  }
+              ]
+}

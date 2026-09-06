@@ -1,0 +1,358 @@
+{
+    "schemaVersion":  1,
+    "templateId":  "410 - Production control",
+    "description":  "Production control",
+    "capturedFrom":  "https://nclouse-prod.operations.dynamics.com",
+    "capturedAt":  "2026-09-05T17:43:19Z",
+    "capturedBy":  "Export-TemplateDefinition.ps1 1.0",
+    "lines":  [
+                  {
+                      "entity":  "Shared category",
+                      "sysModule":  "EMPAShared",
+                      "tags":  "Shared - Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working time templates",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Calendar",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working times",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance flex groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job card terminal grid configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Time and attendance approval groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Absence reason",
+                      "sysModule":  "",
+                      "tags":  "Absence",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Time and attendance calculation groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance calculation policies",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Pay types",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Payroll",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job card terminal action pane configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Capabilities",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance profile groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Category table",
+                      "sysModule":  "ProjectManagementAndAccounting",
+                      "tags":  "Required setup; Categories",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Time and attendance profile types",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Time",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job card terminal grid control configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job card terminal action pane control configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Pay agreements",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Agreements",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route cost category",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Absence groups",
+                      "sysModule":  "",
+                      "tags":  "Absence",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Operations resource",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Absence codes",
+                      "sysModule":  "",
+                      "tags":  "Absence",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Pay agreement exceptions",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Agreements",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Operations resource capability assignment",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Operations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource parameters by site",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource parameters",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials parameters",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Working times scheduling properties",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Production pools",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Production units",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource group membership",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource calendar assignments",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working times scheduling property lines",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route groups",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource group calendar assignments",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resources",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route headers",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route operations V2",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials headers",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route operation properties V2",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Route versions V2",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Production journal names",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials versions V4",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Working time",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Resource calendar",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Resource requirements for route operation properties",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Route",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials lines V3",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Bill of materials version document attachments",
+                      "sysModule":  "ProductInformationManagement",
+                      "tags":  "Bill of materials",
+                      "entityCategory":  "Master"
+                  },
+                  {
+                      "entity":  "Job card device configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Job card terminal configurations",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Production control parameters",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Production control parameters by site",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Job card device configuration user assignments",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Time and attendance and manufacturing execution parameters",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Job card terminal configuration user assignments",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Setup",
+                      "entityCategory":  "Reference"
+                  },
+                  {
+                      "entity":  "Manufacturing execution production order defaults",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  },
+                  {
+                      "entity":  "Manufacturing execution production order defaults by site",
+                      "sysModule":  "ProductionControl",
+                      "tags":  "Parameters",
+                      "entityCategory":  "Parameters"
+                  }
+              ]
+}
