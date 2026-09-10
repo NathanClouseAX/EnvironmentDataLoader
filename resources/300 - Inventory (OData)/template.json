@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "templateId": "300 - Inventory (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Inventory -- OData-capable subset",
+  "sourceTemplate": "300 - Inventory",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 68,
+    "kept": 23,
+    "substituted": 0,
+    "dropped": 45
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Batch dispositions",
+      "reason": "not OData-enabled (IsPublic=false, PdsBatchDispositionEntity)"
+    },
+    {
+      "entity": "Warehouse location formats",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatEntity)"
+    },
+    {
+      "entity": "Item charge groups",
+      "reason": "not OData-enabled (IsPublic=false, InventChargeProductGroupEntity)"
+    },
+    {
+      "entity": "Vendor charges group",
+      "reason": "not OData-enabled (IsPublic=false, VendChargeVendorGroupEntity)"
+    },
+    {
+      "entity": "Trade agreement recalculation policies for sales documents",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscSalesRecalculationPolicyEntity)"
+    },
+    {
+      "entity": "Warehouse location types",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationTypeEntity)"
+    },
+    {
+      "entity": "Packing material groups",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialGroupEntity)"
+    },
+    {
+      "entity": "Cause of blocking",
+      "reason": "not OData-enabled (IsPublic=false, WMSWarehouseLocationBlockingCauseEntity)"
+    },
+    {
+      "entity": "Commodity cost basis",
+      "reason": "not OData-enabled (IsPublic=false, PdsCommodityCostBasisTypeEntity)"
+    },
+    {
+      "entity": "Trade agreement recalculation policies for purchase documents",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscPurchaseRecalculationPolicyEntity)"
+    },
+    {
+      "entity": "Inventory status",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryStatusEntity)"
+    },
+    {
+      "entity": "Inventory dimensions parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryDimensionsParametersEntity)"
+    },
+    {
+      "entity": "Buyer groups",
+      "reason": "not OData-enabled (IsPublic=false, InventBuyerGroupEntity)"
+    },
+    {
+      "entity": "Packing material codes",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialEntity)"
+    },
+    {
+      "entity": "Packing material fees",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialFeeEntity)"
+    },
+    {
+      "entity": "Warehouse location format segments",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatSegmentEntity)"
+    },
+    {
+      "entity": "Tracking number groups",
+      "reason": "not OData-enabled (IsPublic=false, InventTrackingNumberGroupEntity)"
+    },
+    {
+      "entity": "Bill of materials journal names",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory transfer journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryTransferJournalNameEntity)"
+    },
+    {
+      "entity": "Item arrival journal names",
+      "reason": "not OData-enabled (IsPublic=false, WMSItemArrivalJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory counting journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryCountingJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory tag counting journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryTagCountingJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory movement journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryMovementJournalNameEntity)"
+    },
+    {
+      "entity": "Product category hierarchy translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryHierarchyTranslationEntity)"
+    },
+    {
+      "entity": "Production input journal names",
+      "reason": "not OData-enabled (IsPublic=false, WMSProductionInputJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory adjustment journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryAdjustmentJournalNameEntity)"
+    },
+    {
+      "entity": "Product category translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryTranslationEntity)"
+    },
+    {
+      "entity": "Packing material allocations V2",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialAllocationV2Entity)"
+    },
+    {
+      "entity": "Inventory transaction combinations",
+      "reason": "not OData-enabled (IsPublic=false, InventLedgerPostingDefinitionCombinationRuleEntity)"
+    },
+    {
+      "entity": "Packing material allocation lines V2",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialAllocationLineV2Entity)"
+    },
+    {
+      "entity": "Warehouse current postal addresses V2",
+      "reason": "not OData-enabled (IsPublic=false, InventWarehouseCurrentPostalAddressV2Entity)"
+    },
+    {
+      "entity": "Warehouse location profiles",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationProfileEntity)"
+    },
+    {
+      "entity": "Product compliance parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventProductComplianceParametersEntity)"
+    },
+    {
+      "entity": "Order entry deadline parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventOrderEntryDeadlineActivationEntity)"
+    },
+    {
+      "entity": "Site dimension link policies",
+      "reason": "not OData-enabled (IsPublic=false, CostOperationalSiteFinancialDimensionLinkPolicyEntity)"
+    },
+    {
+      "entity": "Product parameters",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductParametersEntity)"
+    },
+    {
+      "entity": "Inventory parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryManagementParametersEntity)"
+    },
+    {
+      "entity": "Commodity pricing parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventCommodityPricingParametersEntity)"
+    },
+    {
+      "entity": "Bill of materials parameters",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsParametersEntity)"
+    },
+    {
+      "entity": "Constraint-based product configuration model parameters",
+      "reason": "not OData-enabled (IsPublic=false, EcoResConstraintBasedProductConfigurationModelParametersEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for sales",
+      "reason": "not OData-enabled (IsPublic=false, InventSalesLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for standard cost variance",
+      "reason": "not OData-enabled (IsPublic=false, InventStandardCostVarianceLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for production",
+      "reason": "not OData-enabled (IsPublic=false, InventProductionLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for inventory",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for procurement",
+      "reason": "not OData-enabled (IsPublic=false, InventProcurementLedgerPostingDefinitionEntity)"
+    }
+  ]
+}

@@ -556,7 +556,8 @@ function Get-TemplateInfo {
     .OUTPUTS
         [pscustomobject]  Index, Folder, Name, Description, DefinitionGroupName,
         EntityCount, DisabledCount, HasData, XlsxCount, HasSidecar, Origin,
-        IsCustom, HasOrdering, ResolvedCount, IsValid, Warnings, Lines
+        IsCustom, AppliesTo, SourceTemplate, HasOrdering, ResolvedCount,
+        PullableCount, IsValid, Warnings, Lines
     #>
     param(
         [Parameter(Mandatory)][System.IO.DirectoryInfo]$Folder,
@@ -583,9 +584,29 @@ function Get-TemplateInfo {
     $sidecar = Read-TemplateSidecar -Folder $Folder.FullName
     $origin  = Get-TemplateOrigin -Folder $Folder.FullName -Sidecar $sidecar
 
+    # Which transport the template is meant for.  'Any' (the default when the
+    # sidecar says nothing) means it suits both; a generated OData companion
+    # says 'OData' and names the template it was derived from, so callers can
+    # hide the source template when the companion is the better choice.
+    $appliesTo      = 'Any'
+    $sourceTemplate = ''
+    if ($null -ne $sidecar) {
+        $property = $sidecar.PSObject.Properties['appliesTo']
+        if ($null -ne $property -and $property.Value) { $appliesTo = [string]$property.Value }
+        $property = $sidecar.PSObject.Properties['sourceTemplate']
+        if ($null -ne $property -and $property.Value) { $sourceTemplate = [string]$property.Value }
+    }
+
     $resolved = $null
     if ($null -ne $EntityMap -and $lines.Count -gt 0 -and (Get-Command -Name 'Test-DmfEntityMapResolved' -ErrorAction SilentlyContinue)) {
         $resolved = @($lines | Where-Object { Test-DmfEntityMapResolved -Map $EntityMap -EntityName $_.EntityName }).Count
+    }
+
+    # How many lines the OData path could actually pull.  Null when there is no
+    # map to ask; zero means the template has nothing to offer that transport.
+    $pullable = $null
+    if ($null -ne $EntityMap -and $lines.Count -gt 0 -and (Get-Command -Name 'Test-DmfEntityMapPullable' -ErrorAction SilentlyContinue)) {
+        $pullable = @($lines | Where-Object { Test-DmfEntityMapPullable -Map $EntityMap -EntityName $_.EntityName }).Count
     }
 
     return [pscustomobject]@{
@@ -601,8 +622,11 @@ function Get-TemplateInfo {
         HasSidecar          = (Test-Path -LiteralPath (Join-Path $Folder.FullName 'template.json') -PathType Leaf)
         Origin              = $origin
         IsCustom            = ($origin -eq 'custom')
+        AppliesTo           = $appliesTo
+        SourceTemplate      = $sourceTemplate
         HasOrdering         = (Test-Path -LiteralPath (Join-Path $Folder.FullName 'ordering.json') -PathType Leaf)
         ResolvedCount       = $resolved
+        PullableCount       = $pullable
         IsValid             = ($lines.Count -gt 0 -and @($warnings | Where-Object { $_ -notlike 'Root namespace*' }).Count -eq 0)
         Warnings            = $warnings.ToArray()
         Lines               = $lines

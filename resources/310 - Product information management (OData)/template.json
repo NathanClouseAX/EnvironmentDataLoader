@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "templateId": "310 - Product information management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Product information management -- OData-capable subset",
+  "sourceTemplate": "310 - Product information management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 65,
+    "kept": 47,
+    "substituted": 0,
+    "dropped": 18
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Product dimension groups",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductDimensionGroupEntity)"
+    },
+    {
+      "entity": "Reduction key",
+      "reason": "not OData-enabled (IsPublic=false, ReqReductionKeyEntity)"
+    },
+    {
+      "entity": "Less than truckload classes",
+      "reason": "not OData-enabled (IsPublic=false, WHSLessThanTruckloadClassEntity)"
+    },
+    {
+      "entity": "Unit sequence groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSUnitOfMeasureConversionSequenceGroupEntity)"
+    },
+    {
+      "entity": "Storage dimension groups",
+      "reason": "not OData-enabled (IsPublic=false, EcoResStorageDimensionGroupEntity)"
+    },
+    {
+      "entity": "Configuration groups",
+      "reason": "not OData-enabled (IsPublic=false, BOMConfigurationGroupEntity)"
+    },
+    {
+      "entity": "Configurations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductConfigurationEntity)"
+    },
+    {
+      "entity": "Product attribute group translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeGroupTranslationEntity)"
+    },
+    {
+      "entity": "Unit sequence group lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSUnitOfMeasureConversionSequenceGroupSequenceEntity)"
+    },
+    {
+      "entity": "US national motor freight classification codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSUSNationalMotorFreightClassificationCodeEntity)"
+    },
+    {
+      "entity": "Reservation hierarchy levels",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryReservationHierarchyLevelEntity)"
+    },
+    {
+      "entity": "Reduction key period",
+      "reason": "not OData-enabled (IsPublic=false, ReqReductionKeyPeriodEntity)"
+    },
+    {
+      "entity": "Product attribute enumeration type translations V2",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeEnumerationValueTypeTranslationV2Entity)"
+    },
+    {
+      "entity": "Product category attributes",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryAttributeEntity)"
+    },
+    {
+      "entity": "Product attribute group attribute assignments",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeGroupAttributeAssignmentEntity)"
+    },
+    {
+      "entity": "Product category commodity codes",
+      "reason": "not OData-enabled (IsPublic=false, ProcProductCategoryCommodityCodeEntity)"
+    },
+    {
+      "entity": "Product category product attribute group assignments",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryProductAttributeGroupAssignmentEntity)"
+    },
+    {
+      "entity": "Product specific item batch attributes",
+      "reason": "not OData-enabled (IsPublic=false, PdsProductSpecificItemBatchAttributeEntity)"
+    }
+  ]
+}

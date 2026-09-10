@@ -267,3 +267,37 @@ Describe 'Get-TemplateInfo origin' {
         $plain.IsCustom  | Should -BeFalse
     }
 }
+
+Describe 'Get-TemplateInfo transport' {
+    BeforeAll {
+        $root = Join-Path $tempRoot 'resources-transport'
+        New-Item -ItemType Directory -Path (Join-Path $root 'Plain') -Force | Out-Null
+        New-Item -ItemType Directory -Path (Join-Path $root 'Plain (OData)') -Force | Out-Null
+        Copy-Item (Join-Path $fixtures 'minimal-utf8\Manifest.xml') (Join-Path $root 'Plain\Manifest.xml')
+        Copy-Item (Join-Path $fixtures 'minimal-utf8\Manifest.xml') (Join-Path $root 'Plain (OData)\Manifest.xml')
+        Write-TemplateSidecar -Folder (Join-Path $root 'Plain (OData)') -Sidecar ([ordered]@{
+            schemaVersion = 1; templateId = 'Plain (OData)'; origin = 'custom'
+            appliesTo = 'OData'; sourceTemplate = 'Plain' })
+    }
+
+    It 'defaults to Any with no sidecar' {
+        $folders = @(Get-TemplateFolders -ResourcesPath $root)
+        $plain = $folders | Where-Object { $_.Name -eq 'Plain' } | Select-Object -First 1
+        $info = Get-TemplateInfo -Folder $plain -Index 1
+        $info.AppliesTo      | Should -BeExactly 'Any'
+        $info.SourceTemplate | Should -BeExactly ''
+    }
+    It 'reports the transport and the template it was derived from' {
+        $folders = @(Get-TemplateFolders -ResourcesPath $root)
+        $companion = $folders | Where-Object { $_.Name -eq 'Plain (OData)' } | Select-Object -First 1
+        $info = Get-TemplateInfo -Folder $companion -Index 2
+        $info.AppliesTo      | Should -BeExactly 'OData'
+        $info.SourceTemplate | Should -BeExactly 'Plain'
+        $info.IsCustom       | Should -BeTrue
+    }
+    It 'leaves PullableCount null when no entity map is supplied' {
+        $folders = @(Get-TemplateFolders -ResourcesPath $root)
+        $info = Get-TemplateInfo -Folder ($folders | Select-Object -First 1) -Index 1
+        $info.PullableCount | Should -BeNullOrEmpty
+    }
+}

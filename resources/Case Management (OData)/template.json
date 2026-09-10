@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Case Management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Case Management -- OData-capable subset",
+  "sourceTemplate": "Case Management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 17,
+    "kept": 13,
+    "substituted": 0,
+    "dropped": 4
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Case hierarchy",
+      "reason": "not OData-enabled (IsPublic=false, CaseHierarchyEntity)"
+    },
+    {
+      "entity": "Lead priorities",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadPriorityEntity)"
+    },
+    {
+      "entity": "Case detail",
+      "reason": "not OData-enabled (IsPublic=false, CaseDetailBaseEntity)"
+    },
+    {
+      "entity": "FMLA hours",
+      "reason": "not OData-enabled (IsPublic=false, HcmFMLAHoursTrackingDetailEntity)"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "templateId": "412 - Process manufacturing (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Process manufacturing -- OData-capable subset",
+  "sourceTemplate": "412 - Process manufacturing",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 12,
+    "kept": 3,
+    "substituted": 0,
+    "dropped": 9
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Formula substitution groups",
+      "reason": "not OData-enabled (IsPublic=false, PmfFormulaSubstitutionGroupEntity)"
+    },
+    {
+      "entity": "Item batch attribute groups",
+      "reason": "not OData-enabled (IsPublic=false, PdsItemBatchAttributeGroupEntity)"
+    },
+    {
+      "entity": "Bulk item conversions",
+      "reason": "not OData-enabled (IsPublic=false, PmfBulkItemConversionEntity)"
+    },
+    {
+      "entity": "Item batch attribute group attribute assignments",
+      "reason": "not OData-enabled (IsPublic=false, PdsItemBatchAttributeGroupAttributeAssignmentEntity)"
+    },
+    {
+      "entity": "Product specific item batch attributes",
+      "reason": "not OData-enabled (IsPublic=false, PdsProductSpecificItemBatchAttributeEntity)"
+    },
+    {
+      "entity": "Formula co-products V2",
+      "reason": "not OData-enabled (IsPublic=false, PmfFormulaCoProductV2Entity)"
+    },
+    {
+      "entity": "Formula by-products V2",
+      "reason": "not OData-enabled (IsPublic=false, PmfFormulaByProductV2Entity)"
+    },
+    {
+      "entity": "Formula line consumption intervals V2",
+      "reason": "not OData-enabled (IsPublic=false, PmfFormulaLineConsumptionIntervalV2Entity)"
+    },
+    {
+      "entity": "Formula version document attachments",
+      "reason": "not OData-enabled (IsPublic=false, PmfFormulaVersionDocumentAttachmentEntity)"
+    }
+  ]
+}

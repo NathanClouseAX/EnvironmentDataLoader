@@ -318,3 +318,27 @@ Describe 'Resolve-DmfEntity' {
         $global:MetaMock.Calls.Count | Should -Be 0
     }
 }
+
+Describe 'Test-DmfEntityMapPullable' {
+    BeforeAll {
+        $pullMap = Get-DmfEntityMap -Path (Join-Path $tempRoot 'pullable-map.json')
+        [void](Set-DmfEntityMapEntry -Map $pullMap -EntityName 'Currencies' -Values @{
+            targetEntity = 'CurrencyEntity'; publicCollectionName = 'Currencies'; dataServiceEnabled = $true })
+        [void](Set-DmfEntityMapEntry -Map $pullMap -EntityName 'Workflow step' -Values @{
+            targetEntity = 'WorkflowStepEntity'; dataServiceEnabled = $false })
+        [void](Set-DmfEntityMapEntry -Map $pullMap -EntityName 'Half known' -Values @{
+            targetEntity = 'HalfKnownEntity' })
+    }
+
+    It 'is true only for an entity with a collection that is OData-enabled' {
+        Test-DmfEntityMapPullable -Map $pullMap -EntityName 'Currencies' | Should -BeTrue
+    }
+    It 'is false for a known non-public entity, where Resolved is true' {
+        Test-DmfEntityMapPullable -Map $pullMap -EntityName 'Workflow step' | Should -BeFalse
+        Test-DmfEntityMapResolved -Map $pullMap -EntityName 'Workflow step' | Should -BeTrue
+    }
+    It 'is false when the collection is unknown, and for a missing entity' {
+        Test-DmfEntityMapPullable -Map $pullMap -EntityName 'Half known' | Should -BeFalse
+        Test-DmfEntityMapPullable -Map $pullMap -EntityName 'Nope'       | Should -BeFalse
+    }
+}

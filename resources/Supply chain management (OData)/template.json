@@ -1,0 +1,688 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Supply chain management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Supply chain management -- OData-capable subset",
+  "sourceTemplate": "Supply chain management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:06Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 271,
+    "kept": 104,
+    "substituted": 0,
+    "dropped": 167
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Vendor charges group",
+      "reason": "not OData-enabled (IsPublic=false, VendChargeVendorGroupEntity)"
+    },
+    {
+      "entity": "Product dimension groups",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductDimensionGroupEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion groups",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionGroupForCategoryEntity)"
+    },
+    {
+      "entity": "Shipment form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesShipmentReportFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Trade agreement recalculation policies for sales documents",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscSalesRecalculationPolicyEntity)"
+    },
+    {
+      "entity": "Purchase agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, PurchAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Quotation document introductions",
+      "reason": "not OData-enabled (IsPublic=false, smmQuotationDocumentIntroductionEntity)"
+    },
+    {
+      "entity": "Quotation document conclusions",
+      "reason": "not OData-enabled (IsPublic=false, smmQuotationDocumentConclusionEntity)"
+    },
+    {
+      "entity": "Prospect statuses",
+      "reason": "not OData-enabled (IsPublic=false, smmProspectStatusEntity)"
+    },
+    {
+      "entity": "Unit sequence groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSUnitOfMeasureConversionSequenceGroupEntity)"
+    },
+    {
+      "entity": "Transaction logging policies",
+      "reason": "not OData-enabled (IsPublic=false, smmTransactionLoggingPolicyEntity)"
+    },
+    {
+      "entity": "Prospect relation types",
+      "reason": "not OData-enabled (IsPublic=false, SalesProspectRelationTypeEntity)"
+    },
+    {
+      "entity": "Working time templates",
+      "reason": "not OData-enabled (IsPublic=false, WorkCalendarTimeTemplateEntity)"
+    },
+    {
+      "entity": "Procurement return actions",
+      "reason": "not OData-enabled (IsPublic=false, ProcurementReturnActionEntity)"
+    },
+    {
+      "entity": "Storage dimension groups",
+      "reason": "not OData-enabled (IsPublic=false, EcoResStorageDimensionGroupEntity)"
+    },
+    {
+      "entity": "Opportunity maintenance policies",
+      "reason": "not OData-enabled (IsPublic=false, smmOpportunityMaintenancePolicyEntity)"
+    },
+    {
+      "entity": "Opportunity reason codes",
+      "reason": "not OData-enabled (IsPublic=false, smmOpportunityReasonCodeEntity)"
+    },
+    {
+      "entity": "Opportunity probability rates",
+      "reason": "not OData-enabled (IsPublic=false, smmOpportunityProbabilityRateEntity)"
+    },
+    {
+      "entity": "Packing slip form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterPackingSlipFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Vendor rebate group",
+      "reason": "not OData-enabled (IsPublic=false, PurchaseRebateVendorGroupEntity)"
+    },
+    {
+      "entity": "Packing material groups",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialGroupEntity)"
+    },
+    {
+      "entity": "Warehouse location types",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationTypeEntity)"
+    },
+    {
+      "entity": "Warehouse location formats",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatEntity)"
+    },
+    {
+      "entity": "Quotation document titles",
+      "reason": "not OData-enabled (IsPublic=false, smmQuotationDocumentTitleEntity)"
+    },
+    {
+      "entity": "Sales order line update parameters",
+      "reason": "not OData-enabled (IsPublic=false, SalesOrderUpdateLinesParametersEntity)"
+    },
+    {
+      "entity": "Sales package appearances",
+      "reason": "not OData-enabled (IsPublic=false, SalesPackageAppearanceEntity)"
+    },
+    {
+      "entity": "Sales activity types",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesActivityTypeEntity)"
+    },
+    {
+      "entity": "Sales activity plans",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesActivityPlanEntity)"
+    },
+    {
+      "entity": "Telemarketing cancellation reasons",
+      "reason": "not OData-enabled (IsPublic=false, smmTelemarketingCancellationReasonEntity)"
+    },
+    {
+      "entity": "Sales agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, SalesAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Sales role responsibilities",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesRoleResponsibilityEntity)"
+    },
+    {
+      "entity": "Sales rebate program types",
+      "reason": "not OData-enabled (IsPublic=false, SalesRebateProgramTypeEntity)"
+    },
+    {
+      "entity": "Sales summary update parameters",
+      "reason": "not OData-enabled (IsPublic=false, SalesOrderSummaryUpdateCriteriaEntity)"
+    },
+    {
+      "entity": "Sales districts",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesDistrictEntity)"
+    },
+    {
+      "entity": "Sales price smart rounding versions",
+      "reason": "not OData-enabled (IsPublic=false, SalesPriceSmartRoundingVersionEntity)"
+    },
+    {
+      "entity": "Sales activity phases",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesActivityPhaseEntity)"
+    },
+    {
+      "entity": "Purchase pools",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderPoolEntity)"
+    },
+    {
+      "entity": "Trade agreement recalculation policies for purchase documents",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscPurchaseRecalculationPolicyEntity)"
+    },
+    {
+      "entity": "Reduction key",
+      "reason": "not OData-enabled (IsPublic=false, ReqReductionKeyEntity)"
+    },
+    {
+      "entity": "Rebate module parameters",
+      "reason": "not OData-enabled (IsPublic=false, SalesRebateParametersEntity)"
+    },
+    {
+      "entity": "Quotation prognosis",
+      "reason": "not OData-enabled (IsPublic=false, SalesQuotationPrognosisEntity)"
+    },
+    {
+      "entity": "Reason of delivery",
+      "reason": "not OData-enabled (IsPublic=false, DeliveryReasonEntity)"
+    },
+    {
+      "entity": "Quotation type",
+      "reason": "not OData-enabled (IsPublic=false, SalesQuotationTypeEntity)"
+    },
+    {
+      "entity": "Return reason code groups",
+      "reason": "not OData-enabled (IsPublic=false, ReturnCustomerReturnReasonCodeGroupEntity)"
+    },
+    {
+      "entity": "Request for quotation reply statuses",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationReplyStatusEntity)"
+    },
+    {
+      "entity": "Request for quotation form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterRequestForQuotationFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Request for quotation scoring methods",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationScoringMethodEntity)"
+    },
+    {
+      "entity": "Email categories",
+      "reason": "not OData-enabled (IsPublic=false, smmEmailCategoryEntity)"
+    },
+    {
+      "entity": "External item description customer groups",
+      "reason": "not OData-enabled (IsPublic=false, SalesProductDescriptionCustomerGroupEntity)"
+    },
+    {
+      "entity": "Direct mailing categories",
+      "reason": "not OData-enabled (IsPublic=false, smmDirectMailingCategoryEntity)"
+    },
+    {
+      "entity": "Destination code",
+      "reason": "not OData-enabled (IsPublic=false, DeliveryDestinationEntity)"
+    },
+    {
+      "entity": "Batch dispositions",
+      "reason": "not OData-enabled (IsPublic=false, PdsBatchDispositionEntity)"
+    },
+    {
+      "entity": "Company chains",
+      "reason": "not OData-enabled (IsPublic=false, smmCompanyChainEntity)"
+    },
+    {
+      "entity": "Interest types",
+      "reason": "not OData-enabled (IsPublic=false, smmInterestTypeEntity)"
+    },
+    {
+      "entity": "External item description vendor groups",
+      "reason": "not OData-enabled (IsPublic=false, PurchProductDescriptionVendorGroupEntity)"
+    },
+    {
+      "entity": "Campaign email templates",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignEmailTemplateEntity)"
+    },
+    {
+      "entity": "Campaign cancellation reason codes",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignCancellationReasonCodeEntity)"
+    },
+    {
+      "entity": "Campaign media types",
+      "reason": "not OData-enabled (IsPublic=false, SalesCampaignMediaTypeEntity)"
+    },
+    {
+      "entity": "Campaign groups",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignGroupEntity)"
+    },
+    {
+      "entity": "Business classifications",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessClassificationEntity)"
+    },
+    {
+      "entity": "Opportunity source types",
+      "reason": "not OData-enabled (IsPublic=false, SalesOpportunitySourceTypeEntity)"
+    },
+    {
+      "entity": "Buyer groups",
+      "reason": "not OData-enabled (IsPublic=false, InventBuyerGroupEntity)"
+    },
+    {
+      "entity": "Business segments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSegmentEntity)"
+    },
+    {
+      "entity": "Commodity cost basis",
+      "reason": "not OData-enabled (IsPublic=false, PdsCommodityCostBasisTypeEntity)"
+    },
+    {
+      "entity": "Commission sales group",
+      "reason": "not OData-enabled (IsPublic=false, CommissionSalesRepresentativeGroupEntity)"
+    },
+    {
+      "entity": "Campaign types",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignTypeEntity)"
+    },
+    {
+      "entity": "Campaign targets",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignTargetEntity)"
+    },
+    {
+      "entity": "Cause of blocking",
+      "reason": "not OData-enabled (IsPublic=false, WMSWarehouseLocationBlockingCauseEntity)"
+    },
+    {
+      "entity": "Less than truckload classes",
+      "reason": "not OData-enabled (IsPublic=false, WHSLessThanTruckloadClassEntity)"
+    },
+    {
+      "entity": "Lead processing policies",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadProcessingPolicyEntity)"
+    },
+    {
+      "entity": "Lead priorities",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadPriorityEntity)"
+    },
+    {
+      "entity": "Lead ratings",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadRatingEntity)"
+    },
+    {
+      "entity": "Inventory dimensions parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryDimensionsParametersEntity)"
+    },
+    {
+      "entity": "Lead types",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadTypeEntity)"
+    },
+    {
+      "entity": "Activate purchase prices and discounts",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscPurchaseTradeAgreementActivationEntity)"
+    },
+    {
+      "entity": "Inventory status",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryStatusEntity)"
+    },
+    {
+      "entity": "Configuration groups",
+      "reason": "not OData-enabled (IsPublic=false, BOMConfigurationGroupEntity)"
+    },
+    {
+      "entity": "Configurations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductConfigurationEntity)"
+    },
+    {
+      "entity": "Item charge groups",
+      "reason": "not OData-enabled (IsPublic=false, InventChargeProductGroupEntity)"
+    },
+    {
+      "entity": "Item rebate groups",
+      "reason": "not OData-enabled (IsPublic=false, PurchaseRebateProductGroupEntity)"
+    },
+    {
+      "entity": "Purchase requisition form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseRequisitionFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Sales agreement form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterSalesAgreementFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase order form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseOrderFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Sales invoice form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterSalesInvoiceFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Vendor facing form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, VendFormletterVendorFacingFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Sales order confirmation form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterSalesOrderConfirmationFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Receipt list form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterWarehouseReceiptListFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Product receipt form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterProductReceiptFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Sales quotation form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterSalesQuotationFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase agreement form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseAgreementFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase inquiry form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseInquiryFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Picking list form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, SalesFormletterWarehousePickingListFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Product attribute group translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeGroupTranslationEntity)"
+    },
+    {
+      "entity": "Packing material codes",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialEntity)"
+    },
+    {
+      "entity": "Packing material fees",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialFeeEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criteria",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionEntity)"
+    },
+    {
+      "entity": "US national motor freight classification codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSUSNationalMotorFreightClassificationCodeEntity)"
+    },
+    {
+      "entity": "Unit sequence group lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSUnitOfMeasureConversionSequenceGroupSequenceEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion group translations",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionGroupForCategoryTranslationEntity)"
+    },
+    {
+      "entity": "Warehouse location format segments",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatSegmentEntity)"
+    },
+    {
+      "entity": "Tracking number groups",
+      "reason": "not OData-enabled (IsPublic=false, InventTrackingNumberGroupEntity)"
+    },
+    {
+      "entity": "Sales units",
+      "reason": "not OData-enabled (IsPublic=false, SalesUnitEntity)"
+    },
+    {
+      "entity": "Item arrival journal names",
+      "reason": "not OData-enabled (IsPublic=false, WMSItemArrivalJournalNameEntity)"
+    },
+    {
+      "entity": "Marketing mail policies",
+      "reason": "not OData-enabled (IsPublic=false, smmMarketingMailPolicyEntity)"
+    },
+    {
+      "entity": "Inventory transfer journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryTransferJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory adjustment journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryAdjustmentJournalNameEntity)"
+    },
+    {
+      "entity": "Product category hierarchy translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryHierarchyTranslationEntity)"
+    },
+    {
+      "entity": "Procurement type document entry policies",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentEntryPolicyEntity)"
+    },
+    {
+      "entity": "Inventory tag counting journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryTagCountingJournalNameEntity)"
+    },
+    {
+      "entity": "Direct mailing category items",
+      "reason": "not OData-enabled (IsPublic=false, smmDirectMailingCategoryItemEntity)"
+    },
+    {
+      "entity": "Email groups",
+      "reason": "not OData-enabled (IsPublic=false, smmEmailGroupEntity)"
+    },
+    {
+      "entity": "Business subsegments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSubsegmentEntity)"
+    },
+    {
+      "entity": "Business classification of parties",
+      "reason": "not OData-enabled (IsPublic=false, smmPartyBusinessClassificationAssignmentEntity)"
+    },
+    {
+      "entity": "External sales agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, SalesExternalSalesAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Inventory counting journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryCountingJournalNameEntity)"
+    },
+    {
+      "entity": "Inventory movement journal names",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryMovementJournalNameEntity)"
+    },
+    {
+      "entity": "Bill of materials journal names",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsJournalNameEntity)"
+    },
+    {
+      "entity": "Activate sales prices and discounts",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscSalesTradeAgreementActivationEntity)"
+    },
+    {
+      "entity": "Production input journal names",
+      "reason": "not OData-enabled (IsPublic=false, WMSProductionInputJournalNameEntity)"
+    },
+    {
+      "entity": "Reduction key period",
+      "reason": "not OData-enabled (IsPublic=false, ReqReductionKeyPeriodEntity)"
+    },
+    {
+      "entity": "Request for quotation scoring method criteria",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationScoringMethodCriterionEntity)"
+    },
+    {
+      "entity": "Prospect statistics default values",
+      "reason": "not OData-enabled (IsPublic=false, smmProspectStatisticsDefaultsEntity)"
+    },
+    {
+      "entity": "Request for quotation solicitation types",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationSolicitationTypeEntity)"
+    },
+    {
+      "entity": "Sales price smart rounding version currencies",
+      "reason": "not OData-enabled (IsPublic=false, SalesPriceSmartRoundingVersionCurrencyEntity)"
+    },
+    {
+      "entity": "Sales price smart rounding version rules",
+      "reason": "not OData-enabled (IsPublic=false, SalesPriceSmartRoundingVersionRuleEntity)"
+    },
+    {
+      "entity": "External purchase agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, PurchExternalPurchaseAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Reservation hierarchy levels",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryReservationHierarchyLevelEntity)"
+    },
+    {
+      "entity": "Return reason codes",
+      "reason": "not OData-enabled (IsPublic=false, ReturnCustomerReturnReasonCodeEntity)"
+    },
+    {
+      "entity": "Sales type document entry policies",
+      "reason": "not OData-enabled (IsPublic=false, SalesDocumentEntryPolicyEntity)"
+    },
+    {
+      "entity": "Sales type document default values",
+      "reason": "not OData-enabled (IsPublic=false, SalesDocumentDefaultsEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion translations",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionTranslationEntity)"
+    },
+    {
+      "entity": "Product attribute enumeration type translations V2",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeEnumerationValueTypeTranslationV2Entity)"
+    },
+    {
+      "entity": "Product category commodity codes",
+      "reason": "not OData-enabled (IsPublic=false, ProcProductCategoryCommodityCodeEntity)"
+    },
+    {
+      "entity": "Product attribute group attribute assignments",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductAttributeGroupAttributeAssignmentEntity)"
+    },
+    {
+      "entity": "Product category translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryTranslationEntity)"
+    },
+    {
+      "entity": "Product category attributes",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryAttributeEntity)"
+    },
+    {
+      "entity": "Product category product attribute group assignments",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryProductAttributeGroupAssignmentEntity)"
+    },
+    {
+      "entity": "Packing material allocations V2",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialAllocationV2Entity)"
+    },
+    {
+      "entity": "Inventory transaction combinations",
+      "reason": "not OData-enabled (IsPublic=false, InventLedgerPostingDefinitionCombinationRuleEntity)"
+    },
+    {
+      "entity": "Packing material allocation lines V2",
+      "reason": "not OData-enabled (IsPublic=false, InventPackingMaterialAllocationLineV2Entity)"
+    },
+    {
+      "entity": "Warehouse current postal addresses V2",
+      "reason": "not OData-enabled (IsPublic=false, InventWarehouseCurrentPostalAddressV2Entity)"
+    },
+    {
+      "entity": "Warehouse location profiles",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationProfileEntity)"
+    },
+    {
+      "entity": "Product parameters",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductParametersEntity)"
+    },
+    {
+      "entity": "Bill of materials parameters",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsParametersEntity)"
+    },
+    {
+      "entity": "Order entry deadline parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventOrderEntryDeadlineActivationEntity)"
+    },
+    {
+      "entity": "Constraint-based product configuration model parameters",
+      "reason": "not OData-enabled (IsPublic=false, EcoResConstraintBasedProductConfigurationModelParametersEntity)"
+    },
+    {
+      "entity": "Product compliance parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventProductComplianceParametersEntity)"
+    },
+    {
+      "entity": "Site dimension link policies",
+      "reason": "not OData-enabled (IsPublic=false, CostOperationalSiteFinancialDimensionLinkPolicyEntity)"
+    },
+    {
+      "entity": "Inventory parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryManagementParametersEntity)"
+    },
+    {
+      "entity": "Commodity pricing parameters",
+      "reason": "not OData-enabled (IsPublic=false, InventCommodityPricingParametersEntity)"
+    },
+    {
+      "entity": "Product specific item batch attributes",
+      "reason": "not OData-enabled (IsPublic=false, PdsProductSpecificItemBatchAttributeEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for standard cost variance",
+      "reason": "not OData-enabled (IsPublic=false, InventStandardCostVarianceLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for inventory",
+      "reason": "not OData-enabled (IsPublic=false, InventInventoryLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for sales",
+      "reason": "not OData-enabled (IsPublic=false, InventSalesLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for production",
+      "reason": "not OData-enabled (IsPublic=false, InventProductionLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Ledger posting definition for procurement",
+      "reason": "not OData-enabled (IsPublic=false, InventProcurementLedgerPostingDefinitionEntity)"
+    },
+    {
+      "entity": "Purchase agreement classification translation",
+      "reason": "not OData-enabled (IsPublic=false, PurchAgreementClassificationTranslationEntity)"
+    },
+    {
+      "entity": "Procurement type document default values",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentDefaultsEntity)"
+    },
+    {
+      "entity": "Vendor rebate parameters",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseRebateParametersEntity)"
+    },
+    {
+      "entity": "Procurement type document processing policies",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentProcessingPolicyEntity)"
+    },
+    {
+      "entity": "Purchase line update parameters",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderUpdateLinesParametersEntity)"
+    },
+    {
+      "entity": "Prospect creation policies",
+      "reason": "not OData-enabled (IsPublic=false, smmProspectCreationPolicyEntity)"
+    },
+    {
+      "entity": "Sales activity creation policies",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesActivityCreationPolicyEntity)"
+    },
+    {
+      "entity": "Sales agreement classification translation",
+      "reason": "not OData-enabled (IsPublic=false, SalesAgreementClassificationTranslationEntity)"
+    },
+    {
+      "entity": "Sales type document processing policies",
+      "reason": "not OData-enabled (IsPublic=false, SalesDocumentProcessingPolicyEntity)"
+    },
+    {
+      "entity": "Campaign creation policies",
+      "reason": "not OData-enabled (IsPublic=false, smmCampaignCreationPolicyEntity)"
+    },
+    {
+      "entity": "Leads",
+      "reason": "not OData-enabled (IsPublic=false, smmLeadEntity)"
+    }
+  ]
+}

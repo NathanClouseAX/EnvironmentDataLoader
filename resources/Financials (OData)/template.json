@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Financials (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Financials -- OData-capable subset",
+  "sourceTemplate": "Financials",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 205,
+    "kept": 171,
+    "substituted": 0,
+    "dropped": 34
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Organization email template",
+      "reason": "not OData-enabled (IsPublic=false, EmailTemplateOrganizationEntity)"
+    },
+    {
+      "entity": "Ledger parameters",
+      "reason": "not OData-enabled (IsPublic=false, LedgerParametersEntity)"
+    },
+    {
+      "entity": "Organization email template message",
+      "reason": "not OData-enabled (IsPublic=false, EmailTemplateMessageOrganizationEntity)"
+    },
+    {
+      "entity": "Workflow organization parameters",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowParametersOrganizationEntity)"
+    },
+    {
+      "entity": "Printed form notes",
+      "reason": "not OData-enabled (IsPublic=false, FormLetterPrintedFormNoteEntity)"
+    },
+    {
+      "entity": "Interest codes",
+      "reason": "not OData-enabled (IsPublic=false, CustInterestCodeEntity)"
+    },
+    {
+      "entity": "Item charge groups",
+      "reason": "not OData-enabled (IsPublic=false, InventChargeProductGroupEntity)"
+    },
+    {
+      "entity": "Vendor charges group",
+      "reason": "not OData-enabled (IsPublic=false, VendChargeVendorGroupEntity)"
+    },
+    {
+      "entity": "Vendor payment format",
+      "reason": "not OData-enabled (IsPublic=false, VendorPaymentFormatEntity)"
+    },
+    {
+      "entity": "Sales districts",
+      "reason": "not OData-enabled (IsPublic=false, smmSalesDistrictEntity)"
+    },
+    {
+      "entity": "Purchase pools",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderPoolEntity)"
+    },
+    {
+      "entity": "Reconciliation matching rules",
+      "reason": "not OData-enabled (IsPublic=false, BankReconciliationMatchingRuleEntity)"
+    },
+    {
+      "entity": "Sales tax parameters preset entity",
+      "reason": "not OData-enabled (IsPublic=false, TaxParametersPresetEntity)"
+    },
+    {
+      "entity": "Collection letter setup",
+      "reason": "not OData-enabled (IsPublic=false, CollectionLetterCourseEntity)"
+    },
+    {
+      "entity": "Business segments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSegmentEntity)"
+    },
+    {
+      "entity": "Buyer groups",
+      "reason": "not OData-enabled (IsPublic=false, InventBuyerGroupEntity)"
+    },
+    {
+      "entity": "Commission sales group",
+      "reason": "not OData-enabled (IsPublic=false, CommissionSalesRepresentativeGroupEntity)"
+    },
+    {
+      "entity": "Commission customer group",
+      "reason": "not OData-enabled (IsPublic=false, CommissionCustomerGroupEntity)"
+    },
+    {
+      "entity": "Commission item group",
+      "reason": "not OData-enabled (IsPublic=false, CommissionProductGroupEntity)"
+    },
+    {
+      "entity": "Destination code",
+      "reason": "not OData-enabled (IsPublic=false, DeliveryDestinationEntity)"
+    },
+    {
+      "entity": "Commission calculation",
+      "reason": "not OData-enabled (IsPublic=false, CommissionCalculationEntity)"
+    },
+    {
+      "entity": "Interest codes with fees",
+      "reason": "not OData-enabled (IsPublic=false, CustInterestCodeWithFeeEntity)"
+    },
+    {
+      "entity": "Vendor invoice form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, VendFormletterVendorInvoiceFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Interest codes with ranges",
+      "reason": "not OData-enabled (IsPublic=false, CustInterestCodeWithRangeEntity)"
+    },
+    {
+      "entity": "Business subsegments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSubsegmentEntity)"
+    },
+    {
+      "entity": "Customer facing form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, CustFormletterCustomerFacingFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Free text invoice form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, CustFormletterCustomerFreeTextInvoiceFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Customer account statement form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, CustFormletterCustomerAccountStatementFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Interest note form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, CustFormletterCustomerInterestNoteFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Collection letter form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, CustFormletterCustomerCollectionLetterFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Product category hierarchy translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryHierarchyTranslationEntity)"
+    },
+    {
+      "entity": "Product category translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryTranslationEntity)"
+    },
+    {
+      "entity": "Transaction code mapping",
+      "reason": "not OData-enabled (IsPublic=false, BankStatementTransactionTypeEntity)"
+    },
+    {
+      "entity": "Customer details V2",
+      "reason": "not OData-enabled (IsPublic=false, CustCustomerDetailV2Entity)"
+    }
+  ]
+}

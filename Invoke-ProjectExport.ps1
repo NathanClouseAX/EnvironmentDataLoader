@@ -488,6 +488,10 @@ if ($TemplateSource -eq 'Environment') { Connect-IfNeeded }
 # =============================================================================
 $entityMap = Get-DmfEntityMap -Path $entityMapPath
 
+# The unfiltered local list; -TemplateName resolves against it so a template
+# hidden from the menu can still be named explicitly.
+$allLocalTemplates = @()
+
 if ($TemplateSource -eq 'Environment') {
     Write-Step 'Fetching available templates'
 
@@ -503,9 +507,11 @@ if ($TemplateSource -eq 'Environment') {
             TemplateId  = [string]$_.TemplateId
             Description = [string](Get-DmfProp $_ 'Description' '')
             ValidatedOn = $(try { $v = Get-DmfProp $_ 'ValidatedDateTime'; if ($v) { ([datetime]$v).ToString('yyyy-MM-dd') } else { '' } } catch { '' })
-            Lines       = $null      # fetched per template when needed
-            Folder      = $null
-            HasData     = $false
+            Lines        = $null     # fetched per template when needed
+            Folder       = $null
+            HasData      = $false
+            AppliesTo    = 'Any'     # the environment does not distinguish transports
+            SupersededBy = ''
         }
     })
 
@@ -525,24 +531,63 @@ else {
         if ($Mode -eq 'OData' -and $null -ne $info.ResolvedCount) { $kind += ", $($info.ResolvedCount) resolved" }
         if ($info.IsCustom) { $kind = "custom, $kind" }
         [pscustomobject]@{
-            Index       = $info.Index
-            TemplateId  = $info.Name
-            Description = $info.Description
-            ValidatedOn = $kind
-            Lines       = $info.Lines
-            Folder      = $info.Folder.FullName
-            HasData     = $info.HasData
-            Origin      = $info.Origin
-            IsValid     = $info.IsValid
+            Index          = $info.Index
+            TemplateId     = $info.Name
+            Description    = $info.Description
+            ValidatedOn    = $kind
+            Lines          = $info.Lines
+            Folder         = $info.Folder.FullName
+            HasData        = $info.HasData
+            Origin         = $info.Origin
+            AppliesTo      = $info.AppliesTo
+            SourceTemplate = $info.SourceTemplate
+            PullableCount  = $info.PullableCount
+            SupersededBy   = ''
+            IsValid        = $info.IsValid
         }
     }) | Where-Object { $_.IsValid })
 
     if ($allTemplates.Count -eq 0) {
         throw "No valid template folders (Manifest.xml) found under '$ResourcesPath'.  Capture some with Export-TemplateDefinition.ps1, or use -TemplateSource Environment."
     }
-    # Re-index after dropping invalid folders so menu numbers are contiguous.
+
+    # A generated OData companion names the template it came from; record that
+    # on the source so it can be pointed at, and hidden, in OData mode.
+    foreach ($companion in $allTemplates) {
+        if ($companion.AppliesTo -ne 'OData' -or -not $companion.SourceTemplate) { continue }
+        $source = $allTemplates | Where-Object { $_.TemplateId -eq $companion.SourceTemplate } | Select-Object -First 1
+        if ($null -ne $source) { $source.SupersededBy = $companion.TemplateId }
+    }
+
+    # -- Show only the templates that suit the transport --------------------
+    # -TemplateName still resolves against the full list, so naming a template
+    # explicitly always works.
+    $allLocalTemplates = $allTemplates
+    $hidden = [System.Collections.Generic.List[string]]::new()
+    $allTemplates = @($allTemplates | Where-Object {
+        if ($Mode -eq 'OData') {
+            # The source of a companion would only report its non-OData
+            # entities as skipped, so the companion stands in for it.
+            if ($_.SupersededBy) { $hidden.Add($_.TemplateId); return $false }
+            # Nothing in it can be pulled (the map is certain, not merely silent).
+            if ($null -ne $_.PullableCount -and $_.PullableCount -eq 0) { $hidden.Add($_.TemplateId); return $false }
+            return $true
+        }
+        # Dmf: a companion is a subset built for the other transport.
+        if ($_.AppliesTo -eq 'OData') { $hidden.Add($_.TemplateId); return $false }
+        return $true
+    })
+
+    if ($allTemplates.Count -eq 0) {
+        throw "No template under '$ResourcesPath' applies to -Mode $Mode.  $($hidden.Count) template(s) were hidden as belonging to the other transport; name one explicitly with -TemplateName to use it anyway."
+    }
+    # Re-index after filtering so menu numbers are contiguous.
     $n = 1; foreach ($t in $allTemplates) { $t.Index = $n++ }
-    Write-Info "$($allTemplates.Count) local template(s) found."
+    Write-Info "$($allTemplates.Count) local template(s) apply to -Mode $Mode."
+    if ($hidden.Count -gt 0) {
+        $other = if ($Mode -eq 'OData') { 'superseded by an OData companion, or with no OData-readable entity' } else { 'OData companions' }
+        Write-Detail "$($hidden.Count) hidden ($other); name one with -TemplateName to use it anyway."
+    }
 }
 
 # =============================================================================
@@ -552,14 +597,25 @@ $selectedTemplates = [System.Collections.Generic.List[pscustomobject]]::new()
 
 if ($TemplateName) {
     # ── Single-template mode (non-interactive) ──────────────────────────────
-    $match = $allTemplates | Where-Object { $_.TemplateId -eq $TemplateName }
+    # Resolve against every local template, including the ones the mode filter
+    # hides, so an explicit name is always honoured.
+    $lookupPool = $(if ($allLocalTemplates.Count -gt 0) { $allLocalTemplates } else { $allTemplates })
+    $match = $lookupPool | Where-Object { $_.TemplateId -eq $TemplateName }
     if (-not $match) {
-        $available = ($allTemplates | ForEach-Object { "    '$($_.TemplateId)'" }) -join [System.Environment]::NewLine
+        $available = ($lookupPool | ForEach-Object { "    '$($_.TemplateId)'" }) -join [System.Environment]::NewLine
         $where     = if ($TemplateSource -eq 'Local') { "under '$ResourcesPath'" } else { "in environment '$EnvironmentUrl'" }
         throw "Template '$TemplateName' not found $where.`nAvailable templates:`n$available"
     }
     $selectedTemplates.Add($match)
     Write-Info "Template : $TemplateName"
+
+    # Point at the better-suited template rather than silently doing less.
+    if ($Mode -eq 'OData' -and $match.PSObject.Properties['SupersededBy'] -and $match.SupersededBy) {
+        Write-Info "'$($match.SupersededBy)' is the OData companion for this template; it drops the entities that cannot be pulled."
+    }
+    if ($Mode -eq 'Dmf' -and $match.PSObject.Properties['AppliesTo'] -and $match.AppliesTo -eq 'OData') {
+        Write-Warn "'$TemplateName' is an OData companion (a subset of '$($match.SourceTemplate)'); a DMF export of it will be missing the entities that were dropped."
+    }
 } elseif ($All) {
     # ── All-templates mode (non-interactive) ────────────────────────────────
     foreach ($tmpl in $allTemplates) { $selectedTemplates.Add($tmpl) }

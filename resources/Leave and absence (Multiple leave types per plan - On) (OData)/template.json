@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Leave and absence (Multiple leave types per plan - On) (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Multiple leave types per plan - On -- OData-capable subset",
+  "sourceTemplate": "Leave and absence (Multiple leave types per plan - On)",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:06Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 11,
+    "kept": 11,
+    "substituted": 0,
+    "dropped": 0
+  },
+  "substituted": [],
+  "dropped": []
+}

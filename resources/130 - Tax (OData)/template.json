@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "templateId": "130 - Tax (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Tax -- OData-capable subset",
+  "sourceTemplate": "130 - Tax",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 20,
+    "kept": 19,
+    "substituted": 0,
+    "dropped": 1
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Sales tax parameters preset entity",
+      "reason": "not OData-enabled (IsPublic=false, TaxParametersPresetEntity)"
+    }
+  ]
+}

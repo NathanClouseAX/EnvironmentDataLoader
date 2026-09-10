@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "templateId": "400 - Warehouse management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Warehouse management -- OData-capable subset",
+  "sourceTemplate": "400 - Warehouse management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 112,
+    "kept": 10,
+    "substituted": 0,
+    "dropped": 102
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Warehouse location formats",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatEntity)"
+    },
+    {
+      "entity": "Warehouse work pools",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkPoolEntity)"
+    },
+    {
+      "entity": "First product filter codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSFirstProductFilterCodeEntity)"
+    },
+    {
+      "entity": "Fourth container attributes",
+      "reason": "not OData-enabled (IsPublic=false, WHSFourthContainerAttributeEntity)"
+    },
+    {
+      "entity": "Warehouse location directive codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveCodeEntity)"
+    },
+    {
+      "entity": "Custom warehouse work types",
+      "reason": "not OData-enabled (IsPublic=false, WHSCustomWarehouseWorkTypeEntity)"
+    },
+    {
+      "entity": "Fourth product filter codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSFourthProductFilterCodeEntity)"
+    },
+    {
+      "entity": "Labor standards",
+      "reason": "not OData-enabled (IsPublic=false, WHSLaborStandardEntity)"
+    },
+    {
+      "entity": "Warehouse work audit templates",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkAuditTemplateEntity)"
+    },
+    {
+      "entity": "Warehouse location types",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationTypeEntity)"
+    },
+    {
+      "entity": "Cross-docking opportunity policies",
+      "reason": "not OData-enabled (IsPublic=false, WHSCrossDockingOpportunityPolicyEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuEntity)"
+    },
+    {
+      "entity": "Loading dock management profiles",
+      "reason": "not OData-enabled (IsPublic=false, WHSLoadingDockManagementProfileEntity)"
+    },
+    {
+      "entity": "Container groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerGroupEntity)"
+    },
+    {
+      "entity": "Warehouse app fields",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseAppFieldEntity)"
+    },
+    {
+      "entity": "Allowed container type groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSAllowedContainerTypeGroupEntity)"
+    },
+    {
+      "entity": "Warehouse pack size categories",
+      "reason": "not OData-enabled (IsPublic=false, WHSPackSizeCategoryEntity)"
+    },
+    {
+      "entity": "Second container attributes",
+      "reason": "not OData-enabled (IsPublic=false, WHSSecondContainerAttributeEntity)"
+    },
+    {
+      "entity": "Third container attributes",
+      "reason": "not OData-enabled (IsPublic=false, WHSThirdContainerAttributeEntity)"
+    },
+    {
+      "entity": "Warehouse location directive failures",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveFailureEntity)"
+    },
+    {
+      "entity": "Warehouse fulfillment policies",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseFulfillmentPolicyEntity)"
+    },
+    {
+      "entity": "Physical dimension groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSPhysicalDimensionGroupEntity)"
+    },
+    {
+      "entity": "Wave process methods",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWaveProcessingMethodEntity)"
+    },
+    {
+      "entity": "First container attributes",
+      "reason": "not OData-enabled (IsPublic=false, WHSFirstContainerAttributeEntity)"
+    },
+    {
+      "entity": "Document routing printer layouts",
+      "reason": "not OData-enabled (IsPublic=false, WHSDocumentRoutingPrinterLayoutEntity)"
+    },
+    {
+      "entity": "Product filter groups V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSProductFilterGroupV2Entity)"
+    },
+    {
+      "entity": "Wave attributes 1",
+      "reason": "not OData-enabled (IsPublic=false, WHSFirstWarehouseWaveAttributeEntity)"
+    },
+    {
+      "entity": "Wave attributes 2",
+      "reason": "not OData-enabled (IsPublic=false, WHSSecondWarehouseWaveAttributeEntity)"
+    },
+    {
+      "entity": "Wave attributes 4",
+      "reason": "not OData-enabled (IsPublic=false, WHSFourthWarehouseWaveAttributeEntity)"
+    },
+    {
+      "entity": "Wave attributes 3",
+      "reason": "not OData-enabled (IsPublic=false, WHSThirdWarehouseWaveAttributeEntity)"
+    },
+    {
+      "entity": "Work classes",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkClassEntity)"
+    },
+    {
+      "entity": "Wave filters V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWaveFilterV2Entity)"
+    },
+    {
+      "entity": "Warehouse replenishment request types",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseReplenishmentRequestTypeEntity)"
+    },
+    {
+      "entity": "Second product filter codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSSecondProductFilterCodeEntity)"
+    },
+    {
+      "entity": "Third product filter codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSThirdProductFilterCodeEntity)"
+    },
+    {
+      "entity": "Warehouse cluster profiles V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseClusterProfileV2Entity)"
+    },
+    {
+      "entity": "Work processing policy",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkProcessingPolicyEntity)"
+    },
+    {
+      "entity": "Warehouse app field groups",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseAppFieldGroupEntity)"
+    },
+    {
+      "entity": "Warehouse package classes",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehousePackageClassEntity)"
+    },
+    {
+      "entity": "Inventory movement types",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryMovementTypeEntity)"
+    },
+    {
+      "entity": "Valid warehouse work class put location types",
+      "reason": "not OData-enabled (IsPublic=false, WHSValidWarehouseWorkClassPutLocationTypeEntity)"
+    },
+    {
+      "entity": "Warehouse cluster profile sorting",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseClusterProfileSortingEntity)"
+    },
+    {
+      "entity": "Warehouse work audit template lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkAuditTemplateLineEntity)"
+    },
+    {
+      "entity": "Warehouse app field lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseAppFieldLineEntity)"
+    },
+    {
+      "entity": "Labor standard lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSLaborStandardLineEntity)"
+    },
+    {
+      "entity": "Container types V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerTypeV2Entity)"
+    },
+    {
+      "entity": "Cross-docking opportunity policy demand source selection criteria",
+      "reason": "not OData-enabled (IsPublic=false, WHSCrossDockingOpportunityPolicyDemandSourceSelectionCriteriaEntity)"
+    },
+    {
+      "entity": "Warehouse work template V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkTemplateV2Entity)"
+    },
+    {
+      "entity": "Cycle counting thresholds",
+      "reason": "not OData-enabled (IsPublic=false, WHSCycleCountingThresholdEntity)"
+    },
+    {
+      "entity": "Physical dimension details by group",
+      "reason": "not OData-enabled (IsPublic=false, WHSPhysicalDimensionGroupDetailEntity)"
+    },
+    {
+      "entity": "Container build templates V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerBuildTemplateV2Entity)"
+    },
+    {
+      "entity": "Warehouse location format segments",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationFormatSegmentEntity)"
+    },
+    {
+      "entity": "Warehouse work template line",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkTemplateLineEntity)"
+    },
+    {
+      "entity": "Warehouse location parameters",
+      "reason": "not OData-enabled (IsPublic=false, WMSWarehouseLocationParametersEntity)"
+    },
+    {
+      "entity": "Generally available products",
+      "reason": "not OData-enabled (IsPublic=false, WHSGenerallyAvailableProductFilterEntity)"
+    },
+    {
+      "entity": "Allowed container types",
+      "reason": "not OData-enabled (IsPublic=false, WHSAllowedContainerTypeEntity)"
+    },
+    {
+      "entity": "Cycle counting plans",
+      "reason": "not OData-enabled (IsPublic=false, WHSCycleCountingPlanEntity)"
+    },
+    {
+      "entity": "Warehouse replenishment template lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseReplenishmentTemplateLineEntity)"
+    },
+    {
+      "entity": "Container mixing constraints",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerMixingConstraintEntity)"
+    },
+    {
+      "entity": "Container group details",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerGroupDetailEntity)"
+    },
+    {
+      "entity": "Warehouse disposition codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseDispositionCodeEntity)"
+    },
+    {
+      "entity": "Inventory adjustment types",
+      "reason": "not OData-enabled (IsPublic=false, WHSInventoryAdjustmentTypeEntity)"
+    },
+    {
+      "entity": "Warehouse work template work break",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkTemplateWorkBreakEntity)"
+    },
+    {
+      "entity": "Product filter group details V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSProductFilterGroupDetailV2Entity)"
+    },
+    {
+      "entity": "Cycle counting plan product selections",
+      "reason": "not OData-enabled (IsPublic=false, WHSCycleCountingPlanProductSelectionEntity)"
+    },
+    {
+      "entity": "Warehouse work exceptions",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkExceptionEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item V3",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemV3Entity)"
+    },
+    {
+      "entity": "Warehouse work template work line breaks",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkTemplateWorkLineBreakEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item work confirmation",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemWorkConfirmationEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu structure",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuStructureEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item cycle counting",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemCycleCountingEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item system-directed sorting order",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemSystemDirectedSortingOrderEntity)"
+    },
+    {
+      "entity": "Vendor group product filters",
+      "reason": "not OData-enabled (IsPublic=false, WHSVendorGroupProductFilterEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item work class",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemWorkClassEntity)"
+    },
+    {
+      "entity": "Customer group product filters",
+      "reason": "not OData-enabled (IsPublic=false, WHSCustomerGroupProductFilterEntity)"
+    },
+    {
+      "entity": "Customer product filters V3",
+      "reason": "not OData-enabled (IsPublic=false, WHSCustomerProductFilterV3Entity)"
+    },
+    {
+      "entity": "Warehouse location profiles",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationProfileEntity)"
+    },
+    {
+      "entity": "Physical dimension details by product",
+      "reason": "not OData-enabled (IsPublic=false, WHSItemPhysicalDimensionDetailEntity)"
+    },
+    {
+      "entity": "Fixed product locations V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSFixedProductWarehouseLocationV2Entity)"
+    },
+    {
+      "entity": "Work operation processing rule",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkOperationProcessingRuleEntity)"
+    },
+    {
+      "entity": "Warehouse location container type limits",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationContainerTypeLimitEntity)"
+    },
+    {
+      "entity": "Default inventory status configuration",
+      "reason": "not OData-enabled (IsPublic=false, WHSItemDefaultInventoryStatusEntity)"
+    },
+    {
+      "entity": "Vendor product filters",
+      "reason": "not OData-enabled (IsPublic=false, WHSVendorProductFilterEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device menu item default data",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceMenuItemDefaultDataEntity)"
+    },
+    {
+      "entity": "Warehouse location directives V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveV2Entity)"
+    },
+    {
+      "entity": "Warehouse wave templates V3",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWaveTemplateV3Entity)"
+    },
+    {
+      "entity": "Warehouse management parameters V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseManagementParametersV2Entity)"
+    },
+    {
+      "entity": "Warehouse stocking limits",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseStockingLimitEntity)"
+    },
+    {
+      "entity": "Container packing policies",
+      "reason": "not OData-enabled (IsPublic=false, WHSContainerClosingProfileEntity)"
+    },
+    {
+      "entity": "Warehouse location directive lines",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveLineEntity)"
+    },
+    {
+      "entity": "Wave Template Steps",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWaveTemplateProcessingMethodAssignmentEntity)"
+    },
+    {
+      "entity": "Warehouse packing profiles",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehousePackingProfileEntity)"
+    },
+    {
+      "entity": "Warehouse location directive line unit of measure restrictions",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveLineUnitOfMeasureRestrictionEntity)"
+    },
+    {
+      "entity": "Warehouse location directive line actions V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseLocationDirectiveLineActionV2Entity)"
+    },
+    {
+      "entity": "Warehouse workers",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseWorkerEntity)"
+    },
+    {
+      "entity": "Warehouse mobile device users",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceUserEntity)"
+    },
+    {
+      "entity": "Return order document routings V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSReturnOrderDocumentRoutingV2Entity)"
+    },
+    {
+      "entity": "Warehouse mobile device user assigned warehouse",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceUserAssignedWarehouseEntity)"
+    },
+    {
+      "entity": "Purchase order document routings V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSPurchaseOrderDocumentRoutingV2Entity)"
+    },
+    {
+      "entity": "Warehouse document routings V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseDocumentRoutingV2Entity)"
+    },
+    {
+      "entity": "Sales order document routings V2",
+      "reason": "not OData-enabled (IsPublic=false, WHSSalesOrderDocumentRoutingV2Entity)"
+    },
+    {
+      "entity": "Document routing printers",
+      "reason": "not OData-enabled (IsPublic=false, WHSDocumentRoutingPrinterEntity)"
+    }
+  ]
+}

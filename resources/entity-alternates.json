@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "sourceVersion": "10.0.2527.174",
+  "generatedAt": "2026-09-10T21:45:07Z",
+  "method": "Candidates are public entities sharing the non-public entity root table. A candidate is accepted only when its query ranges are identical (a differing range means a different subset of the same table, e.g. Module=Vend vs Module=Cust) and the bidirectional field overlap (Jaccard) is at least 0.90. Reviewed by hand; set status to confirmed or rejected. This file is hand-maintainable -- New-ODataTemplates.ps1 reads only entries with status confirmed.",
+  "coverage": "568 non-OData entities across the shipped templates were tested; 515 have no public entity on their table at all, 53 had a same-table candidate, 5 passed the range and field tests.",
+  "alternates": {
+    "Base job": {
+      "status": "confirmed",
+      "entity": "Job base entity",
+      "targetEntity": "PayIntV1HcmJobBaseEntity",
+      "collection": "PayIntV1JobsBase",
+      "rootTable": "HcmJob",
+      "ranges": "",
+      "fieldJaccard": 1.0,
+      "companySpecific": false,
+      "note": "Same root table, identical query ranges, field Jaccard >= 0.90."
+    },
+    "Base position": {
+      "status": "confirmed",
+      "entity": "Base position",
+      "targetEntity": "PayIntV1HcmPositionBaseEntity",
+      "collection": "PayIntV1BasePositions",
+      "rootTable": "HcmPosition",
+      "ranges": "",
+      "fieldJaccard": 1.0,
+      "companySpecific": false,
+      "note": "Same root table, identical query ranges, field Jaccard >= 0.90."
+    },
+    "Benefits employee future life event transaction (data merge)": {
+      "status": "confirmed",
+      "entity": "Benefits employee future life event transaction",
+      "targetEntity": "BenefitEmplFutureLifeEventTransEntity",
+      "collection": "BenefitsEmployeeFutureLifeEventTransactions",
+      "rootTable": "BenefitEmplFutureLifeEventTrans",
+      "ranges": "",
+      "fieldJaccard": 1.0,
+      "companySpecific": false,
+      "note": "Same root table, identical query ranges, field Jaccard >= 0.90."
+    },
+    "Benefits period employee life event transaction (data merge)": {
+      "status": "confirmed",
+      "entity": "Benefits period employee life event transaction",
+      "targetEntity": "BenefitPeriodEmplLifeEventTransEntity",
+      "collection": "BenefitsPeriodEmployeeLifeEventTransactions",
+      "rootTable": "BenefitPeriodEmplLifeEventTrans",
+      "ranges": "",
+      "fieldJaccard": 1.0,
+      "companySpecific": false,
+      "note": "Same root table, identical query ranges, field Jaccard >= 0.90."
+    },
+    "Party postal address history": {
+      "status": "rejected",
+      "entity": "Party postal address sales tax group V2",
+      "targetEntity": "DirPartyLocationPostalAddressSalesTaxGroupV2Entity",
+      "collection": "PartyLocationPostalAddressesSalesTaxGroupV2",
+      "rootTable": "DirPartyLocationPostalAddressV2Entity",
+      "ranges": "",
+      "fieldJaccard": 0.9,
+      "companySpecific": false,
+      "note": "Same table and ranges, but the candidate is a sales-tax-group projection -- a different concept. Rejected pending review."
+    }
+  }
+}
