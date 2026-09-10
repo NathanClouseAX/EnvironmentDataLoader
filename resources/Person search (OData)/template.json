@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Person search (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Person search -- OData-capable subset",
+  "sourceTemplate": "Person search",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:06Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 157,
+    "kept": 131,
+    "substituted": 0,
+    "dropped": 26
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Global address book V2",
+      "reason": "not OData-enabled (IsPublic=false, DirPartyV2Entity)"
+    },
+    {
+      "entity": "Party postal address history",
+      "reason": "not OData-enabled (IsPublic=false, DirPartyLocationPostalAddressHistoricalEntity)"
+    },
+    {
+      "entity": "Customer collections history",
+      "reason": "not OData-enabled (IsPublic=false, CustCollectionsHistoryEntity)"
+    },
+    {
+      "entity": "Customer credit cards",
+      "reason": "not OData-enabled (IsPublic=false, CustCreditCardEntity)"
+    },
+    {
+      "entity": "Customer specific item batch attributes",
+      "reason": "not OData-enabled (IsPublic=false, PdsCustomerSpecificItemBatchAttributeEntity)"
+    },
+    {
+      "entity": "Vendor catalogs",
+      "reason": "not found in the entity catalog (ISV or renamed)"
+    },
+    {
+      "entity": "Sales orders composite V4",
+      "reason": "not found in the entity catalog (ISV or renamed)"
+    },
+    {
+      "entity": "Trade allowance agreements",
+      "reason": "not found in the entity catalog (ISV or renamed)"
+    },
+    {
+      "entity": "Warehouse mobile device users",
+      "reason": "not OData-enabled (IsPublic=false, WHSWarehouseMobileDeviceUserEntity)"
+    },
+    {
+      "entity": "Transportation route plan segments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRoutePlanSegmentEntity)"
+    },
+    {
+      "entity": "Transportation shipment constraints",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationShipmentConstraintEntity)"
+    },
+    {
+      "entity": "Transportation accessorial charge assignments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationAccessorialChargeAssignmentEntity)"
+    },
+    {
+      "entity": "Transportation route plan hub configurations",
+      "reason": "not OData-enabled (IsPublic=false, TMSRoutePlanHubConfigurationEntity)"
+    },
+    {
+      "entity": "Employee credit cards",
+      "reason": "not OData-enabled (IsPublic=false, TrvEmpCreditCardEntity)"
+    },
+    {
+      "entity": "Worker leave and absence request detail export",
+      "reason": "not OData-enabled (IsPublic=false, LeaveRequestDetailExportEntity)"
+    },
+    {
+      "entity": "FMLA case details",
+      "reason": "not OData-enabled (IsPublic=false, HcmFMLACaseDetailEntity)"
+    },
+    {
+      "entity": "FMLA hours",
+      "reason": "not OData-enabled (IsPublic=false, HcmFMLAHoursTrackingDetailEntity)"
+    },
+    {
+      "entity": "Operations resource capability assignment",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceCapabilityAssignmentEntity)"
+    },
+    {
+      "entity": "Applicant interview",
+      "reason": "not OData-enabled (IsPublic=false, HcmApplicantInterviewExportEntity)"
+    },
+    {
+      "entity": "Case detail",
+      "reason": "not OData-enabled (IsPublic=false, CaseDetailBaseEntity)"
+    },
+    {
+      "entity": "Employee leave",
+      "reason": "not OData-enabled (IsPublic=false, HcmEmploymentLeaveEntity)"
+    },
+    {
+      "entity": "Person answers to questionnaire",
+      "reason": "not OData-enabled (IsPublic=false, KMAnswersByPersonEntity)"
+    },
+    {
+      "entity": "Person accommodation",
+      "reason": "not OData-enabled (IsPublic=false, HcmPersonAccommodationEntity)"
+    },
+    {
+      "entity": "Performance feedback",
+      "reason": "not OData-enabled (IsPublic=false, HcmPerfPraiseEntity)"
+    },
+    {
+      "entity": "Print management destination emails V2",
+      "reason": "not OData-enabled (IsPublic=false, PrintManagementDestinationEmailV2Entity)"
+    },
+    {
+      "entity": "Customer free text invoice",
+      "reason": "not OData-enabled (IsPublic=false, FreeTextInvoiceEntity)"
+    }
+  ]
+}

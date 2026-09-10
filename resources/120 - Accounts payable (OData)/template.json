@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "templateId": "120 - Accounts payable (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Accounts payable -- OData-capable subset",
+  "sourceTemplate": "120 - Accounts payable",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 48,
+    "kept": 37,
+    "substituted": 0,
+    "dropped": 11
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Vendor charges group",
+      "reason": "not OData-enabled (IsPublic=false, VendChargeVendorGroupEntity)"
+    },
+    {
+      "entity": "Purchase pools",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderPoolEntity)"
+    },
+    {
+      "entity": "Vendor payment format",
+      "reason": "not OData-enabled (IsPublic=false, VendorPaymentFormatEntity)"
+    },
+    {
+      "entity": "Destination code",
+      "reason": "not OData-enabled (IsPublic=false, DeliveryDestinationEntity)"
+    },
+    {
+      "entity": "Item charge groups",
+      "reason": "not OData-enabled (IsPublic=false, InventChargeProductGroupEntity)"
+    },
+    {
+      "entity": "Buyer groups",
+      "reason": "not OData-enabled (IsPublic=false, InventBuyerGroupEntity)"
+    },
+    {
+      "entity": "Business segments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSegmentEntity)"
+    },
+    {
+      "entity": "Business subsegments",
+      "reason": "not OData-enabled (IsPublic=false, smmBusinessSubsegmentEntity)"
+    },
+    {
+      "entity": "Vendor invoice form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, VendFormletterVendorInvoiceFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Product category hierarchy translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryHierarchyTranslationEntity)"
+    },
+    {
+      "entity": "Product category translations",
+      "reason": "not OData-enabled (IsPublic=false, EcoResProductCategoryTranslationEntity)"
+    }
+  ]
+}

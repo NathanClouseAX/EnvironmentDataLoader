@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "templateId": "320 - Procurement and sourcing (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Procurement and sourcing -- OData-capable subset",
+  "sourceTemplate": "320 - Procurement and sourcing",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 51,
+    "kept": 17,
+    "substituted": 0,
+    "dropped": 34
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Request for quotation scoring methods",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationScoringMethodEntity)"
+    },
+    {
+      "entity": "Request for quotation reply statuses",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationReplyStatusEntity)"
+    },
+    {
+      "entity": "Purchase agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, PurchAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Purchase pools",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderPoolEntity)"
+    },
+    {
+      "entity": "Request for quotation form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterRequestForQuotationFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Vendor rebate group",
+      "reason": "not OData-enabled (IsPublic=false, PurchaseRebateVendorGroupEntity)"
+    },
+    {
+      "entity": "Working time templates",
+      "reason": "not OData-enabled (IsPublic=false, WorkCalendarTimeTemplateEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion groups",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionGroupForCategoryEntity)"
+    },
+    {
+      "entity": "Vendor charges group",
+      "reason": "not OData-enabled (IsPublic=false, VendChargeVendorGroupEntity)"
+    },
+    {
+      "entity": "Activate purchase prices and discounts",
+      "reason": "not OData-enabled (IsPublic=false, PriceDiscPurchaseTradeAgreementActivationEntity)"
+    },
+    {
+      "entity": "External item description vendor groups",
+      "reason": "not OData-enabled (IsPublic=false, PurchProductDescriptionVendorGroupEntity)"
+    },
+    {
+      "entity": "Item charge groups",
+      "reason": "not OData-enabled (IsPublic=false, InventChargeProductGroupEntity)"
+    },
+    {
+      "entity": "Item rebate groups",
+      "reason": "not OData-enabled (IsPublic=false, PurchaseRebateProductGroupEntity)"
+    },
+    {
+      "entity": "Procurement return actions",
+      "reason": "not OData-enabled (IsPublic=false, ProcurementReturnActionEntity)"
+    },
+    {
+      "entity": "Destination code",
+      "reason": "not OData-enabled (IsPublic=false, DeliveryDestinationEntity)"
+    },
+    {
+      "entity": "Purchase requisition form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseRequisitionFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase order form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseOrderFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Vendor facing form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, VendFormletterVendorFacingFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Receipt list form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterWarehouseReceiptListFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Product receipt form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterProductReceiptFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase agreement form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseAgreementFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "Purchase inquiry form printing configurations",
+      "reason": "not OData-enabled (IsPublic=false, PurchFormletterPurchaseInquiryFormPrintingConfigurationEntity)"
+    },
+    {
+      "entity": "External purchase agreement classification",
+      "reason": "not OData-enabled (IsPublic=false, PurchExternalPurchaseAgreementClassificationEntity)"
+    },
+    {
+      "entity": "Procurement type document entry policies",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentEntryPolicyEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criteria",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion group translations",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionGroupForCategoryTranslationEntity)"
+    },
+    {
+      "entity": "Request for quotation scoring method criteria",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationScoringMethodCriterionEntity)"
+    },
+    {
+      "entity": "Request for quotation solicitation types",
+      "reason": "not OData-enabled (IsPublic=false, PurchRequestForQuotationSolicitationTypeEntity)"
+    },
+    {
+      "entity": "Vendor evaluation criterion translations",
+      "reason": "not OData-enabled (IsPublic=false, VendorEvaluationCriterionTranslationEntity)"
+    },
+    {
+      "entity": "Procurement type document default values",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentDefaultsEntity)"
+    },
+    {
+      "entity": "Procurement type document processing policies",
+      "reason": "not OData-enabled (IsPublic=false, PurchProcurementDocumentProcessingPolicyEntity)"
+    },
+    {
+      "entity": "Purchase agreement classification translation",
+      "reason": "not OData-enabled (IsPublic=false, PurchAgreementClassificationTranslationEntity)"
+    },
+    {
+      "entity": "Vendor rebate parameters",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseRebateParametersEntity)"
+    },
+    {
+      "entity": "Purchase line update parameters",
+      "reason": "not OData-enabled (IsPublic=false, PurchPurchaseOrderUpdateLinesParametersEntity)"
+    }
+  ]
+}

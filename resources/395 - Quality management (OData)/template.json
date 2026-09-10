@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "templateId": "395 - Quality management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Quality management -- OData-capable subset",
+  "sourceTemplate": "395 - Quality management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 17,
+    "kept": 3,
+    "substituted": 0,
+    "dropped": 14
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Quality problem types",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityProblemTypeEntity)"
+    },
+    {
+      "entity": "Quality groups",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityGroupEntity)"
+    },
+    {
+      "entity": "Quality test instruments",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityTestInstrumentEntity)"
+    },
+    {
+      "entity": "Quarantine zones",
+      "reason": "not OData-enabled (IsPublic=false, InventWarehouseQuarantineZoneEntity)"
+    },
+    {
+      "entity": "Quality test variables",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityTestVariableEntity)"
+    },
+    {
+      "entity": "Product safety data sheet validity",
+      "reason": "not OData-enabled (IsPublic=false, PdsProductSafetyDataSheetValidityEntity)"
+    },
+    {
+      "entity": "Item sampling",
+      "reason": "not OData-enabled (IsPublic=false, InventQualitySamplingEntity)"
+    },
+    {
+      "entity": "Diagnostic types",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityDiagnosticTypeEntity)"
+    },
+    {
+      "entity": "Nonconformance operation categories",
+      "reason": "not OData-enabled (IsPublic=false, InventNonConformanceOperationCategoryEntity)"
+    },
+    {
+      "entity": "Nonconformance charge types",
+      "reason": "not OData-enabled (IsPublic=false, InventNonConformanceChargeTypeEntity)"
+    },
+    {
+      "entity": "Workers responsible for quality",
+      "reason": "not OData-enabled (IsPublic=false, InventNonConformanceResponsibleWorkerAssignmentEntity)"
+    },
+    {
+      "entity": "Quality tests",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityTestEntity)"
+    },
+    {
+      "entity": "Test group test assignments",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityTestGroupTestAssignmentEntity)"
+    },
+    {
+      "entity": "Quality order creation policies V2",
+      "reason": "not OData-enabled (IsPublic=false, InventQualityOrderCreationPolicyV2Entity)"
+    }
+  ]
+}

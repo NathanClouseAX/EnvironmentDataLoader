@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "templateId": "405 - Transportation management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Transportation management -- OData-capable subset",
+  "sourceTemplate": "405 - Transportation management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 92,
+    "kept": 6,
+    "substituted": 0,
+    "dropped": 86
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Transportation rate break masters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateBreakMasterEntity)"
+    },
+    {
+      "entity": "Transportation mileage engines",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationMileageEngineEntity)"
+    },
+    {
+      "entity": "Transportation equipments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationEquipmentEntity)"
+    },
+    {
+      "entity": "Transportation generic engines",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationGenericEngineEntity)"
+    },
+    {
+      "entity": "Transportation methods",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationMethodEntity)"
+    },
+    {
+      "entity": "Transportation status masters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationStatusMasterEntity)"
+    },
+    {
+      "entity": "Transportation load building strategies",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationLoadBuildingStrategyEntity)"
+    },
+    {
+      "entity": "Transportation rating metadata",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRatingMetadataEntity)"
+    },
+    {
+      "entity": "Product harmonized tariff codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSProductHarmonizedTariffCodeEntity)"
+    },
+    {
+      "entity": "Standard transportation commodity codes",
+      "reason": "not OData-enabled (IsPublic=false, TMSStandardTransportationCommodityCodeEntity)"
+    },
+    {
+      "entity": "Transportation transit time engines",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransitTimeEngineEntity)"
+    },
+    {
+      "entity": "Transportation zone engines",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationZoneEngineEntity)"
+    },
+    {
+      "entity": "Less than truckload classes",
+      "reason": "not OData-enabled (IsPublic=false, WHSLessThanTruckloadClassEntity)"
+    },
+    {
+      "entity": "Hub types",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationHubTypeEntity)"
+    },
+    {
+      "entity": "Fuel index regions",
+      "reason": "not OData-enabled (IsPublic=false, TMSFuelIndexRegionEntity)"
+    },
+    {
+      "entity": "Sales delivery charge codes",
+      "reason": "not OData-enabled (IsPublic=false, SalesDeliveryChargeEntity)"
+    },
+    {
+      "entity": "Reasons for late shipping",
+      "reason": "not OData-enabled (IsPublic=false, TMSLateShipReasonEntity)"
+    },
+    {
+      "entity": "Accessorial charge masters",
+      "reason": "not OData-enabled (IsPublic=false, TMSAccessorialChargeMasterEntity)"
+    },
+    {
+      "entity": "Dock door appointment change reasons",
+      "reason": "not OData-enabled (IsPublic=false, TMSDockDoorAppointmentChangeReasonEntity)"
+    },
+    {
+      "entity": "Carrier fuel indexes",
+      "reason": "not OData-enabled (IsPublic=false, TMSCarrierFuelIndexEntity)"
+    },
+    {
+      "entity": "Freight reconciliation reason codes",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightReconciliationReasonCodeEntity)"
+    },
+    {
+      "entity": "Freight bill types",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightBillTypeEntity)"
+    },
+    {
+      "entity": "Transportation billing groups",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationBillingGroupEntity)"
+    },
+    {
+      "entity": "Transportation appointment change reason codes",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationAppointmentChangeReasonCodeEntity)"
+    },
+    {
+      "entity": "Inventory charge codes",
+      "reason": "not OData-enabled (IsPublic=false, InventoryChargeEntity)"
+    },
+    {
+      "entity": "US national motor freight classification codes",
+      "reason": "not OData-enabled (IsPublic=false, WHSUSNationalMotorFreightClassificationCodeEntity)"
+    },
+    {
+      "entity": "Transportation zone masters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationZoneMasterEntity)"
+    },
+    {
+      "entity": "Transportation generic engine parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationGenericEngineParameterEntity)"
+    },
+    {
+      "entity": "Freight bill type details",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightBillTypeDetailEntity)"
+    },
+    {
+      "entity": "Transportation rating metadata assignment fields",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRatingMetadataAssignmentFieldEntity)"
+    },
+    {
+      "entity": "Carrier fuel index lines",
+      "reason": "not OData-enabled (IsPublic=false, TMSCarrierFuelIndexLineEntity)"
+    },
+    {
+      "entity": "Shipping carrier number sequences",
+      "reason": "not OData-enabled (IsPublic=false, TMSShippingCarrierNumberSequenceEntity)"
+    },
+    {
+      "entity": "Transportation rate break values",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateBreakValueEntity)"
+    },
+    {
+      "entity": "Transportation transit time engine details metadata",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransitTimeEngineDetailMetadataEntity)"
+    },
+    {
+      "entity": "Transportation rating metadata rate base fields",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRatingMetadataRateBaseFieldEntity)"
+    },
+    {
+      "entity": "Transportation rate masters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateMasterEntity)"
+    },
+    {
+      "entity": "Fuel indexes",
+      "reason": "not OData-enabled (IsPublic=false, TMSFuelIndexEntity)"
+    },
+    {
+      "entity": "Transportation rate engines",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateEngineEntity)"
+    },
+    {
+      "entity": "Transportation mileage engine details metadata",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationMileageEngineDetailMetadataEntity)"
+    },
+    {
+      "entity": "Transportation mileage engine details",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationMileageEngineDetailEntity)"
+    },
+    {
+      "entity": "Transportation zone engine parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationZoneEngineParameterEntity)"
+    },
+    {
+      "entity": "Transportation mileage engine parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationMileageEngineParameterEntity)"
+    },
+    {
+      "entity": "Transportation transit time engine parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransitTimeEngineParameterEntity)"
+    },
+    {
+      "entity": "Transportation management parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationManagementParametersEntity)"
+    },
+    {
+      "entity": "Transportation zone details",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationZoneDetailEntity)"
+    },
+    {
+      "entity": "Transportation rate bases",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateBaseEntity)"
+    },
+    {
+      "entity": "Transportation rate engine parameters",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateEngineParameterEntity)"
+    },
+    {
+      "entity": "Transportation zone detail metadata",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationZoneDetailMetadataEntity)"
+    },
+    {
+      "entity": "Transportation rate base details",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateBaseDetailEntity)"
+    },
+    {
+      "entity": "Transportation hubs",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationHubEntity)"
+    },
+    {
+      "entity": "Transportation appointment rules",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationAppointmentRuleEntity)"
+    },
+    {
+      "entity": "Transportation sales load building templates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationSalesLoadBuildingTemplateEntity)"
+    },
+    {
+      "entity": "Transportation purchase load building templates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationPurchaseLoadBuildingTemplateEntity)"
+    },
+    {
+      "entity": "Transportation transfer load building templates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransferLoadBuildingTemplateEntity)"
+    },
+    {
+      "entity": "Transportation shipment load building templates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationShipmentLoadBuildingTemplateEntity)"
+    },
+    {
+      "entity": "Shipping carrier rating profile",
+      "reason": "not OData-enabled (IsPublic=false, TMSShippingCarrierRatingProfileEntity)"
+    },
+    {
+      "entity": "Transportation hub accessorial charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationHubAccessorialChargeEntity)"
+    },
+    {
+      "entity": "Freight bill type assignments",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightBillTypeAssignmentEntity)"
+    },
+    {
+      "entity": "Freight bill matching audit tolerance levels",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightBillMatchingAuditToleranceLevelEntity)"
+    },
+    {
+      "entity": "Transportation shipment load building template sequences",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationShipmentLoadBuildingTemplateSequenceEntity)"
+    },
+    {
+      "entity": "Transportation transfer load building template sequences",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransferLoadBuildingTemplateSequenceEntity)"
+    },
+    {
+      "entity": "Transportation purchase load building template sequences",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationPurchaseLoadBuildingTemplateSequenceEntity)"
+    },
+    {
+      "entity": "Shipping carrier accessorial charge",
+      "reason": "not OData-enabled (IsPublic=false, TMSShippingCarrierAccessorialChargeEntity)"
+    },
+    {
+      "entity": "Transportation sales load building template sequences",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationSalesLoadBuildingTemplateSequenceEntity)"
+    },
+    {
+      "entity": "Inventory freight charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSInventoryFreightChargeEntity)"
+    },
+    {
+      "entity": "Transportation vendor charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationVendorChargeEntity)"
+    },
+    {
+      "entity": "Transportation shipment constraints",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationShipmentConstraintEntity)"
+    },
+    {
+      "entity": "Procurement freight charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSProcurementFreightChargeEntity)"
+    },
+    {
+      "entity": "Transportation rate assignments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRateAssignmentEntity)"
+    },
+    {
+      "entity": "Sales freight charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSSalesFreightChargeEntity)"
+    },
+    {
+      "entity": "Sales delivery freight charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSSalesDeliveryFreightChargeEntity)"
+    },
+    {
+      "entity": "Transportation route plan segments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRoutePlanSegmentEntity)"
+    },
+    {
+      "entity": "Transportation accessorial charge assignments",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationAccessorialChargeAssignmentEntity)"
+    },
+    {
+      "entity": "Freight bill matching audit tolerance level exceptions",
+      "reason": "not OData-enabled (IsPublic=false, TMSFreightBillMatchingAuditToleranceLevelExceptionEntity)"
+    },
+    {
+      "entity": "Transportation item constraints",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationItemConstraintEntity)"
+    },
+    {
+      "entity": "Transportation customer charges",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationCustomerChargeEntity)"
+    },
+    {
+      "entity": "Transportation discounts",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationDiscountEntity)"
+    },
+    {
+      "entity": "Transportation templates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTemplateEntity)"
+    },
+    {
+      "entity": "Shipping carrier service group assignment",
+      "reason": "not OData-enabled (IsPublic=false, TMSShippingCarrierServiceGroupAssignmentEntity)"
+    },
+    {
+      "entity": "Transportation route schedules",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRouteScheduleEntity)"
+    },
+    {
+      "entity": "Transportation route guides",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationRouteGuideEntity)"
+    },
+    {
+      "entity": "Transportation customer charge manual override rates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationCustomerChargeManualOverrideRateEntity)"
+    },
+    {
+      "entity": "Transportation vendor charge manual override rates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationVendorChargeManualOverrideRateEntity)"
+    },
+    {
+      "entity": "Transportation transit time engine details",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTransitTimeEngineDetailEntity)"
+    },
+    {
+      "entity": "Transportation route plan hub configurations",
+      "reason": "not OData-enabled (IsPublic=false, TMSRoutePlanHubConfigurationEntity)"
+    },
+    {
+      "entity": "Transportation template customer charge manual override rates",
+      "reason": "not OData-enabled (IsPublic=false, TMSTransportationTemplateCustomerChargeManualOverrideRateEntity)"
+    }
+  ]
+}

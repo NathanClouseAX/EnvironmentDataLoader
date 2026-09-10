@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Benefits management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Benefits management setup -- OData-capable subset",
+  "sourceTemplate": "Benefits management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 52,
+    "kept": 46,
+    "substituted": 2,
+    "dropped": 6
+  },
+  "substituted": [
+    {
+      "from": "Benefits employee future life event transaction (data merge)",
+      "to": "Benefits employee future life event transaction",
+      "targetEntity": "BenefitEmplFutureLifeEventTransEntity",
+      "rootTable": "BenefitEmplFutureLifeEventTrans",
+      "fieldJaccard": 1.0
+    },
+    {
+      "from": "Benefits period employee life event transaction (data merge)",
+      "to": "Benefits period employee life event transaction",
+      "targetEntity": "BenefitPeriodEmplLifeEventTransEntity",
+      "rootTable": "BenefitPeriodEmplLifeEventTrans",
+      "fieldJaccard": 1.0
+    }
+  ],
+  "dropped": [
+    {
+      "entity": "Custom field eligibility",
+      "reason": "not OData-enabled (IsPublic=false, BenefitEligibilityCustomFieldEntity)"
+    },
+    {
+      "entity": "Benefit eligibility process result",
+      "reason": "not OData-enabled (IsPublic=false, BenefitEligibilityProcessResultEntity)"
+    },
+    {
+      "entity": "Eligibility condition",
+      "reason": "not OData-enabled (IsPublic=false, BenefitEligibilityCustomFieldConditionEntity)"
+    },
+    {
+      "entity": "Benefits plan employee life event transaction (data merge)",
+      "reason": "not OData-enabled (IsPublic=false, BenefitPlanEmployeeLifeEventTransV2DMFEntity)"
+    },
+    {
+      "entity": "Benefit Email Templates",
+      "reason": "not OData-enabled (IsPublic=false, BenefitEmailTemplateEntity)"
+    },
+    {
+      "entity": "Benefits period group life event transaction (data merge)",
+      "reason": "not OData-enabled (IsPublic=false, BenefitPeriodGroupLifeEventTransDMFEntity)"
+    }
+  ]
+}

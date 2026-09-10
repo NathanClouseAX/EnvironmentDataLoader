@@ -17,6 +17,7 @@ PowerShell toolset for importing and migrating data in **Dynamics 365 Finance & 
   - [Invoke-PackageUpload.ps1](#invoke-packageuploadps1)
   - [Get-ExecutionJobReport.ps1](#get-executionjobreportps1)
   - [Export-TemplateDefinition.ps1](#export-templatedefinitionps1)
+  - [New-ODataTemplates.ps1](#new-odatatemplatesps1)
   - [Compare-EnvironmentData.ps1](#compare-environmentdataps1)
   - [Invoke-EnvironmentProbe.ps1](#invoke-environmentprobeps1)
 - [Templates](#templates)
@@ -49,6 +50,7 @@ EnvironmentDataLoader/
 ├── Invoke-PackageUpload.ps1      Upload pre-built .zip files into D365
 ├── Get-ExecutionJobReport.ps1    Report on execution job results; surface errors for correction
 ├── Export-TemplateDefinition.ps1 Capture D365 templates (incl. Microsoft defaults) into resources/<Name>/Manifest.xml
+├── New-ODataTemplates.ps1        Generate `<template> (OData)` variants holding only OData-reachable entities
 ├── Compare-EnvironmentData.ps1   Diff two OData snapshot folders; HTML report + findings on the pipeline
 ├── Invoke-EnvironmentProbe.ps1   Verify the Metadata-service / OData behaviours the OData path relies on
 ├── docs/fdd/                     Functional design documents
@@ -58,6 +60,8 @@ EnvironmentDataLoader/
 ├── data/                         OData snapshots: data/<env>/<legal entity>/<Entity>.json  (git-ignored)
 ├── resources/
 │   ├── entity-map.json           Entity resolution cache: DMF label -> AOT name -> OData collection, keys
+│   ├── entity-catalog.json       Shipped catalog of every data entity: label, AOT name, OData flag, keys
+│   ├── entity-alternates.json    Reviewed substitutes for non-OData entities, with the evidence for each
 │   ├── 900 - Open transactions/  Hand-authored template, marked custom in template.json (use case 2)
 │   └── 010 - System Setup/       A template (Manifest.xml) that is also a package (xlsx present)
 │       ├── Manifest.xml
@@ -68,6 +72,7 @@ EnvironmentDataLoader/
     ├── DmfOData.ps1              OData URL building, escaping, paging
     ├── DmfTemplate.ps1           Manifest.xml read / validate / build / write; template folders
     ├── DmfMetadata.ps1           Entity resolution via entity-map.json + F&O Metadata service
+    ├── DmfEntityCatalog.ps1      Reads resources/entity-catalog.json and resolves labels against it
     ├── DmfPull.ps1               OData snapshot files and the _pull.json run index
     ├── DmfCompare.ps1            Snapshot comparison engine
     ├── DmfHtml.ps1               Shared HTML report styling
@@ -267,6 +272,8 @@ $exports | Where-Object Status -eq 'Succeeded' | Select-Object TemplateId, Downl
 Builds a dedicated DMF export project from a template's entity lines, then exports and downloads it.  Unlike `Invoke-TemplateExport.ps1` — which runs `ExportToPackage` directly against the template — this script first creates a named DMF project (`DataManagementDefinitionGroups`) populated with one entity record per template line, then exports that project.
 
 Templates come from **local folders by default** (`-TemplateSource Local`, see [Templates](#templates)) or from the environment (`-TemplateSource Environment`).  With `-Mode OData` the same entities are read straight from the OData endpoints into JSON instead of running a DMF export job — see [OData snapshots](#odata-snapshots).
+
+The template list is filtered to the ones that suit the mode: `-Mode Dmf` hides the generated `(OData)` companions, and `-Mode OData` hides the source templates those companions replace along with any template that has nothing readable over OData.  See [OData variants](#odata-variants); `-TemplateName` bypasses the filter.
 
 Because it creates the data project itself, this script works for **every** template — including the ones `Invoke-TemplateExport.ps1` cannot export because no matching data project exists.  It is the right choice for exporting a whole environment; use it when you need a persistent, inspectable DMF project in D365 that matches the template structure, or when `Invoke-TemplateExport.ps1` fails with *"Data project ... does not exist."*
 
@@ -633,6 +640,53 @@ Statuses: `Captured`, `Skipped-Exists` (re-run with `-Force`), `Skipped-Custom` 
 
 ---
 
+### New-ODataTemplates.ps1
+
+
+Generates a `<template> (OData)` companion for each template, holding only the entities that can actually be read over OData, with `TargetEntity` filled in from [`entity-catalog.json`](#the-entity-catalog).  Entirely local -- no sign-in, and no development box.
+
+Roughly a third of the entities in Microsoft's default templates are not OData-enabled, and the shortfall is very uneven — `500 - Retail`, `160 - Budgeting` and `150 - Fixed assets` are fully covered, while `022 - Workflow` has no OData-reachable entity at all.  Running `-Mode OData` against a stock template therefore reports a long list of `NotPublic` skips.  The generated companion contains only what works, so an OData run is clean and the DMF path is used knowingly for the rest.
+
+```powershell
+.\New-ODataTemplates.ps1 -WhatIf     # coverage report, writes nothing
+.\New-ODataTemplates.ps1 -Force      # (re)generate them all
+```
+
+Per source line the script keeps the entity when it is OData-enabled, substitutes it when `entity-alternates.json` confirms a replacement, and otherwise drops it.  Every generated folder is marked `"origin": "custom"` so `Export-TemplateDefinition.ps1` never overwrites it, and its `template.json` records the evidence:
+
+```json
+"counts": { "source": 38, "kept": 37, "substituted": 2, "dropped": 1 },
+"substituted": [ { "from": "Base job", "to": "Job base entity",
+                   "targetEntity": "PayIntV1HcmJobBaseEntity",
+                   "rootTable": "HcmJob", "fieldJaccard": 1.0 } ],
+"dropped":     [ { "entity": "Union agreement duration",
+                   "reason": "not OData-enabled (IsPublic=false, HcmUnionAgreementDurationEntity)" } ]
+```
+
+A template with no OData-capable entity generates nothing and is reported as `Skipped-NoCoverage`.
+
+#### Parameters
+
+| Parameter | Required | Default | Description |
+|---|---|---|---|
+| `-ResourcesPath` | No | `./resources` | Template folders plus the catalog and alternates files |
+| `-CatalogPath` | No | `<ResourcesPath>\entity-catalog.json` | Explicit catalog path |
+| `-AlternatesPath` | No | `<ResourcesPath>\entity-alternates.json` | Substitutions; without it none are made |
+| `-TemplateName` | No | all | Generate for one source template |
+| `-Suffix` | No | ` (OData)` | Folder-name suffix for the generated template |
+| `-Force` | No | off | Overwrite an existing generated folder (otherwise `Skipped-Exists`) |
+| `-LogPath` | No | auto | Transcript path; `''` suppresses |
+| `-WhatIf` | No | off | Coverage report only |
+| `-PassThru` | No | off | One object per template: `Template, Lines, Kept, Substituted, Dropped, Coverage, Folder, Status` |
+
+#### Why substitutions are rare
+
+`entity-alternates.json` holds the reviewed replacements for entities that are not OData-enabled.  There are very few, and that is a property of the platform rather than a gap in the tooling: of the 568 non-OData entities across the shipped templates, **515 have no public entity reading their table at all**.  Of the 53 that do, most share the table but not the data — `Vendor charges group` and `Customer charge groups` both project `MarkupGroup` with identical fields and differ only in a query range (`Module=Vend` against `Module=Cust`).  A candidate is accepted only when the root table matches, the query ranges are **identical**, and the field overlap is at least 0.90 both ways.  Four survive.
+
+Edit the file by hand to add or reject one; `status` must be `confirmed` for the generator to use it.
+
+---
+
 ### Compare-EnvironmentData.ps1
 
 Compares two OData snapshot folders produced by `Invoke-ProjectExport.ps1 -Mode OData` and reports entities present on one side only, records added / removed / changed (by the entity's OData key stored in each file), the exact fields that moved, schema drift, and duplicate keys.  Entirely local — no sign-in.
@@ -796,6 +850,39 @@ Validate a hand-written template without touching D365:
 
 A manifest that is valid as a template may be too thin to import as a package (no field maps); that is fine — data files only ever come from D365 exports, which carry full manifests.  Set `<Disable>true</Disable>` on a line to leave it out of exports and pulls without deleting it (`-IncludeDisabled` restores it).
 
+### OData variants
+
+A `<template> (OData)` folder is a generated companion holding only the entities of that template that are reachable over OData, produced by [`New-ODataTemplates.ps1`](#new-odatatemplatesps1).  They are marked `"origin": "custom"` with `"appliesTo": "OData"` and each records, in its `template.json`, exactly which entities were dropped and why.
+
+**`Invoke-ProjectExport.ps1` lists only the templates that suit the transport**, so the menu and `-All` show one coherent set rather than every folder twice:
+
+| `-Mode` | Shown | Hidden |
+|---|---|---|
+| `Dmf` | the source templates | the `(OData)` companions — subsets built for the other transport |
+| `OData` | the companions, plus any template with no companion that still has OData-readable entities | source templates that have a companion, and templates with nothing readable over OData at all (`022 - Workflow`) |
+
+Whether a template has anything readable is decided from `entity-map.json`, so a hand-authored template that has never been through the generator still appears in OData mode as long as its entities resolve.
+
+`-TemplateName` always resolves against the **full** list, so you can name a hidden template and it will run — with a note telling you what you are getting:
+
+```powershell
+# works, and points out that '130 - Tax (OData)' is the OData-ready companion
+.\Invoke-ProjectExport.ps1 ... -Mode OData -TemplateName '130 - Tax'
+
+# works, and warns that the companion is a subset of the full template
+.\Invoke-ProjectExport.ps1 ... -Mode Dmf -TemplateName '130 - Tax (OData)'
+```
+
+### The entity catalog
+
+`resources/entity-catalog.json` is a committed data file describing every D365 F&O data entity for one application version (its `sourceVersion` field says which): the DMF label, the AOT entity name, whether the entity is reachable over OData, its collection name, key fields, company context and backing table.
+
+It exists because the running environment cannot answer those questions cheaply.  `/Metadata/Labels` serves one label per call and refuses `$filter` with HTTP 501, so resolving a large template that way is slow — and no endpoint describes an entity that is **not** OData-enabled, which is exactly what you need to know to tell whether a template can be pulled at all.
+
+Two things use it: `entity-map.json` was seeded from it, and [`New-ODataTemplates.ps1`](#new-odatatemplatesps1) reads it to decide which entities go into each `(OData)` template.  Nothing at run time depends on it.
+
+The catalog was generated from the AOT metadata of a development box (`PackagesLocalDirectory`), which most people do not have — that is the point of committing the output.  It is version-specific: after a platform upgrade the entity set drifts, and ISV or custom entities in your environment will not appear in it at all.  The live Metadata service remains the authority for any one environment, and entities the catalog does not cover fall back to it automatically.
+
 ### Custom templates
 
 Mark a hand-authored folder as **custom** with a `template.json` sidecar next to the manifest:
@@ -837,6 +924,8 @@ The OData path needs, for each DMF entity label, the AOT entity name, the OData 
 ```
 
 Resolution order: the map; then the F&O Metadata service.  With a `TargetEntity` the lookup is direct (`/Metadata/DataEntities`).  With only a label it is indirect, because the service refuses filters on `/Metadata/Labels` and only serves one label per call (`Labels(Id='…',Language='…')`): the resolver picks the data entities whose AOT name shares words with the label, reads just those labels, and accepts an exact match.  Misses are reported as `Unresolved` and skipped.
+
+**The map ships pre-seeded.**  `entity-map.json` already carries every entity the shipped templates use — about 1,500 of them — resolved from [the entity catalog](#the-entity-catalog), so a fresh clone resolves them with no sign-in and no Metadata-service calls.  You only need the steps below for entities the catalog does not cover, such as ISV or custom entities in your own environment:
 
 **Seed before you resolve.**  Every exported package's `Manifest.xml` already names the `TargetEntity` for each line, so the cheapest and most reliable way to fill the map is to harvest your expanded exports first:
 
@@ -1158,7 +1247,7 @@ Scripts set `$Script:DmfSession = $session` once after sign-in; `Invoke-DmfReque
 
 ## Tests
 
-`tests/` holds Pester 5 unit tests for the pure functions in `lib/`.  Nothing in them talks to D365 or Entra: network calls are mocked, and fixtures under `tests/fixtures/` provide small manifests and two snapshot folders that differ in known ways.
+`tests/` holds Pester 5 unit tests for the pure functions in `lib/`.  One of them reads the shipped `resources/entity-catalog.json` to confirm it still resolves a known entity.  Nothing in them talks to D365 or Entra: network calls are mocked, and fixtures under `tests/fixtures/` provide small manifests and two snapshot folders that differ in known ways.
 
 ```powershell
 Install-Module Pester -MinimumVersion 5.0 -Scope CurrentUser   # once

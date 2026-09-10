@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "templateId": "410 - Production control (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Production control -- OData-capable subset",
+  "sourceTemplate": "410 - Production control",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:04Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 58,
+    "kept": 19,
+    "substituted": 0,
+    "dropped": 39
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Working time templates",
+      "reason": "not OData-enabled (IsPublic=false, WorkCalendarTimeTemplateEntity)"
+    },
+    {
+      "entity": "Time and attendance flex groups",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceFlexGroupEntity)"
+    },
+    {
+      "entity": "Job card terminal grid configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalGridConfigurationEntity)"
+    },
+    {
+      "entity": "Time and attendance approval groups",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceApprovalGroupEntity)"
+    },
+    {
+      "entity": "Time and attendance calculation groups",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceCalculationGroupEntity)"
+    },
+    {
+      "entity": "Time and attendance calculation policies",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendancePayCalculationPolicyEntity)"
+    },
+    {
+      "entity": "Pay types",
+      "reason": "not OData-enabled (IsPublic=false, JmgPayTypeEntity)"
+    },
+    {
+      "entity": "Job card terminal action pane configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalActionPaneConfigurationEntity)"
+    },
+    {
+      "entity": "Capabilities",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceCapabilityEntity)"
+    },
+    {
+      "entity": "Time and attendance profile groups",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceProfileGroupEntity)"
+    },
+    {
+      "entity": "Time and attendance profile types",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceProfileTypeEntity)"
+    },
+    {
+      "entity": "Job card terminal grid control configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalGridControlConfigurationEntity)"
+    },
+    {
+      "entity": "Job card terminal action pane control configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalActionPaneControlConfigurationEntity)"
+    },
+    {
+      "entity": "Route cost category",
+      "reason": "not OData-enabled (IsPublic=false, RouteCostCategoryEntity)"
+    },
+    {
+      "entity": "Pay agreement exceptions",
+      "reason": "not OData-enabled (IsPublic=false, JmgPayAgreementExceptionEntity)"
+    },
+    {
+      "entity": "Operations resource capability assignment",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceCapabilityAssignmentEntity)"
+    },
+    {
+      "entity": "Resource parameters by site",
+      "reason": "not OData-enabled (IsPublic=false, WrkCtrSiteSpecificOperationsResourceSchedulingParametersEntity)"
+    },
+    {
+      "entity": "Resource parameters",
+      "reason": "not OData-enabled (IsPublic=false, WrkCtrOperationsResourceSchedulingParametersEntity)"
+    },
+    {
+      "entity": "Bill of materials parameters",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsParametersEntity)"
+    },
+    {
+      "entity": "Working times scheduling properties",
+      "reason": "not OData-enabled (IsPublic=false, WorkingTimeSchedulingPropertyEntity)"
+    },
+    {
+      "entity": "Production units",
+      "reason": "not OData-enabled (IsPublic=false, ProdProductionUnitEntity)"
+    },
+    {
+      "entity": "Resource groups",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceGroupEntity)"
+    },
+    {
+      "entity": "Resource group membership",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceGroupAssignmentEntity)"
+    },
+    {
+      "entity": "Resource calendar assignments",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceWorkCalendarAssignmentEntity)"
+    },
+    {
+      "entity": "Working times scheduling property lines",
+      "reason": "not OData-enabled (IsPublic=false, WorkingTimeSchedulingPropertyLinesEntity)"
+    },
+    {
+      "entity": "Route groups",
+      "reason": "not OData-enabled (IsPublic=false, RouteGroupEntity)"
+    },
+    {
+      "entity": "Resource group calendar assignments",
+      "reason": "not OData-enabled (IsPublic=false, OpResOperationsResourceGroupWorkCalendarAssignmentEntity)"
+    },
+    {
+      "entity": "Route versions V2",
+      "reason": "not OData-enabled (IsPublic=false, RouteVersionV2Entity)"
+    },
+    {
+      "entity": "Production journal names",
+      "reason": "not OData-enabled (IsPublic=false, ProductionJournalNameEntity)"
+    },
+    {
+      "entity": "Bill of materials version document attachments",
+      "reason": "not OData-enabled (IsPublic=false, BOMBillOfMaterialsVersionDocumentAttachmentEntity)"
+    },
+    {
+      "entity": "Job card device configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardDeviceConfigurationEntity)"
+    },
+    {
+      "entity": "Job card terminal configurations",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalConfigurationEntity)"
+    },
+    {
+      "entity": "Production control parameters",
+      "reason": "not OData-enabled (IsPublic=false, ProdProductionControlParametersEntity)"
+    },
+    {
+      "entity": "Production control parameters by site",
+      "reason": "not OData-enabled (IsPublic=false, ProdSiteSpecificProductionControlParametersEntity)"
+    },
+    {
+      "entity": "Job card device configuration user assignments",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardDeviceConfigurationUserAssignmentEntity)"
+    },
+    {
+      "entity": "Time and attendance and manufacturing execution parameters",
+      "reason": "not OData-enabled (IsPublic=false, JmgTimeAndAttendanceParametersEntity)"
+    },
+    {
+      "entity": "Job card terminal configuration user assignments",
+      "reason": "not OData-enabled (IsPublic=false, JmgJobCardTerminalConfigurationUserAssignmentEntity)"
+    },
+    {
+      "entity": "Manufacturing execution production order defaults",
+      "reason": "not OData-enabled (IsPublic=false, JmgManufacturingExecutionProductionOrderDefaultsEntity)"
+    },
+    {
+      "entity": "Manufacturing execution production order defaults by site",
+      "reason": "not OData-enabled (IsPublic=false, JmgSiteSpecificManufacturingExecutionProductionOrderDefaultsEntity)"
+    }
+  ]
+}

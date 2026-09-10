@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Employee Development (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Employee Development -- OData-capable subset",
+  "sourceTemplate": "Employee Development",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 78,
+    "kept": 62,
+    "substituted": 0,
+    "dropped": 16
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Goal groups",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalGroupEntity)"
+    },
+    {
+      "entity": "Performance feedback",
+      "reason": "not OData-enabled (IsPublic=false, HcmPerfPraiseEntity)"
+    },
+    {
+      "entity": "Performance journal comment entity",
+      "reason": "not OData-enabled (IsPublic=false, HcmPerfJournalCommentEntity)"
+    },
+    {
+      "entity": "Skill-mapping - certificates",
+      "reason": "not OData-enabled (IsPublic=false, HcmSkillMappingCertificateEntity)"
+    },
+    {
+      "entity": "Skill-mapping - education",
+      "reason": "not OData-enabled (IsPublic=false, HcmSkillMappingEducationEntity)"
+    },
+    {
+      "entity": "Skill-mapping - lines",
+      "reason": "not OData-enabled (IsPublic=false, HcmSkillMappingLineEntity)"
+    },
+    {
+      "entity": "Skill-mapping - criteria",
+      "reason": "not OData-enabled (IsPublic=false, HcmSkillMappingRangeEntity)"
+    },
+    {
+      "entity": "Course Location Picture",
+      "reason": "not OData-enabled (IsPublic=false, HRMCourseLocationPictureEntity)"
+    },
+    {
+      "entity": "Review settings - reviews",
+      "reason": "not OData-enabled (IsPublic=false, HcmDiscussionSettingsDiscussionsEntity)"
+    },
+    {
+      "entity": "Review settings - review templates",
+      "reason": "not OData-enabled (IsPublic=false, HcmDiscussionSettingsDiscussionTemplatesEntity)"
+    },
+    {
+      "entity": "Goal settings - goal templates",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalSettingsGoalTemplatesEntity)"
+    },
+    {
+      "entity": "Goal settings - goals",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalSettingsGoalsEntity)"
+    },
+    {
+      "entity": "Goal group templates",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalGroupTemplatesEntity)"
+    },
+    {
+      "entity": "Goal activities",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalActivityEntity)"
+    },
+    {
+      "entity": "Goal notes",
+      "reason": "not OData-enabled (IsPublic=false, HcmGoalNoteEntity)"
+    },
+    {
+      "entity": "Skill-mapping - skills",
+      "reason": "not OData-enabled (IsPublic=false, HcmSkillMappingSkillEntity)"
+    }
+  ]
+}

@@ -138,6 +138,22 @@ function Find-DmfEntityMapByTarget {
 }
 
 
+function Test-DmfEntityMapPullable {
+    <#
+    .SYNOPSIS  True when the map says the entity can actually be read over OData.
+    .DESCRIPTION
+        Distinct from Test-DmfEntityMapResolved, which is also true for an
+        entity the map knows is NOT public: that answers the question without
+        the network, but the entity still cannot be pulled.
+    #>
+    param([Parameter(Mandatory)]$Map, [Parameter(Mandatory)][string]$EntityName)
+    $e = Get-DmfEntityMapEntry -Map $Map -EntityName $EntityName
+    if ($null -eq $e) { return $false }
+    if ($e.dataServiceEnabled -eq $false) { return $false }
+    return (-not [string]::IsNullOrEmpty($e.publicCollectionName))
+}
+
+
 function Test-DmfEntityMapResolved {
     <#
     .SYNOPSIS  True when the map can answer the OData question for a label without the network.

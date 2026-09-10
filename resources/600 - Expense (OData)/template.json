@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "templateId": "600 - Expense (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Expense -- OData-capable subset",
+  "sourceTemplate": "600 - Expense",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 24,
+    "kept": 24,
+    "substituted": 0,
+    "dropped": 0
+  },
+  "substituted": [],
+  "dropped": []
+}

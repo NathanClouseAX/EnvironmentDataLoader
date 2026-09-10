@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Compensation Management (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Compensation Management -- OData-capable subset",
+  "sourceTemplate": "Compensation Management",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:05Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 39,
+    "kept": 29,
+    "substituted": 0,
+    "dropped": 10
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Fixed compensation plan security roles",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompFixedPlanTableSetupRoleEntity)"
+    },
+    {
+      "entity": "Employee results",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompEventEmplEntity)"
+    },
+    {
+      "entity": "Compensation process lines",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompProcessLineEntity)"
+    },
+    {
+      "entity": "Compensation process lines actions",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompProcessLineActionEntity)"
+    },
+    {
+      "entity": "Compensation recommend event composite lines",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompEventLineCompositeEntity)"
+    },
+    {
+      "entity": "Compensation recommend event fixed lines",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompEventLineFixedEntity)"
+    },
+    {
+      "entity": "Compensation recommend event point in time lines",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompEventLinePointInTimeEntity)"
+    },
+    {
+      "entity": "Compensation recommend event table",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompEventLineEntity)"
+    },
+    {
+      "entity": "Compensation fixed plan range utilization matrix",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompFixedPlanUtilMatrixEntity)"
+    },
+    {
+      "entity": "Compensation performance per organization unit",
+      "reason": "not OData-enabled (IsPublic=false, HRMCompOrgPerfEntity)"
+    }
+  ]
+}

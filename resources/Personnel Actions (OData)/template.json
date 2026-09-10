@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "templateId": "Personnel Actions (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "Personnel Actions -- OData-capable subset",
+  "sourceTemplate": "Personnel Actions",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:06Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 20,
+    "kept": 2,
+    "substituted": 0,
+    "dropped": 18
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Action state history",
+      "reason": "not OData-enabled (IsPublic=false, HcmActionStateHistoryEntity)"
+    },
+    {
+      "entity": "Action state related action history",
+      "reason": "not OData-enabled (IsPublic=false, HcmActionStateRelatedActionHistoryEntity)"
+    },
+    {
+      "entity": "Position action history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionHistoryEntity)"
+    },
+    {
+      "entity": "Position action detail history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionDetailHistoryEntity)"
+    },
+    {
+      "entity": "Position action default dimension history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionDefaultDimensionHistoryEntity)"
+    },
+    {
+      "entity": "Position action hierarchy history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionHierarchyHistoryEntity)"
+    },
+    {
+      "entity": "Position action line history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionLineHistoryEntity)"
+    },
+    {
+      "entity": "Position action union agreement history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionUnionAgreementHistoryEntity)"
+    },
+    {
+      "entity": "Position action duration history",
+      "reason": "not OData-enabled (IsPublic=false, HcmPositionActionDurationHistoryEntity)"
+    },
+    {
+      "entity": "Personnel action type restrict information access.",
+      "reason": "not OData-enabled (IsPublic=false, HcmTransferActionPropertiesEntity)"
+    },
+    {
+      "entity": "Worker action history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionHistoryEntity)"
+    },
+    {
+      "entity": "Worker action employment history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionEmploymentHistoryEntity)"
+    },
+    {
+      "entity": "Worker action fixed compensation history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionCompEmplHistoryEntity)"
+    },
+    {
+      "entity": "Worker action fixed compensation change history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionCompFixedEmplChangeHistoryEntity)"
+    },
+    {
+      "entity": "Worker action position assignment",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionPositionAssignmentHistoryEntity)"
+    },
+    {
+      "entity": "Worker action terminate history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionTerminateHistoryEntity)"
+    },
+    {
+      "entity": "Worker action hiring history",
+      "reason": "not OData-enabled (IsPublic=false, HcmWorkerActionHireHistoryEntity)"
+    },
+    {
+      "entity": "Worker action comment history",
+      "reason": "not found in the entity catalog (ISV or renamed)"
+    }
+  ]
+}

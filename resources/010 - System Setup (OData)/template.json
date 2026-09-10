@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "templateId": "010 - System Setup (OData)",
+  "origin": "custom",
+  "appliesTo": "OData",
+  "description": "System and Shared -- OData-capable subset",
+  "sourceTemplate": "010 - System Setup",
+  "generatedBy": "New-ODataTemplates.ps1 1.0 (entity catalog 10.0.2527.174)",
+  "generatedAt": "2026-09-10T23:10:03Z",
+  "notes": "Generated. Holds only the entities reachable over OData, with TargetEntity from the entity catalog. Entities under \"dropped\" have no public entity and must use the DMF path. Re-run New-ODataTemplates.ps1 -Force after changing the source template.",
+  "counts": {
+    "source": 92,
+    "kept": 66,
+    "substituted": 0,
+    "dropped": 26
+  },
+  "substituted": [],
+  "dropped": [
+    {
+      "entity": "Expression",
+      "reason": "not OData-enabled (IsPublic=false, ExpressionEntity)"
+    },
+    {
+      "entity": "Global address book V2",
+      "reason": "not OData-enabled (IsPublic=false, DirPartyV2Entity)"
+    },
+    {
+      "entity": "Organization hierarchy type",
+      "reason": "not found in the entity catalog (ISV or renamed)"
+    },
+    {
+      "entity": "Organization hierarchy V2 - published and draft",
+      "reason": "not OData-enabled (IsPublic=false, OMOrganizationHierarchyPublishedAndDraftV2Entity)"
+    },
+    {
+      "entity": "System email template",
+      "reason": "not OData-enabled (IsPublic=false, EmailTemplateSystemEntity)"
+    },
+    {
+      "entity": "System email template message",
+      "reason": "not OData-enabled (IsPublic=false, EmailTemplateMessageSystemEntity)"
+    },
+    {
+      "entity": "Workflow element",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementEntity)"
+    },
+    {
+      "entity": "Workflow element action",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementActionEntity)"
+    },
+    {
+      "entity": "Workflow element link",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementLinkEntity)"
+    },
+    {
+      "entity": "Workflow element notification",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementNotificationEntity)"
+    },
+    {
+      "entity": "Workflow element notification message",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementNotificationMessageEntity)"
+    },
+    {
+      "entity": "Workflow element outcome message",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowElementOutcomeMessageEntity)"
+    },
+    {
+      "entity": "Workflow escalation path",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowEscalationPathEntity)"
+    },
+    {
+      "entity": "Workflow line item",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowLineItemEntity)"
+    },
+    {
+      "entity": "Workflow parallel branch",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowParallelBranchEntity)"
+    },
+    {
+      "entity": "Workflow step",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowStepEntity)"
+    },
+    {
+      "entity": "Workflow step message",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowStepMessageEntity)"
+    },
+    {
+      "entity": "Workflow subworkflow",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowSubworkflowEntity)"
+    },
+    {
+      "entity": "Workflow system parameters",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowParametersSystemEntity)"
+    },
+    {
+      "entity": "Workflow version",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowVersionEntity)"
+    },
+    {
+      "entity": "Workflow version notes",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowVersionNotesEntity)"
+    },
+    {
+      "entity": "Workflow version notification",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowVersionNotificationEntity)"
+    },
+    {
+      "entity": "Workflow version notification message",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowVersionNotificationMessageEntity)"
+    },
+    {
+      "entity": "Workflow work item queue",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowWorkItemQueueEntity)"
+    },
+    {
+      "entity": "Workflow work item queue assignee",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowWorkItemQueueAssigneeEntity)"
+    },
+    {
+      "entity": "Workflow work item queue assignment",
+      "reason": "not OData-enabled (IsPublic=false, WorkflowWorkItemQueueAssignmentEntity)"
+    }
+  ]
+}
